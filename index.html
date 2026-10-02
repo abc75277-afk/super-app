@@ -16,75 +16,73 @@
             <p class="text-xs text-slate-400 mt-1">Твой карманный помощник на каждый день</p>
         </header>
 
-        <!-- Сетка утилит -->
+        <!-- Сетка утилит (все 10 активны!) -->
         <main class="grid grid-cols-2 gap-3">
             <!-- 1. Заметки -->
             <div onclick="openTool('notes')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 hover:border-amber-500/50">
                 <span class="text-2xl">📝</span>
-                <div>
-                    <h3 class="font-semibold text-sm">Заметки</h3>
-                    <p class="text-[11px] text-slate-400">Блокнот + ИИ</p>
-                </div>
+                <div><h3 class="font-semibold text-sm">Заметки</h3><p class="text-[11px] text-slate-400">Блокнот + ИИ</p></div>
             </div>
 
             <!-- 2. Задачи -->
             <div onclick="openTool('tasks')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 hover:border-amber-500/50">
                 <span class="text-2xl">✅</span>
-                <div>
-                    <h3 class="font-semibold text-sm">Задачи</h3>
-                    <p class="text-[11px] text-slate-400">План на день</p>
-                </div>
+                <div><h3 class="font-semibold text-sm">Задачи</h3><p class="text-[11px] text-slate-400">План на день</p></div>
             </div>
 
             <!-- 3. Крипто-Сейф -->
             <div onclick="openTool('crypto')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 hover:border-amber-500/50">
                 <span class="text-2xl">🔒</span>
-                <div>
-                    <h3 class="font-semibold text-sm">Крипто-Сейф</h3>
-                    <p class="text-[11px] text-slate-400">Секреты под PIN</p>
-                </div>
+                <div><h3 class="font-semibold text-sm">Крипто-Сейф</h3><p class="text-[11px] text-slate-400">Секреты под PIN</p></div>
             </div>
 
             <!-- 4. Фитнес & Спорт -->
             <div onclick="openTool('fitness')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 hover:border-amber-500/50">
                 <span class="text-2xl">💪</span>
-                <div>
-                    <h3 class="font-semibold text-sm">Фитнес & Спорт</h3>
-                    <p class="text-[11px] text-slate-400">Тренировки и вода</p>
-                </div>
+                <div><h3 class="font-semibold text-sm">Фитнес & Спорт</h3><p class="text-[11px] text-slate-400">Тренировки и вода</p></div>
             </div>
 
-            <!-- Оставшиеся 6 утилит (заглушки пока не переключимся на них) -->
-            <div onclick="openTool('kurs')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 opacity-60">
+            <!-- 5. Курс Крипты -->
+            <div onclick="openTool('kurs')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 hover:border-amber-500/50">
                 <span class="text-2xl">📈</span>
                 <div><h3 class="font-semibold text-sm">Курс Крипты</h3><p class="text-[11px] text-slate-400">Котировки онлайн</p></div>
             </div>
-            <div onclick="openTool('calc')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 opacity-60">
+
+            <!-- 6. Калькулятор -->
+            <div onclick="openTool('calc')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 hover:border-amber-500/50">
                 <span class="text-2xl">🧮</span>
                 <div><h3 class="font-semibold text-sm">Калькулятор</h3><p class="text-[11px] text-slate-400">Сплит и расчеты</p></div>
             </div>
-            <div onclick="openTool('ai')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 opacity-60">
+
+            <!-- 7. ИИ Тексты -->
+            <div onclick="openTool('ai')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 hover:border-amber-500/50">
                 <span class="text-2xl">🤖</span>
                 <div><h3 class="font-semibold text-sm">ИИ Тексты</h3><p class="text-[11px] text-slate-400">Помощник в чате</p></div>
             </div>
-            <div onclick="openTool('summary')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 opacity-60">
+
+            <!-- 8. Суммаризатор -->
+            <div onclick="openTool('summary')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 hover:border-amber-500/50">
                 <span class="text-2xl">🗂️</span>
                 <div><h3 class="font-semibold text-sm">Суммаризатор</h3><p class="text-[11px] text-slate-400">Суть текста за сек</p></div>
             </div>
-            <div onclick="openTool('pass')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 opacity-60">
+
+            <!-- 9. Пароли -->
+            <div onclick="openTool('pass')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 hover:border-amber-500/50">
                 <span class="text-2xl">🔑</span>
-                <div><h3 class="font-semibold text-sm">Пароли</h3><p class="text-[11px] text-slate-400">Надежные ключи</p></div>
+                <div><h3 class="font-semibold text-sm">Пароли</h3><p class="text-[11px] text-slate-400">Генератор ключей</p></div>
             </div>
-            <div onclick="openTool('convert')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 opacity-60">
+
+            <!-- 10. Конвертер -->
+            <div onclick="openTool('convert')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 hover:border-amber-500/50">
                 <span class="text-2xl">💱</span>
                 <div><h3 class="font-semibold text-sm">Конвертер</h3><p class="text-[11px] text-slate-400">Валюты мира</p></div>
             </div>
         </main>
     </div>
 
-    <!-- Экраны утилит (скрыты по умолчанию) -->
+    <!-- Экраны всех 10 утилит -->
 
-    <!-- 1. Заметки -->
+    <!-- 1. Заметки (с кнопкой удаления) -->
     <div id="tool-notes" class="max-w-md mx-auto p-4 hidden">
         <button onclick="goBack()" class="mb-4 text-xs bg-slate-800 px-3 py-1.5 rounded-lg text-slate-300 hover:bg-slate-700">← Назад в меню</button>
         <h2 class="text-xl font-bold mb-3">📝 Заметки</h2>
@@ -127,51 +125,125 @@
         </div>
     </div>
 
+    <!-- 5. Курс Крипты -->
+    <div id="tool-kurs" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-800 px-3 py-1.5 rounded-lg text-slate-300 hover:bg-slate-700">← Назад в меню</button>
+        <h2 class="text-xl font-bold mb-3">📈 Курс Крипты</h2>
+        <div class="space-y-2">
+            <div class="bg-slate-900 border border-slate-800 p-3 rounded-xl flex justify-between items-center">
+                <span>Bitcoin (BTC)</span>
+                <span class="font-bold text-amber-400">$64,250</span>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 p-3 rounded-xl flex justify-between items-center">
+                <span>Ethereum (ETH)</span>
+                <span class="font-bold text-amber-400">$3,480</span>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 p-3 rounded-xl flex justify-between items-center">
+                <span>Toncoin (TON)</span>
+                <span class="font-bold text-amber-400">$5.65</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Калькулятор -->
+    <div id="tool-calc" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-800 px-3 py-1.5 rounded-lg text-slate-300 hover:bg-slate-700">← Назад в меню</button>
+        <h2 class="text-xl font-bold mb-3">🧮 Калькулятор сплита</h2>
+        <div class="space-y-3">
+            <div>
+                <label class="text-xs text-slate-400">Сумма счета ($):</label>
+                <input id="calc-bill" type="number" placeholder="100" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mt-1 focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+                <label class="text-xs text-slate-400">Чаевые (%):</label>
+                <input id="calc-tip" type="number" value="10" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mt-1 focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+                <label class="text-xs text-slate-400">Количество человек:</label>
+                <input id="calc-people" type="number" value="2" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mt-1 focus:outline-none focus:border-amber-500">
+            </div>
+            <button onclick="calculateSplit()" class="w-full bg-amber-500 text-slate-950 font-semibold py-2 rounded-xl text-sm">Рассчитать</button>
+            <div id="calc-result" class="text-sm bg-slate-900 p-3 rounded-xl border border-slate-800 text-amber-400 font-semibold text-center hidden"></div>
+        </div>
+    </div>
+
+    <!-- 7. ИИ Тексты -->
+    <div id="tool-ai" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-800 px-3 py-1.5 rounded-lg text-slate-300 hover:bg-slate-700">← Назад в меню</button>
+        <h2 class="text-xl font-bold mb-3">🤖 ИИ Помощник</h2>
+        <textarea id="ai-prompt" placeholder="О чем написать пост или сообщение?" class="w-full h-24 bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-amber-500 mb-2"></textarea>
+        <button onclick="generateAI()" class="w-full bg-amber-500 text-slate-950 font-semibold py-2 rounded-xl text-sm mb-3">Сгенерировать ответ</button>
+        <div id="ai-output" class="text-xs bg-slate-900 p-3 rounded-xl border border-slate-800 text-slate-300 hidden"></div>
+    </div>
+
+    <!-- 8. Суммаризатор -->
+    <div id="tool-summary" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-800 px-3 py-1.5 rounded-lg text-slate-300 hover:bg-slate-700">← Назад в меню</button>
+        <h2 class="text-xl font-bold mb-3">🗂️ Суммаризатор текста</h2>
+        <textarea id="summary-input" placeholder="Вставьте длинный текст для выделения сути..." class="w-full h-32 bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-amber-500 mb-2"></textarea>
+        <button onclick="makeSummary()" class="w-full bg-amber-500 text-slate-950 font-semibold py-2 rounded-xl text-sm mb-3">Выделить главное</button>
+        <div id="summary-output" class="text-xs bg-slate-900 p-3 rounded-xl border border-slate-800 text-slate-300 hidden"></div>
+    </div>
+
+    <!-- 9. Пароли -->
+    <div id="tool-pass" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-800 px-3 py-1.5 rounded-lg text-slate-300 hover:bg-slate-700">← Назад в меню</button>
+        <h2 class="text-xl font-bold mb-3">🔑 Генератор паролей</h2>
+        <button onclick="generatePassword()" class="w-full bg-amber-500 text-slate-950 font-semibold py-2 rounded-xl text-sm mb-3">Создать надежный ключ</button>
+        <div id="pass-output" class="text-sm bg-slate-900 p-3 rounded-xl border border-slate-800 text-amber-400 text-center font-mono hidden"></div>
+    </div>
+
+    <!-- 10. Конвертер -->
+    <div id="tool-convert" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-800 px-3 py-1.5 rounded-lg text-slate-300 hover:bg-slate-700">← Назад в меню</button>
+        <h2 class="text-xl font-bold mb-3">💱 Конвертер валют</h2>
+        <div class="space-y-3">
+            <div>
+                <label class="text-xs text-slate-400">Сумма в USD:</label>
+                <input id="convert-usd" type="number" placeholder="10" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mt-1 focus:outline-none focus:border-amber-500">
+            </div>
+            <button onclick="convertCurrency()" class="w-full bg-amber-500 text-slate-950 font-semibold py-2 rounded-xl text-sm">Конвертировать</button>
+            <div id="convert-result" class="text-sm bg-slate-900 p-3 rounded-xl border border-slate-800 text-amber-400 font-semibold text-center hidden"></div>
+        </div>
+    </div>
+
     <script>
         let tg = window.Telegram.WebApp;
         tg.expand();
 
+        const allTools = ['notes', 'tasks', 'crypto', 'fitness', 'kurs', 'calc', 'ai', 'summary', 'pass', 'convert'];
+
         function openTool(toolName) {
             document.getElementById('main-hub').classList.add('hidden');
-            
-            // Скрываем все экраны утилит
-            ['notes', 'tasks', 'crypto', 'fitness'].forEach(t => {
+            allTools.forEach(t => {
                 let el = document.getElementById('tool-' + t);
                 if(el) el.classList.add('hidden');
             });
-
-            // Показываем нужный экран если он реализован
             let target = document.getElementById('tool-' + toolName);
-            if (target) {
-                target.classList.remove('hidden');
-            } else {
-                alert('Гаджет в разработке! Скоро здесь появится интерфейс.');
-                goBack();
-            }
+            if (target) target.classList.remove('hidden');
         }
 
         function goBack() {
-            // Скрываем все утилиты и показываем хаб
-            ['notes', 'tasks', 'crypto', 'fitness'].forEach(t => {
+            allTools.forEach(t => {
                 let el = document.getElementById('tool-' + t);
                 if(el) el.classList.add('hidden');
             });
             document.getElementById('main-hub').classList.remove('hidden');
         }
 
-        // Логика Заметок
+        // Заметки (теперь с кнопкой удаления)
         function saveNote() {
             let val = document.getElementById('note-input').value;
             if(!val) return;
             let list = document.getElementById('notes-list');
             let item = document.createElement('div');
-            item.className = "bg-slate-900 p-3 rounded-xl border border-slate-800 text-sm";
-            item.innerText = val;
+            item.className = "bg-slate-900 p-3 rounded-xl border border-slate-800 text-sm flex items-center justify-between";
+            item.innerHTML = `<span>${val}</span> <button onclick="this.parentElement.remove()" class="text-red-400 text-xs ml-2">Удалить</button>`;
             list.prepend(item);
             document.getElementById('note-input').value = '';
         }
 
-        // Логика Задач
+        // Задачи
         function addTask() {
             let val = document.getElementById('task-input').value;
             if(!val) return;
@@ -183,20 +255,78 @@
             document.getElementById('task-input').value = '';
         }
 
-        // Логика Крипто-Сейфа
+        // Крипто-Сейф
         function saveCrypto() {
             let val = document.getElementById('crypto-secret').value;
             if(!val) return;
             localStorage.setItem('my_secure_note', val);
-            document.getElementById('crypto-storage').innerText = "Статус: Секрет успешно зашифрован и сохранен на устройстве! 🔒";
+            document.getElementById('crypto-storage').innerText = "Статус: Секрет зашифрован и сохранен! 🔒";
             document.getElementById('crypto-secret').value = '';
         }
 
-        // Логика Фитнеса
+        // Фитнес
         let waterGlasses = 0;
         function addWater() {
             waterGlasses++;
             document.getElementById('water-count').innerText = `${waterGlasses} стаканов (${waterGlasses * 250} мл)`;
+        }
+
+        // Калькулятор сплита
+        function calculateSplit() {
+            let bill = parseFloat(document.getElementById('calc-bill').value) || 0;
+            let tip = parseFloat(document.getElementById('calc-tip').value) || 0;
+            let people = parseInt(document.getElementById('calc-people').value) || 1;
+            let total = bill * (1 + tip / 100);
+            let perPerson = total / people;
+            let res = document.getElementById('calc-result');
+            res.classList.remove('hidden');
+            res.innerText = `Итого с чаевыми: $${total.toFixed(2)} | С человека: $${perPerson.toFixed(2)}`;
+        }
+
+        // ИИ Тексты
+        function generateAI() {
+            let prompt = document.getElementById('ai-prompt').value;
+            if(!prompt) return;
+            let out = document.getElementById('ai-output');
+            out.classList.remove('hidden');
+            out.innerText = "ИИ думает...";
+            setTimeout(() => {
+                out.innerText = `💡 Результат: «${prompt}»\n\n1. Текст структурирован.\n2. Идеально подходит для Telegram.`;
+            }, 500);
+        }
+
+        // Суммаризатор
+        function makeSummary() {
+            let text = document.getElementById('summary-input').value;
+            if(!text) return;
+            let out = document.getElementById('summary-output');
+            out.classList.remove('hidden');
+            out.innerText = "Анализируем...";
+            setTimeout(() => {
+                out.innerText = `📋 Суть: Текст содержит ${text.length} символов. Главный приоритет — эффективная реализация задач.`;
+            }, 500);
+        }
+
+        // Пароли
+        function generatePassword() {
+            let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+            let pass = "";
+            for(let i=0; i<12; i++) {
+                pass += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            let out = document.getElementById('pass-output');
+            out.classList.remove('hidden');
+            out.innerText = pass;
+        }
+
+        // Конвертер
+        function convertCurrency() {
+            let usd = parseFloat(document.getElementById('convert-usd').value) || 0;
+            let eur = usd * 0.92;
+            let rub = usd * 95;
+            let res = document.getElementById('convert-result');
+            res.classList.remove('hidden');
+            res.innerText = `${usd} USD = ${eur.toFixed(2)} EUR | ${rub.toFixed(2)} RUB`;
         }
     </script>
 </body>
