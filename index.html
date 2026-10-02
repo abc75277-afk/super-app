@@ -3,95 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super App iOS Pro Max v6</title>
+    <title>Super App Hub Pro</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        .ios-icon {
-            box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(12px);
-        }
         body {
-            background-color: #000000;
+            background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #09090b 60%, #000000 100%);
             color: #f8fafc;
             min-height: 100vh;
         }
+        .app-icon {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.15s ease, filter 0.15s ease;
+        }
+        .app-icon:active {
+            transform: scale(0.92);
+            filter: brightness(1.1);
+        }
     </style>
 </head>
-<body class="selection:bg-blue-500 selection:text-white pb-16">
+<body class="selection:bg-cyan-500 selection:text-white pb-16">
 
-    <!-- ГЛАВНЫЙ ЭКРАН: iOS Dashboard -->
+    <!-- ГЛАВНЫЙ ЭКРАН -->
     <div id="main-hub" class="max-w-md mx-auto p-4 pt-6">
         <header class="mb-6 text-center">
-            <h1 class="text-xl font-bold tracking-tight text-white">Super App Hub</h1>
-            <p class="text-xs text-slate-400 mt-0.5">iOS SpringBoard Interface (Pro Edition v6)</p>
+            <h1 class="text-2xl font-black tracking-tight text-white bg-gradient-to-r from-cyan-400 via-indigo-400 to-pink-500 bg-clip-text text-transparent">Super App Hub</h1>
+            <p class="text-xs text-slate-400 mt-1">Все инструменты под рукой</p>
         </header>
 
-        <!-- Сетка 16 иконок приложений в стиле iOS -->
+        <!-- Сетка 16 приложений с яркими иконками -->
         <main class="grid grid-cols-4 gap-4">
             <div onclick="openTool('notes')" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-3xl group-active:scale-95 transition">📝</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">Заметки</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-300 flex items-center justify-center text-3xl">📝</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Заметки</span>
             </div>
             <div onclick="openTool('tasks')" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-3xl group-active:scale-95 transition">✅</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">Задачи</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-300 flex items-center justify-center text-3xl">✅</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Задачи</span>
             </div>
             <div onclick="openTool('crypto')" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-3xl group-active:scale-95 transition">🔒</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">Сейф</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-400 flex items-center justify-center text-3xl">🔒</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Сейф</span>
             </div>
             <div onclick="openTool('fitness')" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-3xl group-active:scale-95 transition">💪</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">Фитнес</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-400 flex items-center justify-center text-3xl">💪</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Фитнес</span>
             </div>
             <div onclick="openTool('kurs'); fetchCryptoRates();" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center text-3xl group-active:scale-95 transition">📈</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">Крипта</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-orange-500 to-amber-300 flex items-center justify-center text-3xl">📈</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Крипта</span>
             </div>
             <div onclick="openTool('calc')" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-3xl group-active:scale-95 transition">🧮</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">Сплит</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-600 to-fuchsia-400 flex items-center justify-center text-3xl">🧮</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Сплит</span>
             </div>
             <div onclick="openTool('ai')" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-700 flex items-center justify-center text-3xl group-active:scale-95 transition">🤖</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">Рассказы</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-600 to-violet-400 flex items-center justify-center text-3xl">🤖</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Рассказы</span>
             </div>
             <div onclick="openTool('summary')" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-sky-600 flex items-center justify-center text-3xl group-active:scale-95 transition">🗂️</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">Текст</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-sky-300 flex items-center justify-center text-3xl">🗂️</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Текст</span>
             </div>
             <div onclick="openTool('pass')" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-yellow-400 to-amber-600 flex items-center justify-center text-3xl group-active:scale-95 transition">🔑</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">Пароли</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-600 to-yellow-300 flex items-center justify-center text-3xl">🔑</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Пароли</span>
             </div>
             <div onclick="openTool('convert')" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-700 flex items-center justify-center text-3xl group-active:scale-95 transition">💱</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">Валюты</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-lime-300 flex items-center justify-center text-3xl">💱</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Валюты</span>
             </div>
             <div onclick="openTool('weather')" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-500 flex items-center justify-center text-3xl group-active:scale-95 transition">⛅</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">Погода</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-sky-500 to-cyan-300 flex items-center justify-center text-3xl">⛅</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Погода</span>
             </div>
             <div onclick="openTool('timer')" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-3xl group-active:scale-95 transition">⏱️</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">Таймер</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-red-500 to-orange-400 flex items-center justify-center text-3xl">⏱️</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Таймер</span>
             </div>
             <div onclick="openTool('money')" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-lime-400 to-emerald-600 flex items-center justify-center text-3xl group-active:scale-95 transition">💸</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">Бюджет</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-lime-500 to-emerald-300 flex items-center justify-center text-3xl">💸</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Бюджет</span>
             </div>
             <div onclick="openTool('qr')" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-pink-600 flex items-center justify-center text-3xl group-active:scale-95 transition">📱</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">QR Код</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-fuchsia-600 to-pink-400 flex items-center justify-center text-3xl">📱</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">QR Код</span>
             </div>
             <div onclick="openTool('random')" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-400 to-purple-600 flex items-center justify-center text-3xl group-active:scale-95 transition">🎲</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">Рандом</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-violet-500 to-purple-300 flex items-center justify-center text-3xl">🎲</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Рандом</span>
             </div>
             <div onclick="openTool('about')" class="flex flex-col items-center cursor-pointer group">
-                <div class="ios-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-600 to-slate-800 flex items-center justify-center text-3xl group-active:scale-95 transition">ℹ️</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-300">Инфо</span>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-slate-600 to-zinc-400 flex items-center justify-center text-3xl">ℹ️</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Инфо</span>
             </div>
         </main>
     </div>
@@ -100,57 +104,53 @@
 
     <!-- 1. Заметки -->
     <div id="tool-notes" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>📝</span> Заметки</h2>
-        <textarea id="note-input" placeholder="Введите текст заметки..." class="w-full h-28 bg-slate-900 border border-slate-800 rounded-2xl p-3.5 text-sm focus:outline-none focus:border-amber-500 mb-2.5"></textarea>
+        <textarea id="note-input" placeholder="Введите текст заметки..." class="w-full h-28 bg-slate-900/80 border border-slate-700/50 rounded-2xl p-3.5 text-sm focus:outline-none focus:border-amber-400 mb-2.5"></textarea>
         <button onclick="saveNote()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm transition">Сохранить заметку</button>
         <div id="notes-list" class="mt-4 space-y-2.5"></div>
     </div>
 
     <!-- 2. Задачи -->
     <div id="tool-tasks" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>✅</span> Задачи и напоминания</h2>
         <div class="space-y-2 mb-3">
-            <input id="task-input" type="text" placeholder="Новая задача..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-emerald-500">
+            <input id="task-input" type="text" placeholder="Новая задача..." class="w-full bg-slate-900/80 border border-slate-700/50 rounded-xl p-3 text-sm focus:outline-none focus:border-emerald-400">
             <div class="flex gap-2">
-                <input id="task-time" type="time" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-300">
+                <input id="task-time" type="time" class="bg-slate-900/80 border border-slate-700/50 rounded-xl px-3 py-2 text-sm text-slate-200">
                 <button onclick="addTask()" class="flex-1 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2 rounded-xl text-sm">Добавить задачу</button>
             </div>
         </div>
         <div id="tasks-list" class="space-y-2.5"></div>
     </div>
 
-    <!-- 3. Защищенный Сейф с Мастер-Пинкодом -->
+    <!-- 3. Сейф -->
     <div id="tool-crypto" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-2 flex items-center gap-2"><span>🔒</span> Защищенный Сейф</h2>
-        <p class="text-xs text-slate-400 mb-3">Ваши пароли и сид-фразы заблокированы персональным ПИН-кодом.</p>
-        
-        <!-- Блок авторизации сейфа -->
-        <div id="safe-auth" class="bg-slate-900 border border-slate-800 p-4 rounded-2xl space-y-3">
-            <p id="safe-auth-title" class="text-xs font-semibold text-cyan-400">Введите ПИН-код сейфа (или задайте новый при первом входе):</p>
-            <input id="safe-pin" type="password" placeholder="Введите 4-значный ПИН..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-center tracking-widest">
+        <p class="text-xs text-slate-400 mb-3">Пароли и сид-фразы под защитой ПИН-кода.</p>
+        <div id="safe-auth" class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl space-y-3">
+            <p class="text-xs font-semibold text-cyan-400">Введите ПИН-код сейфа:</p>
+            <input id="safe-pin" type="password" placeholder="ПИН-код..." class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm text-center tracking-widest">
             <button onclick="unlockSafe()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm">Открыть сейф</button>
         </div>
-
-        <!-- Содержимое сейфа (скрыто до ввода пина) -->
         <div id="safe-content" class="hidden space-y-3">
             <div class="bg-emerald-500/10 border border-emerald-500/30 p-3 rounded-xl text-xs text-emerald-400 flex justify-between items-center">
                 <span>🟢 Сейф разблокирован</span>
-                <button onclick="lockSafe()" class="underline font-bold">Заблокировать</button>
+                <button onclick="lockSafe()" class="underline font-bold">Закрыть</button>
             </div>
-            <textarea id="crypto-secret" placeholder="Введите секретный ключ или сид-фразу..." class="w-full h-24 bg-slate-900 border border-slate-800 rounded-2xl p-3.5 text-sm focus:outline-none focus:border-cyan-500"></textarea>
+            <textarea id="crypto-secret" placeholder="Введите секретный ключ..." class="w-full h-24 bg-slate-900/80 border border-slate-700/50 rounded-2xl p-3.5 text-sm focus:outline-none focus:border-cyan-400"></textarea>
             <button onclick="saveCrypto()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm">Сохранить секрет</button>
-            <div id="crypto-storage" class="text-xs bg-slate-900 p-3.5 rounded-2xl border border-slate-800 text-slate-300 space-y-2"></div>
+            <div id="crypto-storage" class="text-xs bg-slate-900/80 p-3.5 rounded-2xl border border-slate-700/50 text-slate-200 space-y-2"></div>
         </div>
     </div>
 
-    <!-- 4. Фитнес с добавлением и удалением воды -->
+    <!-- 4. Фитнес -->
     <div id="tool-fitness" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>💪</span> Фитнес & Вода</h2>
-        <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl mb-3 shadow-lg flex justify-between items-center">
+        <div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl mb-3 shadow-lg flex justify-between items-center">
             <div>
                 <p class="text-xs text-slate-400">Выпито воды:</p>
                 <p id="water-count" class="text-lg font-bold text-rose-400 mt-0.5">0 стаканов (0 мл)</p>
@@ -160,7 +160,7 @@
                 <button onclick="adjustWater(1)" class="bg-rose-500 hover:bg-rose-400 text-slate-950 px-3.5 py-2.5 rounded-xl text-xs font-bold">+ Стакан</button>
             </div>
         </div>
-        <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl">
+        <div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl">
             <p class="text-xs text-slate-400 mb-2">Цель: 2000 мл (8 стаканов)</p>
             <div class="w-full bg-slate-950 rounded-full h-2.5 overflow-hidden">
                 <div id="water-progress" class="bg-rose-500 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
@@ -168,131 +168,131 @@
         </div>
     </div>
 
-    <!-- 5. Крипта Live -->
+    <!-- 5. Крипта -->
     <div id="tool-kurs" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <div class="flex justify-between items-center mb-3">
             <h2 class="text-xl font-bold flex items-center gap-2"><span>📈</span> Топ Крипта Live</h2>
-            <button onclick="fetchCryptoRates()" class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/30 px-3 py-1.5 rounded-xl font-medium hover:bg-amber-500/20">🔄 Обновить</button>
+            <button onclick="fetchCryptoRates()" class="text-xs bg-orange-500/10 text-orange-400 border border-orange-500/30 px-3 py-1.5 rounded-xl font-medium">🔄 Обновить</button>
         </div>
         <div id="crypto-rates-container" class="space-y-2.5">
-            <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl text-center text-xs text-slate-400 animate-pulse">Загрузка котировок...</div>
+            <div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl text-center text-xs text-slate-400 animate-pulse">Загрузка котировок...</div>
         </div>
     </div>
 
     <!-- 6. Калькулятор сплита -->
     <div id="tool-calc" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>🧮</span> Калькулятор сплита</h2>
-        <div class="space-y-3 bg-slate-900 border border-slate-800 p-4 rounded-2xl shadow-lg">
+        <div class="space-y-3 bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl shadow-lg">
             <div>
                 <label class="text-xs text-slate-400">Сумма счета ($):</label>
-                <input id="calc-bill" type="number" placeholder="100" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm mt-1">
+                <input id="calc-bill" type="number" placeholder="100" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1">
             </div>
             <div>
                 <label class="text-xs text-slate-400">Чаевые (%):</label>
-                <input id="calc-tip" type="number" value="10" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm mt-1">
+                <input id="calc-tip" type="number" value="10" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1">
             </div>
             <div>
                 <label class="text-xs text-slate-400">Количество человек:</label>
-                <input id="calc-people" type="number" value="2" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm mt-1">
+                <input id="calc-people" type="number" value="2" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1">
             </div>
-            <button onclick="calculateSplit()" class="w-full bg-purple-500 hover:bg-purple-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm">Рассчитать</button>
-            <div id="calc-result" class="text-sm bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-purple-400 font-bold text-center hidden space-y-1"></div>
+            <button onclick="calculateSplit()" class="w-full bg-purple-600 hover:bg-purple-500 text-slate-100 font-bold py-2.5 rounded-xl text-sm">Рассчитать</button>
+            <div id="calc-result" class="text-sm bg-slate-950 p-3.5 rounded-xl border border-slate-700/50 text-purple-300 font-bold text-center hidden space-y-1"></div>
         </div>
     </div>
 
-    <!-- 7. ИИ Генератор рассказов -->
+    <!-- 7. ИИ Рассказы -->
     <div id="tool-ai" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>🤖</span> ИИ Генератор рассказов</h2>
-        <textarea id="ai-prompt" placeholder="Тема или герой рассказа..." class="w-full h-28 bg-slate-900 border border-slate-800 rounded-2xl p-3.5 text-sm focus:outline-none focus:border-indigo-500 mb-2.5"></textarea>
-        <button onclick="generateStory()" class="w-full bg-indigo-500 hover:bg-indigo-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm mb-3">Написать рассказ</button>
-        <div id="ai-output" class="text-xs bg-slate-900 p-3.5 rounded-2xl border border-slate-800 text-slate-200 hidden leading-relaxed"></div>
+        <textarea id="ai-prompt" placeholder="Тема или главный герой рассказа..." class="w-full h-28 bg-slate-900/80 border border-slate-700/50 rounded-2xl p-3.5 text-sm focus:outline-none focus:border-indigo-400 mb-2.5"></textarea>
+        <button onclick="generateStory()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-slate-100 font-bold py-2.5 rounded-xl text-sm mb-3">Написать рассказ</button>
+        <div id="ai-output" class="text-xs bg-slate-900/80 p-3.5 rounded-2xl border border-slate-700/50 text-slate-200 hidden leading-relaxed"></div>
     </div>
 
     <!-- 8. Суммаризатор -->
     <div id="tool-summary" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>🗂️</span> Суммаризатор</h2>
-        <textarea id="summary-input" placeholder="Вставьте длинный текст..." class="w-full h-32 bg-slate-900 border border-slate-800 rounded-2xl p-3.5 text-sm focus:outline-none focus:border-blue-500 mb-2.5"></textarea>
-        <button onclick="makeSummary()" class="w-full bg-blue-500 hover:bg-blue-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm mb-3">Выделить суть</button>
-        <div id="summary-output" class="text-xs bg-slate-900 p-3.5 rounded-2xl border border-slate-800 text-slate-200 hidden leading-relaxed"></div>
+        <textarea id="summary-input" placeholder="Вставьте длинный текст..." class="w-full h-32 bg-slate-900/80 border border-slate-700/50 rounded-2xl p-3.5 text-sm focus:outline-none focus:border-blue-400 mb-2.5"></textarea>
+        <button onclick="makeSummary()" class="w-full bg-blue-600 hover:bg-blue-500 text-slate-100 font-bold py-2.5 rounded-xl text-sm mb-3">Выделить суть</button>
+        <div id="summary-output" class="text-xs bg-slate-900/80 p-3.5 rounded-2xl border border-slate-700/50 text-slate-200 hidden leading-relaxed"></div>
     </div>
 
     <!-- 9. Пароли -->
     <div id="tool-pass" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>🔑</span> Генератор паролей</h2>
-        <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl space-y-3">
-            <button onclick="generatePassword()" class="w-full bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm">Создать ключ</button>
-            <div id="pass-output" class="text-sm bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-yellow-400 text-center font-mono font-bold hidden select-all"></div>
+        <div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl space-y-3">
+            <button onclick="generatePassword()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm">Создать ключ</button>
+            <div id="pass-output" class="text-sm bg-slate-950 p-3.5 rounded-xl border border-slate-700/50 text-amber-300 text-center font-mono font-bold hidden select-all"></div>
         </div>
     </div>
 
-    <!-- 10. Конвертер валют (50+ валют) -->
+    <!-- 10. Конвертер -->
     <div id="tool-convert" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>💱</span> Конвертер (50+ Валют)</h2>
-        <div class="space-y-3 bg-slate-900 border border-slate-800 p-4 rounded-2xl shadow-lg">
+        <div class="space-y-3 bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl shadow-lg">
             <div>
                 <label class="text-xs text-slate-400">Сумма:</label>
-                <input id="conv-amount" type="number" value="100" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm mt-1">
+                <input id="conv-amount" type="number" value="100" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1">
             </div>
             <div class="grid grid-cols-2 gap-2">
                 <div>
                     <label class="text-xs text-slate-400">Из:</label>
-                    <select id="conv-from" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm mt-1 text-slate-300"></select>
+                    <select id="conv-from" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1 text-slate-200"></select>
                 </div>
                 <div>
                     <label class="text-xs text-slate-400">В:</label>
-                    <select id="conv-to" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm mt-1 text-slate-300"></select>
+                    <select id="conv-to" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1 text-slate-200"></select>
                 </div>
             </div>
-            <button onclick="convertCurrency()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm">Конвертировать</button>
-            <div id="conv-result" class="text-sm bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-emerald-400 font-bold text-center hidden"></div>
+            <button onclick="convertCurrency()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-100 font-bold py-2.5 rounded-xl text-sm">Конвертировать</button>
+            <div id="conv-result" class="text-sm bg-slate-950 p-3.5 rounded-xl border border-slate-700/50 text-emerald-400 font-bold text-center hidden"></div>
         </div>
     </div>
 
-    <!-- 11. Погода (Исправленная и надежная) -->
+    <!-- 11. Погода -->
     <div id="tool-weather" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>⛅</span> Погода</h2>
         <div class="flex gap-2 mb-3">
-            <input id="weather-city" type="text" placeholder="Введите город (напр. Москва, London)..." value="Москва" class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3.5 text-sm focus:outline-none focus:border-sky-500">
+            <input id="weather-city" type="text" placeholder="Введите город..." value="Москва" class="flex-1 bg-slate-900/80 border border-slate-700/50 rounded-xl px-3.5 text-sm focus:outline-none focus:border-sky-400">
             <button onclick="fetchWeather()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-sm">Найти</button>
         </div>
-        <div id="weather-card" class="bg-slate-900 border border-slate-800 p-5 rounded-2xl text-center space-y-2">
+        <div id="weather-card" class="bg-slate-900/80 border border-slate-700/50 p-5 rounded-2xl text-center space-y-2">
             <p class="text-xs text-slate-400">Загрузка погоды...</p>
         </div>
     </div>
 
     <!-- 12. Таймер -->
     <div id="tool-timer" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
-        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>⏱️</span> Секундомер</h2>
-        <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl text-center space-y-4">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
+        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>⏱️️</span> Секундомер</h2>
+        <div class="bg-slate-900/80 border border-slate-700/50 p-6 rounded-2xl text-center space-y-4">
             <p id="timer-display" class="text-4xl font-mono font-black text-orange-400">00:00</p>
             <div class="flex gap-2">
                 <button onclick="startTimer()" class="flex-1 bg-orange-500 hover:bg-orange-400 text-slate-950 font-bold py-2 rounded-xl text-sm">Старт</button>
-                <button onclick="stopTimer()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-2 rounded-xl text-sm">Сброс</button>
+                <button onclick="stopTimer()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold py-2 rounded-xl text-sm">Сброс</button>
             </div>
         </div>
     </div>
 
     <!-- 13. Бюджет -->
     <div id="tool-money" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>💸</span> Учет расходов и доходов</h2>
-        <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl text-center mb-3 shadow-md">
+        <div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl text-center mb-3 shadow-md">
             <p class="text-xs text-slate-400">Итоговый баланс:</p>
             <p id="budget-balance" class="text-2xl font-black text-lime-400 mt-1">$0.00</p>
         </div>
-        <div class="space-y-2 mb-3 bg-slate-900 border border-slate-800 p-4 rounded-2xl">
-            <input id="budget-desc" type="text" placeholder="Описание..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm">
+        <div class="space-y-2 mb-3 bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl">
+            <input id="budget-desc" type="text" placeholder="Описание..." class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm">
             <div class="grid grid-cols-2 gap-2">
-                <input id="budget-amount" type="number" placeholder="Сумма ($)..." class="bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm">
-                <select id="budget-type" class="bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-300">
+                <input id="budget-amount" type="number" placeholder="Сумма ($)..." class="bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm">
+                <select id="budget-type" class="bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm text-slate-200">
                     <option value="income">🟢 Доход</option>
                     <option value="expense">🔴 Расход</option>
                 </select>
@@ -304,40 +304,40 @@
 
     <!-- 14. QR Код -->
     <div id="tool-qr" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>📱</span> QR Генератор</h2>
-        <input id="qr-text" type="text" placeholder="Введите текст или ссылку..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm mb-3">
-        <button onclick="generateQR()" class="w-full bg-fuchsia-500 hover:bg-fuchsia-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm mb-3">Создать QR-код</button>
-        <div id="qr-output" class="text-center p-4 bg-slate-900 border border-slate-800 rounded-2xl hidden space-y-2"></div>
+        <input id="qr-text" type="text" placeholder="Введите текст или ссылку..." class="w-full bg-slate-900/80 border border-slate-700/50 rounded-xl p-3 text-sm mb-3">
+        <button onclick="generateQR()" class="w-full bg-pink-600 hover:bg-pink-500 text-slate-100 font-bold py-2.5 rounded-xl text-sm mb-3">Создать QR-код</button>
+        <div id="qr-output" class="text-center p-4 bg-slate-900/80 border border-slate-700/50 rounded-2xl hidden space-y-2"></div>
     </div>
 
     <!-- 15. Рандом -->
     <div id="tool-random" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>🎲</span> Генератор чисел</h2>
-        <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl text-center space-y-4 shadow-md">
+        <div class="bg-slate-900/80 border border-slate-700/50 p-6 rounded-2xl text-center space-y-4 shadow-md">
             <div class="grid grid-cols-2 gap-2 text-left">
                 <div>
                     <label class="text-xs text-slate-400">От:</label>
-                    <input id="rand-min" type="number" value="1" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm mt-1">
+                    <input id="rand-min" type="number" value="1" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-2.5 text-sm mt-1">
                 </div>
                 <div>
                     <label class="text-xs text-slate-400">До (до 100k):</label>
-                    <input id="rand-max" type="number" value="100000" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm mt-1">
+                    <input id="rand-max" type="number" value="100000" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-2.5 text-sm mt-1">
                 </div>
             </div>
             <p id="rand-num" class="text-5xl font-black text-violet-400 py-2">--</p>
-            <button onclick="getRandomCustom()" class="w-full bg-violet-500 hover:bg-violet-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm">Сгенерировать число</button>
+            <button onclick="getRandomCustom()" class="w-full bg-violet-600 hover:bg-violet-500 text-slate-100 font-bold py-2.5 rounded-xl text-sm">Сгенерировать</button>
         </div>
     </div>
 
     <!-- 16. Инфо -->
     <div id="tool-about" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-slate-800 font-medium">← На главную</button>
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>ℹ️</span> О системе</h2>
-        <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl text-xs text-slate-300 space-y-2">
-            <p><b>Super App iOS Pro Max v6</b></p>
-            <p>Все модули (Защищенный ПИН-код сейф, 50+ валют, погода, фитнес-вода с управлением) полностью синхронизированы.</p>
+        <div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl text-xs text-slate-200 space-y-2">
+            <p><b>Super App Hub Pro</b></p>
+            <p>Современный интерфейс с яркими иконками и глубоким фоном. Все функции работают автономно.</p>
         </div>
     </div>
 
@@ -365,44 +365,44 @@
             document.getElementById('main-hub').classList.remove('hidden');
         }
 
-        // --- 1. Заметки ---
+        // Заметки
         function loadNotes() {
-            let notes = JSON.parse(localStorage.getItem('ios_notes_v4') || '[]');
+            let notes = JSON.parse(localStorage.getItem('app_notes_v5') || '[]');
             let list = document.getElementById('notes-list');
             list.innerHTML = '';
             notes.forEach((item, index) => {
                 let div = document.createElement('div');
-                div.className = "bg-slate-900 p-3.5 rounded-2xl border border-slate-800 text-sm flex justify-between items-start shadow-md";
-                div.innerHTML = `<div><p class="break-all text-sm">${item.text}</p><p class="text-[10px] text-slate-500 mt-1">${item.date}</p></div> <button onclick="deleteNote(${index})" class="text-rose-400 text-xs px-2 py-1 bg-rose-500/10 rounded-lg shrink-0 ml-2">Удалить</button>`;
+                div.className = "bg-slate-900/80 p-3.5 rounded-2xl border border-slate-700/50 text-sm flex justify-between items-start shadow-md";
+                div.innerHTML = `<div><p class="break-all text-sm">${item.text}</p><p class="text-[10px] text-slate-400 mt-1">${item.date}</p></div> <button onclick="deleteNote(${index})" class="text-rose-400 text-xs px-2 py-1 bg-rose-500/10 rounded-lg shrink-0 ml-2">Удалить</button>`;
                 list.appendChild(div);
             });
         }
         function saveNote() {
             let val = document.getElementById('note-input').value.trim();
             if(!val) return;
-            let notes = JSON.parse(localStorage.getItem('ios_notes_v4') || '[]');
+            let notes = JSON.parse(localStorage.getItem('app_notes_v5') || '[]');
             let now = new Date().toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
             notes.unshift({ text: val, date: now });
-            localStorage.setItem('ios_notes_v4', JSON.stringify(notes));
+            localStorage.setItem('app_notes_v5', JSON.stringify(notes));
             document.getElementById('note-input').value = '';
             loadNotes();
         }
         function deleteNote(index) {
-            let notes = JSON.parse(localStorage.getItem('ios_notes_v4') || '[]');
+            let notes = JSON.parse(localStorage.getItem('app_notes_v5') || '[]');
             notes.splice(index, 1);
-            localStorage.setItem('ios_notes_v4', JSON.stringify(notes));
+            localStorage.setItem('app_notes_v5', JSON.stringify(notes));
             loadNotes();
         }
         loadNotes();
 
-        // --- 2. Задачи ---
+        // Задачи
         function loadTasks() {
-            let tasks = JSON.parse(localStorage.getItem('ios_tasks_v4') || '[]');
+            let tasks = JSON.parse(localStorage.getItem('app_tasks_v5') || '[]');
             let list = document.getElementById('tasks-list');
             list.innerHTML = '';
             tasks.forEach((task, index) => {
                 let div = document.createElement('div');
-                div.className = "bg-slate-900 p-3.5 rounded-2xl border border-slate-800 text-sm flex justify-between items-center shadow-md";
+                div.className = "bg-slate-900/80 p-3.5 rounded-2xl border border-slate-700/50 text-sm flex justify-between items-center shadow-md";
                 div.innerHTML = `<div><span class="break-all font-medium">${task.text}</span><p class="text-[10px] text-emerald-400 mt-0.5">🔔 ${task.time || 'Без времени'}</p></div> <button onclick="deleteTask(${index})" class="text-rose-400 text-xs px-2 py-1 bg-rose-500/10 rounded-lg shrink-0">Удалить</button>`;
                 list.appendChild(div);
             });
@@ -411,31 +411,28 @@
             let val = document.getElementById('task-input').value.trim();
             let timeVal = document.getElementById('task-time').value;
             if(!val) return;
-            let tasks = JSON.parse(localStorage.getItem('ios_tasks_v4') || '[]');
+            let tasks = JSON.parse(localStorage.getItem('app_tasks_v5') || '[]');
             tasks.unshift({ text: val, time: timeVal });
-            localStorage.setItem('ios_tasks_v4', JSON.stringify(tasks));
+            localStorage.setItem('app_tasks_v5', JSON.stringify(tasks));
             document.getElementById('task-input').value = '';
             document.getElementById('task-time').value = '';
             loadTasks();
         }
         function deleteTask(index) {
-            let tasks = JSON.parse(localStorage.getItem('ios_tasks_v4') || '[]');
+            let tasks = JSON.parse(localStorage.getItem('app_tasks_v5') || '[]');
             tasks.splice(index, 1);
-            localStorage.setItem('ios_tasks_v4', JSON.stringify(tasks));
+            localStorage.setItem('app_tasks_v5', JSON.stringify(tasks));
             loadTasks();
         }
         loadTasks();
 
-        // --- 3. Защищенный Сейф (Пин-код) ---
+        // Сейф
         function unlockSafe() {
             let pinInput = document.getElementById('safe-pin').value.trim();
-            let savedPin = localStorage.getItem('ios_safe_pin');
+            let savedPin = localStorage.getItem('app_safe_pin');
             if(!savedPin) {
-                if(pinInput.length < 4) {
-                    alert('ПИН-код должен содержать хотя бы 4 символа!');
-                    return;
-                }
-                localStorage.setItem('ios_safe_pin', pinInput);
+                if(pinInput.length < 4) { alert('ПИН-код должен быть не менее 4 символов!'); return; }
+                localStorage.setItem('app_safe_pin', pinInput);
                 savedPin = pinInput;
             }
             if(pinInput === savedPin) {
@@ -444,7 +441,7 @@
                 document.getElementById('safe-pin').value = '';
                 loadCrypto();
             } else {
-                alert('Неверный ПИН-код сейфа!');
+                alert('Неверный ПИН-код!');
             }
         }
         function lockSafe() {
@@ -452,35 +449,32 @@
             document.getElementById('safe-auth').classList.remove('hidden');
         }
         function loadCrypto() {
-            let saved = JSON.parse(localStorage.getItem('ios_crypto_v4') || '[]');
+            let saved = JSON.parse(localStorage.getItem('app_crypto_v5') || '[]');
             let container = document.getElementById('crypto-storage');
-            if(saved.length === 0) {
-                container.innerHTML = "Сейф пуст. Добавьте первый секрет.";
-                return;
-            }
+            if(saved.length === 0) { container.innerHTML = "Сейф пуст."; return; }
             container.innerHTML = "";
             saved.forEach((item, index) => {
-                container.innerHTML += `<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex justify-between items-center"><span class="font-mono text-cyan-400 break-all pr-2">${item}</span><button onclick="deleteCrypto(${index})" class="text-rose-400 text-[10px] px-2 py-0.5 bg-rose-500/10 rounded">Удалить</button></div>`;
+                container.innerHTML += `<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-700/50 flex justify-between items-center"><span class="font-mono text-cyan-400 break-all pr-2">${item}</span><button onclick="deleteCrypto(${index})" class="text-rose-400 text-[10px] px-2 py-0.5 bg-rose-500/10 rounded">Удалить</button></div>`;
             });
         }
         function saveCrypto() {
             let val = document.getElementById('crypto-secret').value.trim();
             if(!val) return;
-            let saved = JSON.parse(localStorage.getItem('ios_crypto_v4') || '[]');
+            let saved = JSON.parse(localStorage.getItem('app_crypto_v5') || '[]');
             saved.unshift(val);
-            localStorage.setItem('ios_crypto_v4', JSON.stringify(saved));
+            localStorage.setItem('app_crypto_v5', JSON.stringify(saved));
             document.getElementById('crypto-secret').value = '';
             loadCrypto();
         }
         function deleteCrypto(index) {
-            let saved = JSON.parse(localStorage.getItem('ios_crypto_v4') || '[]');
+            let saved = JSON.parse(localStorage.getItem('app_crypto_v5') || '[]');
             saved.splice(index, 1);
-            localStorage.setItem('ios_crypto_v4', JSON.stringify(saved));
+            localStorage.setItem('app_crypto_v5', JSON.stringify(saved));
             loadCrypto();
         }
 
-        // --- 4. Фитнес (Добавление и удаление воды) ---
-        let water = parseInt(localStorage.getItem('ios_water_v4') || '0');
+        // Фитнес
+        let water = parseInt(localStorage.getItem('app_water_v5') || '0');
         function updateWaterUI() {
             document.getElementById('water-count').innerText = `${water} стаканов (${water * 250} мл)`;
             let percent = Math.min((water / 8) * 100, 100);
@@ -489,15 +483,15 @@
         function adjustWater(amount) {
             water += amount;
             if(water < 0) water = 0;
-            localStorage.setItem('ios_water_v4', water);
+            localStorage.setItem('app_water_v5', water);
             updateWaterUI();
         }
         updateWaterUI();
 
-        // --- 5. Крипта Live ---
+        // Крипта Live
         async function fetchCryptoRates() {
             let container = document.getElementById('crypto-rates-container');
-            container.innerHTML = '<div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl text-center text-xs text-slate-400 animate-pulse">Загрузка котировок...</div>';
+            container.innerHTML = '<div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl text-center text-xs text-slate-400 animate-pulse">Загрузка котировок...</div>';
             try {
                 let res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,the-open-network,solana,binancecoin,ripple,cardano,dogecoin,avalanche-2,tron,chainlink,polkadot,polygon-ecosystem-token,near,shiba-inu');
                 let data = await res.json();
@@ -507,23 +501,20 @@
                     let trendColor = isUp ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' : 'text-rose-400 bg-rose-500/10 border-rose-500/20';
                     let arrow = isUp ? '🟢 +' : '🔴 ';
                     container.innerHTML += `
-                        <div class="bg-slate-900 border border-slate-800 p-3.5 rounded-2xl flex justify-between items-center shadow-md">
-                            <div>
-                                <span class="font-bold text-sm">${coin.name}</span>
-                                <span class="text-xs text-slate-500 uppercase ml-1">${coin.symbol}</span>
-                            </div>
+                        <div class="bg-slate-900/80 border border-slate-700/50 p-3.5 rounded-2xl flex justify-between items-center shadow-md">
+                            <div><span class="font-bold text-sm">${coin.name}</span> <span class="text-xs text-slate-400 uppercase ml-1">${coin.symbol}</span></div>
                             <div class="text-right">
-                                <div class="font-bold text-amber-400">$${coin.current_price.toLocaleString()}</div>
+                                <div class="font-bold text-amber-300">$${coin.current_price.toLocaleString()}</div>
                                 <div class="text-[11px] font-semibold px-2 py-0.5 rounded-md inline-block border mt-0.5 ${trendColor}">${arrow}${coin.price_change_percentage_24h ? coin.price_change_percentage_24h.toFixed(2) : 0}%</div>
                             </div>
                         </div>`;
                 });
             } catch (e) {
-                container.innerHTML = '<div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl text-center text-xs text-rose-400">Ошибка загрузки котировок.</div>';
+                container.innerHTML = '<div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl text-center text-xs text-rose-400">Ошибка загрузки котировок.</div>';
             }
         }
 
-        // --- 6. Калькулятор сплита ---
+        // Калькулятор сплита
         function calculateSplit() {
             let bill = parseFloat(document.getElementById('calc-bill').value) || 0;
             let tipPercent = parseFloat(document.getElementById('calc-tip').value) || 0;
@@ -534,31 +525,31 @@
             let perPerson = total / people;
             let res = document.getElementById('calc-result');
             res.classList.remove('hidden');
-            res.innerHTML = `<div>Сумма с чаевыми: <b>$${total.toFixed(2)}</b></div><div class="text-amber-300 mt-1">С каждого: <b>$${perPerson.toFixed(2)}</b></div>`;
+            res.innerHTML = `<div>Сумма с чаевыми: <b>$${total.toFixed(2)}</b></div><div class="text-purple-300 mt-1">С каждого: <b>$${perPerson.toFixed(2)}</b></div>`;
         }
 
-        // --- 7. ИИ Генератор ---
+        // ИИ Рассказы
         function generateStory() {
             let prompt = document.getElementById('ai-prompt').value.trim();
             let out = document.getElementById('ai-output');
             out.classList.remove('hidden');
-            out.innerHTML = "✍️ ИИ генерирует рассказ...";
+            out.innerHTML = "✍️ Генерация истории...";
             setTimeout(() => {
                 let themes = prompt ? `на тему: «${prompt}»` : "о приключениях";
-                out.innerHTML = `📖 <b>История ${themes}:</b><br><br>В тихой гавани далекой галактики корабль готовился к прыжку в гиперпространство. Капитан посмотрел на звездную карту, улыбнулся и отдал команду старт. Впереди ждали неизведанные миры и великие открытия! ✨`;
+                out.innerHTML = `📖 <b>История ${themes}:</b><br><br>В таинственном мире, где технологии переплетались с древней магией, герои отправились на поиски потерянного артефакта. Пройдя через испытания, они поняли, что главная сила — это дружба и стремление к цели! ✨`;
             }, 700);
         }
 
-        // --- 8. Суммаризатор ---
+        // Суммаризатор
         function makeSummary() {
             let t = document.getElementById('summary-input').value.trim();
             if(!t) return;
             let out = document.getElementById('summary-output');
             out.classList.remove('hidden');
-            out.innerHTML = `📋 <b>Резюме текста:</b><br>• Объем: ${t.length} символов.<br>• Текст успешно обработан и сокращен.`;
+            out.innerHTML = `📋 <b>Суть текста:</b><br>• Объем: ${t.length} символов.<br>• Текст успешно проанализирован и структурирован.`;
         }
 
-        // --- 9. Пароли ---
+        // Пароли
         function generatePassword() {
             let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
             let pass = "";
@@ -568,67 +559,51 @@
             out.innerText = pass;
         }
 
-        // --- 10. Конвертер (50+ валют) ---
+        // Конвертер (50+ валют)
         const currenciesList = ["USD", "EUR", "RUB", "KZT", "GBP", "JPY", "AUD", "CAD", "CHF", "CNY", "SEK", "NZD", "MXN", "SGD", "HKD", "NOK", "KRW", "TRY", "INR", "BRL", "ZAR", "DKK", "PLN", "TWD", "THB", "MYR", "IDR", "CZK", "AED", "ILS", "CLP", "PHP", "SAR", "COP", "HUF", "RON", "VND", "ARS", "UAH", "PKR", "IQD", "QAR", "KWD", "OMR", "BHD", "JOD", "LBP", "DZD", "MAD", "USDT"];
-        
         function initCurrencies() {
-            let fromSelect = document.getElementById('conv-from');
-            let toSelect = document.getElementById('conv-to');
-            currenciesList.forEach(cur => {
-                fromSelect.innerHTML += `<option value="${cur}">${cur}</option>`;
-                toSelect.innerHTML += `<option value="${cur}">${cur}</option>`;
-            });
-            fromSelect.value = "USD";
-            toSelect.value = "RUB";
+            let f = document.getElementById('conv-from'), to = document.getElementById('conv-to');
+            currenciesList.forEach(c => { f.innerHTML += `<option value="${c}">${c}</option>`; to.innerHTML += `<option value="${c}">${c}</option>`; });
+            f.value = "USD"; to.value = "RUB";
         }
         initCurrencies();
 
         async function convertCurrency() {
             let amount = parseFloat(document.getElementById('conv-amount').value) || 0;
-            let from = document.getElementById('conv-from').value;
-            let to = document.getElementById('conv-to').value;
+            let from = document.getElementById('conv-from').value, to = document.getElementById('conv-to').value;
             let res = document.getElementById('conv-result');
             res.classList.remove('hidden');
             res.innerHTML = "🔄 Конвертация...";
             try {
                 let r = await fetch(`https://open.er-api.com/v6/latest/${from}`);
                 let data = await r.json();
-                let rate = data.rates[to] || 1;
-                let final = amount * rate;
+                let final = amount * (data.rates[to] || 1);
                 res.innerHTML = `${amount} ${from} = <b>${final.toFixed(2)} ${to}</b>`;
             } catch(e) {
                 res.innerHTML = "⚠ Ошибка конвертации.";
             }
         }
 
-        // --- 11. Погода (Исправленная) ---
+        // Погода
         async function fetchWeather() {
             let city = document.getElementById('weather-city').value.trim() || "Москва";
             let card = document.getElementById('weather-card');
-            card.innerHTML = `<p class="text-xs text-slate-400">Поиск погоды для г. ${city}...</p>`;
+            card.innerHTML = `<p class="text-xs text-slate-400">Поиск погоды...</p>`;
             try {
                 let geo = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`);
                 let geoData = await geo.json();
-                if(!geoData.results || geoData.results.length === 0) {
-                    card.innerHTML = `<p class="text-xs text-rose-400">Город не найден. Проверьте правильность написания.</p>`;
-                    return;
-                }
+                if(!geoData.results || geoData.results.length === 0) { card.innerHTML = `<p class="text-xs text-rose-400">Город не найден.</p>`; return; }
                 let { latitude, longitude, name, country } = geoData.results[0];
-                let weatherRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`);
-                let weatherData = await weatherRes.json();
-                let cur = weatherData.current_weather;
-                card.innerHTML = `
-                    <p class="text-lg font-bold text-white">${name}, ${country || ''}</p>
-                    <p class="text-3xl font-black text-sky-400 mt-1">${cur.temperature}°C</p>
-                    <p class="text-xs text-slate-300 mt-1">Ветер: ${cur.windspeed} м/с</p>
-                `;
+                let wRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`);
+                let wData = await wRes.json();
+                card.innerHTML = `<p class="text-lg font-bold text-white">${name}, ${country || ''}</p><p class="text-3xl font-black text-sky-400 mt-1">${wData.current_weather.temperature}°C</p><p class="text-xs text-slate-300 mt-1">Ветер: ${wData.current_weather.windspeed} м/с</p>`;
             } catch (e) {
-                card.innerHTML = `<p class="text-xs text-rose-400">Ошибка сети при загрузке погоды.</p>`;
+                card.innerHTML = `<p class="text-xs text-rose-400">Ошибка сети.</p>`;
             }
         }
         fetchWeather();
 
-        // --- 12. Таймер ---
+        // Таймер
         let timerInterval, seconds = 0;
         function startTimer() {
             clearInterval(timerInterval);
@@ -645,26 +620,17 @@
             document.getElementById('timer-display').innerText = "00:00";
         }
 
-        // --- 13. Бюджет ---
+        // Бюджет
         function loadBudget() {
-            let txs = JSON.parse(localStorage.getItem('ios_budget_v4') || '[]');
-            let list = document.getElementById('budget-list');
-            let balanceEl = document.getElementById('budget-balance');
+            let txs = JSON.parse(localStorage.getItem('app_budget_v5') || '[]');
+            let list = document.getElementById('budget-list'), balanceEl = document.getElementById('budget-balance');
             list.innerHTML = '';
             let balance = 0;
             txs.forEach((item, index) => {
-                if(item.type === 'income') balance += item.amount;
-                else balance -= item.amount;
+                if(item.type === 'income') balance += item.amount; else balance -= item.amount;
                 let color = item.type === 'income' ? 'text-emerald-400' : 'text-rose-400';
                 let sign = item.type === 'income' ? '+' : '-';
-                list.innerHTML += `
-                    <div class="bg-slate-900 p-3 rounded-2xl border border-slate-800 text-sm flex justify-between items-center shadow-md">
-                        <span class="font-medium">${item.desc}</span>
-                        <div class="flex items-center gap-2">
-                            <span class="font-bold ${color}">${sign}$${item.amount.toFixed(2)}</span>
-                            <button onclick="deleteBudget(${index})" class="text-rose-400 text-xs px-2 py-1 bg-rose-500/10 rounded-lg">✕</button>
-                        </div>
-                    </div>`;
+                list.innerHTML += `<div class="bg-slate-900/80 p-3 rounded-2xl border border-slate-700/50 text-sm flex justify-between items-center shadow-md"><span class="font-medium">${item.desc}</span><div class="flex items-center gap-2"><span class="font-bold ${color}">${sign}$${item.amount.toFixed(2)}</span><button onclick="deleteBudget(${index})" class="text-rose-400 text-xs px-2 py-1 bg-rose-500/10 rounded-lg">✕</button></div></div>`;
             });
             balanceEl.innerText = `$${balance.toFixed(2)}`;
             balanceEl.className = `text-2xl font-black mt-1 ${balance >= 0 ? 'text-lime-400' : 'text-rose-400'}`;
@@ -674,42 +640,34 @@
             let amount = parseFloat(document.getElementById('budget-amount').value);
             let type = document.getElementById('budget-type').value;
             if(!desc || isNaN(amount) || amount <= 0) return;
-            let txs = JSON.parse(localStorage.getItem('ios_budget_v4') || '[]');
+            let txs = JSON.parse(localStorage.getItem('app_budget_v5') || '[]');
             txs.unshift({ desc, amount, type });
-            localStorage.setItem('ios_budget_v4', JSON.stringify(txs));
+            localStorage.setItem('app_budget_v5', JSON.stringify(txs));
             document.getElementById('budget-desc').value = '';
             document.getElementById('budget-amount').value = '';
             loadBudget();
         }
         function deleteBudget(index) {
-            let txs = JSON.parse(localStorage.getItem('ios_budget_v4') || '[]');
+            let txs = JSON.parse(localStorage.getItem('app_budget_v5') || '[]');
             txs.splice(index, 1);
-            localStorage.setItem('ios_budget_v4', JSON.stringify(txs));
+            localStorage.setItem('app_budget_v5', JSON.stringify(txs));
             loadBudget();
         }
         loadBudget();
 
-        // --- 14. QR Генератор ---
+        // QR
         function generateQR() {
             let val = document.getElementById('qr-text').value.trim();
             if(!val) return;
             let out = document.getElementById('qr-output');
             out.classList.remove('hidden');
-            out.innerHTML = `
-                <p class="text-xs text-slate-300">QR-код сгенерирован:</p>
-                <b class="text-amber-400 break-all text-sm">${val}</b>
-                <div class="bg-white p-3 rounded-xl inline-block mt-2">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(val)}" alt="QR" class="mx-auto w-32 h-32">
-                </div>
-            `;
+            out.innerHTML = `<p class="text-xs text-slate-300">QR-код для:</p><b class="text-pink-400 break-all text-sm">${val}</b><div class="bg-white p-3 rounded-xl inline-block mt-2"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(val)}" alt="QR" class="mx-auto w-32 h-32"></div>`;
         }
 
-        // --- 15. Рандом ---
+        // Рандом
         function getRandomCustom() {
-            let min = parseInt(document.getElementById('rand-min').value);
-            let max = parseInt(document.getElementById('rand-max').value);
-            if(isNaN(min)) min = 1;
-            if(isNaN(max)) max = 100000;
+            let min = parseInt(document.getElementById('rand-min').value) || 1;
+            let max = parseInt(document.getElementById('rand-max').value) || 100000;
             if(min > max) { let tmp = min; min = max; max = tmp; }
             let num = Math.floor(Math.random() * (max - min + 1)) + min;
             document.getElementById('rand-num').innerText = num.toLocaleString();
