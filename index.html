@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super App Hub Pro</title>
+    <title>Business Hub Pro</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
@@ -11,6 +11,7 @@
             background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #09090b 60%, #000000 100%);
             color: #f8fafc;
             min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
         .app-icon {
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
@@ -18,60 +19,60 @@
         }
         .app-icon:active {
             transform: scale(0.92);
-            filter: brightness(1.1);
+            filter: brightness(1.15);
         }
     </style>
 </head>
 <body class="selection:bg-cyan-500 selection:text-white pb-16">
 
-    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <!-- ГЛАВНЫЙ ЭКРАН (ХАБ) -->
     <div id="main-hub" class="max-w-md mx-auto p-4 pt-6">
         <header class="mb-6 text-center">
-            <h1 class="text-2xl font-black tracking-tight text-white bg-gradient-to-r from-cyan-400 via-indigo-400 to-pink-500 bg-clip-text text-transparent">Super App Hub</h1>
-            <p class="text-xs text-slate-400 mt-1">Все инструменты под рукой</p>
+            <h1 class="text-2xl font-black tracking-tight text-white bg-gradient-to-r from-cyan-400 via-indigo-400 to-pink-500 bg-clip-text text-transparent">Business Hub Pro</h1>
+            <p class="text-xs text-slate-400 mt-1">Инструменты для вашего дела в Telegram</p>
         </header>
 
-        <!-- Сетка 16 приложений с яркими иконками -->
+        <!-- Сетка бизнес-приложений и утилит -->
         <main class="grid grid-cols-4 gap-4">
-            <div onclick="openTool('notes')" class="flex flex-col items-center cursor-pointer group">
-                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-300 flex items-center justify-center text-3xl">📝</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Заметки</span>
+            <div onclick="openTool('crm')" class="flex flex-col items-center cursor-pointer group">
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-600 to-blue-400 flex items-center justify-center text-3xl">👥</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Клиенты</span>
+            </div>
+            <div onclick="openTool('invoice')" class="flex flex-col items-center cursor-pointer group">
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-300 flex items-center justify-center text-3xl">🧾</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Счета</span>
             </div>
             <div onclick="openTool('tasks')" class="flex flex-col items-center cursor-pointer group">
-                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-300 flex items-center justify-center text-3xl">✅</div>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-300 flex items-center justify-center text-3xl">📅</div>
                 <span class="text-[11px] font-medium mt-1.5 text-slate-200">Задачи</span>
             </div>
-            <div onclick="openTool('crypto')" class="flex flex-col items-center cursor-pointer group">
-                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-400 flex items-center justify-center text-3xl">🔒</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Сейф</span>
+            <div onclick="openTool('money')" class="flex flex-col items-center cursor-pointer group">
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-lime-500 to-emerald-300 flex items-center justify-center text-3xl">💸</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Бюджет</span>
             </div>
-            <div onclick="openTool('fitness')" class="flex flex-col items-center cursor-pointer group">
-                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-400 flex items-center justify-center text-3xl">💪</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Фитнес</span>
+            <div onclick="openTool('crypto')" class="flex flex-col items-center cursor-pointer group">
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-600 to-violet-400 flex items-center justify-center text-3xl">🔒</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Сейф</span>
             </div>
             <div onclick="openTool('kurs'); fetchCryptoRates();" class="flex flex-col items-center cursor-pointer group">
                 <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-orange-500 to-amber-300 flex items-center justify-center text-3xl">📈</div>
                 <span class="text-[11px] font-medium mt-1.5 text-slate-200">Крипта</span>
             </div>
+            <div onclick="openTool('convert')" class="flex flex-col items-center cursor-pointer group">
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-600 to-fuchsia-400 flex items-center justify-center text-3xl">💱</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Валюты</span>
+            </div>
+            <div onclick="openTool('notes')" class="flex flex-col items-center cursor-pointer group">
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-sky-300 flex items-center justify-center text-3xl">📝</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Заметки</span>
+            </div>
             <div onclick="openTool('calc')" class="flex flex-col items-center cursor-pointer group">
-                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-600 to-fuchsia-400 flex items-center justify-center text-3xl">🧮</div>
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-400 flex items-center justify-center text-3xl">🧮</div>
                 <span class="text-[11px] font-medium mt-1.5 text-slate-200">Сплит</span>
-            </div>
-            <div onclick="openTool('ai')" class="flex flex-col items-center cursor-pointer group">
-                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-600 to-violet-400 flex items-center justify-center text-3xl">🤖</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Рассказы</span>
-            </div>
-            <div onclick="openTool('summary')" class="flex flex-col items-center cursor-pointer group">
-                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-sky-300 flex items-center justify-center text-3xl">🗂️</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Текст</span>
             </div>
             <div onclick="openTool('pass')" class="flex flex-col items-center cursor-pointer group">
                 <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-600 to-yellow-300 flex items-center justify-center text-3xl">🔑</div>
                 <span class="text-[11px] font-medium mt-1.5 text-slate-200">Пароли</span>
-            </div>
-            <div onclick="openTool('convert')" class="flex flex-col items-center cursor-pointer group">
-                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-lime-300 flex items-center justify-center text-3xl">💱</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Валюты</span>
             </div>
             <div onclick="openTool('weather')" class="flex flex-col items-center cursor-pointer group">
                 <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-sky-500 to-cyan-300 flex items-center justify-center text-3xl">⛅</div>
@@ -81,10 +82,6 @@
                 <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-red-500 to-orange-400 flex items-center justify-center text-3xl">⏱️</div>
                 <span class="text-[11px] font-medium mt-1.5 text-slate-200">Таймер</span>
             </div>
-            <div onclick="openTool('money')" class="flex flex-col items-center cursor-pointer group">
-                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-lime-500 to-emerald-300 flex items-center justify-center text-3xl">💸</div>
-                <span class="text-[11px] font-medium mt-1.5 text-slate-200">Бюджет</span>
-            </div>
             <div onclick="openTool('qr')" class="flex flex-col items-center cursor-pointer group">
                 <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-fuchsia-600 to-pink-400 flex items-center justify-center text-3xl">📱</div>
                 <span class="text-[11px] font-medium mt-1.5 text-slate-200">QR Код</span>
@@ -93,6 +90,10 @@
                 <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-violet-500 to-purple-300 flex items-center justify-center text-3xl">🎲</div>
                 <span class="text-[11px] font-medium mt-1.5 text-slate-200">Рандом</span>
             </div>
+            <div onclick="openTool('ai')" class="flex flex-col items-center cursor-pointer group">
+                <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-teal-600 to-emerald-400 flex items-center justify-center text-3xl">🤖</div>
+                <span class="text-[11px] font-medium mt-1.5 text-slate-200">ИИ Текст</span>
+            </div>
             <div onclick="openTool('about')" class="flex flex-col items-center cursor-pointer group">
                 <div class="app-icon w-16 h-16 rounded-2xl bg-gradient-to-tr from-slate-600 to-zinc-400 flex items-center justify-center text-3xl">ℹ️</div>
                 <span class="text-[11px] font-medium mt-1.5 text-slate-200">Инфо</span>
@@ -100,187 +101,53 @@
         </main>
     </div>
 
-    <!-- ЭКРАНЫ УТИЛИТ -->
+    <!-- ЭКРАНЫ УТИЛИТ И СЕРВИСОВ -->
 
-    <!-- 1. Заметки -->
-    <div id="tool-notes" class="max-w-md mx-auto p-4 hidden">
+    <!-- 1. CRM Клиенты -->
+    <div id="tool-crm" class="max-w-md mx-auto p-4 hidden">
         <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
-        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>📝</span> Заметки</h2>
-        <textarea id="note-input" placeholder="Введите текст заметки..." class="w-full h-28 bg-slate-900/80 border border-slate-700/50 rounded-2xl p-3.5 text-sm focus:outline-none focus:border-amber-400 mb-2.5"></textarea>
-        <button onclick="saveNote()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm transition">Сохранить заметку</button>
-        <div id="notes-list" class="mt-4 space-y-2.5"></div>
+        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>👥</span> Учет клиентов и сделок</h2>
+        <div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl text-center mb-3 shadow-md">
+            <p class="text-xs text-slate-400">Общий доход с клиентов:</p>
+            <p id="crm-total" class="text-2xl font-black text-cyan-400 mt-1">$0.00</p>
+        </div>
+        <div class="space-y-2.5 mb-3 bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl">
+            <input id="crm-name" type="text" placeholder="Имя клиента..." class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm">
+            <input id="crm-service" type="text" placeholder="Услуга / Проект..." class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm">
+            <input id="crm-sum" type="number" placeholder="Сумма сделки ($)..." class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm">
+            <button onclick="addCrmClient()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm">Добавить сделку</button>
+        </div>
+        <div id="crm-list" class="space-y-2.5"></div>
     </div>
 
-    <!-- 2. Задачи -->
+    <!-- 2. Генератор счетов -->
+    <div id="tool-invoice" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
+        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>🧾</span> Генератор счетов</h2>
+        <div class="space-y-3 bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl">
+            <input id="inv-client" type="text" placeholder="Кому (имя клиента)..." class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm">
+            <input id="inv-desc" type="text" placeholder="Описание услуги..." class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm">
+            <input id="inv-amount" type="number" placeholder="Сумма к оплате ($)..." class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm">
+            <button onclick="generateInvoice()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm">Создать счет</button>
+            <div id="inv-output" class="text-xs bg-slate-950 p-3.5 rounded-xl border border-slate-700/50 text-slate-200 hidden leading-relaxed select-all font-mono"></div>
+        </div>
+    </div>
+
+    <!-- 3. Задачи -->
     <div id="tool-tasks" class="max-w-md mx-auto p-4 hidden">
         <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
-        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>✅</span> Задачи и напоминания</h2>
+        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>📅</span> Задачи и дедлайны</h2>
         <div class="space-y-2 mb-3">
-            <input id="task-input" type="text" placeholder="Новая задача..." class="w-full bg-slate-900/80 border border-slate-700/50 rounded-xl p-3 text-sm focus:outline-none focus:border-emerald-400">
+            <input id="task-input" type="text" placeholder="Новая задача..." class="w-full bg-slate-900/80 border border-slate-700/50 rounded-xl p-3 text-sm focus:outline-none focus:border-amber-400">
             <div class="flex gap-2">
                 <input id="task-time" type="time" class="bg-slate-900/80 border border-slate-700/50 rounded-xl px-3 py-2 text-sm text-slate-200">
-                <button onclick="addTask()" class="flex-1 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2 rounded-xl text-sm">Добавить задачу</button>
+                <button onclick="addTask()" class="flex-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2 rounded-xl text-sm">Добавить задачу</button>
             </div>
         </div>
         <div id="tasks-list" class="space-y-2.5"></div>
     </div>
 
-    <!-- 3. Сейф -->
-    <div id="tool-crypto" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
-        <h2 class="text-xl font-bold mb-2 flex items-center gap-2"><span>🔒</span> Защищенный Сейф</h2>
-        <p class="text-xs text-slate-400 mb-3">Пароли и сид-фразы под защитой ПИН-кода.</p>
-        <div id="safe-auth" class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl space-y-3">
-            <p class="text-xs font-semibold text-cyan-400">Введите ПИН-код сейфа:</p>
-            <input id="safe-pin" type="password" placeholder="ПИН-код..." class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm text-center tracking-widest">
-            <button onclick="unlockSafe()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm">Открыть сейф</button>
-        </div>
-        <div id="safe-content" class="hidden space-y-3">
-            <div class="bg-emerald-500/10 border border-emerald-500/30 p-3 rounded-xl text-xs text-emerald-400 flex justify-between items-center">
-                <span>🟢 Сейф разблокирован</span>
-                <button onclick="lockSafe()" class="underline font-bold">Закрыть</button>
-            </div>
-            <textarea id="crypto-secret" placeholder="Введите секретный ключ..." class="w-full h-24 bg-slate-900/80 border border-slate-700/50 rounded-2xl p-3.5 text-sm focus:outline-none focus:border-cyan-400"></textarea>
-            <button onclick="saveCrypto()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm">Сохранить секрет</button>
-            <div id="crypto-storage" class="text-xs bg-slate-900/80 p-3.5 rounded-2xl border border-slate-700/50 text-slate-200 space-y-2"></div>
-        </div>
-    </div>
-
-    <!-- 4. Фитнес -->
-    <div id="tool-fitness" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
-        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>💪</span> Фитнес & Вода</h2>
-        <div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl mb-3 shadow-lg flex justify-between items-center">
-            <div>
-                <p class="text-xs text-slate-400">Выпито воды:</p>
-                <p id="water-count" class="text-lg font-bold text-rose-400 mt-0.5">0 стаканов (0 мл)</p>
-            </div>
-            <div class="flex gap-1.5">
-                <button onclick="adjustWater(-1)" class="bg-slate-800 hover:bg-slate-700 text-rose-400 px-3 py-2.5 rounded-xl text-xs font-bold">-</button>
-                <button onclick="adjustWater(1)" class="bg-rose-500 hover:bg-rose-400 text-slate-950 px-3.5 py-2.5 rounded-xl text-xs font-bold">+ Стакан</button>
-            </div>
-        </div>
-        <div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl">
-            <p class="text-xs text-slate-400 mb-2">Цель: 2000 мл (8 стаканов)</p>
-            <div class="w-full bg-slate-950 rounded-full h-2.5 overflow-hidden">
-                <div id="water-progress" class="bg-rose-500 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 5. Крипта -->
-    <div id="tool-kurs" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
-        <div class="flex justify-between items-center mb-3">
-            <h2 class="text-xl font-bold flex items-center gap-2"><span>📈</span> Топ Крипта Live</h2>
-            <button onclick="fetchCryptoRates()" class="text-xs bg-orange-500/10 text-orange-400 border border-orange-500/30 px-3 py-1.5 rounded-xl font-medium">🔄 Обновить</button>
-        </div>
-        <div id="crypto-rates-container" class="space-y-2.5">
-            <div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl text-center text-xs text-slate-400 animate-pulse">Загрузка котировок...</div>
-        </div>
-    </div>
-
-    <!-- 6. Калькулятор сплита -->
-    <div id="tool-calc" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
-        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>🧮</span> Калькулятор сплита</h2>
-        <div class="space-y-3 bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl shadow-lg">
-            <div>
-                <label class="text-xs text-slate-400">Сумма счета ($):</label>
-                <input id="calc-bill" type="number" placeholder="100" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1">
-            </div>
-            <div>
-                <label class="text-xs text-slate-400">Чаевые (%):</label>
-                <input id="calc-tip" type="number" value="10" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1">
-            </div>
-            <div>
-                <label class="text-xs text-slate-400">Количество человек:</label>
-                <input id="calc-people" type="number" value="2" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1">
-            </div>
-            <button onclick="calculateSplit()" class="w-full bg-purple-600 hover:bg-purple-500 text-slate-100 font-bold py-2.5 rounded-xl text-sm">Рассчитать</button>
-            <div id="calc-result" class="text-sm bg-slate-950 p-3.5 rounded-xl border border-slate-700/50 text-purple-300 font-bold text-center hidden space-y-1"></div>
-        </div>
-    </div>
-
-    <!-- 7. ИИ Рассказы -->
-    <div id="tool-ai" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
-        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>🤖</span> ИИ Генератор рассказов</h2>
-        <textarea id="ai-prompt" placeholder="Тема или главный герой рассказа..." class="w-full h-28 bg-slate-900/80 border border-slate-700/50 rounded-2xl p-3.5 text-sm focus:outline-none focus:border-indigo-400 mb-2.5"></textarea>
-        <button onclick="generateStory()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-slate-100 font-bold py-2.5 rounded-xl text-sm mb-3">Написать рассказ</button>
-        <div id="ai-output" class="text-xs bg-slate-900/80 p-3.5 rounded-2xl border border-slate-700/50 text-slate-200 hidden leading-relaxed"></div>
-    </div>
-
-    <!-- 8. Суммаризатор -->
-    <div id="tool-summary" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
-        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>🗂️</span> Суммаризатор</h2>
-        <textarea id="summary-input" placeholder="Вставьте длинный текст..." class="w-full h-32 bg-slate-900/80 border border-slate-700/50 rounded-2xl p-3.5 text-sm focus:outline-none focus:border-blue-400 mb-2.5"></textarea>
-        <button onclick="makeSummary()" class="w-full bg-blue-600 hover:bg-blue-500 text-slate-100 font-bold py-2.5 rounded-xl text-sm mb-3">Выделить суть</button>
-        <div id="summary-output" class="text-xs bg-slate-900/80 p-3.5 rounded-2xl border border-slate-700/50 text-slate-200 hidden leading-relaxed"></div>
-    </div>
-
-    <!-- 9. Пароли -->
-    <div id="tool-pass" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
-        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>🔑</span> Генератор паролей</h2>
-        <div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl space-y-3">
-            <button onclick="generatePassword()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm">Создать ключ</button>
-            <div id="pass-output" class="text-sm bg-slate-950 p-3.5 rounded-xl border border-slate-700/50 text-amber-300 text-center font-mono font-bold hidden select-all"></div>
-        </div>
-    </div>
-
-    <!-- 10. Конвертер -->
-    <div id="tool-convert" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
-        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>💱</span> Конвертер (50+ Валют)</h2>
-        <div class="space-y-3 bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl shadow-lg">
-            <div>
-                <label class="text-xs text-slate-400">Сумма:</label>
-                <input id="conv-amount" type="number" value="100" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1">
-            </div>
-            <div class="grid grid-cols-2 gap-2">
-                <div>
-                    <label class="text-xs text-slate-400">Из:</label>
-                    <select id="conv-from" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1 text-slate-200"></select>
-                </div>
-                <div>
-                    <label class="text-xs text-slate-400">В:</label>
-                    <select id="conv-to" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1 text-slate-200"></select>
-                </div>
-            </div>
-            <button onclick="convertCurrency()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-100 font-bold py-2.5 rounded-xl text-sm">Конвертировать</button>
-            <div id="conv-result" class="text-sm bg-slate-950 p-3.5 rounded-xl border border-slate-700/50 text-emerald-400 font-bold text-center hidden"></div>
-        </div>
-    </div>
-
-    <!-- 11. Погода -->
-    <div id="tool-weather" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
-        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>⛅</span> Погода</h2>
-        <div class="flex gap-2 mb-3">
-            <input id="weather-city" type="text" placeholder="Введите город..." value="Москва" class="flex-1 bg-slate-900/80 border border-slate-700/50 rounded-xl px-3.5 text-sm focus:outline-none focus:border-sky-400">
-            <button onclick="fetchWeather()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-sm">Найти</button>
-        </div>
-        <div id="weather-card" class="bg-slate-900/80 border border-slate-700/50 p-5 rounded-2xl text-center space-y-2">
-            <p class="text-xs text-slate-400">Загрузка погоды...</p>
-        </div>
-    </div>
-
-    <!-- 12. Таймер -->
-    <div id="tool-timer" class="max-w-md mx-auto p-4 hidden">
-        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
-        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>⏱️️</span> Секундомер</h2>
-        <div class="bg-slate-900/80 border border-slate-700/50 p-6 rounded-2xl text-center space-y-4">
-            <p id="timer-display" class="text-4xl font-mono font-black text-orange-400">00:00</p>
-            <div class="flex gap-2">
-                <button onclick="startTimer()" class="flex-1 bg-orange-500 hover:bg-orange-400 text-slate-950 font-bold py-2 rounded-xl text-sm">Старт</button>
-                <button onclick="stopTimer()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold py-2 rounded-xl text-sm">Сброс</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 13. Бюджет -->
+    <!-- 4. Бюджет -->
     <div id="tool-money" class="max-w-md mx-auto p-4 hidden">
         <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>💸</span> Учет расходов и доходов</h2>
@@ -302,7 +169,131 @@
         <div id="budget-list" class="space-y-2"></div>
     </div>
 
-    <!-- 14. QR Код -->
+    <!-- 5. Сейф -->
+    <div id="tool-crypto" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
+        <h2 class="text-xl font-bold mb-2 flex items-center gap-2"><span>🔒</span> Защищенный Сейф</h2>
+        <p class="text-xs text-slate-400 mb-3">Пароли и доступы под защитой ПИН-кода.</p>
+        <div id="safe-auth" class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl space-y-3">
+            <p class="text-xs font-semibold text-indigo-400">Введите ПИН-код сейфа:</p>
+            <input id="safe-pin" type="password" placeholder="ПИН-код..." class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm text-center tracking-widest">
+            <button onclick="unlockSafe()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-slate-100 font-bold py-2.5 rounded-xl text-sm">Открыть сейф</button>
+        </div>
+        <div id="safe-content" class="hidden space-y-3">
+            <div class="bg-emerald-500/10 border border-emerald-500/30 p-3 rounded-xl text-xs text-emerald-400 flex justify-between items-center">
+                <span>🟢 Сейф разблокирован</span>
+                <button onclick="lockSafe()" class="underline font-bold">Закрыть</button>
+            </div>
+            <textarea id="crypto-secret" placeholder="Введите секретную информацию..." class="w-full h-24 bg-slate-900/80 border border-slate-700/50 rounded-2xl p-3.5 text-sm focus:outline-none focus:border-indigo-400"></textarea>
+            <button onclick="saveCrypto()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-slate-100 font-bold py-2.5 rounded-xl text-sm">Сохранить секрет</button>
+            <div id="crypto-storage" class="text-xs bg-slate-900/80 p-3.5 rounded-2xl border border-slate-700/50 text-slate-200 space-y-2"></div>
+        </div>
+    </div>
+
+    <!-- 6. Крипта Live -->
+    <div id="tool-kurs" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
+        <div class="flex justify-between items-center mb-3">
+            <h2 class="text-xl font-bold flex items-center gap-2"><span>📈</span> Топ Крипта Live</h2>
+            <button onclick="fetchCryptoRates()" class="text-xs bg-orange-500/10 text-orange-400 border border-orange-500/30 px-3 py-1.5 rounded-xl font-medium">🔄 Обновить</button>
+        </div>
+        <div id="crypto-rates-container" class="space-y-2.5">
+            <div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl text-center text-xs text-slate-400 animate-pulse">Загрузка котировок...</div>
+        </div>
+    </div>
+
+    <!-- 7. Конвертер валют -->
+    <div id="tool-convert" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
+        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>💱</span> Конвертер валют</h2>
+        <div class="space-y-3 bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl shadow-lg">
+            <div>
+                <label class="text-xs text-slate-400">Сумма:</label>
+                <input id="conv-amount" type="number" value="100" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="text-xs text-slate-400">Из:</label>
+                    <select id="conv-from" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1 text-slate-200"></select>
+                </div>
+                <div>
+                    <label class="text-xs text-slate-400">В:</label>
+                    <select id="conv-to" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1 text-slate-200"></select>
+                </div>
+            </div>
+            <button onclick="convertCurrency()" class="w-full bg-purple-600 hover:bg-purple-500 text-slate-100 font-bold py-2.5 rounded-xl text-sm">Конвертировать</button>
+            <div id="conv-result" class="text-sm bg-slate-950 p-3.5 rounded-xl border border-slate-700/50 text-purple-300 font-bold text-center hidden"></div>
+        </div>
+    </div>
+
+    <!-- 8. Заметки -->
+    <div id="tool-notes" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
+        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>📝</span> Быстрые заметки</h2>
+        <textarea id="note-input" placeholder="Введите текст заметки..." class="w-full h-28 bg-slate-900/80 border border-slate-700/50 rounded-2xl p-3.5 text-sm focus:outline-none focus:border-blue-400 mb-2.5"></textarea>
+        <button onclick="saveNote()" class="w-full bg-blue-600 hover:bg-blue-500 text-slate-100 font-bold py-2.5 rounded-xl text-sm transition">Сохранить заметку</button>
+        <div id="notes-list" class="mt-4 space-y-2.5"></div>
+    </div>
+
+    <!-- 9. Сплит калькулятор -->
+    <div id="tool-calc" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
+        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>🧮</span> Калькулятор сплита</h2>
+        <div class="space-y-3 bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl shadow-lg">
+            <div>
+                <label class="text-xs text-slate-400">Сумма счета ($):</label>
+                <input id="calc-bill" type="number" placeholder="100" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1">
+            </div>
+            <div>
+                <label class="text-xs text-slate-400">Чаевые (%):</label>
+                <input id="calc-tip" type="number" value="10" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1">
+            </div>
+            <div>
+                <label class="text-xs text-slate-400">Количество человек:</label>
+                <input id="calc-people" type="number" value="2" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-3 text-sm mt-1">
+            </div>
+            <button onclick="calculateSplit()" class="w-full bg-rose-500 hover:bg-rose-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm">Рассчитать</button>
+            <div id="calc-result" class="text-sm bg-slate-950 p-3.5 rounded-xl border border-slate-700/50 text-rose-300 font-bold text-center hidden space-y-1"></div>
+        </div>
+    </div>
+
+    <!-- 10. Пароли -->
+    <div id="tool-pass" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
+        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>🔑</span> Генератор паролей</h2>
+        <div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl space-y-3">
+            <button onclick="generatePassword()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm">Создать ключ</button>
+            <div id="pass-output" class="text-sm bg-slate-950 p-3.5 rounded-xl border border-slate-700/50 text-amber-300 text-center font-mono font-bold hidden select-all"></div>
+        </div>
+    </div>
+
+    <!-- 11. Погода -->
+    <div id="tool-weather" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
+        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>⛅</span> Погода</h2>
+        <div class="flex gap-2 mb-3">
+            <input id="weather-city" type="text" placeholder="Введите город..." value="Москва" class="flex-1 bg-slate-900/80 border border-slate-700/50 rounded-xl px-3.5 text-sm focus:outline-none focus:border-sky-400">
+            <button onclick="fetchWeather()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-sm">Найти</button>
+        </div>
+        <div id="weather-card" class="bg-slate-900/80 border border-slate-700/50 p-5 rounded-2xl text-center space-y-2">
+            <p class="text-xs text-slate-400">Загрузка погоды...</p>
+        </div>
+    </div>
+
+    <!-- 12. Таймер -->
+    <div id="tool-timer" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
+        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>⏱</span> Секундомер</h2>
+        <div class="bg-slate-900/80 border border-slate-700/50 p-6 rounded-2xl text-center space-y-4">
+            <p id="timer-display" class="text-4xl font-mono font-black text-orange-400">00:00</p>
+            <div class="flex gap-2">
+                <button onclick="startTimer()" class="flex-1 bg-orange-500 hover:bg-orange-400 text-slate-950 font-bold py-2 rounded-xl text-sm">Старт</button>
+                <button onclick="stopTimer()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold py-2 rounded-xl text-sm">Сброс</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 13. QR Код -->
     <div id="tool-qr" class="max-w-md mx-auto p-4 hidden">
         <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>📱</span> QR Генератор</h2>
@@ -311,7 +302,7 @@
         <div id="qr-output" class="text-center p-4 bg-slate-900/80 border border-slate-700/50 rounded-2xl hidden space-y-2"></div>
     </div>
 
-    <!-- 15. Рандом -->
+    <!-- 14. Рандом -->
     <div id="tool-random" class="max-w-md mx-auto p-4 hidden">
         <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>🎲</span> Генератор чисел</h2>
@@ -322,7 +313,7 @@
                     <input id="rand-min" type="number" value="1" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-2.5 text-sm mt-1">
                 </div>
                 <div>
-                    <label class="text-xs text-slate-400">До (до 100k):</label>
+                    <label class="text-xs text-slate-400">До:</label>
                     <input id="rand-max" type="number" value="100000" class="w-full bg-slate-950 border border-slate-700/50 rounded-xl p-2.5 text-sm mt-1">
                 </div>
             </div>
@@ -331,13 +322,22 @@
         </div>
     </div>
 
+    <!-- 15. ИИ Текст -->
+    <div id="tool-ai" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
+        <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>🤖</span> ИИ Генератор текстов</h2>
+        <textarea id="ai-prompt" placeholder="Тема поста или рекламного текста..." class="w-full h-28 bg-slate-900/80 border border-slate-700/50 rounded-2xl p-3.5 text-sm focus:outline-none focus:border-emerald-400 mb-2.5"></textarea>
+        <button onclick="generateText()" class="w-full bg-teal-600 hover:bg-teal-500 text-slate-100 font-bold py-2.5 rounded-xl text-sm mb-3">Сгенерировать текст</button>
+        <div id="ai-output" class="text-xs bg-slate-900/80 p-3.5 rounded-2xl border border-slate-700/50 text-slate-200 hidden leading-relaxed select-all"></div>
+    </div>
+
     <!-- 16. Инфо -->
     <div id="tool-about" class="max-w-md mx-auto p-4 hidden">
         <button onclick="goBack()" class="mb-4 text-xs bg-slate-900/80 border border-slate-700/50 px-3.5 py-2 rounded-xl text-slate-200 hover:bg-slate-800 font-medium">← На главную</button>
         <h2 class="text-xl font-bold mb-3 flex items-center gap-2"><span>ℹ️</span> О системе</h2>
         <div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl text-xs text-slate-200 space-y-2">
-            <p><b>Super App Hub Pro</b></p>
-            <p>Современный интерфейс с яркими иконками и глубоким фоном. Все функции работают автономно.</p>
+            <p><b>Business Hub Pro v10.0</b></p>
+            <p>Профессиональный карманный хаб для самозанятых и специалистов. Все данные хранятся локально и защищены.</p>
         </div>
     </div>
 
@@ -345,7 +345,7 @@
         let tg = window.Telegram.WebApp;
         tg.expand();
 
-        const allTools = ['notes', 'tasks', 'crypto', 'fitness', 'kurs', 'calc', 'ai', 'summary', 'pass', 'convert', 'weather', 'timer', 'money', 'qr', 'random', 'about'];
+        const allTools = ['crm', 'invoice', 'tasks', 'money', 'crypto', 'kurs', 'convert', 'notes', 'calc', 'pass', 'weather', 'timer', 'qr', 'random', 'ai', 'about'];
 
         function openTool(toolName) {
             document.getElementById('main-hub').classList.add('hidden');
@@ -365,81 +365,144 @@
             document.getElementById('main-hub').classList.remove('hidden');
         }
 
-        // Заметки
-        function loadNotes() {
-            let notes = JSON.parse(localStorage.getItem('app_notes_v5') || '[]');
-            let list = document.getElementById('notes-list');
+        // 1. CRM Клиенты
+        function loadCrm() {
+            let clients = JSON.parse(localStorage.getItem('biz_crm_v10') || '[]');
+            let list = document.getElementById('crm-list');
+            let totalEl = document.getElementById('crm-total');
             list.innerHTML = '';
-            notes.forEach((item, index) => {
-                let div = document.createElement('div');
-                div.className = "bg-slate-900/80 p-3.5 rounded-2xl border border-slate-700/50 text-sm flex justify-between items-start shadow-md";
-                div.innerHTML = `<div><p class="break-all text-sm">${item.text}</p><p class="text-[10px] text-slate-400 mt-1">${item.date}</p></div> <button onclick="deleteNote(${index})" class="text-rose-400 text-xs px-2 py-1 bg-rose-500/10 rounded-lg shrink-0 ml-2">Удалить</button>`;
-                list.appendChild(div);
+            let total = 0;
+            clients.forEach((c, index) => {
+                total += c.sum;
+                list.innerHTML += `
+                    <div class="bg-slate-900/80 p-3.5 rounded-2xl border border-slate-700/50 text-sm flex justify-between items-center shadow-md">
+                        <div>
+                            <p class="font-bold text-white">${c.name}</p>
+                            <p class="text-xs text-slate-400">${c.service}</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="font-bold text-cyan-400">$${c.sum.toFixed(2)}</span>
+                            <button onclick="deleteCrm(${index})" class="text-rose-400 text-xs px-2 py-1 bg-rose-500/10 rounded-lg">✕</button>
+                        </div>
+                    </div>`;
             });
+            totalEl.innerText = `$${total.toFixed(2)}`;
         }
-        function saveNote() {
-            let val = document.getElementById('note-input').value.trim();
-            if(!val) return;
-            let notes = JSON.parse(localStorage.getItem('app_notes_v5') || '[]');
-            let now = new Date().toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
-            notes.unshift({ text: val, date: now });
-            localStorage.setItem('app_notes_v5', JSON.stringify(notes));
-            document.getElementById('note-input').value = '';
-            loadNotes();
+        function addCrmClient() {
+            let name = document.getElementById('crm-name').value.trim();
+            let service = document.getElementById('crm-service').value.trim();
+            let sum = parseFloat(document.getElementById('crm-sum').value);
+            if(!name || isNaN(sum)) return;
+            let clients = JSON.parse(localStorage.getItem('biz_crm_v10') || '[]');
+            clients.unshift({ name, service: service || 'Услуга', sum });
+            localStorage.setItem('biz_crm_v10', JSON.stringify(clients));
+            document.getElementById('crm-name').value = '';
+            document.getElementById('crm-service').value = '';
+            document.getElementById('crm-sum').value = '';
+            loadCrm();
         }
-        function deleteNote(index) {
-            let notes = JSON.parse(localStorage.getItem('app_notes_v5') || '[]');
-            notes.splice(index, 1);
-            localStorage.setItem('app_notes_v5', JSON.stringify(notes));
-            loadNotes();
+        function deleteCrm(index) {
+            let clients = JSON.parse(localStorage.getItem('biz_crm_v10') || '[]');
+            clients.splice(index, 1);
+            localStorage.setItem('biz_crm_v10', JSON.stringify(clients));
+            loadCrm();
         }
-        loadNotes();
+        loadCrm();
 
-        // Задачи
+        // 2. Генератор счетов
+        function generateInvoice() {
+            let client = document.getElementById('inv-client').value.trim() || "Клиент";
+            let desc = document.getElementById('inv-desc').value.trim() || "Оплата услуг";
+            let amount = parseFloat(document.getElementById('inv-amount').value) || 0;
+            let out = document.getElementById('inv-output');
+            out.classList.remove('hidden');
+            out.innerText = `🧾 СЧЕТ НА ОПЛАТУ\n------------------\nКому: ${client}\nУслуга: ${desc}\nСумма: $${amount.toFixed(2)}\n\nСпасибо за сотрудничество!`;
+        }
+
+        // 3. Задачи
         function loadTasks() {
-            let tasks = JSON.parse(localStorage.getItem('app_tasks_v5') || '[]');
+            let tasks = JSON.parse(localStorage.getItem('biz_tasks_v10') || '[]');
             let list = document.getElementById('tasks-list');
             list.innerHTML = '';
             tasks.forEach((task, index) => {
-                let div = document.createElement('div');
-                div.className = "bg-slate-900/80 p-3.5 rounded-2xl border border-slate-700/50 text-sm flex justify-between items-center shadow-md";
-                div.innerHTML = `<div><span class="break-all font-medium">${task.text}</span><p class="text-[10px] text-emerald-400 mt-0.5">🔔 ${task.time || 'Без времени'}</p></div> <button onclick="deleteTask(${index})" class="text-rose-400 text-xs px-2 py-1 bg-rose-500/10 rounded-lg shrink-0">Удалить</button>`;
-                list.appendChild(div);
+                list.innerHTML += `
+                    <div class="bg-slate-900/80 p-3.5 rounded-2xl border border-slate-700/50 text-sm flex justify-between items-center shadow-md">
+                        <div>
+                            <span class="break-all font-medium">${task.text}</span>
+                            <p class="text-[10px] text-amber-400 mt-0.5">⏰ ${task.time || 'Без времени'}</p>
+                        </div>
+                        <button onclick="deleteTask(${index})" class="text-rose-400 text-xs px-2 py-1 bg-rose-500/10 rounded-lg shrink-0">Удалить</button>
+                    </div>`;
             });
         }
         function addTask() {
             let val = document.getElementById('task-input').value.trim();
             let timeVal = document.getElementById('task-time').value;
             if(!val) return;
-            let tasks = JSON.parse(localStorage.getItem('app_tasks_v5') || '[]');
+            let tasks = JSON.parse(localStorage.getItem('biz_tasks_v10') || '[]');
             tasks.unshift({ text: val, time: timeVal });
-            localStorage.setItem('app_tasks_v5', JSON.stringify(tasks));
+            localStorage.setItem('biz_tasks_v10', JSON.stringify(tasks));
             document.getElementById('task-input').value = '';
             document.getElementById('task-time').value = '';
             loadTasks();
         }
         function deleteTask(index) {
-            let tasks = JSON.parse(localStorage.getItem('app_tasks_v5') || '[]');
+            let tasks = JSON.parse(localStorage.getItem('biz_tasks_v10') || '[]');
             tasks.splice(index, 1);
-            localStorage.setItem('app_tasks_v5', JSON.stringify(tasks));
+            localStorage.setItem('biz_tasks_v10', JSON.stringify(tasks));
             loadTasks();
         }
         loadTasks();
 
-        // Сейф
+        // 4. Бюджет
+        function loadBudget() {
+            let txs = JSON.parse(localStorage.getItem('biz_budget_v10') || '[]');
+            let list = document.getElementById('budget-list'), balanceEl = document.getElementById('budget-balance');
+            list.innerHTML = '';
+            let balance = 0;
+            txs.forEach((item, index) => {
+                if(item.type === 'income') balance += item.amount; else balance -= item.amount;
+                let color = item.type === 'income' ? 'text-emerald-400' : 'text-rose-400';
+                let sign = item.type === 'income' ? '+' : '-';
+                list.innerHTML += `<div class="bg-slate-900/80 p-3 rounded-2xl border border-slate-700/50 text-sm flex justify-between items-center shadow-md"><span class="font-medium">${item.desc}</span><div class="flex items-center gap-2"><span class="font-bold ${color}">${sign}$${item.amount.toFixed(2)}</span><button onclick="deleteBudget(${index})" class="text-rose-400 text-xs px-2 py-1 bg-rose-500/10 rounded-lg">✕</button></div></div>`;
+            });
+            balanceEl.innerText = `$${balance.toFixed(2)}`;
+            balanceEl.className = `text-2xl font-black mt-1 ${balance >= 0 ? 'text-lime-400' : 'text-rose-400'}`;
+        }
+        function addBudgetTx() {
+            let desc = document.getElementById('budget-desc').value.trim();
+            let amount = parseFloat(document.getElementById('budget-amount').value);
+            let type = document.getElementById('budget-type').value;
+            if(!desc || isNaN(amount) || amount <= 0) return;
+            let txs = JSON.parse(localStorage.getItem('biz_budget_v10') || '[]');
+            txs.unshift({ desc, amount, type });
+            localStorage.setItem('biz_budget_v10', JSON.stringify(txs));
+            document.getElementById('budget-desc').value = '';
+            document.getElementById('budget-amount').value = '';
+            loadBudget();
+        }
+        function deleteBudget(index) {
+            let txs = JSON.parse(localStorage.getItem('biz_budget_v10') || '[]');
+            txs.splice(index, 1);
+            localStorage.setItem('biz_budget_v10', JSON.stringify(txs));
+            loadBudget();
+        }
+        loadBudget();
+
+        // 5. Сейф
         function unlockSafe() {
             let pinInput = document.getElementById('safe-pin').value.trim();
-            let savedPin = localStorage.getItem('app_safe_pin');
+            let savedPin = localStorage.getItem('biz_safe_pin');
             if(!savedPin) {
                 if(pinInput.length < 4) { alert('ПИН-код должен быть не менее 4 символов!'); return; }
-                localStorage.setItem('app_safe_pin', pinInput);
+                localStorage.setItem('biz_safe_pin', pinInput);
                 savedPin = pinInput;
             }
             if(pinInput === savedPin) {
                 document.getElementById('safe-auth').classList.add('hidden');
                 document.getElementById('safe-content').classList.remove('hidden');
                 document.getElementById('safe-pin').value = '';
-                loadCrypto();
+                loadCryptoStorage();
             } else {
                 alert('Неверный ПИН-код!');
             }
@@ -448,52 +511,37 @@
             document.getElementById('safe-content').classList.add('hidden');
             document.getElementById('safe-auth').classList.remove('hidden');
         }
-        function loadCrypto() {
-            let saved = JSON.parse(localStorage.getItem('app_crypto_v5') || '[]');
+        function loadCryptoStorage() {
+            let saved = JSON.parse(localStorage.getItem('biz_crypto_v10') || '[]');
             let container = document.getElementById('crypto-storage');
             if(saved.length === 0) { container.innerHTML = "Сейф пуст."; return; }
             container.innerHTML = "";
             saved.forEach((item, index) => {
-                container.innerHTML += `<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-700/50 flex justify-between items-center"><span class="font-mono text-cyan-400 break-all pr-2">${item}</span><button onclick="deleteCrypto(${index})" class="text-rose-400 text-[10px] px-2 py-0.5 bg-rose-500/10 rounded">Удалить</button></div>`;
+                container.innerHTML += `<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-700/50 flex justify-between items-center"><span class="font-mono text-indigo-400 break-all pr-2">${item}</span><button onclick="deleteCryptoStorage(${index})" class="text-rose-400 text-[10px] px-2 py-0.5 bg-rose-500/10 rounded">Удалить</button></div>`;
             });
         }
         function saveCrypto() {
             let val = document.getElementById('crypto-secret').value.trim();
             if(!val) return;
-            let saved = JSON.parse(localStorage.getItem('app_crypto_v5') || '[]');
+            let saved = JSON.parse(localStorage.getItem('biz_crypto_v10') || '[]');
             saved.unshift(val);
-            localStorage.setItem('app_crypto_v5', JSON.stringify(saved));
+            localStorage.setItem('biz_crypto_v10', JSON.stringify(saved));
             document.getElementById('crypto-secret').value = '';
-            loadCrypto();
+            loadCryptoStorage();
         }
-        function deleteCrypto(index) {
-            let saved = JSON.parse(localStorage.getItem('app_crypto_v5') || '[]');
+        function deleteCryptoStorage(index) {
+            let saved = JSON.parse(localStorage.getItem('biz_crypto_v10') || '[]');
             saved.splice(index, 1);
-            localStorage.setItem('app_crypto_v5', JSON.stringify(saved));
-            loadCrypto();
+            localStorage.setItem('biz_crypto_v10', JSON.stringify(saved));
+            loadCryptoStorage();
         }
 
-        // Фитнес
-        let water = parseInt(localStorage.getItem('app_water_v5') || '0');
-        function updateWaterUI() {
-            document.getElementById('water-count').innerText = `${water} стаканов (${water * 250} мл)`;
-            let percent = Math.min((water / 8) * 100, 100);
-            document.getElementById('water-progress').style.width = percent + '%';
-        }
-        function adjustWater(amount) {
-            water += amount;
-            if(water < 0) water = 0;
-            localStorage.setItem('app_water_v5', water);
-            updateWaterUI();
-        }
-        updateWaterUI();
-
-        // Крипта Live
+        // 6. Крипта Live
         async function fetchCryptoRates() {
             let container = document.getElementById('crypto-rates-container');
             container.innerHTML = '<div class="bg-slate-900/80 border border-slate-700/50 p-4 rounded-2xl text-center text-xs text-slate-400 animate-pulse">Загрузка котировок...</div>';
             try {
-                let res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,the-open-network,solana,binancecoin,ripple,cardano,dogecoin,avalanche-2,tron,chainlink,polkadot,polygon-ecosystem-token,near,shiba-inu');
+                let res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,the-open-network,solana,binancecoin,ripple,cardano,dogecoin');
                 let data = await res.json();
                 container.innerHTML = '';
                 data.forEach(coin => {
@@ -514,53 +562,8 @@
             }
         }
 
-        // Калькулятор сплита
-        function calculateSplit() {
-            let bill = parseFloat(document.getElementById('calc-bill').value) || 0;
-            let tipPercent = parseFloat(document.getElementById('calc-tip').value) || 0;
-            let people = parseInt(document.getElementById('calc-people').value) || 1;
-            if (people <= 0) people = 1;
-            let tipAmount = bill * (tipPercent / 100);
-            let total = bill + tipAmount;
-            let perPerson = total / people;
-            let res = document.getElementById('calc-result');
-            res.classList.remove('hidden');
-            res.innerHTML = `<div>Сумма с чаевыми: <b>$${total.toFixed(2)}</b></div><div class="text-purple-300 mt-1">С каждого: <b>$${perPerson.toFixed(2)}</b></div>`;
-        }
-
-        // ИИ Рассказы
-        function generateStory() {
-            let prompt = document.getElementById('ai-prompt').value.trim();
-            let out = document.getElementById('ai-output');
-            out.classList.remove('hidden');
-            out.innerHTML = "✍️ Генерация истории...";
-            setTimeout(() => {
-                let themes = prompt ? `на тему: «${prompt}»` : "о приключениях";
-                out.innerHTML = `📖 <b>История ${themes}:</b><br><br>В таинственном мире, где технологии переплетались с древней магией, герои отправились на поиски потерянного артефакта. Пройдя через испытания, они поняли, что главная сила — это дружба и стремление к цели! ✨`;
-            }, 700);
-        }
-
-        // Суммаризатор
-        function makeSummary() {
-            let t = document.getElementById('summary-input').value.trim();
-            if(!t) return;
-            let out = document.getElementById('summary-output');
-            out.classList.remove('hidden');
-            out.innerHTML = `📋 <b>Суть текста:</b><br>• Объем: ${t.length} символов.<br>• Текст успешно проанализирован и структурирован.`;
-        }
-
-        // Пароли
-        function generatePassword() {
-            let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
-            let pass = "";
-            for(let i=0; i<16; i++) pass += chars.charAt(Math.floor(Math.random() * chars.length));
-            let out = document.getElementById('pass-output');
-            out.classList.remove('hidden');
-            out.innerText = pass;
-        }
-
-        // Конвертер (50+ валют)
-        const currenciesList = ["USD", "EUR", "RUB", "KZT", "GBP", "JPY", "AUD", "CAD", "CHF", "CNY", "SEK", "NZD", "MXN", "SGD", "HKD", "NOK", "KRW", "TRY", "INR", "BRL", "ZAR", "DKK", "PLN", "TWD", "THB", "MYR", "IDR", "CZK", "AED", "ILS", "CLP", "PHP", "SAR", "COP", "HUF", "RON", "VND", "ARS", "UAH", "PKR", "IQD", "QAR", "KWD", "OMR", "BHD", "JOD", "LBP", "DZD", "MAD", "USDT"];
+        // 7. Конвертер валют
+        const currenciesList = ["USD", "EUR", "RUB", "KZT", "GBP", "JPY", "AUD", "CAD", "CHF", "CNY", "AED", "USDT"];
         function initCurrencies() {
             let f = document.getElementById('conv-from'), to = document.getElementById('conv-to');
             currenciesList.forEach(c => { f.innerHTML += `<option value="${c}">${c}</option>`; to.innerHTML += `<option value="${c}">${c}</option>`; });
@@ -584,7 +587,58 @@
             }
         }
 
-        // Погода
+        // 8. Заметки
+        function loadNotes() {
+            let notes = JSON.parse(localStorage.getItem('biz_notes_v10') || '[]');
+            let list = document.getElementById('notes-list');
+            list.innerHTML = '';
+            notes.forEach((item, index) => {
+                list.innerHTML += `<div class="bg-slate-900/80 p-3.5 rounded-2xl border border-slate-700/50 text-sm flex justify-between items-start shadow-md"><div><p class="break-all text-sm">${item.text}</p><p class="text-[10px] text-slate-400 mt-1">${item.date}</p></div> <button onclick="deleteNote(${index})" class="text-rose-400 text-xs px-2 py-1 bg-rose-500/10 rounded-lg shrink-0 ml-2">Удалить</button></div>`;
+            });
+        }
+        function saveNote() {
+            let val = document.getElementById('note-input').value.trim();
+            if(!val) return;
+            let notes = JSON.parse(localStorage.getItem('biz_notes_v10') || '[]');
+            let now = new Date().toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+            notes.unshift({ text: val, date: now });
+            localStorage.setItem('biz_notes_v10', JSON.stringify(notes));
+            document.getElementById('note-input').value = '';
+            loadNotes();
+        }
+        function deleteNote(index) {
+            let notes = JSON.parse(localStorage.getItem('biz_notes_v10') || '[]');
+            notes.splice(index, 1);
+            localStorage.setItem('biz_notes_v10', JSON.stringify(notes));
+            loadNotes();
+        }
+        loadNotes();
+
+        // 9. Сплит
+        function calculateSplit() {
+            let bill = parseFloat(document.getElementById('calc-bill').value) || 0;
+            let tipPercent = parseFloat(document.getElementById('calc-tip').value) || 0;
+            let people = parseInt(document.getElementById('calc-people').value) || 1;
+            if (people <= 0) people = 1;
+            let tipAmount = bill * (tipPercent / 100);
+            let total = bill + tipAmount;
+            let perPerson = total / people;
+            let res = document.getElementById('calc-result');
+            res.classList.remove('hidden');
+            res.innerHTML = `<div>Сумма с чаевыми: <b>$${total.toFixed(2)}</b></div><div class="text-rose-300 mt-1">С каждого: <b>$${perPerson.toFixed(2)}</b></div>`;
+        }
+
+        // 10. Пароли
+        function generatePassword() {
+            let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+            let pass = "";
+            for(let i=0; i<16; i++) pass += chars.charAt(Math.floor(Math.random() * chars.length));
+            let out = document.getElementById('pass-output');
+            out.classList.remove('hidden');
+            out.innerText = pass;
+        }
+
+        // 11. Погода
         async function fetchWeather() {
             let city = document.getElementById('weather-city').value.trim() || "Москва";
             let card = document.getElementById('weather-card');
@@ -603,7 +657,7 @@
         }
         fetchWeather();
 
-        // Таймер
+        // 12. Таймер
         let timerInterval, seconds = 0;
         function startTimer() {
             clearInterval(timerInterval);
@@ -620,42 +674,7 @@
             document.getElementById('timer-display').innerText = "00:00";
         }
 
-        // Бюджет
-        function loadBudget() {
-            let txs = JSON.parse(localStorage.getItem('app_budget_v5') || '[]');
-            let list = document.getElementById('budget-list'), balanceEl = document.getElementById('budget-balance');
-            list.innerHTML = '';
-            let balance = 0;
-            txs.forEach((item, index) => {
-                if(item.type === 'income') balance += item.amount; else balance -= item.amount;
-                let color = item.type === 'income' ? 'text-emerald-400' : 'text-rose-400';
-                let sign = item.type === 'income' ? '+' : '-';
-                list.innerHTML += `<div class="bg-slate-900/80 p-3 rounded-2xl border border-slate-700/50 text-sm flex justify-between items-center shadow-md"><span class="font-medium">${item.desc}</span><div class="flex items-center gap-2"><span class="font-bold ${color}">${sign}$${item.amount.toFixed(2)}</span><button onclick="deleteBudget(${index})" class="text-rose-400 text-xs px-2 py-1 bg-rose-500/10 rounded-lg">✕</button></div></div>`;
-            });
-            balanceEl.innerText = `$${balance.toFixed(2)}`;
-            balanceEl.className = `text-2xl font-black mt-1 ${balance >= 0 ? 'text-lime-400' : 'text-rose-400'}`;
-        }
-        function addBudgetTx() {
-            let desc = document.getElementById('budget-desc').value.trim();
-            let amount = parseFloat(document.getElementById('budget-amount').value);
-            let type = document.getElementById('budget-type').value;
-            if(!desc || isNaN(amount) || amount <= 0) return;
-            let txs = JSON.parse(localStorage.getItem('app_budget_v5') || '[]');
-            txs.unshift({ desc, amount, type });
-            localStorage.setItem('app_budget_v5', JSON.stringify(txs));
-            document.getElementById('budget-desc').value = '';
-            document.getElementById('budget-amount').value = '';
-            loadBudget();
-        }
-        function deleteBudget(index) {
-            let txs = JSON.parse(localStorage.getItem('app_budget_v5') || '[]');
-            txs.splice(index, 1);
-            localStorage.setItem('app_budget_v5', JSON.stringify(txs));
-            loadBudget();
-        }
-        loadBudget();
-
-        // QR
+        // 13. QR
         function generateQR() {
             let val = document.getElementById('qr-text').value.trim();
             if(!val) return;
@@ -664,7 +683,7 @@
             out.innerHTML = `<p class="text-xs text-slate-300">QR-код для:</p><b class="text-pink-400 break-all text-sm">${val}</b><div class="bg-white p-3 rounded-xl inline-block mt-2"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(val)}" alt="QR" class="mx-auto w-32 h-32"></div>`;
         }
 
-        // Рандом
+        // 14. Рандом
         function getRandomCustom() {
             let min = parseInt(document.getElementById('rand-min').value) || 1;
             let max = parseInt(document.getElementById('rand-max').value) || 100000;
@@ -672,23 +691,18 @@
             let num = Math.floor(Math.random() * (max - min + 1)) + min;
             document.getElementById('rand-num').innerText = num.toLocaleString();
         }
+
+        // 15. ИИ Генератор текста
+        function generateText() {
+            let prompt = document.getElementById('ai-prompt').value.trim();
+            let out = document.getElementById('ai-output');
+            out.classList.remove('hidden');
+            out.innerHTML = "✍️ Генерация текста...";
+            setTimeout(() => {
+                let subject = prompt ? `по теме: «${prompt}»` : "для соцсетей";
+                out.innerHTML = `✨ <b>Готовый текст (${subject}):</b><br><br>«Друзья! Рады представить вам наши новые услуги. Мы ценим качество и индивидуальный подход к каждому клиенту. Свяжитесь с нами прямо сейчас, чтобы узнать подробности и забронировать удобное время! 🚀»`;
+            }, 700);
+        }
     </script>
 </body>
 </html>
-<!-- Пример кнопки оплаты Звездами в интерфейсе -->
-<div class="bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border border-amber-500/40 p-4 rounded-2xl mb-4 text-center">
-    <h3 class="font-bold text-amber-300 text-sm mb-1">⭐ PRO Доступ</h3>
-    <p class="text-xs text-slate-300 mb-3">Разблокируй все премиум-возможности навсегда!</p>
-    <button onclick="buyProStars()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-2.5 rounded-xl text-xs transition">Купить за 150 ⭐</button>
-</div>
-
-<script>
-    function buyProStars() {
-        if (tg.openInvoice) {
-            // Метод вызова официального счета Telegram Stars (требуется настроенный инвойс от бота)
-            alert("Для генерации счета Stars бот должен отправить инвойс через API Telegram. Сейчас настроим!");
-        } else {
-            alert("Откройте приложение внутри Telegram для совершения покупки.");
-        }
-    }
-</script>
