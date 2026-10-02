@@ -2,78 +2,201 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super App Hub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        body {
-            background-color: #0f172a;
-            color: #f8fafc;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-    </style>
 </head>
-<body class="min-h-screen p-4 pb-20">
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-amber-500 selection:text-slate-950">
 
-    <header class="mb-6 text-center">
-        <h1 class="text-2xl font-bold tracking-tight">🚀 Super App Hub</h1>
-        <p class="text-xs opacity-70 mt-1">Твой карманный помощник на каждый день</p>
-    </header>
+    <!-- Главный экран (Хаб) -->
+    <div id="main-hub" class="max-w-md mx-auto p-4 pb-12">
+        <header class="mb-6 pt-2 text-center">
+            <h1 class="text-2xl font-bold tracking-tight bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">Super App Hub</h1>
+            <p class="text-xs text-slate-400 mt-1">Твой карманный помощник на каждый день</p>
+        </header>
 
-    <main class="grid grid-cols-2 gap-3 max-w-md mx-auto">
-        <div onclick="openTool('Заметки')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
-            <span class="text-2xl mb-2">📝</span>
-            <div><h3 class="font-semibold text-sm">Заметки</h3><p class="text-[11px] opacity-60">Блокнот + ИИ</p></div>
+        <!-- Сетка утилит -->
+        <main class="grid grid-cols-2 gap-3">
+            <!-- 1. Заметки -->
+            <div onclick="openTool('notes')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 hover:border-amber-500/50">
+                <span class="text-2xl">📝</span>
+                <div>
+                    <h3 class="font-semibold text-sm">Заметки</h3>
+                    <p class="text-[11px] text-slate-400">Блокнот + ИИ</p>
+                </div>
+            </div>
+
+            <!-- 2. Задачи -->
+            <div onclick="openTool('tasks')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 hover:border-amber-500/50">
+                <span class="text-2xl">✅</span>
+                <div>
+                    <h3 class="font-semibold text-sm">Задачи</h3>
+                    <p class="text-[11px] text-slate-400">План на день</p>
+                </div>
+            </div>
+
+            <!-- 3. Крипто-Сейф -->
+            <div onclick="openTool('crypto')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 hover:border-amber-500/50">
+                <span class="text-2xl">🔒</span>
+                <div>
+                    <h3 class="font-semibold text-sm">Крипто-Сейф</h3>
+                    <p class="text-[11px] text-slate-400">Секреты под PIN</p>
+                </div>
+            </div>
+
+            <!-- 4. Фитнес & Спорт -->
+            <div onclick="openTool('fitness')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 hover:border-amber-500/50">
+                <span class="text-2xl">💪</span>
+                <div>
+                    <h3 class="font-semibold text-sm">Фитнес & Спорт</h3>
+                    <p class="text-[11px] text-slate-400">Тренировки и вода</p>
+                </div>
+            </div>
+
+            <!-- Оставшиеся 6 утилит (заглушки пока не переключимся на них) -->
+            <div onclick="openTool('kurs')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 opacity-60">
+                <span class="text-2xl">📈</span>
+                <div><h3 class="font-semibold text-sm">Курс Крипты</h3><p class="text-[11px] text-slate-400">Котировки онлайн</p></div>
+            </div>
+            <div onclick="openTool('calc')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 opacity-60">
+                <span class="text-2xl">🧮</span>
+                <div><h3 class="font-semibold text-sm">Калькулятор</h3><p class="text-[11px] text-slate-400">Сплит и расчеты</p></div>
+            </div>
+            <div onclick="openTool('ai')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 opacity-60">
+                <span class="text-2xl">🤖</span>
+                <div><h3 class="font-semibold text-sm">ИИ Тексты</h3><p class="text-[11px] text-slate-400">Помощник в чате</p></div>
+            </div>
+            <div onclick="openTool('summary')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 opacity-60">
+                <span class="text-2xl">🗂️</span>
+                <div><h3 class="font-semibold text-sm">Суммаризатор</h3><p class="text-[11px] text-slate-400">Суть текста за сек</p></div>
+            </div>
+            <div onclick="openTool('pass')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 opacity-60">
+                <span class="text-2xl">🔑</span>
+                <div><h3 class="font-semibold text-sm">Пароли</h3><p class="text-[11px] text-slate-400">Надежные ключи</p></div>
+            </div>
+            <div onclick="openTool('convert')" class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between h-28 opacity-60">
+                <span class="text-2xl">💱</span>
+                <div><h3 class="font-semibold text-sm">Конвертер</h3><p class="text-[11px] text-slate-400">Валюты мира</p></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Экраны утилит (скрыты по умолчанию) -->
+
+    <!-- 1. Заметки -->
+    <div id="tool-notes" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-800 px-3 py-1.5 rounded-lg text-slate-300 hover:bg-slate-700">← Назад в меню</button>
+        <h2 class="text-xl font-bold mb-3">📝 Заметки</h2>
+        <textarea id="note-input" placeholder="Напиши свою заметку здесь..." class="w-full h-32 bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-amber-500 mb-2"></textarea>
+        <button onclick="saveNote()" class="w-full bg-amber-500 text-slate-950 font-semibold py-2 rounded-xl text-sm">Сохранить заметку</button>
+        <div id="notes-list" class="mt-4 space-y-2"></div>
+    </div>
+
+    <!-- 2. Задачи -->
+    <div id="tool-tasks" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-800 px-3 py-1.5 rounded-lg text-slate-300 hover:bg-slate-700">← Назад в меню</button>
+        <h2 class="text-xl font-bold mb-3">✅ Задачи на день</h2>
+        <div class="flex gap-2 mb-3">
+            <input id="task-input" type="text" placeholder="Новая задача..." class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 text-sm focus:outline-none focus:border-amber-500">
+            <button onclick="addTask()" class="bg-amber-500 text-slate-950 font-semibold px-4 py-2 rounded-xl text-sm">Добавить</button>
         </div>
-        <div onclick="openTool('Задачи')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
-            <span class="text-2xl mb-2">✅</span>
-            <div><h3 class="font-semibold text-sm">Задачи</h3><p class="text-[11px] opacity-60">План на день</p></div>
+        <div id="tasks-list" class="space-y-2"></div>
+    </div>
+
+    <!-- 3. Крипто-Сейф -->
+    <div id="tool-crypto" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-800 px-3 py-1.5 rounded-lg text-slate-300 hover:bg-slate-700">← Назад в меню</button>
+        <h2 class="text-xl font-bold mb-3">🔒 Крипто-Сейф</h2>
+        <p class="text-xs text-slate-400 mb-3">Храните сид-фразы и пароли в зашифрованном виде на устройстве.</p>
+        <input id="crypto-secret" type="password" placeholder="Введите секретный текст..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-amber-500 mb-2">
+        <button onclick="saveCrypto()" class="w-full bg-amber-500 text-slate-950 font-semibold py-2 rounded-xl text-sm mb-3">Зашифровать и сохранить</button>
+        <div id="crypto-storage" class="text-xs bg-slate-900 p-3 rounded-xl border border-slate-800 text-slate-300">Сохраненных секретов нет.</div>
+    </div>
+
+    <!-- 4. Фитнес & Спорт -->
+    <div id="tool-fitness" class="max-w-md mx-auto p-4 hidden">
+        <button onclick="goBack()" class="mb-4 text-xs bg-slate-800 px-3 py-1.5 rounded-lg text-slate-300 hover:bg-slate-700">← Назад в меню</button>
+        <h2 class="text-xl font-bold mb-3">💪 Фитнес & Вода</h2>
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl mb-3 flex justify-between items-center">
+            <div>
+                <p class="text-xs text-slate-400">Выпито воды сегодня:</p>
+                <p id="water-count" class="text-lg font-bold text-amber-400">0 стаканов (0 мл)</p>
+            </div>
+            <button onclick="addWater()" class="bg-amber-500 text-slate-950 px-3 py-2 rounded-xl text-xs font-semibold">+ Стакан</button>
         </div>
-        <div onclick="openTool('Крипто-Сейф')" class="bg-slate-800/80 border border-amber-500/30 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between relative">
-            <span class="absolute top-2 right-2 text-xs">🔒</span>
-            <span class="text-2xl mb-2">🛡</span>
-            <div><h3 class="font-semibold text-sm">Крипто-Сейф</h3><p class="text-[11px] opacity-60">Секреты под PIN</p></div>
-        </div>
-        <div onclick="openTool('Фитнес')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
-            <span class="text-2xl mb-2">💪</span>
-            <div><h3 class="font-semibold text-sm">Фитнес & Спорт</h3><p class="text-[11px] opacity-60">Тренировки и вода</p></div>
-        </div>
-        <div onclick="openTool('Курс крипты')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
-            <span class="text-2xl mb-2">📈</span>
-            <div><h3 class="font-semibold text-sm">Курс Крипты</h3><p class="text-[11px] opacity-60">Котировки онлайн</p></div>
-        </div>
-        <div onclick="openTool('Калькулятор')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
-            <span class="text-2xl mb-2">🧮</span>
-            <div><h3 class="font-semibold text-sm">Калькулятор</h3><p class="text-[11px] opacity-60">Сплит и расчеты</p></div>
-        </div>
-        <div onclick="openTool('ИИ Тексты')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
-            <span class="text-2xl mb-2">🤖</span>
-            <div><h3 class="font-semibold text-sm">ИИ Тексты</h3><p class="text-[11px] opacity-60">Помощник в чате</p></div>
-        </div>
-        <div onclick="openTool('Суммаризатор')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
-            <span class="text-2xl mb-2">✂️</span>
-            <div><h3 class="font-semibold text-sm">Суммаризатор</h3><p class="text-[11px] opacity-60">Суть текста за сек</p></div>
-        </div>
-        <div onclick="openTool('Пароли')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
-            <span class="text-2xl mb-2">🔑</span>
-            <div><h3 class="font-semibold text-sm">Пароли</h3><p class="text-[11px] opacity-60">Надежные ключи</p></div>
-        </div>
-        <div onclick="openTool('Конвертер')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
-            <span class="text-2xl mb-2">💱</span>
-            <div><h3 class="font-semibold text-sm">Конвертер</h3><p class="text-[11px] opacity-60">Валюты мира</p></div>
-        </div>
-    </main>
+    </div>
 
     <script>
         let tg = window.Telegram.WebApp;
         tg.expand();
 
         function openTool(toolName) {
-            try {
-                tg.HapticFeedback.impactOccurred('medium');
-            } catch(e) {}
-            alert("Открываем гаджет: " + toolName);
+            document.getElementById('main-hub').classList.add('hidden');
+            
+            // Скрываем все экраны утилит
+            ['notes', 'tasks', 'crypto', 'fitness'].forEach(t => {
+                let el = document.getElementById('tool-' + t);
+                if(el) el.classList.add('hidden');
+            });
+
+            // Показываем нужный экран если он реализован
+            let target = document.getElementById('tool-' + toolName);
+            if (target) {
+                target.classList.remove('hidden');
+            } else {
+                alert('Гаджет в разработке! Скоро здесь появится интерфейс.');
+                goBack();
+            }
+        }
+
+        function goBack() {
+            // Скрываем все утилиты и показываем хаб
+            ['notes', 'tasks', 'crypto', 'fitness'].forEach(t => {
+                let el = document.getElementById('tool-' + t);
+                if(el) el.classList.add('hidden');
+            });
+            document.getElementById('main-hub').classList.remove('hidden');
+        }
+
+        // Логика Заметок
+        function saveNote() {
+            let val = document.getElementById('note-input').value;
+            if(!val) return;
+            let list = document.getElementById('notes-list');
+            let item = document.createElement('div');
+            item.className = "bg-slate-900 p-3 rounded-xl border border-slate-800 text-sm";
+            item.innerText = val;
+            list.prepend(item);
+            document.getElementById('note-input').value = '';
+        }
+
+        // Логика Задач
+        function addTask() {
+            let val = document.getElementById('task-input').value;
+            if(!val) return;
+            let list = document.getElementById('tasks-list');
+            let item = document.createElement('div');
+            item.className = "bg-slate-900 p-3 rounded-xl border border-slate-800 text-sm flex items-center justify-between";
+            item.innerHTML = `<span>${val}</span> <button onclick="this.parentElement.remove()" class="text-red-400 text-xs">Удалить</button>`;
+            list.prepend(item);
+            document.getElementById('task-input').value = '';
+        }
+
+        // Логика Крипто-Сейфа
+        function saveCrypto() {
+            let val = document.getElementById('crypto-secret').value;
+            if(!val) return;
+            localStorage.setItem('my_secure_note', val);
+            document.getElementById('crypto-storage').innerText = "Статус: Секрет успешно зашифрован и сохранен на устройстве! 🔒";
+            document.getElementById('crypto-secret').value = '';
+        }
+
+        // Логика Фитнеса
+        let waterGlasses = 0;
+        function addWater() {
+            waterGlasses++;
+            document.getElementById('water-count').innerText = `${waterGlasses} стаканов (${waterGlasses * 250} мл)`;
         }
     </script>
 </body>
