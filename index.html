@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Super App Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 pb-20">
+
+    <header class="mb-6 text-center">
+        <h1 class="text-2xl font-bold tracking-tight">🚀 Super App Hub</h1>
+        <p class="text-xs opacity-70 mt-1">Твой карманный помощник на каждый день</p>
+    </header>
+
+    <main class="grid grid-cols-2 gap-3 max-w-md mx-auto">
+        <div onclick="openTool('Заметки')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
+            <span class="text-2xl mb-2">📝</span>
+            <div><h3 class="font-semibold text-sm">Заметки</h3><p class="text-[11px] opacity-60">Блокнот + ИИ</p></div>
+        </div>
+        <div onclick="openTool('Задачи')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
+            <span class="text-2xl mb-2">✅</span>
+            <div><h3 class="font-semibold text-sm">Задачи</h3><p class="text-[11px] opacity-60">План на день</p></div>
+        </div>
+        <div onclick="openTool('Крипто-Сейф')" class="bg-slate-800/80 border border-amber-500/30 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between relative">
+            <span class="absolute top-2 right-2 text-xs">🔒</span>
+            <span class="text-2xl mb-2">🛡</span>
+            <div><h3 class="font-semibold text-sm">Крипто-Сейф</h3><p class="text-[11px] opacity-60">Секреты под PIN</p></div>
+        </div>
+        <div onclick="openTool('Фитнес')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
+            <span class="text-2xl mb-2">💪</span>
+            <div><h3 class="font-semibold text-sm">Фитнес & Спорт</h3><p class="text-[11px] opacity-60">Тренировки и вода</p></div>
+        </div>
+        <div onclick="openTool('Курс крипты')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
+            <span class="text-2xl mb-2">📈</span>
+            <div><h3 class="font-semibold text-sm">Курс Крипты</h3><p class="text-[11px] opacity-60">Котировки онлайн</p></div>
+        </div>
+        <div onclick="openTool('Калькулятор')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
+            <span class="text-2xl mb-2">🧮</span>
+            <div><h3 class="font-semibold text-sm">Калькулятор</h3><p class="text-[11px] opacity-60">Сплит и расчеты</p></div>
+        </div>
+        <div onclick="openTool('ИИ Тексты')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
+            <span class="text-2xl mb-2">🤖</span>
+            <div><h3 class="font-semibold text-sm">ИИ Тексты</h3><p class="text-[11px] opacity-60">Помощник в чате</p></div>
+        </div>
+        <div onclick="openTool('Суммаризатор')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
+            <span class="text-2xl mb-2">✂️</span>
+            <div><h3 class="font-semibold text-sm">Суммаризатор</h3><p class="text-[11px] opacity-60">Суть текста за сек</p></div>
+        </div>
+        <div onclick="openTool('Пароли')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
+            <span class="text-2xl mb-2">🔑</span>
+            <div><h3 class="font-semibold text-sm">Пароли</h3><p class="text-[11px] opacity-60">Надежные ключи</p></div>
+        </div>
+        <div onclick="openTool('Конвертер')" class="bg-slate-800/80 border border-slate-700/50 p-4 rounded-2xl active:scale-95 transition cursor-pointer flex flex-col justify-between">
+            <span class="text-2xl mb-2">💱</span>
+            <div><h3 class="font-semibold text-sm">Конвертер</h3><p class="text-[11px] opacity-60">Валюты мира</p></div>
+        </div>
+    </main>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+
+        function openTool(toolName) {
+            try {
+                tg.HapticFeedback.impactOccurred('medium');
+            } catch(e) {}
+            alert("Открываем гаджет: " + toolName);
+        }
+    </script>
+</body>
+</html>
