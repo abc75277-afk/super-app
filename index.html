@@ -1,225 +1,526 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Достань Соседа: Telegram Edition</title>
-    <!-- Подключаем Tailwind CSS для быстрого и красивого стилей -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @keyframes shake {
-            0% { transform: translate(1px, 1px) rotate(0deg); }
-            20% { transform: translate(-3px, 0px) rotate(-1deg); }
-            40% { transform: translate(1px, -1px) rotate(1deg); }
-            60% { transform: translate(-3px, 1px) rotate(0deg); }
-            80% { transform: translate(1px, -1px) rotate(-1deg); }
-            100% { transform: translate(1px, -2px) rotate(1deg); }
-        }
-        .shake-element {
-            animation: shake 0.4s ease-in-out;
-        }
-    </style>
-</head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between select-none">
-
-    <!-- Верхняя панель: Статистика -->
-    <header class="w-full bg-slate-900 border-b border-slate-800 p-4 shadow-lg sticky top-0 z-50">
-        <div class="max-w-md mx-auto flex justify-between items-center">
+<!-- ВЕРХНЯЯ СТАТУС-ПАНЕЛЬ -->
+<header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 px-4 py-3">
+    <div class="max-w-md mx-auto flex justify-between items-center">
+        <div class="flex items-center gap-2.5">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-600 to-amber-500 flex items-center justify-center text-xl shadow-lg shadow-rose-900/30">😈</div>
             <div>
-                <p class="text-xs text-slate-400 uppercase tracking-wider">Очки троллинга</p>
-                <h2 id="score" class="text-2xl font-black text-amber-400">0</h2>
+                <div class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Очки Троллинга</div>
+                <div id="header-score" class="text-xl font-black text-amber-400">0</div>
             </div>
+        </div>
+        <div class="flex items-center gap-3">
             <div class="text-right">
-                <p class="text-xs text-slate-400 uppercase tracking-wider">Уровень пакостей</p>
-                <h2 id="level" class="text-lg font-bold text-indigo-400">Новичок 🚷</h2>
+                <div class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Уровень</div>
+                <div id="header-level" class="text-xs font-bold text-indigo-400 bg-indigo-500/10 border border-indigo-500/30 px-2 py-0.5 rounded-md inline-block">Новичок 🚷</div>
             </div>
         </div>
-    </header>
+    </div>
+    <!-- Глобальная шкала ярости соседа -->
+    <div class="max-w-md mx-auto mt-2.5">
+        <div class="flex justify-between text-[11px] font-bold mb-1">
+            <span class="text-slate-400">Ярость Соседа: <span id="rage-percent" class="text-rose-400">0%</span></span>
+            <span id="neighbor-location-status" class="text-amber-300">👴 Сосед в гостиной</span>
+        </div>
+        <div class="w-full bg-slate-900 rounded-full h-3 p-0.5 border border-slate-800 overflow-hidden relative">
+            <div id="global-rage-bar" class="bg-gradient-to-r from-amber-500 via-orange-500 to-rose-600 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+    </div>
+</header>
 
-    <!-- Основной игровой экран -->
-    <main class="max-w-md w-full mx-auto p-4 flex-1 flex flex-col justify-center items-center">
+<!-- ОСНОВНОЙ КОНТЕЙНЕР ПРИЛОЖЕНИЯ -->
+<main class="max-w-md mx-auto p-4 pt-5 space-y-4">
+
+    <!-- ВКЛАДКА 1: ДОМ СОСЕДА (ГЛАВНАЯ ИГРА) -->
+    <section id="tab-game" class="space-y-4">
         
-        <!-- Комната соседа и его состояние -->
-        <div class="w-full bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-xl text-center relative overflow-hidden mb-6">
-            <div class="absolute -right-6 -bottom-6 text-8xl opacity-10 pointer-events-none">🏠</div>
-            
-            <!-- Аватарка соседа -->
-            <div id="neighbor-avatar" class="w-28 h-28 mx-auto bg-slate-800 rounded-full border-4 border-slate-700 flex items-center justify-center text-5xl mb-4 transition-all duration-200 shadow-inner">
-                👴💢
+        <!-- Интерактивная карта дома (Комнаты) -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-4 shadow-xl relative overflow-hidden">
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="text-sm font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5"><span>🏠</span> План дома соседа</h3>
+                <span class="text-[10px] bg-slate-800 px-2.5 py-1 rounded-full text-slate-400 font-semibold">Нажми комнату для перехода</span>
             </div>
-            
-            <h3 id="neighbor-status" class="text-lg font-bold text-slate-200 mb-1">Сосед мирно читает газету...</h3>
-            <p id="action-log" class="text-xs text-amber-300/80 h-6 mb-4 italic">Сделай первую пакость!</p>
 
-            <!-- Шкала ярости -->
-            <div class="w-full bg-slate-800 rounded-full h-4 p-0.5 border border-slate-700">
-                <div id="rage-bar" class="bg-gradient-to-r from-amber-500 to-rose-600 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
+            <!-- Сетка комнат -->
+            <div class="grid grid-cols-2 gap-2.5 mb-4">
+                <div onclick="switchRoom('hall')" id="room-btn-hall" class="room-card p-3 rounded-2xl border transition-all cursor-pointer bg-slate-950/60 border-slate-800 hover:border-slate-600">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-xs font-bold text-slate-200">🛋️ Гостиная</span>
+                        <span id="badge-hall" class="text-[10px] hidden px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-400 font-bold">Сосед здесь!</span>
+                    </div>
+                    <p class="text-[10px] text-slate-400">Телевизор, кресло, газета</p>
+                </div>
+
+                <div onclick="switchRoom('kitchen')" id="room-btn-kitchen" class="room-card p-3 rounded-2xl border transition-all cursor-pointer bg-slate-950/60 border-slate-800 hover:border-slate-600">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-xs font-bold text-slate-200">🍳 Кухня</span>
+                        <span id="badge-kitchen" class="text-[10px] hidden px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-400 font-bold">Сосед здесь!</span>
+                    </div>
+                    <p class="text-[10px] text-slate-400">Холодильник, плита, чай</p>
+                </div>
+
+                <div onclick="switchRoom('bathroom')" id="room-btn-bathroom" class="room-card p-3 rounded-2xl border transition-all cursor-pointer bg-slate-950/60 border-slate-800 hover:border-slate-600">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-xs font-bold text-slate-200">🚽 Ванная</span>
+                        <span id="badge-bathroom" class="text-[10px] hidden px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-400 font-bold">Сосед здесь!</span>
+                    </div>
+                    <p class="text-[10px] text-slate-400">Зеркало, душ, шкафчик</p>
+                </div>
+
+                <div onclick="switchRoom('bedroom')" id="room-btn-bedroom" class="room-card p-3 rounded-2xl border transition-all cursor-pointer bg-slate-950/60 border-slate-800 hover:border-slate-600">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-xs font-bold text-slate-200">🛏️ Спальня</span>
+                        <span id="badge-bedroom" class="text-[10px] hidden px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-400 font-bold">Сосед здесь!</span>
+                    </div>
+                    <p class="text-[10px] text-slate-400">Кровать, шкаф, комод</p>
+                </div>
             </div>
-            <div class="flex justify-between text-xs text-slate-400 mt-1">
-                <span>Спокоен</span>
-                <span id="rage-text">Ярость: 0%</span>
-                <span>Взрыв 🔥</span>
+
+            <!-- Активная комната (Интерфейс пакостей) -->
+            <div id="active-room-view" class="bg-slate-950/80 border border-slate-800/90 rounded-2xl p-4 relative overflow-hidden">
+                <div class="flex justify-between items-center mb-3">
+                    <h4 id="current-room-title" class="font-bold text-sm text-amber-300 flex items-center gap-2">🛋️️ Гостиная</h4>
+                    <span id="room-danger-indicator" class="text-xs font-semibold px-2 py-0.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/25">Безопасно</span>
+                </div>
+
+                <!-- Лог событий в комнате -->
+                <div id="room-event-log" class="text-xs text-slate-300 bg-slate-900/90 p-3 rounded-xl border border-slate-800/80 mb-3 min-h-[44px] flex items-center">
+                    Сосед спокойно отдыхает. Выбирай ловушку и подстраивай пакость!
+                </div>
+
+                <!-- Список доступных точек для пакостей в текущей комнате -->
+                <div id="traps-container" class="space-y-2">
+                    <!-- Динамические кнопки пакостей -->
+                </div>
             </div>
         </div>
 
-        <!-- Кнопка главного действия (Быстрая пакость) -->
-        <div class="w-full mb-6">
-            <button id="taunt-btn" class="w-full py-4 bg-gradient-to-r from-rose-600 to-orange-600 hover:from-rose-500 hover:to-orange-500 active:scale-95 text-white font-black text-lg rounded-2xl shadow-lg shadow-rose-900/30 transition-all border border-rose-500/40">
-                💥 НАБАЗОРИТЬ (Тап!)
+        <!-- Главная кнопка быстрого троллинга -->
+        <div class="relative">
+            <button onclick="triggerQuickTaunt(event)" id="quick-taunt-btn" class="w-full py-4 bg-gradient-to-r from-rose-600 via-orange-600 to-amber-500 hover:from-rose-500 hover:to-amber-400 active:scale-95 text-slate-950 font-black text-lg rounded-2xl shadow-xl shadow-rose-950/50 transition-all border border-amber-300/40 flex items-center justify-center gap-2">
+                <span>💥</span> УСТРОИТЬ КИПИШЬ (Тап!)
             </button>
         </div>
 
-        <!-- Магазин пакостей -->
-        <div class="w-full bg-slate-900/50 border border-slate-800/80 rounded-2xl p-4">
-            <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">Арсенал гадостей</h4>
-            <div id="upgrades-list" class="space-y-2">
-                <!-- Динамически заполняется через JS -->
+    </section>
+
+    <!-- ВКЛАДКА 2: МАГАЗИН И АПГРЕЙДЫ -->
+    <section id="tab-shop" class="space-y-4 hidden">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-4 shadow-xl">
+            <h3 class="text-sm font-black uppercase tracking-wider text-slate-300 mb-1 flex items-center gap-1.5"><span>🛒</span> Магазин Пранкера</h3>
+            <p class="text-xs text-slate-400 mb-4">Покупай мощные инструменты для автоматического и усиленного троллинга.</p>
+            
+            <div id="shop-upgrades-list" class="space-y-2.5">
+                <!-- Заполняется JS -->
             </div>
         </div>
+    </section>
 
-    </main>
+    <!-- ВКЛАДКА 3: ДОСТИЖЕНИЯ -->
+    <section id="tab-quests" class="space-y-4 hidden">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-4 shadow-xl">
+            <h3 class="text-sm font-black uppercase tracking-wider text-slate-300 mb-1 flex items-center gap-1.5"><span>🏆</span> Достижения и Ранги</h3>
+            <p class="text-xs text-slate-400 mb-4">Выполняй звания и получай награды за порчу нервов соседу.</p>
+            
+            <div id="achievements-list" class="space-y-2.5">
+                <!-- Заполняется JS -->
+            </div>
+        </div>
+    </section>
 
-    <!-- Нижняя панель / Меню -->
-    <footer class="w-full bg-slate-900 border-t border-slate-800 p-3 text-center text-xs text-slate-500">
-        Telegram Mini Apps • Создано для хайпового запуска 🚀
-    </footer>
+    <!-- ВКЛАДКА 4: РЕЙТИНГ И ДРУЗЬЯ (LEADERBOARD) -->
+    <section id="tab-leaderboard" class="space-y-4 hidden">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-4 shadow-xl text-center">
+            <div class="w-16 h-16 mx-auto bg-amber-500/10 border border-amber-500/30 rounded-full flex items-center justify-center text-3xl mb-2">👑</div>
+            <h3 class="text-base font-black text-white">Зал Славы Пранкеров</h3>
+            <p class="text-xs text-slate-400 mb-4">Соревнуйся с игроками со всего Telegram за звание Главного Тролля.</p>
+            
+            <div id="leaderboard-list" class="space-y-2 text-left mb-4">
+                <!-- Заполняется JS -->
+            </div>
+            
+            <button onclick="shareScoreToTelegram()" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 rounded-2xl text-sm transition shadow-lg flex items-center justify-center gap-2">
+                <span>🚀</span> Поделиться результатом в чате
+            </button>
+        </div>
+    </section>
 
-    <!-- Игровая логика на JavaScript -->
-    <script>
-        // Игровое состояние
-        let game = {
-            score: 0,
-            clickPower: 1,
-            rage: 0,
-            maxRage: 100,
-            level: 1,
-            autoClickerPower: 0
-        };
+</main>
 
-        // База пакостей и улучшений
-        const upgrades = [
-            { id: 1, name: "📌 Кнопка на стул", cost: 15, power: 1, desc: "+1 к силе пакости", count: 0 },
-            { id: 2, name: "🌶️ Перец в чай", cost: 100, power: 5, desc: "+5 к силе пакости", count: 0 },
-            { id: 3, name: "🔊 Колонка под дверь", cost: 500, power: 20, desc: "+20 к силе пакости", count: 0 },
-            { id: 4, name: "🐈 Запустить кота", cost: 2000, power: 100, desc: "Авто-троллинг (+10 оч./сек)", auto: 10, count: 0 }
-        ];
+<!-- НИЖНЯЯ ПАНЕЛЬ НАВИГАЦИИ (ТАББАР) -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-lg border-t border-slate-800/90 py-2 px-4">
+    <div class="max-w-md mx-auto grid grid-cols-4 gap-1 text-center">
+        <button onclick="switchTab('game')" id="nav-btn-game" class="nav-btn flex flex-col items-center py-1.5 rounded-xl transition text-amber-400 font-bold">
+            <span class="text-xl mb-0.5">🎮</span>
+            <span class="text-[10px]">Игра</span>
+        </button>
+        <button onclick="switchTab('shop')" id="nav-btn-shop" class="nav-btn flex flex-col items-center py-1.5 rounded-xl transition text-slate-400 hover:text-slate-200">
+            <span class="text-xl mb-0.5">🛒</span>
+            <span class="text-[10px]">Магазин</span>
+        </button>
+        <button onclick="switchTab('quests')" id="nav-btn-quests" class="nav-btn flex flex-col items-center py-1.5 rounded-xl transition text-slate-400 hover:text-slate-200">
+            <span class="text-xl mb-0.5">🏆</span>
+            <span class="text-[10px]">Ранги</span>
+        </button>
+        <button onclick="switchTab('leaderboard')" id="nav-btn-leaderboard" class="nav-btn flex flex-col items-center py-1.5 rounded-xl transition text-slate-400 hover:text-slate-200">
+            <span class="text-xl mb-0.5">👑</span>
+            <span class="text-[10px]">Топ</span>
+        </button>
+    </div>
+</nav>
 
-        // Фразы и реакции соседа
-        const neighborReactions = [
-            "Что за черт?!", кто тут шумит?!", 
-            "Я вызову полицию!", "Мои нервы на пределе!", 
-            "Ах ты негодяй!", "Ууу, погоди у меня!"
-        ];
+<!-- СКРИПТ ИГРОВОЙ ЛОГИКИ -->
+<script>
+    // Инициализация Telegram WebApp
+    let tg = window.Telegram.WebApp;
+    tg.expand();
 
-        // DOM элементы
-        const scoreEl = document.getElementById('score');
-        const levelEl = document.getElementById('level');
-        const tauntBtn = document.getElementById('taunt-btn');
-        const rageBar = document.getElementById('rage-bar');
-        const rageText = document.getElementById('rage-text');
-        const neighborAvatar = document.getElementById('neighbor-avatar');
-        const neighborStatus = document.getElementById('neighbor-status');
-        const actionLog = document.getElementById('action-log');
-        const upgradesList = document.getElementById('upgrades-list');
+    // Игровое состояние
+    let game = {
+        score: parseInt(localStorage.getItem('nfh_score') || '0'),
+        totalTaps: parseInt(localStorage.getItem('nfh_taps') || '0'),
+        clickPower: parseInt(localStorage.getItem('nfh_power') || '1'),
+        autoPower: parseInt(localStorage.getItem('nfh_auto') || '0'),
+        rage: 0,
+        maxRage: 100,
+        currentRoom: 'hall',
+        neighborRoom: 'kitchen',
+        unlockedAchievements: JSON.parse(localStorage.getItem('nfh_achievements') || '[]'),
+        upgrades: JSON.parse(localStorage.getItem('nfh_upgrades') || JSON.stringify([
+            { id: 1, name: "📌 Канцелярские кнопки", desc: "+1 к силе пакости", cost: 25, power: 1, count: 0 },
+            { id: 2, name: "🌶️ Острый соус в чай", desc: "+5 к силе пакости", cost: 150, power: 5, count: 0 },
+            { id: 3, name: "🪃 Резиновая курица", desc: "+20 к силе пакости", cost: 700, power: 20, count: 0 },
+            { id: 4, name: "🐈 Запустить дикого кота", desc: "Авто-троллинг (+10 оч/сек)", cost: 2000, auto: 10, count: 0 },
+            { id: 5, name: "🧨 Петарда в унитаз", desc: "+100 к силе пакости", cost: 8500, power: 100, count: 0 }
+        ]))
+    };
 
-        // Рендер магазина улучшений
-        function renderUpgrades() {
-            upgradesList.innerHTML = '';
-            upgrades.forEach(up => {
-                const disabled = game.score < up.cost ? 'opacity-50 cursor-not-allowed' : 'hover:border-rose-500/50 cursor-pointer';
-                const html = `
-                    <div onclick="buyUpgrade(${up.id})" class="flex justify-between items-center bg-slate-800/60 border border-slate-700/60 p-3 rounded-xl transition-all ${disabled}">
-                        <div class="text-left">
-                            <h5 class="font-bold text-sm text-slate-200">${up.name} <span class="text-xs text-amber-400">(${up.count})</span></h5>
-                            <p class="text-xs text-slate-400">${up.desc}</p>
-                        </div>
-                        <div class="bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-700 text-amber-400 font-bold text-sm">
-                            🪙 ${up.cost}
-                        </div>
-                    </div>
-                `;
-                upgradesList.innerHTML += html;
-            });
+    // Комнаты в доме и доступные в них ловушки
+    const roomsData = {
+        hall: {
+            name: "🛋️ Гостиная",
+            desc: "Сосед здесь отдыхает и читает газету.",
+            traps: [
+                { name: "Подложить кнопку на кресло", reward: 2, text: "Сосед с криком подпрыгнул на кресле!" },
+                { name: "Сломать телевизионную антенну", reward: 5, text: "Эран зашумел, сосед в ярости бьет кулаком по ТВ!" }
+            ]
+        },
+        kitchen: {
+            name: "🍳 Кухня",
+            desc: "Место готовки и заварки утреннего чая.",
+            traps: [
+                { name: "Насыпать соли в сахарницу", reward: 3, text: "Сосед сделал глоток и выплюнул чай!" },
+                { name: "Подкрутить кран с кипятком", reward: 7, text: "Сосед обжег руки холодной струей кипятка!" }
+            ]
+        },
+        bathroom: {
+            name: "🚽 Ванная",
+            desc: "Зона гигиены и утренних процедур.",
+            traps: [
+                { name: "Заменить зубную пасту суперклеем", reward: 4, text: "Сосед не смог открыть рот! Ха-ха!" },
+                { name: "Подкрасить мыло чернилами", reward: 6, text: "У соседа все лицо в синих разводах!" }
+            ]
+        },
+        bedroom: {
+            name: "🛏️ Спальня",
+            desc: "Комната отдыха и ночного сна.",
+            traps: [
+                { name: "Подложить будильник под матрас", reward: 5, text: "Будильник звонит прямо внутри дивана!" },
+                { name: "Укоротить простыню на кровати", reward: 8, text: "Сосед запутался в ногах и упал с кровати!" }
+            ]
         }
+    };
 
-        // Клик по главной кнопке пакости
-        tauntBtn.addEventListener('click', () => {
-            game.score += game.clickPower;
-            game.rage += game.clickPower * 2;
+    // Ранги игрока
+    const ranks = [
+        { threshold: 0, title: "Новичок 🚷" },
+        { threshold: 500, title: "Мелкий вредитель 😼" },
+        { threshold: 2500, title: "Офисный тролль 😈" },
+        { threshold: 10000, title: "Гроза Соседей 💥" },
+        { threshold: 50000, title: "Архитектор Хаоса 🔥" }
+    ];
 
-            if (game.rage >= game.maxRage) {
-                game.rage = 0;
-                game.score += 50 * game.level; // бонус за взрыв ярости
-                triggerRageExplosion();
+    // Достижения
+    const achievementsList = [
+        { id: 'first_blood', name: "Первая пакость", desc: "Сделай свой первый пранк", req: 1, reward: 50 },
+        { id: 'troll_100', name: "Начинающий хулиган", desc: "Набери 500 очков троллинга", req: 500, reward: 200 },
+        { id: 'master_prank', name: "Повелитель хаоса", desc: "Сделай 100 тапов по соседу", req: 100, reward: 500 }
+    ];
+
+    // Переключение вкладок
+    function switchTab(tabId) {
+        ['game', 'shop', 'quests', 'leaderboard'].forEach(t => {
+            document.getElementById('tab-' + t).classList.add('hidden');
+            document.getElementById('nav-btn-' + t).className = "nav-btn flex flex-col items-center py-1.5 rounded-xl transition text-slate-400 hover:text-slate-200";
+        });
+        document.getElementById('tab-' + tabId).classList.remove('hidden');
+        document.getElementById('nav-btn-' + tabId).className = "nav-btn flex flex-col items-center py-1.5 rounded-xl transition text-amber-400 font-bold";
+        
+        if(tabId === 'shop') renderShop();
+        if(tabId === 'quests') renderAchievements();
+        if(tabId === 'leaderboard') renderLeaderboard();
+    }
+
+    // Переключение комнат
+    function switchRoom(roomId) {
+        game.currentRoom = roomId;
+        renderRoom();
+    }
+
+    // Рендер активной комнаты
+    function renderRoom() {
+        Object.keys(roomsData).forEach(r => {
+            let btn = document.getElementById('room-btn-' + r);
+            let badge = document.getElementById('badge-' + r);
+            if(r === game.currentRoom) {
+                btn.className = "room-card p-3 rounded-2xl border transition-all cursor-pointer bg-slate-900 border-amber-500/50 shadow-md";
+            } else {
+                btn.className = "room-card p-3 rounded-2xl border transition-all cursor-pointer bg-slate-950/60 border-slate-800 hover:border-slate-600";
             }
-
-            updateUI();
-            playAnimation();
+            
+            if(r === game.neighborRoom) {
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
         });
 
-        // Эффект взрыва ярости
-        function triggerRageExplosion() {
-            const randomPhrase = neighborReactions[Math.floor(Math.random() * neighborReactions.length)];
-            neighborStatus.textContent = `🤬 ${randomPhrase}`;
-            actionLog.textContent = "Сосед сорвался с места! +Бонус очков!";
-            neighborAvatar.classList.add('shake-element');
-            setTimeout(() => neighborAvatar.classList.remove('shake-element'), 500);
+        let data = roomsData[game.currentRoom];
+        document.getElementById('current-room-title').innerHTML = `${data.name}`;
+        
+        let dangerEl = document.getElementById('room-danger-indicator');
+        if(game.currentRoom === game.neighborRoom) {
+            dangerEl.className = "text-xs font-semibold px-2 py-0.5 rounded-lg bg-rose-500/20 text-rose-400 border border-rose-500/40 animate-pulse";
+            dangerEl.innerText = "🚨 ВНИМАНИЕ: Сосед здесь!";
+        } else {
+            dangerEl.className = "text-xs font-semibold px-2 py-0.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/25";
+            dangerEl.innerText = "🟢 Безопасно";
         }
 
-        // Покупка улучшений
-        function buyUpgrade(id) {
-            const up = upgrades.find(u => u.id === id);
-            if (game.score >= up.cost) {
-                game.score -= up.cost;
-                up.count++;
-                
-                if (up.auto) {
-                    game.autoClickerPower += up.auto;
-                } else {
-                    game.clickPower += up.power;
+        let trapsContainer = document.getElementById('traps-container');
+        trapsContainer.innerHTML = '';
+        data.traps.forEach((trap, idx) => {
+            trapsContainer.innerHTML += `
+                <button onclick="executeTrap(${idx}, event)" class="w-full text-left bg-slate-900 hover:bg-slate-880 border border-slate-800/80 p-3 rounded-xl transition flex justify-between items-center group active:scale-[0.98]">
+                    <div>
+                        <div class="font-bold text-xs text-white group-hover:text-amber-300 transition">${trap.name}</div>
+                        <div class="text-[10px] text-slate-400 mt-0.5">Эффект: +${trap.reward * game.clickPower} очков</div>
+                    </div>
+                    <span class="bg-amber-500/10 border border-amber-500/30 text-amber-400 font-black text-xs px-2.5 py-1 rounded-lg">Пранк!</span>
+                </button>
+            `;
+        });
+    }
+
+    // Выполнение ловушки в комнате
+    function executeTrap(trapIdx, event) {
+        let trap = roomsData[game.currentRoom].traps[trapIdx];
+        let earned = trap.reward * game.clickPower;
+        game.score += earned;
+        game.totalTaps++;
+        game.rage = Math.min(game.maxRage, game.rage + earned * 1.5);
+
+        document.getElementById('room-event-log').innerHTML = `💥 <b>${trap.text}</b> (+${earned} очков)`;
+        
+        showFloatingText(event, `+${earned}`);
+        checkAchievements();
+        saveGame();
+        updateUI();
+    }
+
+    // Быстрый тап на главной кнопке
+    function triggerQuickTaunt(event) {
+        let earned = game.clickPower;
+        game.score += earned;
+        game.totalTaps++;
+        game.rage = Math.min(game.maxRage, game.rage + 4);
+
+        let quickPhrases = [
+            "Ты подшутил над соседом! 🪤",
+            "Сосед ругается матом за стеной! 🤬",
+            "Отличный троллинг! 🚀",
+            "Сосед споткнулся о коврик! 😂"
+        ];
+        let phrase = quickPhrases[Math.floor(Math.random() * quickPhrases.length)];
+        document.getElementById('room-event-log').innerHTML = `⚡ <b>${phrase}</b> (+${earned} очков)`;
+
+        showFloatingText(event, `+${earned}`);
+        checkAchievements();
+        saveGame();
+        updateUI();
+    }
+
+    // Всплывающий текст с очками
+    function showFloatingText(event, text) {
+        let el = document.createElement('div');
+        el.className = 'floating-text';
+        el.innerText = text;
+        el.style.left = (event.clientX || 200) + 'px';
+        el.style.top = (event.clientY || 350) + 'px';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 800);
+    }
+
+    // Рендер магазина
+    function renderShop() {
+        let list = document.getElementById('shop-upgrades-list');
+        list.innerHTML = '';
+        game.upgrades.forEach((up, index) => {
+            let canBuy = game.score >= up.cost;
+            list.innerHTML += `
+                <div class="bg-slate-950/70 border border-slate-800/80 p-3.5 rounded-2xl flex justify-between items-center">
+                    <div>
+                        <div class="font-bold text-sm text-white">${up.name} <span class="text-xs text-amber-400">(${up.count})</span></div>
+                        <div class="text-xs text-slate-400">${up.desc}</div>
+                    </div>
+                    <button onclick="buyUpgrade(${index})" class="px-3.5 py-2 rounded-xl font-bold text-xs transition ${canBuy ? 'bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-lg' : 'bg-slate-800 text-slate-500 cursor-not-allowed'}">
+                        🪙 ${up.cost}
+                    </button>
+                </div>
+            `;
+        });
+    }
+
+    // Покупка улучшений
+    function buyUpgrade(index) {
+        let up = game.upgrades[index];
+        if (game.score >= up.cost) {
+            game.score -= up.cost;
+            up.count++;
+            if (up.auto) {
+                game.autoPower += up.auto;
+            } else {
+                game.clickPower += up.power;
+            }
+            up.cost = Math.floor(up.cost * 1.45);
+            saveGame();
+            renderShop();
+            updateUI();
+        }
+    }
+
+    // Рендер достижений
+    function renderAchievements() {
+        let list = document.getElementById('achievements-list');
+        list.innerHTML = '';
+        achievementsList.forEach(ach => {
+            let isUnlocked = game.unlockedAchievements.includes(ach.id);
+            list.innerHTML += `
+                <div class="bg-slate-950/70 border border-slate-800/80 p-3.5 rounded-2xl flex justify-between items-center">
+                    <div>
+                        <div class="font-bold text-sm ${isUnlocked ? 'text-emerald-400' : 'text-white'}">${ach.name} ${isUnlocked ? '✅' : '🔒'}</div>
+                        <div class="text-xs text-slate-400">${ach.desc}</div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs font-bold text-amber-400">+${ach.reward} 🪙</span>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    // Проверка достижений
+    function checkAchievements() {
+        achievementsList.forEach(ach => {
+            if (!game.unlockedAchievements.includes(ach.id)) {
+                let conditionMet = false;
+                if (ach.id === 'first_blood' && game.score >= ach.req) conditionMet = true;
+                if (ach.id === 'troll_100' && game.score >= ach.req) conditionMet = true;
+                if (ach.id === 'master_prank' && game.totalTaps >= ach.req) conditionMet = true;
+
+                if (conditionMet) {
+                    game.unlockedAchievements.push(ach.id);
+                    game.score += ach.reward;
+                    localStorage.setItem('nfh_achievements', JSON.stringify(game.unlockedAchievements));
                 }
-
-                // Увеличиваем стоимость следующей покупки
-                up.cost = Math.floor(up.cost * 1.4);
-                renderUpgrades();
-                updateUI();
             }
+        });
+    }
+
+    // Рендер таблицы лидеров
+    function renderLeaderboard() {
+        let list = document.getElementById('leaderboard-list');
+        let dummyLeaders = [
+            { name: "Alex_Prank", score: 45200, rank: 1 },
+            { name: "TrollMaster99", score: 32100, rank: 2 },
+            { name: "NeigbourHater", score: 18900, rank: 3 },
+            { name: tg.initDataUnsafe?.user?.first_name || "Вы", score: game.score, rank: 4, isMe: true },
+            { name: "BadBoy_2026", score: 8400, rank: 5 }
+        ];
+        dummyLeaders.sort((a,b) => b.score - a.score);
+
+        list.innerHTML = '';
+        dummyLeaders.forEach((l, i) => {
+            list.innerHTML += `
+                <div class="bg-slate-950/70 border ${l.isMe ? 'border-amber-500/50 bg-amber-500/10' : 'border-slate-800/80'} p-3 rounded-xl flex justify-between items-center text-xs">
+                    <div class="flex items-center gap-2.5">
+                        <span class="font-black text-amber-400">#${i+1}</span>
+                        <span class="font-bold text-white">${l.name}</span>
+                    </div>
+                    <span class="font-black text-amber-300">🪙 ${l.score.toLocaleString()}</span>
+                </div>
+            `;
+        });
+    }
+
+    // Поделиться в Telegram
+    function shareScoreToTelegram() {
+        let text = `🔥 Я набрал ${game.score} очков в игре «Сосед из Ада» в Telegram! Попробуй побить мой рекорд!`;
+        let url = `https://t.me/share/url?url=https://t.me/&text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank');
+    }
+
+    // Обновление интерфейса
+    function updateUI() {
+        document.getElementById('header-score').innerText = game.score.toLocaleString();
+        
+        // Расчет ранга
+        let currentRank = ranks[0];
+        for (let r of ranks) {
+            if (game.score >= r.threshold) currentRank = r;
         }
+        document.getElementById('header-level').innerText = currentRank.title;
 
-        // Анимация клика на аватар
-        function playAnimation() {
-            neighborAvatar.classList.add('scale-105');
-            setTimeout(() => neighborAvatar.classList.remove('scale-105'), 100);
-            
-            const randomActions = [
-                "Ты подкрутил ему стул 🪑",
-                "Насыпал канцелярских кнопок 📌",
-                "Напугал кота под дверью 🐈",
-                "Испортил телевизионную антенну 📺"
-            ];
-            actionLog.textContent = randomActions[Math.floor(Math.random() * randomActions.length)];
+        // Шкала ярости
+        let ragePercent = Math.floor((game.rage / game.maxRage) * 100);
+        document.getElementById('rage-percent').innerText = ragePercent + '%';
+        document.getElementById('global-rage-bar').style.width = ragePercent + '%';
+
+        renderRoom();
+    }
+
+    // Сохранение в LocalStorage
+    function saveGame() {
+        localStorage.setItem('nfh_score', game.score);
+        localStorage.setItem('nfh_taps', game.totalTaps);
+        localStorage.setItem('nfh_power', game.clickPower);
+        localStorage.setItem('nfh_auto', game.autoPower);
+        localStorage.setItem('nfh_upgrades', JSON.stringify(game.upgrades));
+    }
+
+    // ИИ Соседа: блуждает по комнатам и злится
+    setInterval(() => {
+        let rooms = Object.keys(roomsData);
+        game.neighborRoom = rooms[Math.floor(Math.random() * rooms.length)];
+        
+        let locNames = { hall: 'Гостиной', kitchen: 'Кухне', bathroom: 'Ванной', bedroom: 'Спальне' };
+        document.getElementById('neighbor-location-status').innerText = `👴 Сосед в ${locNames[game.neighborRoom]}`;
+        
+        if (game.currentRoom === game.neighborRoom) {
+            document.getElementById('room-event-log').innerHTML = `🚨 <b>Внимание! Сосед вошел в комнату! Будь аккуратен!</b>`;
         }
+        renderRoom();
+    }, 12000);
 
-        // Обновление интерфейса
-        function updateUI() {
-            scoreEl.textContent = game.score;
-            rageBar.style.width = `${(game.rage / game.maxRage) * 100}%`;
-            rageText.textContent = `Ярость: ${Math.floor((game.rage / game.maxRage) * 100)}%`;
-            renderUpgrades();
+    // Пассивный авто-доход (авто-троллинг)
+    setInterval(() => {
+        if (game.autoPower > 0) {
+            game.score += game.autoPower;
+            game.rage = Math.min(game.maxRage, game.rage + game.autoPower / 2);
+            saveGame();
+            updateUI();
         }
+    }, 1000);
 
-        // Автоматический доход (пассивный троллинг)
-        setInterval(() => {
-            if (game.autoClickerPower > 0) {
-                game.score += game.autoClickerPower;
-                game.rage = Math.min(game.maxRage, game.rage + game.autoClickerPower / 2);
-                updateUI();
-            }
-        }, 1000);
-
-        // Первый запуск рендеринга
-        renderUpgrades();
-    </script>
-</body>
-</html>
-
+    // Первый запуск
+    updateUI();
+</script>
