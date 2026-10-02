@@ -675,3 +675,20 @@
     </script>
 </body>
 </html>
+<!-- Пример кнопки оплаты Звездами в интерфейсе -->
+<div class="bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border border-amber-500/40 p-4 rounded-2xl mb-4 text-center">
+    <h3 class="font-bold text-amber-300 text-sm mb-1">⭐ PRO Доступ</h3>
+    <p class="text-xs text-slate-300 mb-3">Разблокируй все премиум-возможности навсегда!</p>
+    <button onclick="buyProStars()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-2.5 rounded-xl text-xs transition">Купить за 150 ⭐</button>
+</div>
+
+<script>
+    function buyProStars() {
+        if (tg.openInvoice) {
+            // Метод вызова официального счета Telegram Stars (требуется настроенный инвойс от бота)
+            alert("Для генерации счета Stars бот должен отправить инвойс через API Telegram. Сейчас настроим!");
+        } else {
+            alert("Откройте приложение внутри Telegram для совершения покупки.");
+        }
+    }
+</script>
