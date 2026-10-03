@@ -1,157 +1,226 @@
 <!DOCTYPE html>
-<html lang="ru" class="scroll-smooth">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiniPrint Pro — Карманный термопринтер без чернил</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>AeroFace — Персональная автопахучка с вашим фото</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+        body { font-family: 'Montserrat', sans-serif; }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 selection:bg-pink-500 selection:text-white">
+<body class="bg-gray-900 text-gray-100 antialiased selection:bg-orange-500 selection:text-white">
 
-    <!-- ХЕППЕР / ШАПКА -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-xl mx-auto px-4 h-14 flex justify-between items-center">
-            <div class="font-black text-lg bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent">
-                MiniPrint Pro 🖨️
+    <!-- Шапка -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-extrabold tracking-wider text-orange-500">AERO<span class="text-white">FACE</span></span>
             </div>
-            <a href="#order" class="bg-pink-600 hover:bg-pink-500 text-white font-bold text-xs px-4 py-2 rounded-xl transition shadow-lg shadow-pink-600/30">
-                Заказать со скидкой
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
+                <a href="#features" class="hover:text-orange-400 transition">Преимущества</a>
+                <a href="#scents" class="hover:text-orange-400 transition">Ароматы</a>
+                <a href="#howitworks" class="hover:text-orange-400 transition">Как заказать</a>
+                <a href="#order" class="hover:text-orange-400 transition">Заказать</a>
+            </nav>
+            <a href="#order" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-full text-sm transition shadow-lg shadow-orange-500/20">
+                Сделать макет
             </a>
         </div>
     </header>
 
-    <!-- ГЛАВНЫЙ ЭКРАН (HERO) -->
-    <section class="pt-24 pb-12 px-4 max-w-xl mx-auto text-center">
-        <div class="inline-block bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-bold px-3 py-1 rounded-full mb-4">
-            🔥 ХИТ ПРОДАЖ 2026 ГОДА
-        </div>
-        <h1 class="text-3xl sm:text-4xl font-black tracking-tight leading-tight mb-4">
-            Печатай что угодно со смартфона <span class="bg-gradient-to-r from-pink-500 to-purple-400 bg-clip-text text-transparent">без единой капли чернил!</span>
-        </h1>
-        <p class="text-sm text-slate-400 mb-6 max-w-md mx-auto">
-            Карманный термопринтер для учебы, работы, заметок и творчества. Подключается по Bluetooth за 2 секунды.
-        </p>
-
-        <!-- Иллюстрация товара -->
-        <div class="relative bg-gradient-to-b from-slate-900 to-slate-900/50 border border-slate-800 p-6 rounded-3xl mb-6 shadow-2xl">
-            <div class="text-7xl mb-2">🖨️✨</div>
-            <div class="text-xs text-slate-400">Работает на термобумаге. Картриджи больше не нужны навсегда!</div>
-        </div>
-
-        <!-- Цены и кнопка -->
-        <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl mb-4 flex items-center justify-around">
-            <div>
-                <span class="text-xs text-slate-500 block">Обычная цена</span>
-                <span class="text-base text-slate-400 line-through">4 990 ₽</span>
-            </div>
-            <div class="h-8 w-px bg-slate-800"></div>
-            <div>
-                <span class="text-xs text-pink-400 font-bold block">Цена со скидкой</span>
-                <span class="text-2xl font-black text-white">2 490 ₽</span>
-            </div>
-        </div>
-
-        <a href="#order" class="block w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold py-4 rounded-2xl text-base shadow-xl shadow-pink-600/30 transition">
-            Успеть купить со скидкой 50% 🚀
-        </a>
-        <p class="text-[11px] text-slate-500 mt-2">Оплата при получении. Гарантия возврата 14 дней.</p>
-    </section>
-
-    <!-- ПРЕИМУЩЕСТВА -->
-    <section class="py-10 px-4 max-w-xl mx-auto">
-        <h2 class="text-xl font-bold text-center mb-6">Почему все выбирают MiniPrint Pro?</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl">
-                <div class="text-2xl mb-2">💸</div>
-                <h3 class="font-bold text-sm mb-1">Никаких картриджей</h3>
-                <p class="text-xs text-slate-400">Печать за счет нагрева бумаги. Вы экономите тысячи рублей на краске.</p>
-            </div>
-            <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl">
-                <div class="text-2xl mb-2">📱</div>
-                <div class="font-bold text-sm mb-1">Bluetooth за секунду</div>
-                <p class="text-xs text-slate-400">Удобное приложение на русском языке для iOS и Android.</p>
-            </div>
-            <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl">
-                <div class="text-2xl mb-2">🎒</div>
-                <h3 class="font-bold text-sm mb-1">Всегда с собой</h3>
-                <p class="text-xs text-slate-400">Весит всего 160 грамм, помещается в любой карман или сумочку.</p>
-            </div>
-            <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl">
-                <div class="text-2xl mb-2">📚</div>
-                <h3 class="font-bold text-sm mb-1">Идеально для учебы</h3>
-                <p class="text-xs text-slate-400">Печать формул, шпор, графиков и фотографий за пару секунд.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ОТЗЫВЫ -->
-    <section class="py-10 px-4 max-w-xl mx-auto">
-        <h2 class="text-xl font-bold text-center mb-6">Отзывы покупателей</h2>
-        <div class="space-y-3">
-            <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl">
-                <div class="flex justify-between items-center mb-1">
-                    <span class="font-bold text-sm">Анна С.</span>
-                    <span class="text-amber-400 text-xs">⭐⭐⭐⭐⭐</span>
+    <!-- Главный экран (Hero) -->
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-950/40 via-gray-900 to-gray-900 -z-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-orange-500/10 border border-orange-500/30 px-3 py-1 rounded-full text-orange-400 text-xs font-semibold">
+                        <span>🔥 Хит 2026 года</span>
+                        <span>•</span>
+                        <span>Индивидуальный дизайн</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Автопахучка с <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-200">вашим фото</span> или логотипом
+                    </h1>
+                    <p class="text-lg text-gray-400">
+                        Стильный аксессуар для вашего автомобиля с премиальным парфюмом. Загрузите любое фото: любимого человека, питомца или автомобиля — сделайте салон по-настоящему уникальным.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                        <a href="#order" class="bg-orange-500 hover:bg-orange-600 text-white text-center font-bold px-8 py-4 rounded-xl text-lg transition shadow-xl shadow-orange-500/30">
+                            Создать свою пахучку
+                        </a>
+                        <a href="#howitworks" class="bg-gray-800 hover:bg-gray-700 text-gray-300 text-center font-medium px-6 py-4 rounded-xl text-lg transition border border-gray-700">
+                            Как это работает?
+                        </a>
+                    </div>
+                    <div class="flex items-center space-x-6 pt-4 text-sm text-gray-400">
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Стойкость до 45 дней</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Премиум парфюм</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-xs text-slate-300">«Брала дочке-студентке для учебы. Печатает шпоры и вырезки на ура! Очень компактный, батарею держит долго. Рекомендую!»</p>
-            </div>
-            <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-2xl">
-                <div class="flex justify-between items-center mb-1">
-                    <span class="font-bold text-sm">Максим В.</span>
-                    <span class="text-amber-400 text-xs">⭐⭐⭐⭐⭐</span>
+                <!-- Картинка-превью -->
+                <div class="relative">
+                    <div class="relative mx-auto max-w-md bg-gradient-to-tr from-orange-500/20 to-amber-500/20 p-2 rounded-3xl border border-orange-500/30 shadow-2xl">
+                        <div class="bg-gray-800 rounded-2xl p-6 text-center">
+                            <!-- Заглушка под фото макета -->
+                            <div class="h-80 bg-gray-900 rounded-xl flex flex-col items-center justify-center border border-dashed border-gray-700 relative overflow-hidden group">
+                                <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80');"></div>
+                                <div class="relative z-10 p-4 bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-700 shadow-lg">
+                                    <span class="text-xs uppercase tracking-widest text-orange-400 font-bold">Ваше фото здесь</span>
+                                    <p class="text-sm text-gray-300 mt-1">Плотный эко-картон + ламинация</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center text-left">
+                                <div>
+                                    <h3 class="font-bold text-white">Модель "Classic Round"</h3>
+                                    <p class="text-xs text-gray-400">Двусторонняя печать</p>
+                                </div>
+                                <span class="text-xl font-extrabold text-orange-400">990 ₽</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-xs text-slate-300">«Использую на складе для быстрой печати стикеров и ценников. Окупил себя за три дня. Офигенная вещь.»</p>
             </div>
         </div>
     </section>
 
-    <!-- ФОРМА ЗАКАЗА -->
-    <section id="order" class="py-12 px-4 max-w-xl mx-auto">
-        <div class="bg-gradient-to-b from-slate-900 to-slate-950 border border-pink-500/30 p-6 rounded-3xl shadow-2xl shadow-pink-900/20">
-            <h2 class="text-2xl font-black text-center mb-2">Оформите заказ</h2>
-            <p class="text-xs text-slate-400 text-center mb-6">Оплата при получении после проверки товара.</p>
-
-            <form onsubmit="handleOrder(event)" class="space-y-3">
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1">Ваше имя:</label>
-                    <input id="order-name" type="text" required placeholder="Иван" class="w-full bg-slate-900 border border-slate-700/80 rounded-xl p-3 text-sm focus:outline-none focus:border-pink-500">
+    <!-- Преимущества -->
+    <section id="features" class="py-20 bg-gray-950 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Почему выбирают <span class="text-orange-500">AeroFace</span>?</h2>
+                <p class="mt-4 text-gray-400">Мы не продаем картон из перехода. Мы создаем качественный брендированный аксессуар.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
+                    <div class="w-12 h-12 bg-orange-500/10 text-orange-500 rounded-xl flex items-center justify-center font-bold text-xl mb-6">💎</div>
+                    <h3 class="text-xl font-bold mb-3">Французские отдушки</h3>
+                    <p class="text-gray-400 text-sm">Используем сертифицированные гипоаллергенные масла. Запах держится долго и не вызывает головной боли.</p>
                 </div>
-                <div>
-                    <label class="text-xs text-slate-400 block mb-1">Номер телефона:</label>
-                    <input id="order-phone" type="tel" required placeholder="+7 (999) 000-00-00" class="w-full bg-slate-900 border border-slate-700/80 rounded-xl p-3 text-sm focus:outline-none focus:border-pink-500">
+                <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
+                    <div class="w-12 h-12 bg-orange-500/10 text-orange-500 rounded-xl flex items-center justify-center font-bold text-xl mb-6">🖼️</div>
+                    <h3 class="text-xl font-bold mb-3">Яркая печать</h3>
+                    <p class="text-gray-400 text-sm">Высокое разрешение печати с двух сторон. Картинка не выгорает на солнце и не боится перепадов температур.</p>
                 </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold py-3.5 rounded-xl text-sm shadow-lg shadow-pink-600/30 transition mt-2">
-                    Оформить заказ со скидкой
-                </button>
-            </form>
-            
-            <div id="order-success" class="hidden mt-4 p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-center text-xs text-emerald-400">
-                🎉 Спасибо! Ваш заказ принят. Менеджер свяжется с вами в течение 10 минут для подтверждения доставки.
+                <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
+                    <div class="w-12 h-12 bg-orange-500/10 text-orange-500 rounded-xl flex items-center justify-center font-bold text-xl mb-6">⚡</div>
+                    <h3 class="text-xl font-bold mb-3">Готовность за 24 часа</h3>
+                    <p class="text-gray-400 text-sm">Быстро изготавливаем макет, утверждаем с вами в мессенджере и отправляем Почтой РФ или СДЭК.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ПОДВАЛ -->
-    <footer class="py-8 text-center text-xs text-slate-600 border-t border-slate-900">
-        ИП Смирнов О.А. ОГРНИП 321774600000000<br>Все права защищены.
+    <!-- Популярные ароматы -->
+    <section id="scents" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Выберите свой <span class="text-orange-500">аромат</span></h2>
+                <p class="mt-4 text-gray-400">В комплекте идет концентрированный флакон для повторной заправки пахучки.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-gray-950 p-6 rounded-2xl border border-gray-800 text-center">
+                    <div class="text-3xl mb-3">🌲</div>
+                    <h4 class="font-bold text-lg">Хвойный лес</h4>
+                    <p class="text-xs text-gray-400 mt-1">Свежий, бодрящий мотив зимнего бора</p>
+                </div>
+                <div class="bg-gray-950 p-6 rounded-2xl border border-gray-800 text-center">
+                    <div class="text-3xl mb-3">☕</div>
+                    <h4 class="font-bold text-lg">Черный кофе</h4>
+                    <p class="text-xs text-gray-400 mt-1">Насыщенный аромат бодрящего зернового кофе</p>
+                </div>
+                <div class="bg-gray-950 p-6 rounded-2xl border border-gray-800 text-center">
+                    <div class="text-3xl mb-3">🍋</div>
+                    <h4 class="font-bold text-lg">Новый автомобиль</h4>
+                    <p class="text-xs text-gray-400 mt-1">Элитный запах дорогой кожи и пластика</p>
+                </div>
+                <div class="bg-gray-950 p-6 rounded-2xl border border-gray-800 text-center">
+                    <div class="text-3xl mb-3">🫐</div>
+                    <h4 class="font-bold text-lg">Лесные ягоды</h4>
+                    <p class="text-xs text-gray-400 mt-1">Сладкий, сочный фруктовый шлейф</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Как заказать -->
+    <section id="howitworks" class="py-20 bg-gray-950 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Как сделать заказ?</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center font-extrabold text-lg mx-auto mb-4">1</div>
+                    <h3 class="font-bold text-lg mb-2">Оставьте заявку</h3>
+                    <p class="text-sm text-gray-400">Заполните форму ниже, укажите желаемый аромат и прикрепите фото.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center font-extrabold text-lg mx-auto mb-4">2</div>
+                    <h3 class="font-bold text-lg mb-2">Утвердите макет</h3>
+                    <p class="text-sm text-gray-400">Наш дизайнер бесплатно подготовит превью пахучки и пришлет вам в Telegram/WhatsApp.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center font-extrabold text-lg mx-auto mb-4">3</div>
+                    <h3 class="font-bold text-lg mb-2">Получите заказ</h3>
+                    <p class="text-sm text-gray-400">Мы изготовим пахучку за 1 день и отправим удобной для вас службой доставки.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок заказа (Форма) -->
+    <section id="order" class="py-20 bg-gray-900">
+        <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gray-950 p-8 sm:p-10 rounded-3xl border border-orange-500/30 shadow-2xl">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-extrabold">Заказать пахучку</h2>
+                    <p class="text-gray-400 text-sm mt-2">Заполните форму, и мы свяжемся с вами для согласования макета</p>
+                </div>
+                <form class="space-y-5" onsubmit="event.preventDefault(); alert('Спасибо за заявку! В реальном проекте данные уйдут в CRM, а мы свяжемся с вами.');">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-semibold text-gray-400 mb-2">Ваше имя</label>
+                        <input type="text" required placeholder="Иван" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-semibold text-gray-400 mb-2">Телефон или Telegram</label>
+                        <input type="text" required placeholder="+7 (999) 000-00-00" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-semibold text-gray-400 mb-2">Выберите аромат</label>
+                        <select class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-500 transition">
+                            <option>🌲 Хвойный лес</option>
+                            <option>☕ Черный кофе</option>
+                            <option>🍋 Новый автомобиль (Кожа)</option>
+                            <option>🫐 Лесные ягоды</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-semibold text-gray-400 mb-2">Пожелания к макету / Ссылка на фото</label>
+                        <textarea rows="3" placeholder="Опишите, что хотите разместить, или укажите ссылку на фото (Google Диск / соцсети)" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-500 transition"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl text-lg transition shadow-lg shadow-orange-500/20">
+                        Отправить заявку (990 ₽)
+                    </button>
+                    <p class="text-center text-xs text-gray-500">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-gray-950 border-t border-gray-800 py-8 text-center text-sm text-gray-500">
+        <p>© 2026 AeroFace. Все права защищены.</p>
     </footer>
 
-    <script>
-        function handleOrder(e) {
-            e.preventDefault();
-            let name = document.getElementById('order-name').value;
-            let phone = document.getElementById('order-phone').value;
-            if(!name || !phone) return;
-            
-            // Скрываем форму или показываем успех
-            document.getElementById('order-success').classList.remove('hidden');
-            e.target.reset();
-        }
-    </script>
 </body>
 </html>
