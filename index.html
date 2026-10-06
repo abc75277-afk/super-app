@@ -130,35 +130,48 @@
             </div>
         </section>
 
-        <!-- РЕЕСТР УЧАСТНИКОВ -->
+        <!-- СЕКЦИЯ ДОСТИЖЕНИЙ / АЧИВОК -->
+        <section class="space-y-6 pt-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-white" data-i18n="achievementsTitle">🏆 Зал достижений и вех</h2>
+                    <p class="text-slate-400 text-sm mt-1" data-i18n="achievementsSub">Уникальные статусы тех, кто вошел в историю проекта первыми.</p>
+                </div>
+            </div>
+            <div id="achievementsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Динамически заполняется скриптом -->
+            </div>
+        </section>
+
+        <!-- РЕЕСТР УЧАСТНИКОВ (ДВОЙНАЯ СИСТЕМА) -->
         <section class="space-y-12 pt-6">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
                     <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white" data-i18n="listTitle">Хроника участников эксперимента</h2>
-                    <p class="text-lg text-slate-300 mt-1" data-i18n="listDesc">Топ-10 ключевых меценатов навсегда закреплены наверху. Ниже идет общая лента всех участников.</p>
+                    <p class="text-lg text-slate-300 mt-1" data-i18n="listDesc">Зал основателей хранит первопроходцев навсегда. Рейтинг по вкладу ранжирует участников по сумме.</p>
                 </div>
                 <div class="flex items-center space-x-3">
                     <span class="text-base px-6 py-3 rounded-2xl bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 font-extrabold" id="participantsBadge">Участников: 0</span>
                 </div>
             </div>
 
-            <!-- ТОП-10 -->
+            <!-- 👑 ЗАЛ ОСНОВАТЕЛЕЙ (ПЕРВЫЕ 10) -->
             <div class="space-y-4">
                 <h3 class="text-xl font-extrabold text-amber-400 uppercase tracking-wider flex items-center space-x-2">
                     <span>👑</span>
-                    <span data-i18n="top10Title">Топ-10 главных меценатов</span>
+                    <span data-i18n="foundersTitle">Зал основателей (Первые 10 участников)</span>
                 </h3>
-                <div id="topParticipantsList" class="space-y-3"></div>
+                <div id="foundersList" class="space-y-3"></div>
             </div>
 
-            <!-- ЛЕНТА -->
+            <!-- 💎 РЕЙТИНГ ПО ВКЛАДУ -->
             <div class="space-y-4 pt-4">
-                <h3 class="text-xl font-extrabold text-slate-300 uppercase tracking-wider flex items-center space-x-2">
-                    <span>📜</span>
-                    <span data-i18n="feedTitle">Общая лента участников</span>
+                <h3 class="text-xl font-extrabold text-emerald-400 uppercase tracking-wider flex items-center space-x-2">
+                    <span>💎</span>
+                    <span data-i18n="topDonorsTitle">Рейтинг по вкладу (Топ меценатов)</span>
                 </h3>
                 <div class="glass-panel border border-cardBorder rounded-3xl p-6 sm:p-8 max-h-[500px] overflow-y-auto custom-scrollbar shadow-2xl">
-                    <div id="feedParticipantsList" class="space-y-4"></div>
+                    <div id="topDonorsList" class="space-y-4"></div>
                 </div>
             </div>
         </section>
@@ -313,10 +326,12 @@
                 p8Title: "Магия совпадений", p8Desc: "Инвестируя в чужие приключения, вы запускаете цепочку позитивных событий у себя.",
                 p9Title: "Карта мира", p9Desc: "В проекте участвуют люди со всех уголков планеты — от Токио до Нью-Йорка.",
                 p10Title: "Энергия движения", p10Desc: "Лучше сделать один веселый шаг, чем годами раздумывать и сомневаться.",
+                achievementsTitle: "🏆 Зал достижений и вех",
+                achievementsSub: "Уникальные статусы тех, кто вошел в историю проекта первыми.",
                 listTitle: "Хроника участников эксперимента",
-                listDesc: "Топ-10 ключевых меценатов навсегда закреплены наверху. Ниже идет общая лента всех участников.",
-                top10Title: "Топ-10 главных меценатов",
-                feedTitle: "Общая лента участников",
+                listDesc: "Зал основателей хранит первопроходцев навсегда. Рейтинг по вкладу ранжирует участников по сумме.",
+                foundersTitle: "Зал основателей (Первые 10 участников)",
+                topDonorsTitle: "Рейтинг по вкладу (Топ меценатов)",
                 step1Title: "Шаг 1: Сумма вклада",
                 step1Desc: "Введите любую комфортную сумму (хоть $1, хоть $500).",
                 amountLabel: "Сумма ($)",
@@ -356,10 +371,12 @@
                 p8Title: "Magic of Coincidences", p8Desc: "By investing in others' adventures, you trigger a chain of positive events for yourself.",
                 p9Title: "World Map", p9Desc: "People from all corners of the planet participate — from Tokyo to New York.",
                 p10Title: "Energy of Motion", p10Desc: "Better to take one fun step than spend years thinking and doubting.",
+                achievementsTitle: "🏆 Achievements & Milestones Hall",
+                achievementsSub: "Unique statuses of those who made history first.",
                 listTitle: "Chronicle of Experiment Participants",
-                listDesc: "Top 10 key patrons are permanently fixed at the top. Below is the general feed of all participants.",
-                top10Title: "Top 10 Main Patrons",
-                feedTitle: "General Participants Feed",
+                listDesc: "Founders Hall preserves pioneers forever. Contribution ranking ranks participants by amount.",
+                foundersTitle: "Founders Hall (First 10 Participants)",
+                topDonorsTitle: "Contribution Ranking (Top Patrons)",
                 step1Title: "Step 1: Contribution Amount",
                 step1Desc: "Enter any comfortable amount ($1, $500, or more).",
                 amountLabel: "Amount ($)",
@@ -420,8 +437,6 @@
         }
 
         function renderParticipants() {
-            const sorted = [...participants].sort((a, b) => b.amount - a.amount);
-            
             const total = participants.reduce((sum, p) => sum + p.amount, 0);
             document.getElementById('totalAmount').innerText = total.toLocaleString();
             
@@ -432,18 +447,18 @@
             document.getElementById('progressText').innerText = currentLang === 'ru' ? `Прогресс: ${percent}%` : `Progress: ${percent}%`;
             document.getElementById('participantsBadge').innerText = currentLang === 'ru' ? `Участников: ${participants.length}` : `Participants: ${participants.length}`;
 
-            // Топ-10
-            const top10 = sorted.slice(0, 10);
-            const topListEl = document.getElementById('topParticipantsList');
-            topListEl.innerHTML = '';
+            // 1. 👑 ЗАЛ ОСНОВАТЕЛЕЙ (Фиксированные первые 10 участников в исходном порядке добавления)
+            const founders = participants.slice(0, 10);
+            const foundersListEl = document.getElementById('foundersList');
+            foundersListEl.innerHTML = '';
 
-            top10.forEach((p, index) => {
-                const medals = ['👑', '🥈', '🥉', '✨', '✨', '✨', '✨', '✨', '✨', '✨'];
+            founders.forEach((p, index) => {
+                const founderBadges = ['👑 Основатель #1', '🥈 Основатель #2', '🥉 Основатель #3', '✨ Основатель', '✨ Основатель', '✨ Основатель', '✨ Основатель', '✨ Основатель', '✨ Основатель', '✨ Основатель'];
                 const card = document.createElement('div');
                 card.className = 'glass-panel border border-cardBorder rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:border-amber-500/50 transition';
                 card.innerHTML = `
                     <div class="flex items-center space-x-4">
-                        <span class="text-2xl">${medals[index]}</span>
+                        <span class="text-xs font-black uppercase px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30">${founderBadges[index]}</span>
                         <div>
                             <div class="flex items-center space-x-2">
                                 <span class="font-black text-white text-lg">${p.name}</span>
@@ -459,41 +474,104 @@
                         </a>
                     </div>
                 `;
-                topListEl.appendChild(card);
+                foundersListEl.appendChild(card);
             });
 
-            // Общая лента
-            const feed = sorted.slice(10);
-            const feedListEl = document.getElementById('feedParticipantsList');
-            feedListEl.innerHTML = '';
+            // 2. 💎 РЕЙТИНГ ПО ВКЛАДУ (Все участники, отсортированные по сумме)
+            const sortedByAmount = [...participants].sort((a, b) => b.amount - a.amount);
+            const topDonorsListEl = document.getElementById('topDonorsList');
+            topDonorsListEl.innerHTML = '';
 
-            if (feed.length === 0) {
-                feedListEl.innerHTML = `<p class="text-slate-400 text-center py-4 text-sm">${currentLang === 'ru' ? 'В общей ленте пока пусто. Станьте следующим!' : 'General feed is empty. Be the next!'}</p>`;
-            } else {
-                feed.forEach(p => {
-                    const row = document.createElement('div');
-                    row.className = 'p-4 rounded-2xl bg-darkBg/60 border border-cardBorder flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 hover:border-accent/30 transition';
-                    row.innerHTML = `
-                        <div class="flex items-center space-x-3">
-                            <span class="text-slate-500 text-sm font-bold">#${p.id}</span>
-                            <div>
-                                <div class="flex items-center space-x-2">
-                                    <span class="font-bold text-white text-base">${p.name}</span>
-                                    <span class="text-xs text-slate-400">(${p.city})</span>
-                                </div>
-                                <p class="text-xs text-slate-300 italic">«${p.comment}»</p>
+            sortedByAmount.forEach((p, index) => {
+                const row = document.createElement('div');
+                row.className = 'p-4 rounded-2xl bg-darkBg/60 border border-cardBorder flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 hover:border-accent/30 transition';
+                row.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <span class="text-slate-400 text-sm font-black w-6">#${index + 1}</span>
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <span class="font-bold text-white text-base">${p.name}</span>
+                                <span class="text-xs text-slate-400">(${p.city})</span>
                             </div>
+                            <p class="text-xs text-slate-300 italic">«${p.comment}»</p>
                         </div>
-                        <div class="flex items-center space-x-3 w-full sm:w-auto justify-between sm:justify-end">
-                            <span class="font-extrabold text-emerald-400 text-base">$${p.amount}</span>
-                            <a href="${p.socialLink}" target="_blank" class="px-3 py-1.5 rounded-lg bg-cardBg border border-cardBorder text-slate-300 text-xs font-bold hover:border-accent hover:text-white transition">
-                                ${p.socialType} ↗
-                            </a>
-                        </div>
-                    `;
-                    feedListEl.appendChild(row);
-                });
-            }
+                    </div>
+                    <div class="flex items-center space-x-3 w-full sm:w-auto justify-between sm:justify-end">
+                        <span class="font-extrabold text-emerald-400 text-base">$${p.amount}</span>
+                        <a href="${p.socialLink}" target="_blank" class="px-3 py-1.5 rounded-lg bg-cardBg border border-cardBorder text-slate-300 text-xs font-bold hover:border-accent hover:text-white transition">
+                            ${p.socialType} ↗
+                        </a>
+                    </div>
+                `;
+                topDonorsListEl.appendChild(row);
+            });
+
+            // 3. 🏆 СИСТЕМА ДОСТИЖЕНИЙ (Ачивки)
+            renderAchievements();
+        }
+
+        function renderAchievements() {
+            const grid = document.getElementById('achievementsGrid');
+            grid.innerHTML = '';
+
+            // Находим нужных людей по критериям
+            const firstParticipant = participants[participants.length - 1]; // Самый первый добавленный (исходный или созданный)
+            const firstJapan = participants.find(p => p.city.toLowerCase().includes('япония') || p.city.toLowerCase().includes('japan') || p.city.toLowerCase().includes('токио') || p.city.toLowerCase().includes('киото') || p.city.toLowerCase().includes('осака'));
+            const firstSerbia = participants.find(p => p.city.toLowerCase().includes('сербия') || p.city.toLowerCase().includes('serbia') || p.city.toLowerCase().includes('белград'));
+            const first100 = participants.find(p => p.amount >= 100);
+            const first1000 = participants.find(p => p.amount >= 1000);
+
+            const achievements = [
+                {
+                    icon: '🏆',
+                    titleRu: 'Первый участник',
+                    titleEn: 'First Participant',
+                    person: firstParticipant ? firstParticipant.name : '—',
+                    descRu: firstParticipant ? `${firstParticipant.name} (${firstParticipant.city})` : 'Вакантно'
+                },
+                {
+                    icon: '🚀',
+                    titleRu: 'Первый из Японии',
+                    titleEn: 'First from Japan',
+                    person: firstJapan ? firstJapan.name : 'Пока нет',
+                    descRu: firstJapan ? `${firstJapan.city} ($${firstJapan.amount})` : 'Ждем пионера'
+                },
+                {
+                    icon: '🌍',
+                    titleRu: 'Первый из Сербии',
+                    titleEn: 'First from Serbia',
+                    person: firstSerbia ? firstSerbia.name : 'Пока нет',
+                    descRu: firstSerbia ? `${firstSerbia.city} ($${firstSerbia.amount})` : 'Ждем пионера'
+                },
+                {
+                    icon: '💎',
+                    titleRu: 'Первый вклад $100+',
+                    titleEn: 'First $100+ Contribution',
+                    person: first100 ? first100.name : 'Пока нет',
+                    descRu: first100 ? `$${first100.amount} от ${first100.name}` : 'Вакантно'
+                },
+                {
+                    icon: '💰',
+                    titleRu: 'Первый вклад $1,000+',
+                    titleEn: 'First $1,000+ Contribution',
+                    person: first1000 ? first1000.name : 'Пока нет',
+                    descRu: first1000 ? `$${first1000.amount} от ${first1000.name}` : 'Вакантно'
+                }
+            ];
+
+            achievements.forEach(ach => {
+                const card = document.createElement('div');
+                card.className = 'glass-panel border border-cardBorder rounded-2xl p-5 flex items-center space-x-4 hover:border-indigo-500/50 transition';
+                card.innerHTML = `
+                    <div class="text-3xl p-3 rounded-2xl bg-darkBg border border-cardBorder">${ach.icon}</div>
+                    <div>
+                        <div class="text-xs text-indigo-400 font-extrabold uppercase tracking-wider">${currentLang === 'ru' ? ach.titleRu : ach.titleEn}</div>
+                        <div class="text-lg font-black text-white mt-0.5">${ach.person}</div>
+                        <div class="text-xs text-slate-400 mt-0.5">${ach.descRu}</div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
         }
 
         function handleParticipantSubmit(e) {
@@ -510,6 +588,7 @@
                 comment: document.getElementById('pComment').value || (currentLang === 'ru' ? 'Токио ждет!' : 'Tokyo awaits!')
             };
 
+            // Добавляем в начало массива (новый участник становится частью Зала основателей, если входит в первые 10, или сразу участвует в рейтинге по вкладу)
             participants.unshift(newParticipant);
             saveParticipantsToStorage();
             renderParticipants();
