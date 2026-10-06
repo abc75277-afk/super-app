@@ -740,3 +740,26 @@ function proceedPayment() {
 }
 </script></body>
 </html>
+<!-- Подключаем Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://vjcthmoammkrirzjoybq.supabase.co';
+  const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_dJQk0Em6jAfQK4Nx9MAs3g_j6xX_5v4';
+
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+  async function trackStat(statId, amount = 1) {
+    const { data, error } = await supabase.rpc('increment_counter', {
+      row_id: statId,
+      amount: amount
+    });
+    if (error) {
+      console.error('Ошибка:', error);
+      return;
+    }
+    console.log('Статистика обновлена:', data);
+  }
+
+  // Автоматически увеличиваем просмотры при открытии сайта
+  trackStat('total_views', 1);
+</script>
