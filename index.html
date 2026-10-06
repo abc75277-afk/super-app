@@ -31,7 +31,6 @@
         .custom-scrollbar::-webkit-scrollbar { width: 8px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: #030508; border-radius: 4px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #1f293d; border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #374151; }
     </style>
 </head>
 <body class="bg-darkBg text-slate-100 min-h-screen selection:bg-accent selection:text-white pb-40">
@@ -62,22 +61,22 @@
                 <div class="absolute -right-32 -top-32 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl pointer-events-none"></div>
                 <div>
                     <div class="inline-flex items-center space-x-2 mb-6 px-5 py-2.5 rounded-full bg-accent/15 border border-accent/30 text-accent text-sm font-extrabold tracking-wider uppercase">
-                        <span>✨</span>
-                        <span data-i18n="badge">Никаких грустных историй • Чистая свобода и карма</span>
+                        <span>🚀</span>
+                        <span data-i18n="badge">Самый амбициозный билет в один конец до Токио</span>
                     </div>
                     <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-8 leading-[1.1] text-white">
-                        <span class="bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent" data-i18n="heroTitle1">Самый амбициозный</span><br>
-                        <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent" data-i18n="heroTitle2">билет в один конец в Токио.</span>
+                        <span class="bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent" data-i18n="heroTitle1">Цель проста.</span><br>
+                        <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent" data-i18n="heroTitle2">Собрать миллион символических билетов.</span>
                     </h1>
                     <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mb-8 leading-relaxed font-normal" data-i18n="heroDesc">
-                        Один бакс или чашка кофе не сделают вас беднее. Но когда вы легко и с улыбкой расстаетесь с мелочью ради чужой мечты, Вселенная и карма включают режим мультипликатора. Проверьте сами — это стоит всего один доллар, а меняет настроение на все сто.
+                        Собрать миллион билетов по $1 и доказать, что интернет способен объединить людей вокруг одной безумной идеи. Станьте совладельцем мечты и войдите в историю проекта.
                     </p>
                 </div>
                 <div class="flex flex-wrap items-center gap-5 pt-8 border-t border-slate-800/80">
                     <button onclick="openPaymentModal()" class="px-10 py-5 rounded-2xl bg-gradient-to-r from-accent to-indigo-600 hover:from-accentHover hover:to-indigo-500 text-white font-extrabold text-lg shadow-xl shadow-accent/30 transition transform hover:-translate-y-0.5" data-i18n="participateBtn">
-                        Инвестировать в Токио ⚡
+                        Получить билет в Токио ⚡
                     </button>
-                    <div class="text-sm text-slate-400 font-medium" data-i18n="heroFooter">🎁 В подарок: Сертификат совладельца мечты + Кармический бонус</div>
+                    <div class="text-sm text-slate-400 font-medium" data-i18n="heroFooter">🎁 Уровни: Участник ($1+) • Совладелец ($25+) • Легенда ($100+)</div>
                 </div>
             </div>
 
@@ -92,7 +91,7 @@
                         </span>
                     </div>
                     <div class="text-5xl sm:text-6xl font-black text-emerald-400 mb-4 tracking-tight">$<span id="totalAmount">0</span></div>
-                    <p class="text-base text-slate-300 leading-relaxed font-medium" data-i18n="fundDesc">Собрано совместными усилиями участников со всего мира.</p>
+                    <p class="text-base text-slate-300 leading-relaxed font-medium" data-i18n="fundDesc">Собрано совместными усилиями пассажиров со всего мира.</p>
                 </div>
                 <div class="mt-8 pt-6 border-t border-slate-800 space-y-4">
                     <div class="flex justify-between text-base font-bold">
@@ -110,69 +109,143 @@
             </div>
         </div>
 
-        <!-- 10 КАРМИЧЕСКИХ СТОЛБИКОВ -->
+        <!-- УРОВНИ УЧАСТИЯ -->
         <section class="space-y-8 pt-6">
             <div class="text-center max-w-2xl mx-auto space-y-3">
-                <h2 class="text-3xl font-black text-white" data-i18n="philosophyHeader">Почему это работает? (Философия кармы)</h2>
-                <p class="text-slate-400 text-base" data-i18n="philosophySub">Десять законов легкого отношения к деньгам, цифрового приключения и взаимной поддержки.</p>
+                <h2 class="text-3xl font-black text-white" data-i18n="levelsHeader">Выберите свой статус в проекте</h2>
+                <p class="text-slate-400 text-base" data-i18n="levelsSub">От символического вклада до физического коллекционного артефакта.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-                <div class="glass-panel border border-cardBorder rounded-2xl p-6 flex flex-col justify-between hover:border-accent/50 transition"><div class="text-3xl mb-4">☕️</div><div><h3 class="font-extrabold text-white text-base mb-2" data-i18n="p1Title">Цена кофе</h3><p class="text-sm text-slate-300" data-i18n="p1Desc">Один доллар — это плохой кофе из автомата, который вы даже не запомните.</p></div></div>
-                <div class="glass-panel border border-cardBorder rounded-2xl p-6 flex flex-col justify-between hover:border-accent/50 transition"><div class="text-3xl mb-4">✨</div><div><h3 class="font-extrabold text-white text-base mb-2" data-i18n="p2Title">Нулевой риск</h3><p class="text-sm text-slate-300" data-i18n="p2Desc">Вы абсолютно ничем не рискуете. Это просто легкая игра в цифровом пространстве.</p></div></div>
-                <div class="glass-panel border border-cardBorder rounded-2xl p-6 flex flex-col justify-between hover:border-accent/50 transition"><div class="text-3xl mb-4">🚀</div><div><h3 class="font-extrabold text-white text-base mb-2" data-i18n="p3Title">Закон отдачи</h3><p class="text-sm text-slate-300" data-i18n="p3Desc">Когда отдаешь легко и без сожаления, Вселенная возвращает это в стократном объеме.</p></div></div>
-                <div class="glass-panel border border-cardBorder rounded-2xl p-6 flex flex-col justify-between hover:border-accent/50 transition"><div class="text-3xl mb-4">🧠</div><div><h3 class="font-extrabold text-white text-base mb-2" data-i18n="p4Title">Изменение фокуса</h3><p class="text-sm text-slate-300" data-i18n="p4Desc">Ваша жизнь меняется ментально: вы становитесь соучастником крутой истории.</p></div></div>
-                <div class="glass-panel border border-cardBorder rounded-2xl p-6 flex flex-col justify-between hover:border-accent/50 transition"><div class="text-3xl mb-4">⛩</div><div><h3 class="font-extrabold text-white text-base mb-2" data-i18n="p5Title">Прямо в Токио</h3><p class="text-sm text-slate-300" data-i18n="p5Desc">Ваш доллар превращается в реальный рамэн, неон и атмосферу на другом конце света.</p></div></div>
-                <div class="glass-panel border border-cardBorder rounded-2xl p-6 flex flex-col justify-between hover:border-accent/50 transition"><div class="text-3xl mb-4">🤝</div><div><h3 class="font-extrabold text-white text-base mb-2" data-i18n="p6Title">Живые знакомства</h3><p class="text-sm text-slate-300" data-i18n="p6Desc">Общая лента позволяет находить единомышленников и подписываться на классных людей.</p></div></div>
-                <div class="glass-panel border border-cardBorder rounded-2xl p-6 flex flex-col justify-between hover:border-accent/50 transition"><div class="text-3xl mb-4">🎯</div><div><h3 class="font-extrabold text-white text-base mb-2" data-i18n="p7Title">Честная цель</h3><p class="text-sm text-slate-300" data-i18n="p7Desc">Миллион долларов на большую мечту — открытая цель без скрытых условий и драмы.</p></div></div>
-                <div class="glass-panel border border-cardBorder rounded-2xl p-6 flex flex-col justify-between hover:border-accent/50 transition"><div class="text-3xl mb-4">🔮</div><div><h3 class="font-extrabold text-white text-base mb-2" data-i18n="p8Title">Магия совпадений</h3><p class="text-sm text-slate-300" data-i18n="p8Desc">Инвестируя в чужие приключения, вы запускаете цепочку позитивных событий у себя.</p></div></div>
-                <div class="glass-panel border border-cardBorder rounded-2xl p-6 flex flex-col justify-between hover:border-accent/50 transition"><div class="text-3xl mb-4">🗺</div><div><h3 class="font-extrabold text-white text-base mb-2" data-i18n="p9Title">Карта мира</h3><p class="text-sm text-slate-300" data-i18n="p9Desc">В проекте участвуют люди со всех уголков планеты — от Токио до Нью-Йорка.</p></div></div>
-                <div class="glass-panel border border-cardBorder rounded-2xl p-6 flex flex-col justify-between hover:border-accent/50 transition"><div class="text-3xl mb-4">🔥</div><div><h3 class="font-extrabold text-white text-base mb-2" data-i18n="p10Title">Энергия движения</h3><p class="text-sm text-slate-300" data-i18n="p10Desc">Лучше сделать один веселый шаг, чем годами раздумывать и сомневаться.</p></div></div>
-            </div>
-        </section>
-
-        <!-- СЕКЦИЯ ДОСТИЖЕНИЙ / АЧИВОК -->
-        <section class="space-y-6 pt-6">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <div>
-                    <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-white" data-i18n="achievementsTitle">🏆 Зал достижений и вех</h2>
-                    <p class="text-slate-400 text-sm mt-1" data-i18n="achievementsSub">Уникальные статусы тех, кто вошел в историю проекта первыми.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Уровень 1 -->
+                <div class="glass-panel border border-cardBorder rounded-3xl p-8 flex flex-col justify-between hover:border-accent/50 transition">
+                    <div>
+                        <div class="text-3xl mb-4">🎟️</div>
+                        <h3 class="font-black text-white text-xl mb-1">Участник</h3>
+                        <div class="text-accent font-extrabold text-lg mb-4">от $1</div>
+                        <ul class="space-y-3 text-sm text-slate-300">
+                            <li>• Имя в хронике проекта</li>
+                            <li>• Уникальный номер пассажира</li>
+                            <li>• Цифровой сертификат совладельца</li>
+                        </ul>
+                    </div>
+                    <button onclick="selectTierAndOpen(1)" class="mt-8 w-full py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-accent text-white font-bold text-sm transition">Выбрать $1+</button>
+                </div>
+                <!-- Уровень 2 -->
+                <div class="glass-panel border-2 border-indigo-500/60 rounded-3xl p-8 flex flex-col justify-between relative shadow-xl shadow-indigo-500/10">
+                    <div class="absolute -top-3.5 right-6 px-4 py-1 rounded-full bg-indigo-500 text-white text-xs font-black uppercase">Хит</div>
+                    <div>
+                        <div class="text-3xl mb-4">🥈</div>
+                        <h3 class="font-black text-white text-xl mb-1">Совладелец</h3>
+                        <div class="text-indigo-400 font-extrabold text-lg mb-4">от $25</div>
+                        <ul class="space-y-3 text-sm text-slate-300">
+                            <li>• Всё, что входит в уровень Участника</li>
+                            <li>• Физический сертификат в рамке с доставкой</li>
+                            <li>• Личная подпись автора проекта</li>
+                        </ul>
+                    </div>
+                    <button onclick="selectTierAndOpen(25)" class="mt-8 w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm transition shadow-lg shadow-indigo-600/30">Выбрать $25+</button>
+                </div>
+                <!-- Уровень 3 -->
+                <div class="glass-panel border border-amber-500/50 rounded-3xl p-8 flex flex-col justify-between hover:border-amber-500 transition">
+                    <div>
+                        <div class="text-3xl mb-4">🥇</div>
+                        <h3 class="font-black text-white text-xl mb-1">Легенда маршрута</h3>
+                        <div class="text-amber-400 font-extrabold text-lg mb-4">от $100</div>
+                        <ul class="space-y-3 text-sm text-slate-300">
+                            <li>• Всё, что выше + физические подарки</li>
+                            <li>• Навсегда в ТОП-10 Легенд маршрута</li>
+                            <li>• Отдельная эксклюзивная карточка</li>
+                            <li>• Особый элитный статус</li>
+                        </ul>
+                    </div>
+                    <button onclick="selectTierAndOpen(100)" class="mt-8 w-full py-3 rounded-xl bg-amber-500/20 border border-amber-500/40 hover:bg-amber-500 text-amber-300 hover:text-black font-bold text-sm transition">Выбрать $100+</button>
                 </div>
             </div>
-            <div id="achievementsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Динамически заполняется скриптом -->
+        </section>
+
+        <!-- ЧТО ПОЛУЧАЕТ УЧАСТНИК + ЖИВАЯ ЛЕНТА -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-7 glass-panel border border-cardBorder rounded-3xl p-8 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-2xl font-black text-white mb-6" data-i18n="benefitsTitle">Что получает участник?</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-darkBg/60 border border-cardBorder rounded-2xl p-4">
+                            <div class="text-xl mb-2">☑️</div>
+                            <h4 class="font-bold text-white text-sm mb-1">Место в хронике</h4>
+                            <p class="text-xs text-slate-400">Ваше имя и слова останутся на сайте навсегда.</p>
+                        </div>
+                        <div class="bg-darkBg/60 border border-cardBorder rounded-2xl p-4">
+                            <div class="text-xl mb-2">🎟️</div>
+                            <h4 class="font-bold text-white text-sm mb-1">Номер пассажира</h4>
+                            <p class="text-xs text-slate-400">Персональный порядковый номер в эксперименте.</p>
+                        </div>
+                        <div class="bg-darkBg/60 border border-cardBorder rounded-2xl p-4">
+                            <div class="text-xl mb-2">🔗</div>
+                            <h4 class="font-bold text-white text-sm mb-1">Ссылки на соцсети</h4>
+                            <p class="text-xs text-slate-400">Telegram, Instagram или сайт прямо в вашем профиле.</p>
+                        </div>
+                        <div class="bg-darkBg/60 border border-cardBorder rounded-2xl p-4">
+                            <div class="text-xl mb-2">📜</div>
+                            <h4 class="font-bold text-white text-sm mb-1">Сертификат совладельца</h4>
+                            <p class="text-xs text-slate-400">Именной цифровой документ с QR-кодом.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Живая лента -->
+            <div class="lg:col-span-5 glass-panel border border-cardBorder rounded-3xl p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-black text-white" data-i18n="liveFeedTitle">⚡️ Живая лента рейса</h3>
+                        <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    </div>
+                    <div id="liveFeedContainer" class="space-y-3 max-h-[240px] overflow-y-auto custom-scrollbar pr-1">
+                        <!-- Динамически заполняется -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- КАРТА СТРАН ПРОЕКТА -->
+        <section class="space-y-6 pt-4">
+            <div>
+                <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-white" data-i18n="mapTitle">🌍 География проекта</h2>
+                <p class="text-slate-400 text-sm mt-1" data-i18n="mapSub">Участники со всего мира объединяются ради общей цели.</p>
+            </div>
+            <div id="countriesStatsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+                <!-- Динамически заполняется -->
             </div>
         </section>
 
-        <!-- РЕЕСТР УЧАСТНИКОВ (ДВОЙНАЯ СИСТЕМА) -->
+        <!-- РЕЕСТР УЧАСТНИКОВ -->
         <section class="space-y-12 pt-6">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white" data-i18n="listTitle">Хроника участников эксперимента</h2>
-                    <p class="text-lg text-slate-300 mt-1" data-i18n="listDesc">Зал основателей хранит первопроходцев навсегда. Рейтинг по вкладу ранжирует участников по сумме.</p>
+                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white" data-i18n="listTitle">Хроника участников рейса</h2>
+                    <p class="text-lg text-slate-300 mt-1" data-i18n="listDesc">Легенды маршрута закреплены навечно. Полный реестр пассажиров хранит каждого.</p>
                 </div>
                 <div class="flex items-center space-x-3">
-                    <span class="text-base px-6 py-3 rounded-2xl bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 font-extrabold" id="participantsBadge">Участников: 0</span>
+                    <span class="text-base px-6 py-3 rounded-2xl bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 font-extrabold" id="participantsBadge">Пассажиров: 0</span>
                 </div>
             </div>
 
-            <!-- 👑 ЗАЛ ОСНОВАТЕЛЕЙ (ПЕРВЫЕ 10) -->
+            <!-- 👑 ТОП-10 ЛЕГЕНД МАРШРУТА -->
             <div class="space-y-4">
                 <h3 class="text-xl font-extrabold text-amber-400 uppercase tracking-wider flex items-center space-x-2">
                     <span>👑</span>
-                    <span data-i18n="foundersTitle">Зал основателей (Первые 10 участников)</span>
+                    <span data-i18n="legendsTitle">ТОП-10 Легенд маршрута (Рейтинг по вкладу)</span>
                 </h3>
-                <div id="foundersList" class="space-y-3"></div>
+                <div id="legendsList" class="space-y-3"></div>
             </div>
 
-            <!-- 💎 РЕЙТИНГ ПО ВКЛАДУ -->
+            <!-- 👥 ВСЕ УЧАСТНИКИ (КАРТОЧКИ) -->
             <div class="space-y-4 pt-4">
-                <h3 class="text-xl font-extrabold text-emerald-400 uppercase tracking-wider flex items-center space-x-2">
-                    <span>💎</span>
-                    <span data-i18n="topDonorsTitle">Рейтинг по вкладу (Топ меценатов)</span>
+                <h3 class="text-xl font-extrabold text-indigo-400 uppercase tracking-wider flex items-center space-x-2">
+                    <span>🎟️</span>
+                    <span data-i18n="allPassengersTitle">Все пассажиры рейса в Токио</span>
                 </h3>
-                <div class="glass-panel border border-cardBorder rounded-3xl p-6 sm:p-8 max-h-[500px] overflow-y-auto custom-scrollbar shadow-2xl">
-                    <div id="topDonorsList" class="space-y-4"></div>
-                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[600px] overflow-y-auto custom-scrollbar p-1" id="allPassengersGrid"></div>
             </div>
         </section>
     </main>
@@ -182,10 +255,15 @@
         <div class="glass-panel border border-cardBorder rounded-3xl max-w-md w-full p-8 relative shadow-2xl space-y-6">
             <button onclick="closeModals()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl font-bold">✕</button>
             <div>
-                <h3 class="text-2xl font-black text-white mb-2" data-i18n="step1Title">Шаг 1: Сумма вклада</h3>
-                <p class="text-base text-slate-300" data-i18n="step1Desc">Введите любую комфортную сумму (хоть $1, хоть $500).</p>
+                <h3 class="text-2xl font-black text-white mb-2" data-i18n="step1Title">Шаг 1: Сумма билета</h3>
+                <p class="text-base text-slate-300" data-i18n="step1Desc">Выберите или введите сумму для получения статуса и сертификата.</p>
             </div>
             <div class="space-y-4">
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="setModalAmount(1)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-accent text-white font-bold text-sm">$1</button>
+                    <button onclick="setModalAmount(25)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-indigo-500 text-indigo-300 font-bold text-sm">$25</button>
+                    <button onclick="setModalAmount(100)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-amber-500 text-amber-300 font-bold text-sm">$100</button>
+                </div>
                 <div>
                     <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="amountLabel">Сумма ($)</label>
                     <input type="number" id="customAmount" min="1" value="1" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-xl font-black text-emerald-400 focus:outline-none focus:border-accent">
@@ -201,8 +279,8 @@
     <div id="dataModal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 z-50">
         <div class="glass-panel border border-cardBorder rounded-3xl max-w-lg w-full p-8 sm:p-10 relative shadow-2xl">
             <button onclick="closeModals()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl font-bold">✕</button>
-            <h3 class="text-2xl font-black mb-2 text-white" data-i18n="step2Title">Шаг 2: Обратная связь и сертификат</h3>
-            <p class="text-base text-slate-300 mb-6 font-medium" data-i18n="step2Desc">Транзакция успешна. Заполните анкету для ленты и подписок:</p>
+            <h3 class="text-2xl font-black mb-2 text-white" data-i18n="step2Title">Шаг 2: Данные пассажира и сертификат</h3>
+            <p class="text-base text-slate-300 mb-6 font-medium" data-i18n="step2Desc">Оплата прошла. Заполните анкету для создания вашей карточки:</p>
             
             <form id="participantForm" onsubmit="handleParticipantSubmit(event)" class="space-y-4">
                 <div class="grid grid-cols-2 gap-4">
@@ -222,8 +300,8 @@
                 </div>
 
                 <div>
-                    <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="cityLabel">Город / Страна</label>
-                    <input type="text" id="pCity" required placeholder="Токио, Япония" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
+                    <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="cityLabel">Страна / Город</label>
+                    <input type="text" id="pCity" required placeholder="Япония, Токио" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
@@ -237,20 +315,39 @@
                         </select>
                     </div>
                     <div>
-                        <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="socialLinkLabel">Ссылка для подписки</label>
+                        <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="socialLinkLabel">Ссылка</label>
                         <input type="text" id="pSocialLink" required placeholder="https://t.me/username" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="commentLabel">Слово миру или автору</label>
-                    <textarea id="pComment" rows="2" placeholder="Жду в Сибуе за мой счет..." class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent resize-none"></textarea>
+                    <textarea id="pComment" rows="2" placeholder="Жду в Сибуе..." class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent resize-none"></textarea>
                 </div>
 
                 <button type="submit" class="w-full py-4 rounded-xl bg-accent hover:bg-accentHover text-white font-extrabold text-base transition shadow-lg shadow-accent/30 mt-3" data-i18n="submitBtn">
-                    Забрать сертификат и совет ⚡️
+                    Получить сертификат и карточку ⚡️
                 </button>
             </form>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО СЕРТИФИКАТА -->
+    <div id="certificateModal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 z-50">
+        <div class="glass-panel border-2 border-indigo-500 rounded-3xl max-w-lg w-full p-8 relative shadow-2xl space-y-6 text-center">
+            <button onclick="closeCertificateModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl font-bold">✕</button>
+            <div class="space-y-2">
+                <span class="text-4xl">📜</span>
+                <h3 class="text-2xl font-black text-white" data-i18n="certHeader">Certificate of Dream Ownership</h3>
+                <p class="text-xs text-indigo-400 uppercase tracking-widest font-extrabold" data-i18n="certSub">The Million Dollar Tokyo Ticket</p>
+            </div>
+            <div id="certificateCardContent" class="bg-darkBg/80 border border-cardBorder rounded-2xl p-6 text-left space-y-3">
+                <!-- Заполняется динамически -->
+            </div>
+            <div class="flex space-x-3">
+                <button onclick="alert('Сертификат сохранен!')" class="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-sm transition" data-i18n="downloadCertBtn">Сохранить сертификат 📥</button>
+                <button onclick="closeCertificateModal()" class="px-6 py-3.5 rounded-xl bg-cardBg border border-cardBorder text-slate-300 font-bold text-sm hover:text-white" data-i18n="closeCertBtn">Закрыть</button>
+            </div>
         </div>
     </div>
 
@@ -260,34 +357,23 @@
         let currentDonationAmount = 1;
 
         const defaultParticipants = [
-            { id: 1, name: "Kaito", city: "Токио, Япония", age: 24, email: "kaito@tokyo.jp", amount: 10, socialType: "Instagram", socialLink: "https://instagram.com", comment: "Жду тебя в Сибуе за мой счет!" },
-            { id: 2, name: "Sarah", city: "Нью-Йорк, США", age: 28, email: "sarah@ny.com", amount: 8, socialType: "X / Twitter", socialLink: "https://twitter.com", comment: "Best digital adventure." },
-            { id: 3, name: "Алексей", city: "Москва, Россия", age: 31, email: "alex@mail.ru", amount: 7, socialType: "Telegram", socialLink: "https://t.me", comment: "Карма работает безупречно." },
-            { id: 4, name: "Elena", city: "Париж, Франция", age: 26, email: "elena@paris.fr", amount: 5, socialType: "Instagram", socialLink: "https://instagram.com", comment: "Cheers to Tokyo!" },
-            { id: 5, name: "Kenji", city: "Киото, Япония", age: 35, email: "kenji@kyoto.jp", amount: 5, socialType: "Website", socialLink: "https://example.com", comment: "Enjoy the ramen." },
-            { id: 6, name: "Дмитрий", city: "Санкт-Петербург", age: 29, email: "dmitry@spb.ru", amount: 5, socialType: "Telegram", socialLink: "https://t.me", comment: "Легко расстался с мелочью." },
-            { id: 7, name: "Anna", city: "Лондон, Великобритания", age: 27, email: "anna@london.co.uk", amount: 4, socialType: "X / Twitter", socialLink: "https://twitter.com", comment: "100x karma multiplier activated." },
-            { id: 8, name: "Max", city: "Берлин, Германия", age: 30, email: "max@berlin.de", amount: 4, socialType: "Telegram", socialLink: "https://t.me", comment: "Great initiative." },
-            { id: 9, name: "Ольга", city: "Минск, Беларусь", age: 25, email: "olga@minsk.by", amount: 4, socialType: "Instagram", socialLink: "https://instagram.com", comment: "Удачи в путешествии!" },
-            { id: 10, name: "Lucas", city: "Сан-Паулу, Бразилия", age: 23, email: "lucas@sp.br", amount: 3, socialType: "X / Twitter", socialLink: "https://twitter.com", comment: "Vibes." },
-            { id: 11, name: "Иван", city: "Казань, Россия", age: 33, email: "ivan@kazan.ru", amount: 3, socialType: "Telegram", socialLink: "https://t.me", comment: "За кофе!" },
-            { id: 12, name: "Maria", city: "Мадрид, Испания", age: 27, email: "maria@madrid.es", amount: 2, socialType: "Instagram", socialLink: "https://instagram.com", comment: "Hola!" },
-            { id: 13, name: "Hans", city: "Вена, Австрия", age: 40, email: "hans@vienna.at", amount: 2, socialType: "Website", socialLink: "https://example.com", comment: "Nice concept." },
-            { id: 14, name: "Артем", city: "Сочи, Россия", age: 26, email: "artem@sochi.ru", amount: 2, socialType: "Telegram", socialLink: "https://t.me", comment: "плюс к карме" },
-            { id: 15, name: "Chloe", city: "Лион, Франция", age: 22, email: "chloe@lyon.fr", amount: 2, socialType: "Instagram", socialLink: "https://instagram.com", comment: "Super!" },
-            { id: 16, name: "Николай", city: "Екатеринбург", age: 34, email: "nikolay@ekb.ru", amount: 2, socialType: "Telegram", socialLink: "https://t.me", comment: "Полетели." },
-            { id: 17, name: "Yuki", city: "Осака, Япония", age: 29, email: "yuki@osaka.jp", amount: 1, socialType: "X / Twitter", socialLink: "https://twitter.com", comment: "Ramen time." },
-            { id: 18, name: "Евгений", city: "Алматы, Казахстан", age: 28, email: "evgeny@almaty.kz", amount: 1, socialType: "Telegram", socialLink: "https://t.me", comment: "норм тема" },
-            { id: 19, name: "Sophie", city: "Марсель, Франция", age: 31, email: "sophie@marseille.fr", amount: 1, socialType: "Instagram", socialLink: "https://instagram.com", comment: "cool" },
-            { id: 20, name: "Павел", city: "Новосибирск", age: 25, email: "pavel@nsk.ru", amount: 1, socialType: "Telegram", socialLink: "https://t.me", comment: "минус доллар, плюс карма" },
-            { id: 21, name: "Liam", city: "Дублин, Ирландия", age: 26, email: "liam@dublin.ie", amount: 1, socialType: "X / Twitter", socialLink: "https://twitter.com", comment: "Sláinte!" },
-            { id: 22, name: "Виктор", city: "Владивосток", age: 32, email: "viktor@vladivostok.ru", amount: 1, socialType: "Telegram", socialLink: "https://t.me", comment: "Дальше действовать будем мы" },
-            { id: 23, name: "Mia", city: "Сингапур", age: 24, email: "mia@singapore.sg", amount: 1, socialType: "Instagram", socialLink: "https://instagram.com", comment: "Good luck!" }
+            { id: 324, name: "Kaito", city: "Япония, Токио", age: 24, email: "kaito@tokyo.jp", date: "06.10.2026", amount: 150, socialType: "Instagram", socialLink: "https://instagram.com", comment: "Жду тебя в Сибуе за мой счет!" },
+            { id: 284, name: "Sarah", city: "США, Нью-Йорк", age: 28, email: "sarah@ny.com", date: "05.10.2026", amount: 120, socialType: "X / Twitter", socialLink: "https://twitter.com", comment: "Best digital adventure." },
+            { id: 210, name: "Игорь", city: "Сербия, Белград", age: 31, email: "igor@belgrade.rs", date: "04.10.2026", amount: 100, socialType: "Telegram", socialLink: "https://t.me", comment: "Легендарный проект." },
+            { id: 189, name: "Алексей", city: "Россия, Москва", age: 31, email: "alex@mail.ru", date: "03.10.2026", amount: 50, socialType: "Telegram", socialLink: "https://t.me", comment: "Карма работает безупречно." },
+            { id: 150, name: "Elena", city: "Франция, Париж", age: 26, email: "elena@paris.fr", date: "02.10.2026", amount: 35, socialType: "Instagram", socialLink: "https://instagram.com", comment: "Cheers to Tokyo!" },
+            { id: 112, name: "Kenji", city: "Япония, Киото", age: 35, email: "kenji@kyoto.jp", date: "01.10.2026", amount: 30, socialType: "Website", socialLink: "https://example.com", comment: "Enjoy the ramen." },
+            { id: 98, name: "Дмитрий", city: "Россия, Санкт-Петербург", age: 29, email: "dmitry@spb.ru", date: "30.09.2026", amount: 25, socialType: "Telegram", socialLink: "https://t.me", comment: "Легко расстался с мелочью." },
+            { id: 75, name: "Anna", city: "Великобритания, Лондон", age: 27, email: "anna@london.co.uk", date: "29.09.2026", amount: 20, socialType: "X / Twitter", socialLink: "https://twitter.com", comment: "100x karma." },
+            { id: 50, name: "Max", city: "Германия, Берлин", age: 30, email: "max@berlin.de", date: "28.09.2026", amount: 15, socialType: "Telegram", socialLink: "https://t.me", comment: "Great initiative." },
+            { id: 25, name: "Ольга", city: "Беларусь, Минск", age: 25, email: "olga@minsk.by", date: "27.09.2026", amount: 10, socialType: "Instagram", socialLink: "https://instagram.com", comment: "Удачи в путешествии!" },
+            { id: 12, name: "Lucas", city: "Бразилия, Сан-Паулу", age: 23, email: "lucas@sp.br", date: "26.09.2026", amount: 5, socialType: "X / Twitter", socialLink: "https://twitter.com", comment: "Vibes." },
+            { id: 4, name: "Иван", city: "Россия, Казань", age: 33, email: "ivan@kazan.ru", date: "25.09.2026", amount: 1, socialType: "Telegram", socialLink: "https://t.me", comment: "За кофе!" }
         ];
 
         let participants = [];
         try {
-            const saved = localStorage.getItem('tokyo_participants');
+            const saved = localStorage.getItem('tokyo_participants_v2');
             participants = saved ? JSON.parse(saved) : defaultParticipants;
         } catch (e) {
             participants = defaultParticipants;
@@ -295,7 +381,7 @@
 
         function saveParticipantsToStorage() {
             try {
-                localStorage.setItem('tokyo_participants', JSON.stringify(participants));
+                localStorage.setItem('tokyo_participants_v2', JSON.stringify(participants));
             } catch (e) {
                 console.error("Storage error", e);
             }
@@ -304,93 +390,85 @@
         const translations = {
             ru: {
                 subtitle: "One-Way Digital Adventure",
-                badge: "Никаких грустных историй • Чистая свобода и карма",
-                heroTitle1: "Самый амбициозный",
-                heroTitle2: "билет в один конец в Токио.",
-                heroDesc: "Один бакс или чашка кофе не сделают вас беднее. Но когда вы легко и с улыбкой расстаетесь с мелочью ради чужой мечты, Вселенная и карма включают режим мультипликатора. Проверьте сами — это стоит всего один доллар, а меняет настроение на все сто.",
-                participateBtn: "Инвестировать в Токио ⚡️",
-                heroFooter: "🎁 В подарок: Сертификат совладельца мечты + Кармический бонус",
+                badge: "Самый амбициозный билет в один конец до Токио",
+                heroTitle1: "Цель проста.",
+                heroTitle2: "Собрать миллион символических билетов.",
+                heroDesc: "Собрать миллион билетов по $1 и доказать, что интернет способен объединить людей вокруг одной безумной идеи. Станьте совладельцем мечты и войдите в историю проекта.",
+                participateBtn: "Получить билет в Токио ⚡️",
+                heroFooter: "🎁 Уровни: Участник ($1+) • Совладелец ($25+) • Легенда ($100+)",
                 fundTitle: "Фонд «Токио на миллион»",
-                fundDesc: "Собрано совместными усилиями участников со всего мира.",
+                fundDesc: "Собрано совместными усилиями пассажиров со всего мира.",
                 goalTitle: "Цель эксперимента",
                 statusText: "Статус: Полет нормальный",
-                philosophyHeader: "Почему это работает? (Философия кармы)",
-                philosophySub: "Десять законов легкого отношения к деньгам, цифрового приключения и взаимной поддержки.",
-                p1Title: "Цена кофе", p1Desc: "Один доллар — это плохой кофе из автомата, который вы даже не запомните.",
-                p2Title: "Нулевой риск", p2Desc: "Вы абсолютно ничем не рискуете. Это просто легкая игра в цифровом пространстве.",
-                p3Title: "Закон отдачи", p3Desc: "Когда отдаешь легко и без сожаления, Вселенная возвращает это в стократном объеме.",
-                p4Title: "Изменение фокуса", p4Desc: "Ваша жизнь меняется ментально: вы становитесь соучастником крутой истории.",
-                p5Title: "Прямо в Токио", p5Desc: "Ваш доллар превращается в реальный рамэн, неон и атмосферу на другом конце света.",
-                p6Title: "Живые знакомства", p6Desc: "Общая лента позволяет находить единомышленников и подписываться на классных людей.",
-                p7Title: "Честная цель", p7Desc: "Миллион долларов на большую мечту — открытая цель без скрытых условий и драмы.",
-                p8Title: "Магия совпадений", p8Desc: "Инвестируя в чужие приключения, вы запускаете цепочку позитивных событий у себя.",
-                p9Title: "Карта мира", p9Desc: "В проекте участвуют люди со всех уголков планеты — от Токио до Нью-Йорка.",
-                p10Title: "Энергия движения", p10Desc: "Лучше сделать один веселый шаг, чем годами раздумывать и сомневаться.",
-                achievementsTitle: "🏆 Зал достижений и вех",
-                achievementsSub: "Уникальные статусы тех, кто вошел в историю проекта первыми.",
-                listTitle: "Хроника участников эксперимента",
-                listDesc: "Зал основателей хранит первопроходцев навсегда. Рейтинг по вкладу ранжирует участников по сумме.",
-                foundersTitle: "Зал основателей (Первые 10 участников)",
-                topDonorsTitle: "Рейтинг по вкладу (Топ меценатов)",
-                step1Title: "Шаг 1: Сумма вклада",
-                step1Desc: "Введите любую комфортную сумму (хоть $1, хоть $500).",
+                levelsHeader: "Выберите свой статус в проекте",
+                levelsSub: "От символического вклада до физического коллекционного артефакта.",
+                benefitsTitle: "Что получает участник?",
+                liveFeedTitle: "⚡️ Живая лента рейса",
+                mapTitle: "🌍 География проекта",
+                mapSub: "Участники со всего мира объединяются ради общей цели.",
+                listTitle: "Хроника участников рейса",
+                listDesc: "Легенды маршрута закреплены навечно. Полный реестр пассажиров хранит каждого.",
+                legendsTitle: "ТОП-10 Легенд маршрута (Рейтинг по вкладу)",
+                allPassengersTitle: "Все пассажиры рейса в Токио",
+                step1Title: "Шаг 1: Сумма билета",
+                step1Desc: "Выберите или введите сумму для получения статуса и сертификата.",
                 amountLabel: "Сумма ($)",
                 proceedBtn: "Продолжить ⚡",
-                step2Title: "Шаг 2: Обратная связь и сертификат",
-                step2Desc: "Транзакция успешна. Заполните анкету для ленты и подписок:",
+                step2Title: "Шаг 2: Данные пассажира и сертификат",
+                step2Desc: "Оплата прошла. Заполните анкету для создания вашей карточки:",
                 nameLabel: "Имя",
                 ageLabel: "Сколько лет",
                 emailLabel: "Электронная почта",
-                cityLabel: "Город / Страна",
+                cityLabel: "Страна / Город",
                 socialTypeLabel: "Соцсеть",
-                socialLinkLabel: "Ссылка для подписки",
+                socialLinkLabel: "Ссылка",
                 commentLabel: "Слово миру или автору",
-                submitBtn: "Забрать сертификат и совет ⚡️"
+                submitBtn: "Получить сертификат и карточку ⚡️",
+                certHeader: "Certificate of Dream Ownership",
+                certSub: "The Million Dollar Tokyo Ticket",
+                downloadCertBtn: "Сохранить сертификат 📥",
+                closeCertBtn: "Закрыть"
             },
             en: {
                 subtitle: "One-Way Digital Adventure",
-                badge: "No Sad Stories • Pure Freedom & Karma",
-                heroTitle1: "The Most Ambitious",
-                heroTitle2: "One-Way Ticket to Tokyo.",
-                heroDesc: "A buck or a cup of coffee won't make you poorer. But when you easily and smilingly part with spare change for a stranger's dream, the universe and karma activate the multiplier mode. Try it yourself — it costs just one dollar, but changes your mood completely.",
-                participateBtn: "Invest in Tokyo ⚡️",
-                heroFooter: "🎁 Gift: Unique Dream Shareholder Certificate + Karmic Bonus",
+                badge: "The Most Ambitious One-Way Ticket to Tokyo",
+                heroTitle1: "The Goal is Simple.",
+                heroTitle2: "Collect One Million Symbolic Tickets.",
+                heroDesc: "Gather 1 million $1 tickets and prove that the internet can unite people around a crazy idea. Become a dream co-owner and make project history.",
+                participateBtn: "Get Tokyo Ticket ⚡️",
+                heroFooter: "🎁 Tiers: Participant ($1+) • Co-owner ($25+) • Legend ($100+)",
                 fundTitle: "Million $ Tokyo Fund",
-                fundDesc: "Raised collectively by participants worldwide.",
+                fundDesc: "Raised collectively by passengers worldwide.",
                 goalTitle: "Experiment Goal",
                 statusText: "Status: Cruising smoothly",
-                philosophyHeader: "Why Does It Work? (Karma Philosophy)",
-                philosophySub: "Ten laws of relaxed money mindset, digital adventure, and mutual support.",
-                p1Title: "Coffee Price", p1Desc: "One dollar is a bad vending machine coffee you won't even remember.",
-                p2Title: "Zero Risk", p2Desc: "You risk nothing at all. It's just a lighthearted digital game.",
-                p3Title: "Law of Giving", p3Desc: "When you give easily and without regret, the universe returns it a hundredfold.",
-                p4Title: "Focus Shift", p4Desc: "Your life changes mentally: you become a co-creator of a cool story.",
-                p5Title: "Straight to Tokyo", p5Desc: "Your dollar turns into real ramen, neon, and atmosphere on the other side of the world.",
-                p6Title: "Live Connections", p6Desc: "The shared feed lets you find like-minded people and follow cool folks.",
-                p7Title: "Honest Goal", p7Desc: "A million dollars for a big dream — an open goal without hidden conditions or drama.",
-                p8Title: "Magic of Coincidences", p8Desc: "By investing in others' adventures, you trigger a chain of positive events for yourself.",
-                p9Title: "World Map", p9Desc: "People from all corners of the planet participate — from Tokyo to New York.",
-                p10Title: "Energy of Motion", p10Desc: "Better to take one fun step than spend years thinking and doubting.",
-                achievementsTitle: "🏆 Achievements & Milestones Hall",
-                achievementsSub: "Unique statuses of those who made history first.",
-                listTitle: "Chronicle of Experiment Participants",
-                listDesc: "Founders Hall preserves pioneers forever. Contribution ranking ranks participants by amount.",
-                foundersTitle: "Founders Hall (First 10 Participants)",
-                topDonorsTitle: "Contribution Ranking (Top Patrons)",
-                step1Title: "Step 1: Contribution Amount",
-                step1Desc: "Enter any comfortable amount ($1, $500, or more).",
+                levelsHeader: "Choose Your Project Status",
+                levelsSub: "From a symbolic contribution to a physical collector's artifact.",
+                benefitsTitle: "What Does a Participant Get?",
+                liveFeedTitle: "⚡️ Live Flight Feed",
+                mapTitle: "🌍 Project Geography",
+                mapSub: "Participants worldwide uniting for a shared goal.",
+                listTitle: "Flight Participant Chronicle",
+                listDesc: "Route legends are pinned forever. The full passenger registry preserves everyone.",
+                legendsTitle: "TOP-10 Route Legends (Contribution Ranking)",
+                allPassengersTitle: "All Tokyo Flight Passengers",
+                step1Title: "Step 1: Ticket Amount",
+                step1Desc: "Select or enter an amount to receive your status and certificate.",
                 amountLabel: "Amount ($)",
                 proceedBtn: "Continue ⚡",
-                step2Title: "Step 2: Feedback & Certificate",
-                step2Desc: "Transaction successful. Fill out the form for the feed and subscriptions:",
+                step2Title: "Step 2: Passenger Data & Certificate",
+                step2Desc: "Payment successful. Fill out the form to create your card:",
                 nameLabel: "Name",
                 ageLabel: "Age",
                 emailLabel: "Email",
-                cityLabel: "City / Country",
+                cityLabel: "Country / City",
                 socialTypeLabel: "Social Network",
-                socialLinkLabel: "Subscription Link",
-                commentLabel: "Word to the World or Author",
-                submitBtn: "Get Certificate & Advice ⚡️"
+                socialLinkLabel: "Link",
+                commentLabel: "Word to World or Author",
+                submitBtn: "Get Certificate & Card ⚡️",
+                certHeader: "Certificate of Dream Ownership",
+                certSub: "The Million Dollar Tokyo Ticket",
+                downloadCertBtn: "Save Certificate 📥",
+                closeCertBtn: "Close"
             }
         };
 
@@ -404,7 +482,7 @@
                     el.innerText = translations[currentLang][key];
                 }
             });
-            renderParticipants();
+            renderAll();
         }
 
         function openPaymentModal() {
@@ -413,52 +491,68 @@
             modal.classList.add('flex');
         }
 
+        function selectTierAndOpen(amount) {
+            currentDonationAmount = amount;
+            document.getElementById('customAmount').value = amount;
+            openPaymentModal();
+        }
+
+        function setModalAmount(amount) {
+            currentDonationAmount = amount;
+            document.getElementById('customAmount').value = amount;
+        }
+
         function closeModals() {
-            const pModal = document.getElementById('paymentModal');
-            const dModal = document.getElementById('dataModal');
-            pModal.classList.remove('flex');
-            pModal.classList.add('hidden');
-            dModal.classList.remove('flex');
-            dModal.classList.add('hidden');
+            document.getElementById('paymentModal').classList.remove('flex');
+            document.getElementById('paymentModal').classList.add('hidden');
+            document.getElementById('dataModal').classList.remove('flex');
+            document.getElementById('dataModal').classList.add('hidden');
+        }
+
+        function closeCertificateModal() {
+            document.getElementById('certificateModal').classList.remove('flex');
+            document.getElementById('certificateModal').classList.add('hidden');
         }
 
         function proceedToDataForm() {
             const amountInput = document.getElementById('customAmount').value;
             currentDonationAmount = parseInt(amountInput) || 1;
             
-            const pModal = document.getElementById('paymentModal');
-            const dModal = document.getElementById('dataModal');
+            document.getElementById('paymentModal').classList.remove('flex');
+            document.getElementById('paymentModal').classList.add('hidden');
             
-            pModal.classList.remove('flex');
-            pModal.classList.add('hidden');
-            
-            dModal.classList.remove('hidden');
-            dModal.classList.add('flex');
+            document.getElementById('dataModal').classList.remove('hidden');
+            document.getElementById('dataModal').classList.add('flex');
         }
 
-        function renderParticipants() {
+        function renderAll() {
             const total = participants.reduce((sum, p) => sum + p.amount, 0);
             document.getElementById('totalAmount').innerText = total.toLocaleString();
             
             const percent = ((total / 1000000) * 100).toFixed(4);
-            const bar = document.getElementById('progressBar');
-            bar.style.width = Math.max(percent, 0.01) + '%';
-            
+            document.getElementById('progressBar').style.width = Math.max(percent, 0.01) + '%';
             document.getElementById('progressText').innerText = currentLang === 'ru' ? `Прогресс: ${percent}%` : `Progress: ${percent}%`;
-            document.getElementById('participantsBadge').innerText = currentLang === 'ru' ? `Участников: ${participants.length}` : `Participants: ${participants.length}`;
+            document.getElementById('participantsBadge').innerText = currentLang === 'ru' ? `Пассажиров: ${participants.length}` : `Passengers: ${participants.length}`;
 
-            // 1. 👑 ЗАЛ ОСНОВАТЕЛЕЙ (Фиксированные первые 10 участников в исходном порядке добавления)
-            const founders = participants.slice(0, 10);
-            const foundersListEl = document.getElementById('foundersList');
-            foundersListEl.innerHTML = '';
+            renderLegends();
+            renderAllPassengers();
+            renderCountriesStats();
+            renderLiveFeed();
+        }
 
-            founders.forEach((p, index) => {
-                const founderBadges = ['👑 Основатель #1', '🥈 Основатель #2', '🥉 Основатель #3', '✨ Основатель', '✨ Основатель', '✨ Основатель', '✨ Основатель', '✨ Основатель', '✨ Основатель', '✨ Основатель'];
+        function renderLegends() {
+            const sorted = [...participants].sort((a, b) => b.amount - a.amount);
+            const legends = sorted.slice(0, 10);
+            const listEl = document.getElementById('legendsList');
+            listEl.innerHTML = '';
+
+            legends.forEach((p, index) => {
+                const badgeNames = ['👑 Легенда #1', '🥈 Легенда #2', '🥉 Легенда #3', '⭐ Легенда маршрута', '⭐ Легенда маршрута', '⭐ Легенда маршрута', '⭐ Легенда маршрута', '⭐ Легенда маршрута', '⭐ Легенда маршрута', '⭐ Легенда маршрута'];
                 const card = document.createElement('div');
                 card.className = 'glass-panel border border-cardBorder rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:border-amber-500/50 transition';
                 card.innerHTML = `
                     <div class="flex items-center space-x-4">
-                        <span class="text-xs font-black uppercase px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30">${founderBadges[index]}</span>
+                        <span class="text-xs font-black uppercase px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30">${badgeNames[index]}</span>
                         <div>
                             <div class="flex items-center space-x-2">
                                 <span class="font-black text-white text-lg">${p.name}</span>
@@ -474,132 +568,149 @@
                         </a>
                     </div>
                 `;
-                foundersListEl.appendChild(card);
+                listEl.appendChild(card);
             });
+        }
 
-            // 2. 💎 РЕЙТИНГ ПО ВКЛАДУ (Все участники, отсортированные по сумме)
-            const sortedByAmount = [...participants].sort((a, b) => b.amount - a.amount);
-            const topDonorsListEl = document.getElementById('topDonorsList');
-            topDonorsListEl.innerHTML = '';
+        function renderAllPassengers() {
+            const grid = document.getElementById('allPassengersGrid');
+            grid.innerHTML = '';
 
-            sortedByAmount.forEach((p, index) => {
-                const row = document.createElement('div');
-                row.className = 'p-4 rounded-2xl bg-darkBg/60 border border-cardBorder flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 hover:border-accent/30 transition';
-                row.innerHTML = `
-                    <div class="flex items-center space-x-3">
-                        <span class="text-slate-400 text-sm font-black w-6">#${index + 1}</span>
-                        <div>
-                            <div class="flex items-center space-x-2">
-                                <span class="font-bold text-white text-base">${p.name}</span>
-                                <span class="text-xs text-slate-400">(${p.city})</span>
-                            </div>
-                            <p class="text-xs text-slate-300 italic">«${p.comment}»</p>
+            participants.forEach(p => {
+                let statusName = 'Участник';
+                let statusBadgeColor = 'bg-accent/20 text-accent border-accent/30';
+                if (p.amount >= 100) {
+                    statusName = 'Легенда маршрута';
+                    statusBadgeColor = 'bg-amber-500/20 text-amber-300 border-amber-500/30';
+                } else if (p.amount >= 25) {
+                    statusName = 'Совладелец';
+                    statusBadgeColor = 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30';
+                }
+
+                const card = document.createElement('div');
+                card.className = 'glass-panel border border-cardBorder rounded-2xl p-5 flex flex-col justify-between hover:border-accent/40 transition space-y-4';
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-extrabold px-2.5 py-1 rounded-md bg-darkBg border border-cardBorder text-slate-300">Участник #${p.id}</span>
+                            <span class="text-xs font-black uppercase px-2.5 py-1 rounded-md border ${statusBadgeColor}">${statusName}</span>
                         </div>
+                        <h4 class="font-black text-white text-lg">${p.name} <span class="text-xs text-slate-400 font-normal">(${p.age} лет)</span></h4>
+                        <div class="text-sm text-slate-300 mt-1 flex items-center space-x-1.5">
+                            <span>🌍</span> <span>${p.city}</span>
+                        </div>
+                        <div class="text-xs text-slate-400 mt-1">📅 Присоединился: ${p.date}</div>
+                        <p class="text-sm text-slate-300 italic mt-3 bg-darkBg/60 p-3 rounded-xl border border-cardBorder">«${p.comment}»</p>
                     </div>
-                    <div class="flex items-center space-x-3 w-full sm:w-auto justify-between sm:justify-end">
-                        <span class="font-extrabold text-emerald-400 text-base">$${p.amount}</span>
+                    <div class="flex justify-between items-center pt-3 border-t border-slate-800">
+                        <span class="font-black text-emerald-400 text-base">$${p.amount}</span>
                         <a href="${p.socialLink}" target="_blank" class="px-3 py-1.5 rounded-lg bg-cardBg border border-cardBorder text-slate-300 text-xs font-bold hover:border-accent hover:text-white transition">
                             ${p.socialType} ↗
                         </a>
-                    </div>
-                `;
-                topDonorsListEl.appendChild(row);
-            });
-
-            // 3. 🏆 СИСТЕМА ДОСТИЖЕНИЙ (Ачивки)
-            renderAchievements();
-        }
-
-        function renderAchievements() {
-            const grid = document.getElementById('achievementsGrid');
-            grid.innerHTML = '';
-
-            // Находим нужных людей по критериям
-            const firstParticipant = participants[participants.length - 1]; // Самый первый добавленный (исходный или созданный)
-            const firstJapan = participants.find(p => p.city.toLowerCase().includes('япония') || p.city.toLowerCase().includes('japan') || p.city.toLowerCase().includes('токио') || p.city.toLowerCase().includes('киото') || p.city.toLowerCase().includes('осака'));
-            const firstSerbia = participants.find(p => p.city.toLowerCase().includes('сербия') || p.city.toLowerCase().includes('serbia') || p.city.toLowerCase().includes('белград'));
-            const first100 = participants.find(p => p.amount >= 100);
-            const first1000 = participants.find(p => p.amount >= 1000);
-
-            const achievements = [
-                {
-                    icon: '🏆',
-                    titleRu: 'Первый участник',
-                    titleEn: 'First Participant',
-                    person: firstParticipant ? firstParticipant.name : '—',
-                    descRu: firstParticipant ? `${firstParticipant.name} (${firstParticipant.city})` : 'Вакантно'
-                },
-                {
-                    icon: '🚀',
-                    titleRu: 'Первый из Японии',
-                    titleEn: 'First from Japan',
-                    person: firstJapan ? firstJapan.name : 'Пока нет',
-                    descRu: firstJapan ? `${firstJapan.city} ($${firstJapan.amount})` : 'Ждем пионера'
-                },
-                {
-                    icon: '🌍',
-                    titleRu: 'Первый из Сербии',
-                    titleEn: 'First from Serbia',
-                    person: firstSerbia ? firstSerbia.name : 'Пока нет',
-                    descRu: firstSerbia ? `${firstSerbia.city} ($${firstSerbia.amount})` : 'Ждем пионера'
-                },
-                {
-                    icon: '💎',
-                    titleRu: 'Первый вклад $100+',
-                    titleEn: 'First $100+ Contribution',
-                    person: first100 ? first100.name : 'Пока нет',
-                    descRu: first100 ? `$${first100.amount} от ${first100.name}` : 'Вакантно'
-                },
-                {
-                    icon: '💰',
-                    titleRu: 'Первый вклад $1,000+',
-                    titleEn: 'First $1,000+ Contribution',
-                    person: first1000 ? first1000.name : 'Пока нет',
-                    descRu: first1000 ? `$${first1000.amount} от ${first1000.name}` : 'Вакантно'
-                }
-            ];
-
-            achievements.forEach(ach => {
-                const card = document.createElement('div');
-                card.className = 'glass-panel border border-cardBorder rounded-2xl p-5 flex items-center space-x-4 hover:border-indigo-500/50 transition';
-                card.innerHTML = `
-                    <div class="text-3xl p-3 rounded-2xl bg-darkBg border border-cardBorder">${ach.icon}</div>
-                    <div>
-                        <div class="text-xs text-indigo-400 font-extrabold uppercase tracking-wider">${currentLang === 'ru' ? ach.titleRu : ach.titleEn}</div>
-                        <div class="text-lg font-black text-white mt-0.5">${ach.person}</div>
-                        <div class="text-xs text-slate-400 mt-0.5">${ach.descRu}</div>
                     </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
+        function renderCountriesStats() {
+            const statsGrid = document.getElementById('countriesStatsGrid');
+            statsGrid.innerHTML = '';
+
+            const counts = {};
+            participants.forEach(p => {
+                // Извлекаем страну (первая часть до запятой)
+                const country = p.city.split(',')[0].trim();
+                counts[country] = (counts[country] || 0) + 1;
+            });
+
+            // Сортируем по количеству
+            const sortedCountries = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+
+            sortedCountries.forEach(([country, count]) => {
+                const card = document.createElement('div');
+                card.className = 'glass-panel border border-cardBorder rounded-2xl p-4 text-center hover:border-accent/40 transition';
+                card.innerHTML = `
+                    <div class="text-xs text-slate-400 font-bold uppercase tracking-wider">${country}</div>
+                    <div class="text-2xl font-black text-white mt-1">${count}</div>
+                `;
+                statsGrid.appendChild(card);
+            });
+        }
+
+        function renderLiveFeed() {
+            const feedContainer = document.getElementById('liveFeedContainer');
+            feedContainer.innerHTML = '';
+
+            // Берем последние 5 участников
+            const recent = participants.slice(0, 5);
+            recent.forEach(p => {
+                const item = document.createElement('div');
+                item.className = 'p-3 rounded-xl bg-darkBg/80 border border-cardBorder flex items-center justify-between text-xs text-slate-300';
+                item.innerHTML = `
+                    <div class="flex items-center space-x-2">
+                        <span>🎟️</span>
+                        <span><b>${p.name}</b> из ${p.city} получил билет ($${p.amount})</span>
+                    </div>
+                    <span class="text-slate-500">${p.date}</span>
+                `;
+                feedContainer.appendChild(item);
+            });
+        }
+
         function handleParticipantSubmit(e) {
             e.preventDefault();
+            const today = new Date().toLocaleDateString('ru-RU');
             const newParticipant = {
-                id: participants.length + 1,
+                id: participants.length + 300,
                 name: document.getElementById('pName').value,
                 age: parseInt(document.getElementById('pAge').value),
                 email: document.getElementById('pEmail').value,
                 city: document.getElementById('pCity').value,
+                date: today,
                 amount: currentDonationAmount,
                 socialType: document.getElementById('pSocialType').value,
                 socialLink: document.getElementById('pSocialLink').value,
                 comment: document.getElementById('pComment').value || (currentLang === 'ru' ? 'Токио ждет!' : 'Tokyo awaits!')
             };
 
-            // Добавляем в начало массива (новый участник становится частью Зала основателей, если входит в первые 10, или сразу участвует в рейтинге по вкладу)
             participants.unshift(newParticipant);
             saveParticipantsToStorage();
-            renderParticipants();
+            renderAll();
             closeModals();
             document.getElementById('participantForm').reset();
             
-            alert(currentLang === 'ru' ? '🎉 Спасибо! Вы в деле. Сертификат совладельца мечты отправлен на вашу почту.' : '🎉 Thank you! You are in. The dream shareholder certificate has been sent to your email.');
+            // Показываем сертификат
+            showCertificate(newParticipant);
+        }
+
+        function showCertificate(p) {
+            let tierName = 'Участник';
+            if (p.amount >= 100) tierName = 'Легенда маршрута';
+            else if (p.amount >= 25) tierName = 'Совладелец';
+
+            const content = document.getElementById('certificateCardContent');
+            content.innerHTML = `
+                <div class="flex justify-between text-xs text-slate-400">
+                    <span>Пассажир №${p.id}</span>
+                    <span>Дата: ${p.date}</span>
+                </div>
+                <div class="text-lg font-black text-white">${p.name} (${p.city})</div>
+                <div class="text-xs text-emerald-400 font-extrabold">Статус: ${tierName} • Вклад: $${p.amount}</div>
+                <p class="text-xs text-slate-300 italic">«${p.comment}»</p>
+                <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-[10px] text-slate-500">
+                    <span>Verified Tokyo Ticket Project</span>
+                    <span class="text-indigo-400 font-bold">QR: ${p.socialLink}</span>
+                </div>
+            `;
+
+            const certModal = document.getElementById('certificateModal');
+            certModal.classList.remove('hidden');
+            certModal.classList.add('flex');
         }
 
         window.onload = function() {
-            renderParticipants();
+            renderAll();
         };
     </script>
 </body>
