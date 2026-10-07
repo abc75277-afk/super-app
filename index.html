@@ -259,21 +259,36 @@
         </section>
     </main>
 
-    <!-- МОДАЛЬНОЕ ОКНО ШАГ 1 -->
+    <!-- МОДАЛЬНОЕ ОКНО ШАГ 1 (ВЫБОР СУММЫ) -->
     <div id="paymentModal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 z-50">
-        <div class="glass-panel border border-cardBorder rounded-3xl max-w-md w-full p-6 relative shadow-2xl flex flex-col items-center">
+        <div class="glass-panel border border-cardBorder rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl space-y-6">
             <button onclick="closeModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold z-10">✕</button>
-            <h3 class="text-2xl font-black mb-4 text-white text-center">Инвестиция в билет до Токио</h3>
             
-            <!-- Твой виджет NOWPayments (Карты + Крипта) -->
-            <div class="w-full flex justify-center overflow-hidden rounded-2xl">
-                <iframe src="https://nowpayments.io/embeds/donation-widget?api_key=0bec39e2-4e25-4a5c-92cb-b8bf0be7a744" width="346" height="623" frameborder="0" scrolling="no" style="overflow-y: hidden; max-width: 100%;">
-                    Can't load widget
-                </iframe>
+            <div>
+                <h3 class="text-2xl font-black mb-2 text-white" data-i18n="step1Title">Шаг 1: Сумма вклада</h3>
+                <p class="text-base text-slate-300" data-i18n="step1Desc">Выберите или введите сумму для получения статуса и именного сертификата.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- Быстрые кнопки выбора суммы -->
+                <div class="grid grid-cols-3 gap-2">
+                    <button type="button" onclick="setModalAmount(1)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-accent text-white font-bold text-sm transition">$1</button>
+                    <button type="button" onclick="setModalAmount(25)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-indigo-500 text-indigo-300 font-bold text-sm transition">$25</button>
+                    <button type="button" onclick="setModalAmount(100)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-amber-500 text-amber-300 font-bold text-sm transition">$100</button>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="amountLabel">Сумма ($)</label>
+                    <input type="number" id="customAmount" min="1" value="10" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-xl font-black text-slate-100 focus:outline-none focus:border-accent">
+                </div>
+                
+                <!-- Кнопка ведет на твою ссылку NOWPayments с автоматической подстановкой суммы -->
+                <button type="button" onclick="goToNowPayments()" class="w-full py-4 rounded-xl bg-accent hover:bg-accentHover text-white font-extrabold text-base transition shadow-lg shadow-accent/30">
+                    Продолжить к оплате ⚡️
+                </button>
             </div>
         </div>
     </div>
-
     <!-- МОДАЛЬНОЕ ОКНО ШАГ 2 -->
     <div id="dataModal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 z-50">
         <div class="glass-panel border border-cardBorder rounded-3xl max-w-lg w-full p-8 sm:p-10 relative shadow-2xl">
@@ -752,9 +767,22 @@
             certModal.classList.add('flex');
         }
 
-        window.onload = function() {
-            renderAll();
-        };
+ // Функция выбора быстрых сумм
+    function setModalAmount(val) {
+        document.getElementById('customAmount').value = val;
+    }
+
+    // Функция перехода на NOWPayments с передачей суммы
+    function goToNowPayments() {
+        const amount = document.getElementById('customAmount').value || 10;
+        window.location.href = `https://nowpayments.io/donation/tokyoticket?price_amount=${amount}`;
+    }
+
+    window.onload = function() {
+        renderAll();
+    };
+        
+ 
     </script>
 </body>
 </html>
