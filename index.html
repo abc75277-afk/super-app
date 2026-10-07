@@ -32,7 +32,7 @@
         .custom-scrollbar::-webkit-scrollbar-track { background: #030508; border-radius: 4px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #1f293d; border-radius: 4px; }
         
-        /* Стили для точной копии твоего сертификата */
+        /* Стили для точной копии сертификата */
         .cert-container {
             background: linear-gradient(135deg, #0b0c16 0%, #151221 50%, #0d0f18 100%);
             border: 2px solid #d4af37;
@@ -282,19 +282,20 @@
                     <input type="number" id="customAmount" min="1" value="10" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-xl font-black text-slate-100 focus:outline-none focus:border-accent">
                 </div>
                 
-                <!-- Кнопка ведет на твою ссылку NOWPayments с автоматической подстановкой суммы -->
-                <button type="button" onclick="goToNowPayments()" class="w-full py-4 rounded-xl bg-accent hover:bg-accentHover text-white font-extrabold text-base transition shadow-lg shadow-accent/30">
-                    Продолжить к оплате ⚡️
+                <!-- Кнопка теперь открывает анкету (Шаг 2) -->
+                <button type="button" onclick="proceedToDataForm()" class="w-full py-4 rounded-xl bg-accent hover:bg-accentHover text-white font-extrabold text-base transition shadow-lg shadow-accent/30" data-i18n="proceedBtn">
+                    Продолжить к анкете ⚡️
                 </button>
             </div>
         </div>
     </div>
-    <!-- МОДАЛЬНОЕ ОКНО ШАГ 2 -->
+
+    <!-- МОДАЛЬНОЕ ОКНО ШАГ 2 (АНКЕТА УЧАСТНИКА) -->
     <div id="dataModal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 z-50">
         <div class="glass-panel border border-cardBorder rounded-3xl max-w-lg w-full p-8 sm:p-10 relative shadow-2xl">
             <button onclick="closeModals()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl font-bold">✕</button>
             <h3 class="text-2xl font-black mb-2 text-white" data-i18n="step2Title">Шаг 2: Данные участника и сертификат</h3>
-            <p class="text-base text-slate-300 mb-6 font-medium" data-i18n="step2Desc">Вклад успешен. Заполните анкету для создания вашей карточки и сертификата:</p>
+            <p class="text-base text-slate-300 mb-6 font-medium" data-i18n="step2Desc">Заполните анкету, чтобы закрепить за собой статус и сразу перейти к оплате:</p>
             
             <form id="participantForm" onsubmit="handleParticipantSubmit(event)" class="space-y-4">
                 <div class="grid grid-cols-2 gap-4">
@@ -340,13 +341,13 @@
                 </div>
 
                 <button type="submit" class="w-full py-4 rounded-xl bg-accent hover:bg-accentHover text-white font-extrabold text-base transition shadow-lg shadow-accent/30 mt-3" data-i18n="submitBtn">
-                    Получить сертификат совладельца ⚡️
+                    Сохранить и перейти к оплате ⚡️
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО ПРЕМИАЛЬНОГО СЕРТИФИКАТА (ТОЧНАЯ КОПИЯ ТВОЕГО ДИЗАЙНА) -->
+    <!-- МОДАЛЬНОЕ ОКНО ПРЕМИАЛЬНОГО СЕРТИФИКАТА -->
     <div id="certificateModal" class="fixed inset-0 bg-black/90 backdrop-blur-lg hidden items-center justify-center p-2 sm:p-6 z-50 overflow-y-auto">
         <div class="cert-container rounded-3xl max-w-4xl w-full p-6 sm:p-10 relative space-y-6 my-auto">
             <button onclick="closeCertificateModal()" class="absolute top-6 right-6 text-amber-300 hover:text-white text-2xl font-bold z-20">✕</button>
@@ -366,7 +367,7 @@
                 <p class="text-sm text-slate-300 max-w-xl mx-auto">стал официальным участником и совладельцем проекта <b class="text-amber-300">THE MILLION DOLLAR TOKYO TICKET</b> — цифрового приключения, которое объединяет людей со всего мира.</p>
             </div>
 
-            <!-- Блок характеристик в стиле скриншота -->
+            <!-- Блок характеристик -->
             <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 bg-black/40 border border-amber-500/30 rounded-2xl p-4 text-center">
                 <div>
                     <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold">НОМЕР УЧАСТНИКА</div>
@@ -390,7 +391,7 @@
                 </div>
             </div>
 
-            <!-- Права участника и футер сертификата -->
+            <!-- Футер сертификата -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center pt-4 border-t border-amber-500/30 text-xs">
                 <div class="space-y-1 text-slate-300 italic">
                     <p id="certComment">«Большие мечты редко принадлежат одному человеку. Каждая история становится сильнее, когда в ней участвуют другие люди.»</p>
@@ -405,7 +406,6 @@
                         <div>TOKYO-TICKET-APP.VERCEL.APP</div>
                     </div>
                     <div class="w-16 h-16 bg-white p-1 rounded-lg flex items-center justify-center">
-                        <!-- Имитация QR кода -->
                         <div class="w-full h-full bg-black flex items-center justify-center text-[8px] text-white font-mono text-center">QR LINK</div>
                     </div>
                 </div>
@@ -413,7 +413,7 @@
 
             <!-- Кнопки управления -->
             <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 pt-4">
-                <button onclick="alert('Сертификат успешно сохранен в высоком разрешении!')" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-sm transition shadow-lg shadow-amber-500/20" data-i18n="downloadCertBtn">Сохранить сертификат в высоком качестве 📥</button>
+                <button onclick="goToNowPayments()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-black font-extrabold text-sm transition shadow-lg shadow-emerald-500/20">Перейти к оплате в NOWPayments ⚡️</button>
                 <button onclick="closeCertificateModal()" class="px-6 py-3.5 rounded-xl bg-cardBg border border-amber-500/40 text-amber-300 font-bold text-sm hover:bg-amber-500/10 transition" data-i18n="closeCertBtn">Закрыть</button>
             </div>
         </div>
@@ -423,6 +423,7 @@
     <script>
         let currentLang = 'ru';
         let currentDonationAmount = 1;
+        let pendingParticipantData = null;
 
         const defaultParticipants = [
             { id: 324, name: "Kaito", city: "Япония, Токио", age: 24, email: "kaito@tokyo.jp", date: "06.10.2026", amount: 150, socialType: "Instagram", socialLink: "https://instagram.com", comment: "Жду тебя в Сибуе за мой счет!" },
@@ -481,9 +482,9 @@
                 step1Title: "Шаг 1: Сумма вклада",
                 step1Desc: "Выберите или введите сумму для получения статуса и именного сертификата.",
                 amountLabel: "Сумма ($)",
-                proceedBtn: "Продолжить ⚡",
+                proceedBtn: "Продолжить к анкете ⚡",
                 step2Title: "Шаг 2: Данные участника и сертификат",
-                step2Desc: "Вклад успешен. Заполните анкету для создания вашей карточки и сертификата:",
+                step2Desc: "Заполните анкету, чтобы закрепить за собой статус и сразу перейти к оплате:",
                 nameLabel: "Имя и Фамилия",
                 ageLabel: "Сколько лет",
                 emailLabel: "Электронная почта",
@@ -491,7 +492,7 @@
                 socialTypeLabel: "Соцсеть",
                 socialLinkLabel: "Ссылка",
                 commentLabel: "Слово миру или автору",
-                submitBtn: "Получить сертификат совладельца ⚡️",
+                submitBtn: "Сохранить и перейти к оплате ⚡️",
                 downloadCertBtn: "Сохранить сертификат в высоком качестве 📥",
                 closeCertBtn: "Закрыть"
             },
@@ -520,9 +521,9 @@
                 step1Title: "Step 1: Contribution Amount",
                 step1Desc: "Select or enter an amount to receive your status and personalized certificate.",
                 amountLabel: "Amount ($)",
-                proceedBtn: "Continue ⚡",
+                proceedBtn: "Continue to Form ⚡",
                 step2Title: "Step 2: Participant Data & Certificate",
-                step2Desc: "Contribution successful. Fill out the form to create your card and certificate:",
+                step2Desc: "Fill out the form to secure your status and proceed to payment:",
                 nameLabel: "Full Name",
                 ageLabel: "Age",
                 emailLabel: "Email",
@@ -530,7 +531,7 @@
                 socialTypeLabel: "Social Network",
                 socialLinkLabel: "Link",
                 commentLabel: "Word to World or Author",
-                submitBtn: "Get Co-Owner Certificate ⚡️",
+                submitBtn: "Save & Proceed to Payment ⚡️",
                 downloadCertBtn: "Save Certificate in High Quality 📥",
                 closeCertBtn: "Close"
             }
@@ -587,6 +588,55 @@
             
             document.getElementById('dataModal').classList.remove('hidden');
             document.getElementById('dataModal').classList.add('flex');
+        }
+
+        function handleParticipantSubmit(e) {
+            e.preventDefault();
+            const today = new Date().toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
+            
+            pendingParticipantData = {
+                id: participants.length + 300,
+                name: document.getElementById('pName').value,
+                age: parseInt(document.getElementById('pAge').value),
+                email: document.getElementById('pEmail').value,
+                city: document.getElementById('pCity').value,
+                date: today,
+                amount: currentDonationAmount,
+                socialType: document.getElementById('pSocialType').value,
+                socialLink: document.getElementById('pSocialLink').value,
+                comment: document.getElementById('pComment').value || "Большие мечты принадлежат многим."
+            };
+
+            participants.unshift(pendingParticipantData);
+            saveParticipantsToStorage();
+            renderAll();
+            closeModals();
+            document.getElementById('participantForm').reset();
+            
+            // Показываем сертификат перед оплатой
+            showCertificate(pendingParticipantData);
+        }
+
+        function showCertificate(p) {
+            let tierName = 'Участник';
+            if (p.amount >= 100) tierName = 'Легенда маршрута';
+            else if (p.amount >= 25) tierName = 'Совладелец мечты';
+
+            document.getElementById('certName').innerText = p.name;
+            document.getElementById('certId').innerText = `#${String(p.id).padStart(6, '0')}`;
+            document.getElementById('certCountry').innerText = p.city.split(',')[0].trim();
+            document.getElementById('certDate').innerText = p.date;
+            document.getElementById('certAmount').innerText = `$${p.amount}`;
+            document.getElementById('certStatus').innerText = tierName;
+            document.getElementById('certComment').innerText = `«${p.comment}»`;
+
+            const certModal = document.getElementById('certificateModal');
+            certModal.classList.remove('hidden');
+            certModal.classList.add('flex');
+        }
+
+        function goToNowPayments() {
+            window.location.href = `https://nowpayments.io/donation/tokyoticket?price_amount=${currentDonationAmount}`;
         }
 
         function renderAll() {
@@ -723,66 +773,9 @@
             });
         }
 
-        function handleParticipantSubmit(e) {
-            e.preventDefault();
-            const today = new Date().toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
-            const newParticipant = {
-                id: participants.length + 300,
-                name: document.getElementById('pName').value,
-                age: parseInt(document.getElementById('pAge').value),
-                email: document.getElementById('pEmail').value,
-                city: document.getElementById('pCity').value,
-                date: today,
-                amount: currentDonationAmount,
-                socialType: document.getElementById('pSocialType').value,
-                socialLink: document.getElementById('pSocialLink').value,
-                comment: document.getElementById('pComment').value || "Большие мечты принадлежат многим."
-            };
-
-            participants.unshift(newParticipant);
-            saveParticipantsToStorage();
+        window.onload = function() {
             renderAll();
-            closeModals();
-            document.getElementById('participantForm').reset();
-            
-            // Показываем премиальный сертификат в точной стилистике
-            showCertificate(newParticipant);
-        }
-
-        function showCertificate(p) {
-            let tierName = 'Участник';
-            if (p.amount >= 100) tierName = 'Легенда маршрута';
-            else if (p.amount >= 25) tierName = 'Совладелец мечты';
-
-            document.getElementById('certName').innerText = p.name;
-            document.getElementById('certId').innerText = `#${String(p.id).padStart(6, '0')}`;
-            document.getElementById('certCountry').innerText = p.city.split(',')[0].trim();
-            document.getElementById('certDate').innerText = p.date;
-            document.getElementById('certAmount').innerText = `$${p.amount}`;
-            document.getElementById('certStatus').innerText = tierName;
-            document.getElementById('certComment').innerText = `«${p.comment}»`;
-
-            const certModal = document.getElementById('certificateModal');
-            certModal.classList.remove('hidden');
-            certModal.classList.add('flex');
-        }
-
- // Функция выбора быстрых сумм
-    function setModalAmount(val) {
-        document.getElementById('customAmount').value = val;
-    }
-
-    // Функция перехода на NOWPayments с передачей суммы
-    function goToNowPayments() {
-        const amount = document.getElementById('customAmount').value || 10;
-        window.location.href = `https://nowpayments.io/donation/tokyoticket?price_amount=${amount}`;
-    }
-
-    window.onload = function() {
-        renderAll();
-    };
-        
- 
+        };
     </script>
 </body>
 </html>
