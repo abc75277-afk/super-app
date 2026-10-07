@@ -32,7 +32,6 @@
         .custom-scrollbar::-webkit-scrollbar-track { background: #030508; border-radius: 4px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #1f293d; border-radius: 4px; }
         
-        /* Стили для точной копии сертификата */
         .cert-container {
             background: linear-gradient(135deg, #0b0c16 0%, #151221 50%, #0d0f18 100%);
             border: 2px solid #d4af37;
@@ -125,7 +124,6 @@
                 <p class="text-slate-400 text-base" data-i18n="levelsSub">От символического вклада до коллекционного физического сертификата в рамке.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Уровень 1 -->
                 <div class="glass-panel border border-cardBorder rounded-3xl p-8 flex flex-col justify-between hover:border-accent/50 transition">
                     <div>
                         <div class="text-3xl mb-4">🎟️</div>
@@ -139,7 +137,6 @@
                     </div>
                     <button onclick="selectTierAndOpen(1)" class="mt-8 w-full py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-accent text-white font-bold text-sm transition">Выбрать $1+</button>
                 </div>
-                <!-- Уровень 2 -->
                 <div class="glass-panel border-2 border-indigo-500/60 rounded-3xl p-8 flex flex-col justify-between relative shadow-xl shadow-indigo-500/10">
                     <div class="absolute -top-3.5 right-6 px-4 py-1 rounded-full bg-indigo-500 text-white text-xs font-black uppercase">Хит</div>
                     <div>
@@ -154,7 +151,6 @@
                     </div>
                     <button onclick="selectTierAndOpen(25)" class="mt-8 w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm transition shadow-lg shadow-indigo-600/30">Выбрать $25+</button>
                 </div>
-                <!-- Уровень 3 -->
                 <div class="glass-panel border border-amber-500/50 rounded-3xl p-8 flex flex-col justify-between hover:border-amber-500 transition">
                     <div>
                         <div class="text-3xl mb-4">🥇</div>
@@ -196,7 +192,7 @@
                         <div class="bg-darkBg/60 border border-cardBorder rounded-2xl p-4">
                             <div class="text-xl mb-2">📜</div>
                             <h4 class="font-bold text-white text-sm mb-1">Сертификат совладельца</h4>
-                            <p class="text-xs text-slate-400">Премиальный именной документ с QR-кодом.</p>
+                            <p class="text-xs text-slate-400">Премиальный именной документ.</p>
                         </div>
                     </div>
                 </div>
@@ -209,9 +205,7 @@
                         <h3 class="text-xl font-black text-white" data-i18n="liveFeedTitle">⚡️ Живая лента проекта</h3>
                         <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
                     </div>
-                    <div id="liveFeedContainer" class="space-y-3 max-h-[240px] overflow-y-auto custom-scrollbar pr-1">
-                        <!-- Динамически заполняется -->
-                    </div>
+                    <div id="liveFeedContainer" class="space-y-3 max-h-[240px] overflow-y-auto custom-scrollbar pr-1"></div>
                 </div>
             </div>
         </div>
@@ -222,9 +216,7 @@
                 <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-white" data-i18n="mapTitle">🌍 География проекта</h2>
                 <p class="text-slate-400 text-sm mt-1" data-i18n="mapSub">Участники со всего мира объединяются ради общей истории.</p>
             </div>
-            <div id="countriesStatsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-                <!-- Динамически заполняется -->
-            </div>
+            <div id="countriesStatsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4"></div>
         </section>
 
         <!-- РЕЕСТР УЧАСТНИКОВ -->
@@ -239,7 +231,6 @@
                 </div>
             </div>
 
-            <!-- 👑 ТОП-10 ЛЕГЕНД МАРШРУТА -->
             <div class="space-y-4">
                 <h3 class="text-xl font-extrabold text-amber-400 uppercase tracking-wider flex items-center space-x-2">
                     <span>👑</span>
@@ -248,7 +239,6 @@
                 <div id="legendsList" class="space-y-3"></div>
             </div>
 
-            <!-- 👥 ВСЕ УЧАСТНИКИ (КАРТОЧКИ) -->
             <div class="space-y-4 pt-4">
                 <h3 class="text-xl font-extrabold text-indigo-400 uppercase tracking-wider flex items-center space-x-2">
                     <span>🎟️</span>
@@ -263,26 +253,20 @@
     <div id="paymentModal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 z-50">
         <div class="glass-panel border border-cardBorder rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl space-y-6">
             <button onclick="closeModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold z-10">✕</button>
-            
             <div>
                 <h3 class="text-2xl font-black mb-2 text-white" data-i18n="step1Title">Шаг 1: Сумма вклада</h3>
                 <p class="text-base text-slate-300" data-i18n="step1Desc">Выберите или введите сумму для получения статуса и именного сертификата.</p>
             </div>
-            
             <div class="space-y-4">
-                <!-- Быстрые кнопки выбора суммы -->
                 <div class="grid grid-cols-3 gap-2">
                     <button type="button" onclick="setModalAmount(1)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-accent text-white font-bold text-sm transition">$1</button>
                     <button type="button" onclick="setModalAmount(25)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-indigo-500 text-indigo-300 font-bold text-sm transition">$25</button>
                     <button type="button" onclick="setModalAmount(100)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-amber-500 text-amber-300 font-bold text-sm transition">$100</button>
                 </div>
-                
                 <div>
                     <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="amountLabel">Сумма ($)</label>
                     <input type="number" id="customAmount" min="1" value="10" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-xl font-black text-slate-100 focus:outline-none focus:border-accent">
                 </div>
-                
-                <!-- Кнопка теперь открывает анкету (Шаг 2) -->
                 <button type="button" onclick="proceedToDataForm()" class="w-full py-4 rounded-xl bg-accent hover:bg-accentHover text-white font-extrabold text-base transition shadow-lg shadow-accent/30" data-i18n="proceedBtn">
                     Продолжить к анкете ⚡️
                 </button>
@@ -335,11 +319,6 @@
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="commentLabel">Слово миру или автору</label>
-                    <textarea id="pComment" rows="2" placeholder="Большие мечты принадлежат многим..." class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent resize-none"></textarea>
-                </div>
-
                 <button type="submit" class="w-full py-4 rounded-xl bg-accent hover:bg-accentHover text-white font-extrabold text-base transition shadow-lg shadow-accent/30 mt-3" data-i18n="submitBtn">
                     Сохранить и перейти к оплате ⚡️
                 </button>
@@ -352,7 +331,6 @@
         <div class="cert-container rounded-3xl max-w-4xl w-full p-6 sm:p-10 relative space-y-6 my-auto">
             <button onclick="closeCertificateModal()" class="absolute top-6 right-6 text-amber-300 hover:text-white text-2xl font-bold z-20">✕</button>
             
-            <!-- Шапка сертификата -->
             <div class="text-center space-y-2 border-b border-amber-500/30 pb-6 relative">
                 <div class="text-xs uppercase tracking-widest text-amber-200/70 font-bold">Dream is not for one person • Big dreams belong to more than one person</div>
                 <div class="text-xs text-amber-400 font-extrabold tracking-widest uppercase">THE MILLION DOLLAR TOKYO TICKET</div>
@@ -360,14 +338,12 @@
                 <div class="text-sm font-medium text-amber-100/80 tracking-wide">СЕРТИФИКАТ СОВЛАДЕЛЬЦА МЕЧТЫ</div>
             </div>
 
-            <!-- Тело сертификата -->
             <div class="text-center space-y-4 py-2">
                 <p class="text-sm text-slate-300 italic">Настоящим подтверждается, что</p>
                 <div id="certName" class="text-3xl sm:text-5xl font-black text-white font-serif tracking-wide underline decoration-amber-500/50 underline-offset-8">Иван Петров</div>
                 <p class="text-sm text-slate-300 max-w-xl mx-auto">стал официальным участником и совладельцем проекта <b class="text-amber-300">THE MILLION DOLLAR TOKYO TICKET</b> — цифрового приключения, которое объединяет людей со всего мира.</p>
             </div>
 
-            <!-- Блок характеристик -->
             <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 bg-black/40 border border-amber-500/30 rounded-2xl p-4 text-center">
                 <div>
                     <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold">НОМЕР УЧАСТНИКА</div>
@@ -391,27 +367,18 @@
                 </div>
             </div>
 
-            <!-- Футер сертификата -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center pt-4 border-t border-amber-500/30 text-xs">
-    <div class="space-y-1 text-slate-300 italic">
-        <p id="certComment">«Большие мечты редко принадлежат одному человеку. Каждая история становится сильнее, когда в ней участвуют другие люди.»</p>
-    </div>
-    <div class="text-center space-y-1">
-        <div class="font-serif italic text-amber-300 text-lg">Игорь Дьяконов</div>
-        <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">FOUNDER OF THE MILLION DOLLAR TOKYO TICKET</div>
-    </div>
-    <div class="flex justify-center sm:justify-end items-center space-x-3">
-        <div class="text-right text-[10px] text-slate-400">
-            <div class="font-bold text-amber-300">СКАНУЙ НА СВОЙ ПРОФИЛЬ</div>
-            <div>TOKYO-TICKET-APP.VERCEL.APP</div>
-        </div>
-        <div class="w-16 h-16 bg-white p-1 rounded-lg flex items-center justify-center">
-            <div class="w-full h-full bg-black flex items-center justify-center text-[8px] text-white font-mono text-center">QR LINK</div>
-        </div>
-    </div>
-</div>
+            <!-- Именная благодарность от автора вместо кастомного комментария -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center pt-4 border-t border-amber-500/30 text-xs">
+                <div class="space-y-1 text-slate-300 italic">
+                    <p class="text-amber-200/90 font-medium">«Спасибо большое за твой вклад в проект! Вместе мы воплощаем эту безумную мечту в реальность.»</p>
+                    <div class="text-[10px] text-slate-400 font-mono pt-1">TOKYO-TICKET-APP.VERCEL.APP</div>
+                </div>
+                <div class="text-center sm:text-right space-y-1">
+                    <div class="font-serif italic text-amber-300 text-xl">Игорь Дьяконов</div>
+                    <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">FOUNDER OF THE MILLION DOLLAR TOKYO TICKET</div>
+                </div>
+            </div>
 
-            <!-- Кнопки управления -->
             <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 pt-4">
                 <button onclick="goToNowPayments()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-black font-extrabold text-sm transition shadow-lg shadow-emerald-500/20">Перейти к оплате в NOWPayments ⚡️</button>
                 <button onclick="closeCertificateModal()" class="px-6 py-3.5 rounded-xl bg-cardBg border border-amber-500/40 text-amber-300 font-bold text-sm hover:bg-amber-500/10 transition" data-i18n="closeCertBtn">Закрыть</button>
@@ -426,18 +393,18 @@
         let pendingParticipantData = null;
 
         const defaultParticipants = [
-            { id: 324, name: "Kaito", city: "Япония, Токио", age: 24, email: "kaito@tokyo.jp", date: "06.10.2026", amount: 150, socialType: "Instagram", socialLink: "https://instagram.com", comment: "Жду тебя в Сибуе за мой счет!" },
-            { id: 284, name: "Sarah", city: "США, Нью-Йорк", age: 28, email: "sarah@ny.com", date: "05.10.2026", amount: 120, socialType: "X / Twitter", socialLink: "https://twitter.com", comment: "Best digital adventure." },
-            { id: 210, name: "Игорь", city: "Сербия, Белград", age: 31, email: "igor@belgrade.rs", date: "04.10.2026", amount: 100, socialType: "Telegram", socialLink: "https://t.me", comment: "Легендарный проект." },
-            { id: 189, name: "Алексей", city: "Россия, Москва", age: 31, email: "alex@mail.ru", date: "03.10.2026", amount: 50, socialType: "Telegram", socialLink: "https://t.me", comment: "Карма работает безупречно." },
-            { id: 150, name: "Elena", city: "Франция, Париж", age: 26, email: "elena@paris.fr", date: "02.10.2026", amount: 35, socialType: "Instagram", socialLink: "https://instagram.com", comment: "Cheers to Tokyo!" },
-            { id: 112, name: "Kenji", city: "Япония, Киото", age: 35, email: "kenji@kyoto.jp", date: "01.10.2026", amount: 30, socialType: "Website", socialLink: "https://example.com", comment: "Enjoy the ramen." },
-            { id: 98, name: "Дмитрий", city: "Россия, Санкт-Петербург", age: 29, email: "dmitry@spb.ru", date: "30.09.2026", amount: 25, socialType: "Telegram", socialLink: "https://t.me", comment: "Легко расстался с мелочью." },
-            { id: 75, name: "Anna", city: "Великобритания, Лондон", age: 27, email: "anna@london.co.uk", date: "29.09.2026", amount: 20, socialType: "X / Twitter", socialLink: "https://twitter.com", comment: "100x karma." },
-            { id: 50, name: "Max", city: "Германия, Берлин", age: 30, email: "max@berlin.de", date: "28.09.2026", amount: 15, socialType: "Telegram", socialLink: "https://t.me", comment: "Great initiative." },
-            { id: 25, name: "Ольга", city: "Беларусь, Минск", age: 25, email: "olga@minsk.by", date: "27.09.2026", amount: 10, socialType: "Instagram", socialLink: "https://instagram.com", comment: "Удачи в путешествии!" },
-            { id: 12, name: "Lucas", city: "Бразилия, Сан-Паулу", age: 23, email: "lucas@sp.br", date: "26.09.2026", amount: 5, socialType: "X / Twitter", socialLink: "https://twitter.com", comment: "Vibes." },
-            { id: 4, name: "Иван", city: "Россия, Казань", age: 33, email: "ivan@kazan.ru", date: "25.09.2026", amount: 1, socialType: "Telegram", socialLink: "https://t.me", comment: "За кофе!" }
+            { id: 324, name: "Kaito", city: "Япония, Токио", age: 24, email: "kaito@tokyo.jp", date: "06.10.2026", amount: 150, socialType: "Instagram", socialLink: "https://instagram.com" },
+            { id: 284, name: "Sarah", city: "США, Нью-Йорк", age: 28, email: "sarah@ny.com", date: "05.10.2026", amount: 120, socialType: "X / Twitter", socialLink: "https://twitter.com" },
+            { id: 210, name: "Игорь", city: "Сербия, Белград", age: 31, email: "igor@belgrade.rs", date: "04.10.2026", amount: 100, socialType: "Telegram", socialLink: "https://t.me" },
+            { id: 189, name: "Алексей", city: "Россия, Москва", age: 31, email: "alex@mail.ru", date: "03.10.2026", amount: 50, socialType: "Telegram", socialLink: "https://t.me" },
+            { id: 150, name: "Elena", city: "Франция, Париж", age: 26, email: "elena@paris.fr", date: "02.10.2026", amount: 35, socialType: "Instagram", socialLink: "https://instagram.com" },
+            { id: 112, name: "Kenji", city: "Япония, Киото", age: 35, email: "kenji@kyoto.jp", date: "01.10.2026", amount: 30, socialType: "Website", socialLink: "https://example.com" },
+            { id: 98, name: "Дмитрий", city: "Россия, Санкт-Петербург", age: 29, email: "dmitry@spb.ru", date: "30.09.2026", amount: 25, socialType: "Telegram", socialLink: "https://t.me" },
+            { id: 75, name: "Anna", city: "Великобритания, Лондон", age: 27, email: "anna@london.co.uk", date: "29.09.2026", amount: 20, socialType: "X / Twitter", socialLink: "https://twitter.com" },
+            { id: 50, name: "Max", city: "Германия, Берлин", age: 30, email: "max@berlin.de", date: "28.09.2026", amount: 15, socialType: "Telegram", socialLink: "https://t.me" },
+            { id: 25, name: "Ольга", city: "Беларусь, Минск", age: 25, email: "olga@minsk.by", date: "27.09.2026", amount: 10, socialType: "Instagram", socialLink: "https://instagram.com" },
+            { id: 12, name: "Lucas", city: "Бразилия, Сан-Паулу", age: 23, email: "lucas@sp.br", date: "26.09.2026", amount: 5, socialType: "X / Twitter", socialLink: "https://twitter.com" },
+            { id: 4, name: "Иван", city: "Россия, Казань", age: 33, email: "ivan@kazan.ru", date: "25.09.2026", amount: 1, socialType: "Telegram", socialLink: "https://t.me" }
         ];
 
         let participants = [];
@@ -491,7 +458,6 @@
                 cityLabel: "Страна и Город",
                 socialTypeLabel: "Соцсеть",
                 socialLinkLabel: "Ссылка",
-                commentLabel: "Слово миру или автору",
                 submitBtn: "Сохранить и перейти к оплате ⚡️",
                 downloadCertBtn: "Сохранить сертификат в высоком качестве 📥",
                 closeCertBtn: "Закрыть"
@@ -530,7 +496,6 @@
                 cityLabel: "Country & City",
                 socialTypeLabel: "Social Network",
                 socialLinkLabel: "Link",
-                commentLabel: "Word to World or Author",
                 submitBtn: "Save & Proceed to Payment ⚡️",
                 downloadCertBtn: "Save Certificate in High Quality 📥",
                 closeCertBtn: "Close"
@@ -603,8 +568,7 @@
                 date: today,
                 amount: currentDonationAmount,
                 socialType: document.getElementById('pSocialType').value,
-                socialLink: document.getElementById('pSocialLink').value,
-                comment: document.getElementById('pComment').value || "Большие мечты принадлежат многим."
+                socialLink: document.getElementById('pSocialLink').value
             };
 
             participants.unshift(pendingParticipantData);
@@ -613,7 +577,6 @@
             closeModals();
             document.getElementById('participantForm').reset();
             
-            // Показываем сертификат перед оплатой
             showCertificate(pendingParticipantData);
         }
 
@@ -628,7 +591,6 @@
             document.getElementById('certDate').innerText = p.date;
             document.getElementById('certAmount').innerText = `$${p.amount}`;
             document.getElementById('certStatus').innerText = tierName;
-            document.getElementById('certComment').innerText = `«${p.comment}»`;
 
             const certModal = document.getElementById('certificateModal');
             certModal.classList.remove('hidden');
@@ -672,7 +634,6 @@
                                 <span class="font-black text-white text-lg">${p.name}</span>
                                 <span class="text-xs text-slate-400 bg-slate-800 px-2 py-0.5 rounded-md">${p.city}</span>
                             </div>
-                            <p class="text-sm text-slate-300 italic mt-0.5">«${p.comment}»</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-4 w-full sm:w-auto justify-between sm:justify-end">
@@ -714,7 +675,6 @@
                             <span>🌍</span> <span>${p.city}</span>
                         </div>
                         <div class="text-xs text-slate-400 mt-1">📅 Присоединился: ${p.date}</div>
-                        <p class="text-sm text-slate-300 italic mt-3 bg-darkBg/60 p-3 rounded-xl border border-cardBorder">«${p.comment}»</p>
                     </div>
                     <div class="flex justify-between items-center pt-3 border-t border-slate-800">
                         <span class="font-black text-emerald-400 text-base">$${p.amount}</span>
