@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru" class="dark">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Million Dollar Tokyo Ticket | One-Way Digital Adventure</title>
+    <title>The Tokyo Ticket Experiment | Can the Internet Change a Life?</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -46,10 +46,10 @@
     <!-- НАВИГАЦИЯ -->
     <header class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center border-b border-slate-800/80">
         <div class="flex items-center space-x-3">
-            <span class="text-3xl">🍜</span>
+            <span class="text-3xl">✈️</span>
             <div>
-                <span class="font-black text-xl tracking-tight bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">The Million Dollar Tokyo Ticket</span>
-                <span class="block text-xs text-slate-400 tracking-widest uppercase font-extrabold mt-0.5" data-i18n="subtitle">One-Way Digital Adventure</span>
+                <span class="font-black text-xl tracking-tight bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent" data-i18n="navTitle">The Tokyo Ticket Experiment</span>
+                <span class="block text-xs text-slate-400 tracking-widest uppercase font-extrabold mt-0.5" data-i18n="subtitle">Can the internet change a life?</span>
             </div>
         </div>
         <div class="flex items-center space-x-4">
@@ -69,131 +69,62 @@
                 <div class="absolute -right-32 -top-32 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl pointer-events-none"></div>
                 <div>
                     <div class="inline-flex items-center space-x-2 mb-6 px-5 py-2.5 rounded-full bg-accent/15 border border-accent/30 text-accent text-sm font-extrabold tracking-wider uppercase">
-                        <span>🚀</span>
-                        <span data-i18n="badge">Самый амбициозный цифровой эксперимент</span>
+                        <span>🎯</span>
+                        <span data-i18n="badge">Social Experiment & Digital Journey</span>
                     </div>
                     <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-8 leading-[1.1] text-white">
-                        <span class="bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent" data-i18n="heroTitle1">Цель проста.</span><br>
-                        <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent" data-i18n="heroTitle2">Собрать миллион символических вкладов.</span>
+                        <span class="bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent" data-i18n="heroTitle1">Can the internet</span><br>
+                        <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent" data-i18n="heroTitle2">make a dream happen?</span>
                     </h1>
                     <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mb-8 leading-relaxed font-normal" data-i18n="heroDesc">
-                        Собрать миллион билетов по $1 и доказать, что интернет способен объединить людей вокруг одной безумной идеи. Станьте совладельцем мечты и войдите в историю проекта навсегда.
+                        This is not a donation or charity appeal. It’s a pure social experiment. Can people across the globe unite to send someone to Tokyo through micro-contributions? Let's find out together.
                     </p>
                 </div>
                 <div class="flex flex-wrap items-center gap-5 pt-8 border-t border-slate-800/80">
                     <button onclick="openPaymentModal()" class="px-10 py-5 rounded-2xl bg-gradient-to-r from-accent to-indigo-600 hover:from-accentHover hover:to-indigo-500 text-white font-extrabold text-lg shadow-xl shadow-accent/30 transition transform hover:-translate-y-0.5" data-i18n="participateBtn">
-                        Получить свой след в истории ⚡
+                        Join the Experiment ⚡
                     </button>
-                    <div class="text-sm text-slate-400 font-medium" data-i18n="heroFooter">🎁 Уровни: Участник ($1+) • Совладелец ($25+) • Легенда ($100+)</div>
+                    <div class="text-sm text-slate-400 font-medium" data-i18n="heroFooter">✨ Get your personalized supporter certificate instantly</div>
                 </div>
             </div>
 
-            <!-- Счетчик -->
+            <!-- Счетчик (без фальшивого миллиона) -->
             <div class="lg:col-span-4 glass-panel border border-cardBorder rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-xl">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span class="text-sm font-bold text-slate-300 uppercase tracking-wider" data-i18n="fundTitle">Фонд «Токио на миллион»</span>
+                        <span class="text-sm font-bold text-slate-300 uppercase tracking-wider" data-i18n="fundTitle">Experiment Fund</span>
                         <span class="flex h-3.5 w-3.5 relative">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
                         </span>
                     </div>
-                    <div class="text-5xl sm:text-6xl font-black text-emerald-400 mb-4 tracking-tight">$<span id="totalAmount">0</span></div>
-                    <p class="text-base text-slate-300 leading-relaxed font-medium" data-i18n="fundDesc">Собрано совместными усилиями участников со всего мира.</p>
+                    <div class="text-5xl sm:text-6xl font-black text-emerald-400 mb-4 tracking-tight">$<span id="totalAmount">127</span></div>
+                    <p class="text-base text-slate-300 leading-relaxed font-medium" data-i18n="fundDesc">Raised collectively by supporters worldwide.</p>
                 </div>
                 <div class="mt-8 pt-6 border-t border-slate-800 space-y-4">
                     <div class="flex justify-between text-base font-bold">
-                        <span class="text-slate-300" data-i18n="goalTitle">Цель эксперимента</span>
-                        <span class="text-emerald-400 text-lg">$1,000,000</span>
+                        <span class="text-slate-300" data-i18n="goalTitle">Target Ticket Goal</span>
+                        <span class="text-emerald-400 text-lg">$2,500</span>
                     </div>
                     <div class="w-full bg-darkBg rounded-full h-4 border border-slate-800 overflow-hidden p-0.5">
-                        <div id="progressBar" class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                        <div id="progressBar" class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full transition-all duration-500" style="width: 5%"></div>
                     </div>
                     <div class="flex justify-between text-sm text-slate-400 font-semibold">
-                        <span id="progressText">Прогресс: 0%</span>
-                        <span class="text-indigo-400 font-bold" data-i18n="statusText">Статус: Эксперимент активен</span>
+                        <span id="progressText">Progress: 5%</span>
+                        <span class="text-indigo-400 font-bold" data-i18n="statusText">Status: Live Experiment</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- УРОВНИ УЧАСТИЯ -->
-        <section class="space-y-8 pt-6">
-            <div class="text-center max-w-2xl mx-auto space-y-3">
-                <h2 class="text-3xl font-black text-white" data-i18n="levelsHeader">Выберите свой статус в проекте</h2>
-                <p class="text-slate-400 text-base" data-i18n="levelsSub">От символического вклада до коллекционного физического сертификата в рамке.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="glass-panel border border-cardBorder rounded-3xl p-8 flex flex-col justify-between hover:border-accent/50 transition">
-                    <div>
-                        <div class="text-3xl mb-4">🎟️</div>
-                        <h3 class="font-black text-white text-xl mb-1">Участник</h3>
-                        <div class="text-accent font-extrabold text-lg mb-4">от $1</div>
-                        <ul class="space-y-3 text-sm text-slate-300">
-                            <li>• Имя в пожизненной хронике</li>
-                            <li>• Уникальный номер участника</li>
-                            <li>• Именной цифровой сертификат</li>
-                        </ul>
-                    </div>
-                    <button onclick="selectTierAndOpen(1)" class="mt-8 w-full py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-accent text-white font-bold text-sm transition">Выбрать $1+</button>
-                </div>
-                <div class="glass-panel border-2 border-indigo-500/60 rounded-3xl p-8 flex flex-col justify-between relative shadow-xl shadow-indigo-500/10">
-                    <div class="absolute -top-3.5 right-6 px-4 py-1 rounded-full bg-indigo-500 text-white text-xs font-black uppercase">Хит</div>
-                    <div>
-                        <div class="text-3xl mb-4">🥈</div>
-                        <h3 class="font-black text-white text-xl mb-1">Совладелец мечты</h3>
-                        <div class="text-indigo-400 font-extrabold text-lg mb-4">от $25</div>
-                        <ul class="space-y-3 text-sm text-slate-300">
-                            <li>• Всё, что входит в уровень Участника</li>
-                            <li>• Физический сертификат в рамке с доставкой</li>
-                            <li>• Личная подпись автора проекта</li>
-                        </ul>
-                    </div>
-                    <button onclick="selectTierAndOpen(25)" class="mt-8 w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm transition shadow-lg shadow-indigo-600/30">Выбрать $25+</button>
-                </div>
-                <div class="glass-panel border border-amber-500/50 rounded-3xl p-8 flex flex-col justify-between hover:border-amber-500 transition">
-                    <div>
-                        <div class="text-3xl mb-4">🥇</div>
-                        <h3 class="font-black text-white text-xl mb-1">Легенда маршрута</h3>
-                        <div class="text-amber-400 font-extrabold text-lg mb-4">от $100</div>
-                        <ul class="space-y-3 text-sm text-slate-300">
-                            <li>• Всё, что выше + физические подарки</li>
-                            <li>• Навсегда в ТОП-10 Легенд маршрута</li>
-                            <li>• Отдельная эксклюзивная карточка</li>
-                            <li>• Особый элитный статус</li>
-                        </ul>
-                    </div>
-                    <button onclick="selectTierAndOpen(100)" class="mt-8 w-full py-3 rounded-xl bg-amber-500/20 border border-amber-500/40 hover:bg-amber-500 text-amber-300 hover:text-black font-bold text-sm transition">Выбрать $100+</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- ЧТО ПОЛУЧАЕТ УЧАСТНИК + ЖИВАЯ ЛЕНТА -->
+        <!-- О СУЩНОСТИ ЭКСПЕРИМЕНТА -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div class="lg:col-span-7 glass-panel border border-cardBorder rounded-3xl p-8 flex flex-col justify-between">
                 <div>
-                    <h3 class="text-2xl font-black text-white mb-6" data-i18n="benefitsTitle">Что получает участник?</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="bg-darkBg/60 border border-cardBorder rounded-2xl p-4">
-                            <div class="text-xl mb-2">☑️</div>
-                            <h4 class="font-bold text-white text-sm mb-1">Место в хронике</h4>
-                            <p class="text-xs text-slate-400">Ваше имя останется на сайте навсегда.</p>
-                        </div>
-                        <div class="bg-darkBg/60 border border-cardBorder rounded-2xl p-4">
-                            <div class="text-xl mb-2">🎟️</div>
-                            <h4 class="font-bold text-white text-sm mb-1">Номер участника</h4>
-                            <p class="text-xs text-slate-400">Персональный пожизненный порядковый номер.</p>
-                        </div>
-                        <div class="bg-darkBg/60 border border-cardBorder rounded-2xl p-4">
-                            <div class="text-xl mb-2">🔗</div>
-                            <h4 class="font-bold text-white text-sm mb-1">Ссылки на соцсети</h4>
-                            <p class="text-xs text-slate-400">Telegram, Instagram или сайт в вашем профиле.</p>
-                        </div>
-                        <div class="bg-darkBg/60 border border-cardBorder rounded-2xl p-4">
-                            <div class="text-xl mb-2">📜</div>
-                            <h4 class="font-bold text-white text-sm mb-1">Сертификат совладельца</h4>
-                            <p class="text-xs text-slate-400">Премиальный именной документ.</p>
-                        </div>
+                    <h3 class="text-2xl font-black text-white mb-6" data-i18n="benefitsTitle">What is this experiment about?</h3>
+                    <div class="space-y-4 text-slate-300 text-base leading-relaxed">
+                        <p data-i18n="expText1">We live in a digital world connected by social media, yet separated by algorithms. This project tests a simple hypothesis: can individual micro-actions from strangers create a real-world journey?</p>
+                        <p data-i18n="expText2">No corporate sponsors. No hidden agendas. Just a transparent digital journey powered entirely by the internet community.</p>
                     </div>
                 </div>
             </div>
@@ -202,51 +133,13 @@
             <div class="lg:col-span-5 glass-panel border border-cardBorder rounded-3xl p-8 flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-black text-white" data-i18n="liveFeedTitle">⚡️ Живая лента проекта</h3>
+                        <h3 class="text-xl font-black text-white" data-i18n="liveFeedTitle">⚡️ Live Activity Feed</h3>
                         <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
                     </div>
-                    <div id="liveFeedContainer" class="space-y-3 max-h-[240px] overflow-y-auto custom-scrollbar pr-1"></div>
+                    <div id="liveFeedContainer" class="space-y-3 max-h-[220px] overflow-y-auto custom-scrollbar pr-1"></div>
                 </div>
             </div>
         </div>
-
-        <!-- КАРТА СТРАН ПРОЕКТА -->
-        <section class="space-y-6 pt-4">
-            <div>
-                <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-white" data-i18n="mapTitle">🌍 География проекта</h2>
-                <p class="text-slate-400 text-sm mt-1" data-i18n="mapSub">Участники со всего мира объединяются ради общей истории.</p>
-            </div>
-            <div id="countriesStatsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4"></div>
-        </section>
-
-        <!-- РЕЕСТР УЧАСТНИКОВ -->
-        <section class="space-y-12 pt-6">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <div>
-                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white" data-i18n="listTitle">Хроника участников проекта</h2>
-                    <p class="text-lg text-slate-300 mt-1" data-i18n="listDesc">Легенды маршрута закреплены навечно. Полный реестр хранит каждого совладельца мечты.</p>
-                </div>
-                <div class="flex items-center space-x-3">
-                    <span class="text-base px-6 py-3 rounded-2xl bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 font-extrabold" id="participantsBadge">Участников: 0</span>
-                </div>
-            </div>
-
-            <div class="space-y-4">
-                <h3 class="text-xl font-extrabold text-amber-400 uppercase tracking-wider flex items-center space-x-2">
-                    <span>👑</span>
-                    <span data-i18n="legendsTitle">ТОП-10 Легенд маршрута (Рейтинг по вкладу)</span>
-                </h3>
-                <div id="legendsList" class="space-y-3"></div>
-            </div>
-
-            <div class="space-y-4 pt-4">
-                <h3 class="text-xl font-extrabold text-indigo-400 uppercase tracking-wider flex items-center space-x-2">
-                    <span>🎟️</span>
-                    <span data-i18n="allParticipantsTitle">Все совладельцы мечты в проекте</span>
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[600px] overflow-y-auto custom-scrollbar p-1" id="allParticipantsGrid"></div>
-            </div>
-        </section>
     </main>
 
     <!-- МОДАЛЬНОЕ ОКНО ШАГ 1 (ВЫБОР СУММЫ) -->
@@ -254,21 +147,21 @@
         <div class="glass-panel border border-cardBorder rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl space-y-6">
             <button onclick="closeModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold z-10">✕</button>
             <div>
-                <h3 class="text-2xl font-black mb-2 text-white" data-i18n="step1Title">Шаг 1: Сумма вклада</h3>
-                <p class="text-base text-slate-300" data-i18n="step1Desc">Выберите или введите сумму для получения статуса и именного сертификата.</p>
+                <h3 class="text-2xl font-black mb-2 text-white" data-i18n="step1Title">Step 1: Choose Amount</h3>
+                <p class="text-base text-slate-300" data-i18n="step1Desc">Select or enter your contribution amount to receive a personalized digital supporter certificate.</p>
             </div>
             <div class="space-y-4">
                 <div class="grid grid-cols-3 gap-2">
                     <button type="button" onclick="setModalAmount(1)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-accent text-white font-bold text-sm transition">$1</button>
-                    <button type="button" onclick="setModalAmount(25)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-indigo-500 text-indigo-300 font-bold text-sm transition">$25</button>
-                    <button type="button" onclick="setModalAmount(100)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-amber-500 text-amber-300 font-bold text-sm transition">$100</button>
+                    <button type="button" onclick="setModalAmount(10)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-indigo-500 text-indigo-300 font-bold text-sm transition">$10</button>
+                    <button type="button" onclick="setModalAmount(50)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-amber-500 text-amber-300 font-bold text-sm transition">$50</button>
                 </div>
                 <div>
-                    <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="amountLabel">Сумма ($)</label>
-                    <input type="number" id="customAmount" min="1" value="10" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-xl font-black text-slate-100 focus:outline-none focus:border-accent">
+                    <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="amountLabel">Amount ($)</label>
+                    <input type="number" id="customAmount" min="1" value="5" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-xl font-black text-slate-100 focus:outline-none focus:border-accent">
                 </div>
                 <button type="button" onclick="proceedToDataForm()" class="w-full py-4 rounded-xl bg-accent hover:bg-accentHover text-white font-extrabold text-base transition shadow-lg shadow-accent/30" data-i18n="proceedBtn">
-                    Продолжить к анкете ⚡️
+                    Continue to Form ⚡️
                 </button>
             </div>
         </div>
@@ -278,233 +171,193 @@
     <div id="dataModal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 z-50">
         <div class="glass-panel border border-cardBorder rounded-3xl max-w-lg w-full p-8 sm:p-10 relative shadow-2xl">
             <button onclick="closeModals()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl font-bold">✕</button>
-            <h3 class="text-2xl font-black mb-2 text-white" data-i18n="step2Title">Шаг 2: Данные участника и сертификат</h3>
-            <p class="text-base text-slate-300 mb-6 font-medium" data-i18n="step2Desc">Заполните анкету, чтобы закрепить за собой статус и сразу перейти к оплате:</p>
+            <h3 class="text-2xl font-black mb-2 text-white" data-i18n="step2Title">Step 2: Supporter Details</h3>
+            <p class="text-base text-slate-300 mb-6 font-medium" data-i18n="step2Desc">Provide your details to generate your verified supporter certificate:</p>
             
             <form id="participantForm" onsubmit="handleParticipantSubmit(event)" class="space-y-4">
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="nameLabel">Имя и Фамилия</label>
-                        <input type="text" id="pName" required placeholder="Иван Петров" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
+                        <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="nameLabel">Full Name</label>
+                        <input type="text" id="pName" required placeholder="Alex Smith" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
                     </div>
                     <div>
-                        <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="ageLabel">Сколько лет</label>
-                        <input type="number" id="pAge" min="10" max="120" required placeholder="25" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
+                        <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="cityLabel">Country / City</label>
+                        <input type="text" id="pCity" required placeholder="USA, New York" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="emailLabel">Электронная почта</label>
-                    <input type="email" id="pEmail" required placeholder="ivan@adventure.io" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="cityLabel">Страна и Город</label>
-                    <input type="text" id="pCity" required placeholder="Сербия, Белград" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="socialTypeLabel">Соцсеть</label>
-                        <select id="pSocialType" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
-                            <option value="Telegram">Telegram</option>
-                            <option value="Instagram">Instagram</option>
-                            <option value="X / Twitter">X / Twitter</option>
-                            <option value="Website">Website</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="socialLinkLabel">Ссылка</label>
-                        <input type="text" id="pSocialLink" required placeholder="https://t.me/username" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
-                    </div>
+                    <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="emailLabel">Email (for certificate delivery)</label>
+                    <input type="email" id="pEmail" required placeholder="alex@adventure.io" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
                 </div>
 
                 <button type="submit" class="w-full py-4 rounded-xl bg-accent hover:bg-accentHover text-white font-extrabold text-base transition shadow-lg shadow-accent/30 mt-3" data-i18n="submitBtn">
-                    Сохранить и перейти к оплате ⚡️
+                    Generate Certificate & Pay ⚡️
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО ПРЕМИАЛЬНОГО СЕРТИФИКАТА -->
+    <!-- МОДАЛЬНОЕ ОКНО СЕРТИФИКАТА -->
     <div id="certificateModal" class="fixed inset-0 bg-black/90 backdrop-blur-lg hidden items-center justify-center p-2 sm:p-6 z-50 overflow-y-auto">
         <div class="cert-container rounded-3xl max-w-4xl w-full p-6 sm:p-10 relative space-y-6 my-auto">
             <button onclick="closeCertificateModal()" class="absolute top-6 right-6 text-amber-300 hover:text-white text-2xl font-bold z-20">✕</button>
             
             <div class="text-center space-y-2 border-b border-amber-500/30 pb-6 relative">
-                <div class="text-xs uppercase tracking-widest text-amber-200/70 font-bold">Dream is not for one person • Big dreams belong to more than one person</div>
-                <div class="text-xs text-amber-400 font-extrabold tracking-widest uppercase">THE MILLION DOLLAR TOKYO TICKET</div>
-                <h2 class="text-3xl sm:text-5xl font-black text-amber-300 tracking-wider uppercase font-serif mt-2">CERTIFICATE OF DREAM OWNERSHIP</h2>
-                <div class="text-sm font-medium text-amber-100/80 tracking-wide">СЕРТИФИКАТ СОВЛАДЕЛЬЦА МЕЧТЫ</div>
+                <div class="text-xs uppercase tracking-widest text-amber-200/70 font-bold" data-i18n="certTopSub">Can the internet change a life? • Social Experiment</div>
+                <div class="text-xs text-amber-400 font-extrabold tracking-widest uppercase">THE TOKYO TICKET EXPERIMENT</div>
+                <h2 class="text-3xl sm:text-5xl font-black text-amber-300 tracking-wider uppercase font-serif mt-2" data-i18n="certTitle">CERTIFICATE OF PARTICIPATION</h2>
+                <div class="text-sm font-medium text-amber-100/80 tracking-wide" data-i18n="certSub">OFFICIAL SUPPORTER OF THE EXPERIMENT</div>
             </div>
 
             <div class="text-center space-y-4 py-2">
-                <p class="text-sm text-slate-300 italic">Настоящим подтверждается, что</p>
-                <div id="certName" class="text-3xl sm:text-5xl font-black text-white font-serif tracking-wide underline decoration-amber-500/50 underline-offset-8">Иван Петров</div>
-                <p class="text-sm text-slate-300 max-w-xl mx-auto">стал официальным участником и совладельцем проекта <b class="text-amber-300">THE MILLION DOLLAR TOKYO TICKET</b> — цифрового приключения, которое объединяет людей со всего мира.</p>
+                <p class="text-sm text-slate-300 italic" data-i18n="certBody1">This document certifies that</p>
+                <div id="certName" class="text-3xl sm:text-5xl font-black text-white font-serif tracking-wide underline decoration-amber-500/50 underline-offset-8">Alex Smith</div>
+                <p class="text-sm text-slate-300 max-w-xl mx-auto" data-i18n="certBody2">has officially supported <b class="text-amber-300">THE TOKYO TICKET EXPERIMENT</b> — a global digital journey exploring human connection and community action.</p>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 bg-black/40 border border-amber-500/30 rounded-2xl p-4 text-center">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-black/40 border border-amber-500/30 rounded-2xl p-4 text-center">
                 <div>
-                    <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold">НОМЕР УЧАСТНИКА</div>
+                    <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold" data-i18n="certIdLabel">SUPPORTER ID</div>
                     <div id="certId" class="text-base sm:text-lg font-black text-white mt-1">#000127</div>
                 </div>
                 <div>
-                    <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold">СТРАНА</div>
-                    <div id="certCountry" class="text-base sm:text-lg font-black text-white mt-1">Сербия</div>
+                    <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold" data-i18n="certCountryLabel">LOCATION</div>
+                    <div id="certCountry" class="text-base sm:text-lg font-black text-white mt-1">New York</div>
                 </div>
                 <div>
-                    <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold">ДАТА ВСТУПЛЕНИЯ</div>
-                    <div id="certDate" class="text-sm sm:text-base font-black text-white mt-1">06 Октября 2026</div>
+                    <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold" data-i18n="certDateLabel">DATE</div>
+                    <div id="certDate" class="text-sm sm:text-base font-black text-white mt-1">Oct 10, 2026</div>
                 </div>
                 <div>
-                    <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold">ВКЛАД В ПРОЕКТ</div>
-                    <div id="certAmount" class="text-base sm:text-lg font-black text-emerald-400 mt-1">$25</div>
-                </div>
-                <div class="col-span-2 sm:col-span-1">
-                    <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold">СТАТУС</div>
-                    <div id="certStatus" class="text-xs sm:text-sm font-black text-amber-300 mt-1">Совладелец мечты</div>
+                    <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold" data-i18n="certContributionLabel">CONTRIBUTION</div>
+                    <div id="certAmount" class="text-base sm:text-lg font-black text-emerald-400 mt-1">$10</div>
                 </div>
             </div>
 
-            <!-- Именная благодарность от автора вместо кастомного комментария -->
+            <!-- Именная благодарность от автора -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center pt-4 border-t border-amber-500/30 text-xs">
                 <div class="space-y-1 text-slate-300 italic">
-                    <p class="text-amber-200/90 font-medium">«Спасибо большое за твой вклад в проект! Вместе мы воплощаем эту безумную мечту в реальность.»</p>
-                    <div class="text-[10px] text-slate-400 font-mono pt-1">TOKYO-TICKET-APP.VERCEL.APP</div>
+                    <p class="text-amber-200/90 font-medium" data-i18n="certThankYou">«Thank you for making this experiment possible. Together, we are turning a bold idea into reality.»</p>
+                    <div class="text-[10px] text-slate-400 font-mono pt-1">TOKYO-TICKET-EXPERIMENT.COM</div>
                 </div>
                 <div class="text-center sm:text-right space-y-1">
-                    <div class="font-serif italic text-amber-300 text-xl">Игорь Дьяконов</div>
-                    <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">FOUNDER OF THE MILLION DOLLAR TOKYO TICKET</div>
+                    <div class="font-serif italic text-amber-300 text-xl">Igor Diakonov</div>
+                    <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold" data-i18n="certFounder">PROJECT CREATOR</div>
                 </div>
             </div>
 
             <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 pt-4">
-                <button onclick="goToNowPayments()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-black font-extrabold text-sm transition shadow-lg shadow-emerald-500/20">Перейти к оплате в NOWPayments ⚡️</button>
-                <button onclick="closeCertificateModal()" class="px-6 py-3.5 rounded-xl bg-cardBg border border-amber-500/40 text-amber-300 font-bold text-sm hover:bg-amber-500/10 transition" data-i18n="closeCertBtn">Закрыть</button>
+                <button onclick="goToNowPayments()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-black font-extrabold text-sm transition shadow-lg shadow-emerald-500/20" data-i18n="payBtn">Proceed to NOWPayments ⚡️</button>
+                <button onclick="closeCertificateModal()" class="px-6 py-3.5 rounded-xl bg-cardBg border border-amber-500/40 text-amber-300 font-bold text-sm hover:bg-amber-500/10 transition" data-i18n="closeCertBtn">Close</button>
             </div>
         </div>
     </div>
 
     <!-- СКРИПТЫ -->
     <script>
-        let currentLang = 'ru';
-        let currentDonationAmount = 1;
+        let currentLang = 'en'; // EN по умолчанию для западного рынка
+        let currentDonationAmount = 5;
         let pendingParticipantData = null;
 
-        const defaultParticipants = [
-            { id: 324, name: "Kaito", city: "Япония, Токио", age: 24, email: "kaito@tokyo.jp", date: "06.10.2026", amount: 150, socialType: "Instagram", socialLink: "https://instagram.com" },
-            { id: 284, name: "Sarah", city: "США, Нью-Йорк", age: 28, email: "sarah@ny.com", date: "05.10.2026", amount: 120, socialType: "X / Twitter", socialLink: "https://twitter.com" },
-            { id: 210, name: "Игорь", city: "Сербия, Белград", age: 31, email: "igor@belgrade.rs", date: "04.10.2026", amount: 100, socialType: "Telegram", socialLink: "https://t.me" },
-            { id: 189, name: "Алексей", city: "Россия, Москва", age: 31, email: "alex@mail.ru", date: "03.10.2026", amount: 50, socialType: "Telegram", socialLink: "https://t.me" },
-            { id: 150, name: "Elena", city: "Франция, Париж", age: 26, email: "elena@paris.fr", date: "02.10.2026", amount: 35, socialType: "Instagram", socialLink: "https://instagram.com" },
-            { id: 112, name: "Kenji", city: "Япония, Киото", age: 35, email: "kenji@kyoto.jp", date: "01.10.2026", amount: 30, socialType: "Website", socialLink: "https://example.com" },
-            { id: 98, name: "Дмитрий", city: "Россия, Санкт-Петербург", age: 29, email: "dmitry@spb.ru", date: "30.09.2026", amount: 25, socialType: "Telegram", socialLink: "https://t.me" },
-            { id: 75, name: "Anna", city: "Великобритания, Лондон", age: 27, email: "anna@london.co.uk", date: "29.09.2026", amount: 20, socialType: "X / Twitter", socialLink: "https://twitter.com" },
-            { id: 50, name: "Max", city: "Германия, Берлин", age: 30, email: "max@berlin.de", date: "28.09.2026", amount: 15, socialType: "Telegram", socialLink: "https://t.me" },
-            { id: 25, name: "Ольга", city: "Беларусь, Минск", age: 25, email: "olga@minsk.by", date: "27.09.2026", amount: 10, socialType: "Instagram", socialLink: "https://instagram.com" },
-            { id: 12, name: "Lucas", city: "Бразилия, Сан-Паулу", age: 23, email: "lucas@sp.br", date: "26.09.2026", amount: 5, socialType: "X / Twitter", socialLink: "https://twitter.com" },
-            { id: 4, name: "Иван", city: "Россия, Казань", age: 33, email: "ivan@kazan.ru", date: "25.09.2026", amount: 1, socialType: "Telegram", socialLink: "https://t.me" }
+        const defaultFeed = [
+            { name: "Sarah", city: "New York, USA", amount: 25, date: "2 mins ago" },
+            { name: "Kaito", city: "Tokyo, Japan", amount: 10, date: "14 mins ago" },
+            { name: "Lucas", city: "Berlin, Germany", amount: 5, date: "1 hour ago" },
+            { name: "Elena", city: "Paris, France", amount: 15, date: "3 hours ago" }
         ];
 
-        let participants = [];
-        try {
-            const saved = localStorage.getItem('tokyo_participants_v3');
-            participants = saved ? JSON.parse(saved) : defaultParticipants;
-        } catch (e) {
-            participants = defaultParticipants;
-        }
-
-        function saveParticipantsToStorage() {
-            try {
-                localStorage.setItem('tokyo_participants_v3', JSON.stringify(participants));
-            } catch (e) {
-                console.error("Storage error", e);
-            }
-        }
+        let feedItems = [...defaultFeed];
 
         const translations = {
-            ru: {
-                subtitle: "One-Way Digital Adventure",
-                badge: "Самый амбициозный цифровой эксперимент",
-                heroTitle1: "Цель проста.",
-                heroTitle2: "Собрать миллион символических вкладов.",
-                heroDesc: "Собрать миллион билетов по $1 и доказать, что интернет способен объединить людей вокруг одной безумной идеи. Станьте совладельцем мечты и войдите в историю проекта навсегда.",
-                participateBtn: "Получить свой след в истории ⚡️",
-                heroFooter: "🎁 Уровни: Участник ($1+) • Совладелец ($25+) • Легенда ($100+)",
-                fundTitle: "Фонд «Токио на миллион»",
-                fundDesc: "Собрано совместными усилиями участников со всего мира.",
-                goalTitle: "Цель эксперимента",
-                statusText: "Статус: Эксперимент активен",
-                levelsHeader: "Выберите свой статус в проекте",
-                levelsSub: "От символического вклада до коллекционного физического сертификата в рамке.",
-                benefitsTitle: "Что получает участник?",
-                liveFeedTitle: "⚡️ Живая лента проекта",
-                mapTitle: "🌍 География проекта",
-                mapSub: "Участники со всего мира объединяются ради общей истории.",
-                listTitle: "Хроника участников проекта",
-                listDesc: "Легенды маршрута закреплены навечно. Полный реестр хранит каждого совладельца мечты.",
-                legendsTitle: "ТОП-10 Легенд маршрута (Рейтинг по вкладу)",
-                allParticipantsTitle: "Все совладельцы мечты в проекте",
-                step1Title: "Шаг 1: Сумма вклада",
-                step1Desc: "Выберите или введите сумму для получения статуса и именного сертификата.",
-                amountLabel: "Сумма ($)",
-                proceedBtn: "Продолжить к анкете ⚡",
-                step2Title: "Шаг 2: Данные участника и сертификат",
-                step2Desc: "Заполните анкету, чтобы закрепить за собой статус и сразу перейти к оплате:",
-                nameLabel: "Имя и Фамилия",
-                ageLabel: "Сколько лет",
-                emailLabel: "Электронная почта",
-                cityLabel: "Страна и Город",
-                socialTypeLabel: "Соцсеть",
-                socialLinkLabel: "Ссылка",
-                submitBtn: "Сохранить и перейти к оплате ⚡️",
-                downloadCertBtn: "Сохранить сертификат в высоком качестве 📥",
-                closeCertBtn: "Закрыть"
-            },
             en: {
-                subtitle: "One-Way Digital Adventure",
-                badge: "The Most Ambitious Digital Experiment",
-                heroTitle1: "The Goal is Simple.",
-                heroTitle2: "Collect One Million Symbolic Contributions.",
-                heroDesc: "Gather 1 million $1 contributions and prove that the internet can unite people around a crazy idea. Become a dream co-owner and make project history forever.",
-                participateBtn: "Leave Your Mark in History ⚡️",
-                heroFooter: "🎁 Tiers: Participant ($1+) • Co-owner ($25+) • Legend ($100+)",
-                fundTitle: "Million $ Tokyo Fund",
-                fundDesc: "Raised collectively by participants worldwide.",
-                goalTitle: "Experiment Goal",
-                statusText: "Status: Experiment active",
-                levelsHeader: "Choose Your Project Status",
-                levelsSub: "From a symbolic contribution to a framed physical collector's certificate.",
-                benefitsTitle: "What Does a Participant Get?",
-                liveFeedTitle: "⚡️ Live Project Feed",
-                mapTitle: "🌍 Project Geography",
-                mapSub: "Participants worldwide uniting for a shared history.",
-                listTitle: "Project Participant Chronicle",
-                listDesc: "Route legends are pinned forever. The full registry preserves every dream co-owner.",
-                legendsTitle: "TOP-10 Route Legends (Contribution Ranking)",
-                allParticipantsTitle: "All Dream Co-Owners in the Project",
-                step1Title: "Step 1: Contribution Amount",
-                step1Desc: "Select or enter an amount to receive your status and personalized certificate.",
+                navTitle: "The Tokyo Ticket Experiment",
+                subtitle: "Can the internet change a life?",
+                badge: "Social Experiment & Digital Journey",
+                heroTitle1: "Can the internet",
+                heroTitle2: "make a dream happen?",
+                heroDesc: "This is not a donation or charity appeal. It’s a pure social experiment. Can people across the globe unite to send someone to Tokyo through micro-contributions? Let's find out together.",
+                participateBtn: "Join the Experiment ⚡",
+                heroFooter: "✨ Get your personalized supporter certificate instantly",
+                fundTitle: "Experiment Fund",
+                fundDesc: "Raised collectively by supporters worldwide.",
+                goalTitle: "Target Ticket Goal",
+                statusText: "Status: Live Experiment",
+                benefitsTitle: "What is this experiment about?",
+                expText1: "We live in a digital world connected by social media, yet separated by algorithms. This project tests a simple hypothesis: can individual micro-actions from strangers create a real-world journey?",
+                expText2: "No corporate sponsors. No hidden agendas. Just a transparent digital journey powered entirely by the internet community.",
+                liveFeedTitle: "⚡️ Live Activity Feed",
+                step1Title: "Step 1: Choose Amount",
+                step1Desc: "Select or enter your contribution amount to receive a personalized digital supporter certificate.",
                 amountLabel: "Amount ($)",
-                proceedBtn: "Continue to Form ⚡",
-                step2Title: "Step 2: Participant Data & Certificate",
-                step2Desc: "Fill out the form to secure your status and proceed to payment:",
+                proceedBtn: "Continue to Form ⚡️",
+                step2Title: "Step 2: Supporter Details",
+                step2Desc: "Provide your details to generate your verified supporter certificate:",
                 nameLabel: "Full Name",
-                ageLabel: "Age",
-                emailLabel: "Email",
-                cityLabel: "Country & City",
-                socialTypeLabel: "Social Network",
-                socialLinkLabel: "Link",
-                submitBtn: "Save & Proceed to Payment ⚡️",
-                downloadCertBtn: "Save Certificate in High Quality 📥",
+                cityLabel: "Country / City",
+                emailLabel: "Email (for certificate delivery)",
+                submitBtn: "Generate Certificate & Pay ⚡️",
+                certTopSub: "Can the internet change a life? • Social Experiment",
+                certTitle: "CERTIFICATE OF PARTICIPATION",
+                certSub: "OFFICIAL SUPPORTER OF THE EXPERIMENT",
+                certBody1: "This document certifies that",
+                certBody2: "has officially supported THE TOKYO TICKET EXPERIMENT — a global digital journey exploring human connection and community action.",
+                certIdLabel: "SUPPORTER ID",
+                certCountryLabel: "LOCATION",
+                certDateLabel: "DATE",
+                certContributionLabel: "CONTRIBUTION",
+                certThankYou: "«Thank you for making this experiment possible. Together, we are turning a bold idea into reality.»",
+                certFounder: "PROJECT CREATOR",
+                payBtn: "Proceed to NOWPayments ⚡️",
                 closeCertBtn: "Close"
+            },
+            ru: {
+                navTitle: "Эксперимент «Билет в Токио»",
+                subtitle: "Может ли интернет изменить жизнь?",
+                badge: "Социальный эксперимент и цифровое путешествие",
+                heroTitle1: "Может ли интернет",
+                heroTitle2: "воплотить мечту в реальность?",
+                heroDesc: "Это не сбор донатов и не благотворительность. Это чистый социальный эксперимент. Смогут ли люди со всего мира объединиться, чтобы отправить человека в Токио микро-вкладами? Давайте узнаем вместе.",
+                participateBtn: "Участвовать в эксперименте ⚡",
+                heroFooter: "✨ Получите персональный сертификат участника мгновенно",
+                fundTitle: "Фонд эксперимента",
+                fundDesc: "Собрано совместными усилиями участников со всего мира.",
+                goalTitle: "Цель сбора на билет",
+                statusText: "Статус: Эксперимент активен",
+                benefitsTitle: "О чем этот эксперимент?",
+                expText1: "Мы живем в цифровом мире, связанном соцсетями, но разделенном алгоритмами. Этот проект проверяет простую гипотезу: могут ли индивидуальные микро-действия незнакомцев создать реальное путешествие?",
+                expText2: "Никаких корпоративных спонсоров. Никаких скрытых целей. Только прозрачное цифровое путешествие, создаваемое интернет-сообществом.",
+                liveFeedTitle: "⚡️ Живая лента активности",
+                step1Title: "Шаг 1: Сумма вклада",
+                step1Desc: "Выберите или введите сумму вклада, чтобы получить именной цифровой сертификат участника.",
+                amountLabel: "Сумма ($)",
+                proceedBtn: "Продолжить к анкете ⚡️",
+                step2Title: "Шаг 2: Данные участника",
+                step2Desc: "Укажите ваши данные для создания подтвержденного сертификата участника:",
+                nameLabel: "Имя и Фамилия",
+                cityLabel: "Страна / Город",
+                emailLabel: "Электронная почта (для получения сертификата)",
+                submitBtn: "Создать сертификат и перейти к оплате ⚡️",
+                certTopSub: "Может ли интернет изменить жизнь? • Социальный эксперимент",
+                certTitle: "СЕРТИФИКАТ УЧАСТНИКА",
+                certSub: "ОФИЦИАЛЬНЫЙ ПОДДЕРЖИВАЮЩИЙ ЭКСПЕРИМЕНТА",
+                certBody1: "Настоящим подтверждается, что",
+                certBody2: "официально поддержал THE TOKYO TICKET EXPERIMENT — глобальное цифровое путешествие, исследующее силу человеческих связей.",
+                certIdLabel: "ID УЧАСТНИКА",
+                certCountryLabel: "МЕСТОПОЛОЖЕНИЕ",
+                certDateLabel: "ДАТА",
+                certContributionLabel: "ВКЛАД",
+                certThankYou: "«Спасибо за то, что делаете этот эксперимент возможным. Вместе мы воплощаем смелую идею в реальность.»",
+                certFounder: "АВТОР ПРОЕКТА",
+                payBtn: "Перейти к оплате в NOWPayments ⚡️",
+                closeCertBtn: "Закрыть"
             }
         };
 
         function toggleLang() {
             currentLang = currentLang === 'ru' ? 'en' : 'ru';
-            document.getElementById('langLabel').innerText = currentLang === 'ru' ? 'EN / RU' : 'RU / EN';
+            document.getElementById('langLabel').innerText = currentLang === 'ru' ? 'RU / EN' : 'EN / RU';
+            document.documentElement.setAttribute('lang', currentLang);
             
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -512,19 +365,13 @@
                     el.innerText = translations[currentLang][key];
                 }
             });
-            renderAll();
+            renderLiveFeed();
         }
 
         function openPaymentModal() {
             const modal = document.getElementById('paymentModal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-        }
-
-        function selectTierAndOpen(amount) {
-            currentDonationAmount = amount;
-            document.getElementById('customAmount').value = amount;
-            openPaymentModal();
         }
 
         function setModalAmount(amount) {
@@ -557,23 +404,23 @@
 
         function handleParticipantSubmit(e) {
             e.preventDefault();
-            const today = new Date().toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
+            const today = new Date().toLocaleDateString(currentLang === 'ru' ? 'ru-RU' : 'en-US', { day: 'numeric', month: 'short', year: 'numeric' });
             
             pendingParticipantData = {
-                id: participants.length + 300,
                 name: document.getElementById('pName').value,
-                age: parseInt(document.getElementById('pAge').value),
-                email: document.getElementById('pEmail').value,
                 city: document.getElementById('pCity').value,
                 date: today,
-                amount: currentDonationAmount,
-                socialType: document.getElementById('pSocialType').value,
-                socialLink: document.getElementById('pSocialLink').value
+                amount: currentDonationAmount
             };
 
-            participants.unshift(pendingParticipantData);
-            saveParticipantsToStorage();
-            renderAll();
+            feedItems.unshift({
+                name: pendingParticipantData.name,
+                city: pendingParticipantData.city,
+                amount: pendingParticipantData.amount,
+                date: currentLang === 'ru' ? 'Только что' : 'Just now'
+            });
+
+            renderLiveFeed();
             closeModals();
             document.getElementById('participantForm').reset();
             
@@ -581,16 +428,11 @@
         }
 
         function showCertificate(p) {
-            let tierName = 'Участник';
-            if (p.amount >= 100) tierName = 'Легенда маршрута';
-            else if (p.amount >= 25) tierName = 'Совладелец мечты';
-
             document.getElementById('certName').innerText = p.name;
-            document.getElementById('certId').innerText = `#${String(p.id).padStart(6, '0')}`;
-            document.getElementById('certCountry').innerText = p.city.split(',')[0].trim();
+            document.getElementById('certId').innerText = `#${Math.floor(100000 + Math.random() * 900000)}`;
+            document.getElementById('certCountry').innerText = p.city;
             document.getElementById('certDate').innerText = p.date;
             document.getElementById('certAmount').innerText = `$${p.amount}`;
-            document.getElementById('certStatus').innerText = tierName;
 
             const certModal = document.getElementById('certificateModal');
             certModal.classList.remove('hidden');
@@ -601,140 +443,26 @@
             window.location.href = `https://nowpayments.io/donation/tokyoticket?price_amount=${currentDonationAmount}`;
         }
 
-        function renderAll() {
-            const total = participants.reduce((sum, p) => sum + p.amount, 0);
-            document.getElementById('totalAmount').innerText = total.toLocaleString();
-            
-            const percent = ((total / 1000000) * 100).toFixed(4);
-            document.getElementById('progressBar').style.width = Math.max(percent, 0.01) + '%';
-            document.getElementById('progressText').innerText = currentLang === 'ru' ? `Прогресс: ${percent}%` : `Progress: ${percent}%`;
-            document.getElementById('participantsBadge').innerText = currentLang === 'ru' ? `Участников: ${participants.length}` : `Participants: ${participants.length}`;
-
-            renderLegends();
-            renderAllParticipants();
-            renderCountriesStats();
-            renderLiveFeed();
-        }
-
-        function renderLegends() {
-            const sorted = [...participants].sort((a, b) => b.amount - a.amount);
-            const legends = sorted.slice(0, 10);
-            const listEl = document.getElementById('legendsList');
-            listEl.innerHTML = '';
-
-            legends.forEach((p, index) => {
-                const badgeNames = ['👑 Легенда #1', '🥈 Легенда #2', '🥉 Легенда #3', '⭐ Легенда маршрута', '⭐ Легенда маршрута', '⭐ Легенда маршрута', '⭐ Легенда маршрута', '⭐ Легенда маршрута', '⭐ Легенда маршрута', '⭐ Легенда маршрута'];
-                const card = document.createElement('div');
-                card.className = 'glass-panel border border-cardBorder rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:border-amber-500/50 transition';
-                card.innerHTML = `
-                    <div class="flex items-center space-x-4">
-                        <span class="text-xs font-black uppercase px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30">${badgeNames[index]}</span>
-                        <div>
-                            <div class="flex items-center space-x-2">
-                                <span class="font-black text-white text-lg">${p.name}</span>
-                                <span class="text-xs text-slate-400 bg-slate-800 px-2 py-0.5 rounded-md">${p.city}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-4 w-full sm:w-auto justify-between sm:justify-end">
-                        <span class="font-black text-emerald-400 text-lg">$${p.amount}</span>
-                        <a href="${p.socialLink}" target="_blank" class="px-4 py-2 rounded-xl bg-accent/15 border border-accent/30 text-accent text-xs font-extrabold hover:bg-accent hover:text-white transition">
-                            ${p.socialType} ↗
-                        </a>
-                    </div>
-                `;
-                listEl.appendChild(card);
-            });
-        }
-
-        function renderAllParticipants() {
-            const grid = document.getElementById('allParticipantsGrid');
-            grid.innerHTML = '';
-
-            participants.forEach(p => {
-                let statusName = 'Участник';
-                let statusBadgeColor = 'bg-accent/20 text-accent border-accent/30';
-                if (p.amount >= 100) {
-                    statusName = 'Легенда маршрута';
-                    statusBadgeColor = 'bg-amber-500/20 text-amber-300 border-amber-500/30';
-                } else if (p.amount >= 25) {
-                    statusName = 'Совладелец мечты';
-                    statusBadgeColor = 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30';
-                }
-
-                const card = document.createElement('div');
-                card.className = 'glass-panel border border-cardBorder rounded-2xl p-5 flex flex-col justify-between hover:border-accent/40 transition space-y-4';
-                card.innerHTML = `
-                    <div>
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="text-xs font-extrabold px-2.5 py-1 rounded-md bg-darkBg border border-cardBorder text-slate-300">Участник #${p.id}</span>
-                            <span class="text-xs font-black uppercase px-2.5 py-1 rounded-md border ${statusBadgeColor}">${statusName}</span>
-                        </div>
-                        <h4 class="font-black text-white text-lg">${p.name} <span class="text-xs text-slate-400 font-normal">(${p.age} лет)</span></h4>
-                        <div class="text-sm text-slate-300 mt-1 flex items-center space-x-1.5">
-                            <span>🌍</span> <span>${p.city}</span>
-                        </div>
-                        <div class="text-xs text-slate-400 mt-1">📅 Присоединился: ${p.date}</div>
-                    </div>
-                    <div class="flex justify-between items-center pt-3 border-t border-slate-800">
-                        <span class="font-black text-emerald-400 text-base">$${p.amount}</span>
-                        <a href="${p.socialLink}" target="_blank" class="px-3 py-1.5 rounded-lg bg-cardBg border border-cardBorder text-slate-300 text-xs font-bold hover:border-accent hover:text-white transition">
-                            ${p.socialType} ↗
-                        </a>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function renderCountriesStats() {
-            const statsGrid = document.getElementById('countriesStatsGrid');
-            statsGrid.innerHTML = '';
-
-            const counts = {};
-            participants.forEach(p => {
-                const country = p.city.split(',')[0].trim();
-                counts[country] = (counts[country] || 0) + 1;
-            });
-
-            const sortedCountries = Object.entries(counts).sort((a, b) => b[1] - a[1]);
-
-            sortedCountries.forEach(([country, count]) => {
-                const card = document.createElement('div');
-                card.className = 'glass-panel border border-cardBorder rounded-2xl p-4 text-center hover:border-accent/40 transition';
-                card.innerHTML = `
-                    <div class="text-xs text-slate-400 font-bold uppercase tracking-wider">${country}</div>
-                    <div class="text-2xl font-black text-white mt-1">${count}</div>
-                `;
-                statsGrid.appendChild(card);
-            });
-        }
-
         function renderLiveFeed() {
             const feedContainer = document.getElementById('liveFeedContainer');
             feedContainer.innerHTML = '';
 
-            const recent = participants.slice(0, 5);
-            recent.forEach(p => {
-                let statusText = 'получил статус Участника';
-                if (p.amount >= 100) statusText = 'стал Легендой маршрута';
-                else if (p.amount >= 25) statusText = 'стал Совладельцем мечты';
-
-                const item = document.createElement('div');
-                item.className = 'p-3 rounded-xl bg-darkBg/80 border border-cardBorder flex items-center justify-between text-xs text-slate-300';
-                item.innerHTML = `
+            feedItems.slice(0, 5).forEach(item => {
+                const el = document.createElement('div');
+                el.className = 'p-3 rounded-xl bg-darkBg/80 border border-cardBorder flex items-center justify-between text-xs text-slate-300';
+                el.innerHTML = `
                     <div class="flex items-center space-x-2">
                         <span>✨</span>
-                        <span><b>${p.name}</b> из ${p.city} ${statusText} ($${p.amount})</span>
+                        <span><b>${item.name}</b> (${item.city}) supported the experiment with $${item.amount}</span>
                     </div>
-                    <span class="text-slate-500">${p.date}</span>
+                    <span class="text-slate-500">${item.date}</span>
                 `;
-                feedContainer.appendChild(item);
+                feedContainer.appendChild(el);
             });
         }
 
         window.onload = function() {
-            renderAll();
+            renderLiveFeed();
         };
     </script>
 </body>
