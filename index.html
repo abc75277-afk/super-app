@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Can the Internet Send Me to Tokyo? | Social Experiment</title>
+    <title>The Tokyo Experiment | Can the Internet Hack Reality?</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -46,10 +46,10 @@
     <!-- НАВИГАЦИЯ -->
     <header class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center border-b border-slate-800/80">
         <div class="flex items-center space-x-3">
-            <span class="text-3xl">✈️</span>
+            <span class="text-3xl">🌐</span>
             <div>
-                <span class="font-black text-xl tracking-tight bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">Tokyo Experiment</span>
-                <span class="block text-xs text-slate-400 tracking-widest uppercase font-extrabold mt-0.5">Live Social Challenge</span>
+                <span class="font-black text-xl tracking-tight bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">Tokyo Protocol</span>
+                <span class="block text-xs text-slate-400 tracking-widest uppercase font-extrabold mt-0.5">Open Social Experiment</span>
             </div>
         </div>
         <div class="flex items-center space-x-4">
@@ -69,74 +69,87 @@
                 <div class="absolute -right-32 -top-32 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl pointer-events-none"></div>
                 <div>
                     <div class="inline-flex items-center space-x-2 mb-6 px-5 py-2.5 rounded-full bg-accent/15 border border-accent/30 text-accent text-sm font-extrabold tracking-wider uppercase">
-                        <span>🎯</span>
-                        <span data-i18n="badge">Social Experiment</span>
+                        <span>⚡</span>
+                        <span data-i18n="badge">Global Social Hack & Experiment</span>
                     </div>
                     <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-8 leading-[1.1] text-white">
                         <span class="bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent" data-i18n="heroTitle1">Can the internet</span><br>
-                        <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent" data-i18n="heroTitle2">buy me a ticket to Tokyo?</span>
+                        <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent" data-i18n="heroTitle2">bypass algorithms and fund a journey?</span>
                     </h1>
                     <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mb-8 leading-relaxed font-normal" data-i18n="heroDesc">
-                        No corporate sponsors, no crying, no begging. Just a transparent public challenge: can strangers across the world unite to fund a one-way ticket $1 at a time?
+                        No sponsors. No sob stories. Just a raw, transparent system test: can $1 micro-actions from strangers across the globe hack reality and send a human to Tokyo?
                     </p>
                 </div>
                 <div class="flex flex-wrap items-center gap-5 pt-8 border-t border-slate-800/80">
                     <button onclick="openPaymentModal()" class="px-10 py-5 rounded-2xl bg-gradient-to-r from-accent to-indigo-600 hover:from-accentHover hover:to-indigo-500 text-white font-extrabold text-lg shadow-xl shadow-accent/30 transition transform hover:-translate-y-0.5" data-i18n="participateBtn">
-                        Contribute $1 & Join ⚡
+                        Execute $1 Protocol ⚡
                     </button>
-                    <div class="text-sm text-slate-400 font-medium" data-i18n="heroFooter">✨ Get your verified supporter certificate instantly</div>
+                    <div class="text-sm text-slate-400 font-medium" data-i18n="heroFooter">🔒 Instant verified digital passport on completion</div>
                 </div>
             </div>
 
-            <!-- Счетчик -->
+            <!-- ДВА ЧИСТЫХ СЧЕТЧИКА (БЕЗ ФАЛЬШИВЫХ ЦЕЛЕЙ) -->
             <div class="lg:col-span-4 glass-panel border border-cardBorder rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-xl">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span class="text-sm font-bold text-slate-300 uppercase tracking-wider" data-i18n="fundTitle">Experiment Fund</span>
+                        <span class="text-sm font-bold text-slate-300 uppercase tracking-wider" data-i18n="statsTitle">Live Telemetry</span>
                         <span class="flex h-3.5 w-3.5 relative">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
                         </span>
                     </div>
-                    <div class="text-5xl sm:text-6xl font-black text-emerald-400 mb-4 tracking-tight">$<span id="totalAmount">0</span></div>
-                    <p class="text-base text-slate-300 leading-relaxed font-medium" data-i18n="fundDesc">Raised publicly by real participants.</p>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="text-xs uppercase tracking-widest text-slate-400 font-bold" data-i18n="totalRaisedLabel">Total Experiment Fund</div>
+                            <div class="text-5xl font-black text-emerald-400 mt-1 tracking-tight">$<span id="totalAmount">0</span></div>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800/80">
+                            <div class="text-xs uppercase tracking-widest text-slate-400 font-bold" data-i18n="totalNodesLabel">Active Nodes (Participants)</div>
+                            <div class="text-3xl font-black text-indigo-400 mt-1 tracking-tight"><span id="totalParticipants">0</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mt-8 pt-6 border-t border-slate-800 space-y-4">
-                    <div class="flex justify-between text-base font-bold">
-                        <span class="text-slate-300" data-i18n="goalTitle">Target Goal</span>
-                        <span class="text-emerald-400 text-lg">$2,500</span>
-                    </div>
-                    <div class="w-full bg-darkBg rounded-full h-4 border border-slate-800 overflow-hidden p-0.5">
-                        <div id="progressBar" class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
-                    </div>
-                    <div class="flex justify-between text-sm text-slate-400 font-semibold">
-                        <span id="progressText">Progress: 0%</span>
-                        <span class="text-indigo-400 font-bold" data-i18n="statusText">Status: Live</span>
+                <div class="mt-8 pt-6 border-t border-slate-800">
+                    <div class="flex justify-between text-xs text-slate-400 font-semibold">
+                        <span data-i18n="statusActive">Status: Experiment Running</span>
+                        <span class="text-emerald-400">ONLINE</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ГЕОГРАФИЯ И ЖИВАЯ ЛЕНТА -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-7 glass-panel border border-cardBorder rounded-3xl p-8">
-                <h3 class="text-2xl font-black text-white mb-4" data-i18n="mapTitle">🌍 Global Reach</h3>
-                <p class="text-slate-400 text-sm mb-6" data-i18n="mapSub">Countries participating in the experiment.</p>
-                <div id="countriesStatsGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    <div class="text-slate-500 text-sm italic" data-i18n="noCountries">No countries yet. Be the first!</div>
+        <!-- ГЕОГРАФИЯ (100+ СТРАН МИРА) -->
+        <section class="space-y-6 pt-4">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-white" data-i18n="mapTitle">🌍 Global Node Map (Countries)</h2>
+                    <p class="text-slate-400 text-sm mt-1" data-i18n="mapSub">Real-time participation across international borders.</p>
                 </div>
+                <button onclick="toggleAllCountries()" id="toggleCountriesBtn" class="px-5 py-2.5 rounded-xl bg-cardBg border border-cardBorder hover:border-accent text-xs font-extrabold text-slate-300 transition">
+                    Expand All 100+ Countries 🌐
+                </button>
+            </div>
+            
+            <!-- Сетка активных стран + скрытый полный список до 100 стран -->
+            <div id="countriesStatsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+                <div class="text-slate-500 text-sm italic col-span-full" data-i18n="noCountries">Awaiting first global nodes...</div>
             </div>
 
-            <div class="lg:col-span-5 glass-panel border border-cardBorder rounded-3xl p-8 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-black text-white" data-i18n="liveFeedTitle">⚡️ Live Activity</h3>
-                        <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    </div>
-                    <div id="liveFeedContainer" class="space-y-3 max-h-[220px] overflow-y-auto custom-scrollbar pr-1">
-                        <div class="text-slate-500 text-sm italic" data-i18n="noActivity">Waiting for the first participant...</div>
-                    </div>
-                </div>
+            <!-- Выпадающий полный список стран (скрыт по умолчанию) -->
+            <div id="fullCountriesContainer" class="hidden glass-panel border border-cardBorder rounded-3xl p-6 space-y-4">
+                <h4 class="font-bold text-white text-sm uppercase tracking-wider" data-i18n="allCountriesTitle">Complete Registry of World Regions</h4>
+                <div id="fullCountriesList" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2 text-xs text-slate-400 max-h-60 overflow-y-auto custom-scrollbar pr-2"></div>
+            </div>
+        </section>
+
+        <!-- ЖИВАЯ ТЕЛЕМЕТРИЯ (АКТИВНОСТЬ) -->
+        <div class="glass-panel border border-cardBorder rounded-3xl p-8">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-black text-white" data-i18n="liveFeedTitle">⚡️ Live Protocol Stream</h3>
+                <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            </div>
+            <div id="liveFeedContainer" class="space-y-3 max-h-[240px] overflow-y-auto custom-scrollbar pr-1">
+                <div class="text-slate-500 text-sm italic" data-i18n="noActivity">System waiting for input...</div>
             </div>
         </div>
     </main>
@@ -146,21 +159,21 @@
         <div class="glass-panel border border-cardBorder rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl space-y-6">
             <button onclick="closeModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold z-10">✕</button>
             <div>
-                <h3 class="text-2xl font-black mb-2 text-white" data-i18n="step1Title">Step 1: Choose Amount</h3>
-                <p class="text-base text-slate-300" data-i18n="step1Desc">Back the experiment with $1 or more and get your digital certificate.</p>
+                <h3 class="text-2xl font-black mb-2 text-white" data-i18n="step1Title">Protocol Step 1: Input Amount</h3>
+                <p class="text-base text-slate-300" data-i18n="step1Desc">Contribute $1 or more to trigger the experiment node and unlock your digital pass.</p>
             </div>
             <div class="space-y-4">
                 <div class="grid grid-cols-3 gap-2">
                     <button type="button" onclick="setModalAmount(1)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-accent text-white font-bold text-sm transition">$1</button>
-                    <button type="button" onclick="setModalAmount(5)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-indigo-500 text-indigo-300 font-bold text-sm transition">$5</button>
-                    <button type="button" onclick="setModalAmount(25)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-amber-500 text-amber-300 font-bold text-sm transition">$25</button>
+                    <button type="button" onclick="setModalAmount(10)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-indigo-500 text-indigo-300 font-bold text-sm transition">$10</button>
+                    <button type="button" onclick="setModalAmount(50)" class="py-3 rounded-xl bg-cardBg border border-cardBorder hover:border-amber-500 text-amber-300 font-bold text-sm transition">$50</button>
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="amountLabel">Amount ($)</label>
                     <input type="number" id="customAmount" min="1" value="1" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-xl font-black text-slate-100 focus:outline-none focus:border-accent">
                 </div>
                 <button type="button" onclick="proceedToDataForm()" class="w-full py-4 rounded-xl bg-accent hover:bg-accentHover text-white font-extrabold text-base transition shadow-lg shadow-accent/30" data-i18n="proceedBtn">
-                    Continue ⚡️
+                    Proceed to Verification ⚡️
                 </button>
             </div>
         </div>
@@ -170,64 +183,64 @@
     <div id="dataModal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 z-50">
         <div class="glass-panel border border-cardBorder rounded-3xl max-w-lg w-full p-8 sm:p-10 relative shadow-2xl">
             <button onclick="closeModals()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl font-bold">✕</button>
-            <h3 class="text-2xl font-black mb-2 text-white" data-i18n="step2Title">Step 2: Your Info</h3>
-            <p class="text-base text-slate-300 mb-6 font-medium" data-i18n="step2Desc">Enter your details to generate your supporter certificate:</p>
+            <h3 class="text-2xl font-black mb-2 text-white" data-i18n="step2Title">Protocol Step 2: Node Identification</h3>
+            <p class="text-base text-slate-300 mb-6 font-medium" data-i18n="step2Desc">Register your handle to generate your cryptographic-style experiment passport:</p>
             
             <form id="participantForm" onsubmit="handleParticipantSubmit(event)" class="space-y-4">
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="nameLabel">Name / Handle</label>
-                        <input type="text" id="pName" required placeholder="Alex" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
+                        <input type="text" id="pName" required placeholder="CyberNomad" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
                     </div>
                     <div>
                         <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="cityLabel">Country / City</label>
-                        <input type="text" id="pCity" required placeholder="USA, New York" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
+                        <input type="text" id="pCity" required placeholder="Japan, Tokyo" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="emailLabel">Email</label>
-                    <input type="email" id="pEmail" required placeholder="alex@experiment.io" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
+                    <label class="block text-sm font-bold text-slate-300 mb-1.5 uppercase tracking-wider" data-i18n="emailLabel">Email (for passport delivery)</label>
+                    <input type="email" id="pEmail" required placeholder="node@experiment.io" class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3.5 text-base text-slate-100 focus:outline-none focus:border-accent">
                 </div>
 
                 <button type="submit" class="w-full py-4 rounded-xl bg-accent hover:bg-accentHover text-white font-extrabold text-base transition shadow-lg shadow-accent/30 mt-3" data-i18n="submitBtn">
-                    Generate Certificate & Pay ⚡️
+                    Generate Passport & Pay ⚡️
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО СЕРТИФИКАТА -->
+    <!-- МОДАЛЬНОЕ ОКНО СЕРТИФИКАТА (ПАСПОРТА ЭКСПЕРИМЕНТА) -->
     <div id="certificateModal" class="fixed inset-0 bg-black/90 backdrop-blur-lg hidden items-center justify-center p-2 sm:p-6 z-50 overflow-y-auto">
         <div class="cert-container rounded-3xl max-w-4xl w-full p-6 sm:p-10 relative space-y-6 my-auto">
             <button onclick="closeCertificateModal()" class="absolute top-6 right-6 text-amber-300 hover:text-white text-2xl font-bold z-20">✕</button>
             
             <div class="text-center space-y-2 border-b border-amber-500/30 pb-6 relative">
-                <div class="text-xs uppercase tracking-widest text-amber-200/70 font-bold">Tokyo Ticket Experiment • Official Supporter</div>
-                <h2 class="text-3xl sm:text-5xl font-black text-amber-300 tracking-wider uppercase font-serif mt-2">CERTIFICATE OF PARTICIPATION</h2>
+                <div class="text-xs uppercase tracking-widest text-amber-200/70 font-bold">Open Social Experiment • Verified Node Passport</div>
+                <h2 class="text-3xl sm:text-5xl font-black text-amber-300 tracking-wider uppercase font-serif mt-2">EXPERIMENT PASSPORT</h2>
             </div>
 
             <div class="text-center space-y-4 py-2">
-                <p class="text-sm text-slate-300 italic">This document certifies that</p>
-                <div id="certName" class="text-3xl sm:text-5xl font-black text-white font-serif tracking-wide underline decoration-amber-500/50 underline-offset-8">Alex</div>
-                <p class="text-sm text-slate-300 max-w-xl mx-auto">supported the social experiment <b class="text-amber-300">"Can the internet send me to Tokyo?"</b></p>
+                <p class="text-sm text-slate-300 italic">This certifies that node</p>
+                <div id="certName" class="text-3xl sm:text-5xl font-black text-white font-serif tracking-wide underline decoration-amber-500/50 underline-offset-8">CyberNomad</div>
+                <p class="text-sm text-slate-300 max-w-xl mx-auto">successfully executed the protocol and hacked reality in <b class="text-amber-300">The Tokyo Ticket Experiment</b>.</p>
             </div>
 
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-black/40 border border-amber-500/30 rounded-2xl p-4 text-center">
                 <div>
-                    <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold">ID</div>
+                    <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold">NODE ID</div>
                     <div id="certId" class="text-base sm:text-lg font-black text-white mt-1">#000001</div>
                 </div>
                 <div>
                     <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold">LOCATION</div>
-                    <div id="certCountry" class="text-base sm:text-lg font-black text-white mt-1">New York</div>
+                    <div id="certCountry" class="text-base sm:text-lg font-black text-white mt-1">Tokyo</div>
                 </div>
                 <div>
-                    <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold">DATE</div>
+                    <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold">TIMESTAMP</div>
                     <div id="certDate" class="text-sm sm:text-base font-black text-white mt-1">Oct 10, 2026</div>
                 </div>
                 <div>
-                    <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold">CONTRIBUTION</div>
+                    <div class="text-[10px] text-amber-300/70 uppercase tracking-widest font-bold">EXECUTION</div>
                     <div id="certAmount" class="text-base sm:text-lg font-black text-emerald-400 mt-1">$1</div>
                 </div>
             </div>
@@ -238,7 +251,7 @@
                 </div>
                 <div class="text-center sm:text-right space-y-1">
                     <div class="font-serif italic text-amber-300 text-lg">Igor Diakonov</div>
-                    <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">PROJECT CREATOR</div>
+                    <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">EXPERIMENT ARCHITECT</div>
                 </div>
             </div>
 
@@ -255,9 +268,23 @@
         let currentDonationAmount = 1;
         let pendingParticipantData = null;
 
+        // Список 100+ стран для выпадающего полного каталога
+        const worldCountriesList = [
+            "USA", "Japan", "Germany", "United Kingdom", "France", "Canada", "Australia", "South Korea", "Brazil", "Spain",
+            "Italy", "Netherlands", "Switzerland", "Sweden", "Poland", "India", "Mexico", "Singapore", "Turkey", "Argentina",
+            "Austria", "Belgium", "Norway", "Denmark", "Finland", "Ireland", "Portugal", "New Zealand", "Czech Republic", "Greece",
+            "Romania", "Israel", "South Africa", "Chile", "UAE", "Hungary", "Slovakia", "Bulgaria", "Croatia", "Serbia",
+            "Thailand", "Malaysia", "Philippines", "Indonesia", "Vietnam", "Taiwan", "Hong Kong", "Ukraine", "Kazakhstan", "Armenia",
+            "Georgia", "Cyprus", "Estonia", "Latvia", "Lithuania", "Slovenia", "Albania", "Montenegro", "Bosnia", "Iceland",
+            "Luxembourg", "Malta", "Monaco", "Liechtenstein", "Andorra", "San Marino", "Egypt", "Morocco", "Tunisia", "Kenya",
+            "Nigeria", "Ghana", "Colombia", "Peru", "Uruguay", "Costa Rica", "Panama", "Dominican Republic", "Puerto Rico", "Jamaica",
+            "Saudi Arabia", "Qatar", "Kuwait", "Bahrain", "Oman", "Jordan", "Lebanon", "Azerbaijan", "Uzbekistan", "Kyrgyzstan",
+            "Mongolia", "Nepal", "Sri Lanka", "Bangladesh", "Pakistan", "Cambodia", "Laos", "Myanmar", "Fiji", "Maldives"
+        ];
+
         let participants = [];
         try {
-            const saved = localStorage.getItem('tokyo_participants_clean');
+            const saved = localStorage.getItem('tokyo_experiment_v5');
             participants = saved ? JSON.parse(saved) : [];
         } catch (e) {
             participants = [];
@@ -265,64 +292,68 @@
 
         function saveParticipants() {
             try {
-                localStorage.setItem('tokyo_participants_clean', JSON.stringify(participants));
+                localStorage.setItem('tokyo_experiment_v5', JSON.stringify(participants));
             } catch (e) {}
         }
 
         const translations = {
             en: {
-                badge: "Social Experiment",
+                badge: "Global Social Hack & Experiment",
                 heroTitle1: "Can the internet",
-                heroTitle2: "buy me a ticket to Tokyo?",
-                heroDesc: "No corporate sponsors, no crying, no begging. Just a transparent public challenge: can strangers across the world unite to fund a one-way ticket $1 at a time?",
-                participateBtn: "Contribute $1 & Join ⚡",
-                heroFooter: "✨ Get your verified supporter certificate instantly",
-                fundTitle: "Experiment Fund",
-                fundDesc: "Raised publicly by real participants.",
-                goalTitle: "Target Goal",
-                statusText: "Status: Live",
-                mapTitle: "🌍 Global Reach",
-                mapSub: "Countries participating in the experiment.",
-                noCountries: "No countries yet. Be the first!",
-                liveFeedTitle: "⚡️ Live Activity",
-                noActivity: "Waiting for the first participant...",
-                step1Title: "Step 1: Choose Amount",
-                step1Desc: "Back the experiment with $1 or more and get your digital certificate.",
+                heroTitle2: "bypass algorithms and fund a journey?",
+                heroDesc: "No sponsors. No sob stories. Just a raw, transparent system test: can $1 micro-actions from strangers across the globe hack reality and send a human to Tokyo?",
+                participateBtn: "Execute $1 Protocol ⚡",
+                heroFooter: "🔒 Instant verified digital passport on completion",
+                statsTitle: "Live Telemetry",
+                totalRaisedLabel: "Total Experiment Fund",
+                totalNodesLabel: "Active Nodes (Participants)",
+                statusActive: "Status: Experiment Running",
+                mapTitle: "🌍 Global Node Map (Countries)",
+                mapSub: "Real-time participation across international borders.",
+                noCountries: "Awaiting first global nodes...",
+                toggleCountriesBtn: "Expand All 100+ Countries 🌐",
+                allCountriesTitle: "Complete Registry of World Regions",
+                liveFeedTitle: "⚡️ Live Protocol Stream",
+                noActivity: "System waiting for input...",
+                step1Title: "Protocol Step 1: Input Amount",
+                step1Desc: "Contribute $1 or more to trigger the experiment node and unlock your digital pass.",
                 amountLabel: "Amount ($)",
-                proceedBtn: "Continue ⚡️",
-                step2Title: "Step 2: Your Info",
-                step2Desc: "Enter your details to generate your supporter certificate:",
+                proceedBtn: "Proceed to Verification ⚡️",
+                step2Title: "Protocol Step 2: Node Identification",
+                step2Desc: "Register your handle to generate your cryptographic-style experiment passport:",
                 nameLabel: "Name / Handle",
                 cityLabel: "Country / City",
-                emailLabel: "Email",
-                submitBtn: "Generate Certificate & Pay ⚡️"
+                emailLabel: "Email (for passport delivery)",
+                submitBtn: "Generate Passport & Pay ⚡️"
             },
             ru: {
-                badge: "Социальный эксперимент",
+                badge: "Глобальный социальный хак и эксперимент",
                 heroTitle1: "Сможет ли интернет",
-                heroTitle2: "купить мне билет в Токио?",
-                heroDesc: "Никаких спонсоров, жалости и выпрашивания. Чистый публичный челлендж: смогут ли незнакомцы со всего мира объединиться и собрать на билет по $1?",
-                participateBtn: "Внести $1 и участвовать ⚡",
-                heroFooter: "✨ Получите верифицированный сертификат мгновенно",
-                fundTitle: "Фонд эксперимента",
-                fundDesc: "Собрано реально участвующими людьми.",
-                goalTitle: "Цель сбора",
-                statusText: "Статус: Онлайн",
-                mapTitle: "🌍 География",
-                mapSub: "Страны, участвующие в эксперименте.",
-                noCountries: "Пока нет стран. Станьте первым!",
-                liveFeedTitle: "⚡️ Живая лента",
-                noActivity: "Ожидаем первого участника...",
-                step1Title: "Шаг 1: Сумма",
-                step1Desc: "Поддержите эксперимент от $1 и получите цифровой сертификат.",
+                heroTitle2: "обойти алгоритмы и профинансировать путь?",
+                heroDesc: "Никаких спонсоров и жалости. Чистый прозрачный системный тест: способны ли микро-вклады по $1 от незнакомцев со всего мира взломать реальность и отправить человека в Токио?",
+                participateBtn: "Запустить протокол $1 ⚡",
+                heroFooter: "🔒 Мгновенный цифровой верифицированный паспорт",
+                statsTitle: "Живая телеметрия",
+                totalRaisedLabel: "Общий фонд эксперимента",
+                totalNodesLabel: "Активные ноды (Участники)",
+                statusActive: "Статус: Эксперимент активен",
+                mapTitle: "🌍 Мировая карта нод (Страны)",
+                mapSub: "Участие в реальном времени через международные границы.",
+                noCountries: "Ожидаем первые глобальные ноды...",
+                toggleCountriesBtn: "Открыть все 100+ стран 🌐",
+                allCountriesTitle: "Полный реестр мировых регионов",
+                liveFeedTitle: "⚡️ Поток системного протокола",
+                noActivity: "Система ожидает ввод...",
+                step1Title: "Шаг 1 протокола: Сумма",
+                step1Desc: "Внесите $1 или более, чтобы активировать узел эксперимента и получить цифровой пропуск.",
                 amountLabel: "Сумма ($)",
-                proceedBtn: "Продолжить ⚡️",
-                step2Title: "Шаг 2: Ваши данные",
-                step2Desc: "Укажите данные для генерации сертификата:",
+                proceedBtn: "Перейти к верификации ⚡️",
+                step2Title: "Шаг 2 протокола: Идентификация ноды",
+                step2Desc: "Зарегистрируйте имя для генерации крипто-паспорта эксперимента:",
                 nameLabel: "Имя / Ник",
                 cityLabel: "Страна / Город",
-                emailLabel: "Email",
-                submitBtn: "Создать сертификат и оплатить ⚡️"
+                emailLabel: "Email (для доставки паспорта)",
+                submitBtn: "Сгенерировать паспорт и оплатить ⚡️"
             }
         };
 
@@ -338,6 +369,17 @@
                 }
             });
             renderAll();
+        }
+
+        function toggleAllCountries() {
+            const container = document.getElementById('fullCountriesContainer');
+            const btn = document.getElementById('toggleCountriesBtn');
+            container.classList.toggle('hidden');
+            if (container.classList.contains('hidden')) {
+                btn.innerText = currentLang === 'ru' ? 'Открыть все 100+ стран 🌐' : 'Expand All 100+ Countries 🌐';
+            } else {
+                btn.innerText = currentLang === 'ru' ? 'Свернуть список ✕' : 'Collapse List ✕';
+            }
         }
 
         function openPaymentModal() {
@@ -413,20 +455,17 @@
         function renderAll() {
             const total = participants.reduce((sum, p) => sum + p.amount, 0);
             document.getElementById('totalAmount').innerText = total.toLocaleString();
-            
-            const target = 2500;
-            const percent = ((total / target) * 100).toFixed(1);
-            document.getElementById('progressBar').style.width = Math.min(Math.max(percent, total > 0 ? 1 : 0), 100) + '%';
-            document.getElementById('progressText').innerText = currentLang === 'ru' ? `Прогресс: ${percent}%` : `Progress: ${percent}%`;
+            document.getElementById('totalParticipants').innerText = participants.length.toLocaleString();
 
             renderCountriesStats();
+            renderFullCountriesList();
             renderLiveFeed();
         }
 
         function renderCountriesStats() {
             const statsGrid = document.getElementById('countriesStatsGrid');
             if (participants.length === 0) {
-                statsGrid.innerHTML = `<div class="text-slate-500 text-sm italic col-span-full">${translations[currentLang].noCountries}</div>`;
+                statsGrid.innerHTML = `<div class="text-slate-500 text-sm italic col-span-full" data-i18n="noCountries">${translations[currentLang].noCountries}</div>`;
                 return;
             }
             statsGrid.innerHTML = '';
@@ -437,21 +476,36 @@
                 counts[country] = (counts[country] || 0) + 1;
             });
 
-            Object.entries(counts).sort((a, b) => b[1] - a[1]).forEach(([country, count]) => {
+            Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 6).forEach(([country, count]) => {
                 const card = document.createElement('div');
                 card.className = 'glass-panel border border-cardBorder rounded-2xl p-4 text-center';
                 card.innerHTML = `
                     <div class="text-xs text-slate-400 font-bold uppercase tracking-wider">${country}</div>
-                    <div class="text-2xl font-black text-white mt-1">${count}</div>
+                    <div class="text-2xl font-black text-white mt-1">${count} node${count > 1 ? 's' : ''}</div>
                 `;
                 statsGrid.appendChild(card);
+            });
+        }
+
+        function renderFullCountriesList() {
+            const listEl = document.getElementById('fullCountriesList');
+            listEl.innerHTML = '';
+            
+            const activeCountries = new Set(participants.map(p => p.city.split(',')[0].trim().toLowerCase()));
+
+            worldCountriesList.forEach(country => {
+                const isActive = activeCountries.has(country.toLowerCase());
+                const item = document.createElement('div');
+                item.className = `p-2 rounded-lg border text-center transition ${isActive ? 'bg-indigo-500/20 border-indigo-500/50 text-indigo-300 font-bold' : 'bg-darkBg/40 border-cardBorder text-slate-500'}`;
+                item.innerText = country;
+                listEl.appendChild(item);
             });
         }
 
         function renderLiveFeed() {
             const feedContainer = document.getElementById('liveFeedContainer');
             if (participants.length === 0) {
-                feedContainer.innerHTML = `<div class="text-slate-500 text-sm italic">${translations[currentLang].noActivity}</div>`;
+                feedContainer.innerHTML = `<div class="text-slate-500 text-sm italic" data-i18n="noActivity">${translations[currentLang].noActivity}</div>`;
                 return;
             }
             feedContainer.innerHTML = '';
@@ -461,8 +515,8 @@
                 el.className = 'p-3 rounded-xl bg-darkBg/80 border border-cardBorder flex items-center justify-between text-xs text-slate-300';
                 el.innerHTML = `
                     <div class="flex items-center space-x-2">
-                        <span>✨</span>
-                        <span><b>${item.name}</b> (${item.city}) backed with $${item.amount}</span>
+                        <span>⚡</span>
+                        <span><b>${item.name}</b> (${item.city}) executed protocol with $${item.amount}</span>
                     </div>
                     <span class="text-slate-500">${item.date}</span>
                 `;
