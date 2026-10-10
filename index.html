@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Blind Route | Dare to Travel Differently</title>
+    <title>The Blind Route | Unseen Destinations</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -11,41 +12,53 @@
             theme: {
                 extend: {
                     colors: {
-                        darkBg: '#030508',
-                        cardBg: '#090e1a',
-                        cardBorder: '#162035',
+                        darkBg: '#020408',
+                        cardBg: '#070b14',
+                        cardBorder: '#131c31',
                         accent: '#6366f1',
                         accentHover: '#4f46e5',
-                        emeraldGlow: '#10b981',
-                        gold: '#f59e0b'
+                        neonCyan: '#06b6d4',
+                        neonPurple: '#a855f7'
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; line-height: 1.7; }
-        .glass-panel { background: linear-gradient(135deg, rgba(9, 14, 26, 0.96) 0%, rgba(3, 5, 8, 0.99) 100%); backdrop-filter: blur(30px); }
-        .glow-effect { box-shadow: 0 0 120px -20px rgba(99, 102, 241, 0.3); }
-        .custom-scrollbar::-webkit-scrollbar { width: 8px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #030508; border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1f293d; border-radius: 4px; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-mono-custom { font-family: 'Space Grotesk', monospace; }
+        .glass-panel { background: linear-gradient(135deg, rgba(7, 11, 20, 0.94) 0%, rgba(2, 4, 8, 0.98) 100%); backdrop-filter: blur(40px); }
+        .glow-neon { box-shadow: 0 0 100px -20px rgba(99, 102, 241, 0.25); }
+        .glow-cyan { box-shadow: 0 0 50px -10px rgba(6, 182, 212, 0.3); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #020408; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1f293d; border-radius: 3px; }
+        
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(1000%); }
+        }
+        .scanline::after {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(to bottom, rgba(6, 182, 212, 0), rgba(6, 182, 212, 0.5) 50%, rgba(6, 182, 212, 0));
+            animation: scanline 4s linear infinite; pointer-events: none;
+        }
     </style>
 </head>
-<body class="bg-darkBg text-slate-100 min-h-screen selection:bg-accent selection:text-white pb-40">
+<body class="bg-darkBg text-slate-100 min-h-screen selection:bg-neonCyan selection:text-black pb-32">
 
     <!-- НАВИГАЦИЯ -->
-    <header class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center border-b border-slate-800/80">
+    <header class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center border-b border-slate-800/60">
         <div class="flex items-center space-x-3">
-            <span class="text-3xl">🧭</span>
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-neonCyan font-mono-custom font-bold text-lg">⌬</div>
             <div>
-                <span class="font-black text-xl tracking-tight bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">The Blind Route</span>
-                <span class="block text-xs text-slate-400 tracking-widest uppercase font-extrabold mt-0.5">AI-Powered Travel Dares</span>
+                <span class="font-black text-xl tracking-tight text-white font-mono-custom">BLIND ROUTE</span>
+                <span class="block text-[10px] text-slate-400 tracking-widest uppercase font-mono-custom font-bold">Protocol v2.4 // AI Dares</span>
             </div>
         </div>
         <div class="flex items-center space-x-4">
-            <button onclick="toggleLang()" class="px-5 py-2.5 text-sm font-bold rounded-xl bg-cardBg border border-cardBorder hover:border-accent transition text-slate-200 shadow-lg flex items-center space-x-2">
+            <button onclick="toggleLang()" class="px-4 py-2 text-xs font-mono-custom font-bold rounded-xl bg-cardBg border border-cardBorder hover:border-neonCyan transition text-slate-300 shadow-lg flex items-center space-x-2">
                 <span>🌐</span>
                 <span id="langLabel">EN / RU</span>
             </button>
@@ -53,100 +66,110 @@
     </header>
 
     <!-- ОСНОВНОЙ КОНТЕЙНЕР -->
-    <main class="max-w-4xl mx-auto px-6 pt-12 space-y-12">
+    <main class="max-w-3xl mx-auto px-6 pt-16 space-y-12">
         
         <!-- HERO СЕКЦИЯ -->
-        <div id="heroSection" class="glass-panel border border-cardBorder rounded-3xl p-8 sm:p-14 relative overflow-hidden glow-effect text-center space-y-8">
-            <div class="absolute -right-32 -top-32 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl pointer-events-none"></div>
-            
-            <div class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-accent/15 border border-accent/30 text-accent text-sm font-extrabold tracking-wider uppercase">
+        <div id="heroSection" class="glass-panel border border-cardBorder rounded-3xl p-8 sm:p-14 relative overflow-hidden glow-neon text-center space-y-8 scanline">
+            <div class="absolute -right-32 -top-32 w-96 h-96 bg-neonCyan/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-32 -bottom-32 w-96 h-96 bg-neonPurple/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-neonCyan/10 border border-neonCyan/30 text-neonCyan text-xs font-mono-custom font-extrabold tracking-wider uppercase">
                 <span>⚡</span>
-                <span data-i18n="badge">Tired of boring standard vacations?</span>
+                <span data-i18n="badge">System Alert: Break your matrix</span>
             </div>
 
-            <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-[1.1] text-white">
-                <span class="bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent" data-i18n="heroTitle1">Dare to let the algorithm</span><br>
-                <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent" data-i18n="heroTitle2">choose your next destination?</span>
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-[1.08] text-white">
+                <span class="bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent" data-i18n="heroTitle1">Hand over control</span><br>
+                <span class="bg-gradient-to-r from-neonCyan via-indigo-400 to-neonPurple bg-clip-text text-transparent" data-i18n="heroTitle2">to the blind algorithm.</span>
             </h1>
 
-            <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal" data-i18n="heroDesc">
-                Take our deep psychological quiz. We’ll analyze your travel fatigue, break your comfort zone, and assign you a secret, non-touristic mission anywhere on Earth.
+            <p class="text-base sm:text-lg text-slate-300 max-w-xl mx-auto leading-relaxed font-normal" data-i18n="heroDesc">
+                No tourist brochures. No comfortable resort hotels. Answer 5 psychological telemetry vectors, and receive a non-touristic coordinates dossier designed to shatter your routine.
             </p>
 
-            <button onclick="startQuiz()" class="px-10 py-5 rounded-2xl bg-gradient-to-r from-accent to-indigo-600 hover:from-accentHover hover:to-indigo-500 text-white font-extrabold text-lg shadow-xl shadow-accent/30 transition transform hover:-translate-y-0.5" data-i18n="startQuizBtn">
-                Start the Quiz & Get Your Dare 🚀
+            <button onclick="startQuiz()" class="px-10 py-5 rounded-2xl bg-gradient-to-r from-neonCyan to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-black font-extrabold text-base shadow-xl shadow-neonCyan/20 transition transform hover:-scale-105" data-i18n="startQuizBtn">
+                Initialize Telemetry Quiz ⚡
             </button>
         </div>
 
-        <!-- КВИЗ -->
-        <div id="quizContainer" class="glass-panel border border-cardBorder rounded-3xl p-8 sm:p-12 hidden space-y-8">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
-                <span id="quizProgress" class="text-xs uppercase tracking-widest text-indigo-400 font-extrabold">Question 1 of 5</span>
-                <span class="text-xs text-slate-500 uppercase tracking-widest font-bold">Blind Route Protocol</span>
+        <!-- КВИЗ (ТЕРМИНАЛ) -->
+        <div id="quizContainer" class="glass-panel border border-cardBorder rounded-3xl p-8 sm:p-12 hidden space-y-8 relative">
+            <div class="flex justify-between items-center border-b border-slate-800/80 pb-4 font-mono-custom text-xs">
+                <span id="quizProgress" class="text-neonCyan font-bold tracking-widest">VECTOR 01 / 05</span>
+                <span class="text-slate-500 uppercase tracking-widest">Awaiting Input...</span>
             </div>
 
-            <div id="questionText" class="text-2xl sm:text-3xl font-black text-white leading-snug"></div>
+            <div id="questionText" class="text-2xl sm:text-3xl font-black text-white leading-snug font-mono-custom"></div>
 
-            <div id="optionsContainer" class="grid grid-cols-1 gap-4"></div>
+            <div id="optionsContainer" class="grid grid-cols-1 gap-3.5"></div>
         </div>
 
-        <!-- ЭКРАН ПРЕДВАРИТЕЛЬНОГО РЕЗУЛЬТАТА (Блокировка до разблокировки) -->
-        <div id="resultContainer" class="glass-panel border-2 border-indigo-500/50 rounded-3xl p-8 sm:p-12 hidden space-y-8 text-center shadow-2xl">
-            <div class="text-4xl">🎯</div>
-            <h2 class="text-3xl sm:text-4xl font-black text-white" data-i18n="resultTitle">Your Secret Dare is Ready</h2>
+        <!-- ЭКРАН СКАНИРОВАНИЯ (ФЕЙК ИИ АНАЛИЗ ДЛЯ МАТРИЦЫ ВАУ-ЭФФЕКТА) -->
+        <div id="loadingContainer" class="glass-panel border border-cardBorder rounded-3xl p-12 hidden text-center space-y-6 glow-cyan">
+            <div class="w-16 h-16 mx-auto rounded-full border-4 border-neonCyan border-t-transparent animate-spin"></div>
+            <div class="space-y-2 font-mono-custom">
+                <h3 class="text-xl font-bold text-white" id="loadingText">Analyzing travel psychological DNA...</h3>
+                <p class="text-xs text-slate-400">Cross-referencing 14,200 non-touristic coordinates worldwide.</p>
+            </div>
+        </div>
+
+        <!-- ЭКРАН РЕЗУЛЬТАТА (БЛОКИРОВКА ДОССЬЕ) -->
+        <div id="resultContainer" class="glass-panel border-2 border-indigo-500/40 rounded-3xl p-8 sm:p-12 hidden space-y-8 text-center shadow-2xl">
+            <div class="inline-block p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 text-neonCyan text-3xl font-mono-custom">🔒</div>
+            <h2 class="text-3xl sm:text-4xl font-black text-white" data-i18n="resultTitle">Dossier Generated & Locked</h2>
             <p class="text-slate-300 text-base max-w-xl mx-auto leading-relaxed" data-i18n="resultDesc">
-                Our system processed your travel DNA. We found a hidden location, an absurd challenge, and a secret non-touristic checkpoint specifically tailored to break your routine.
+                Your telemetry profile has been mapped. The system has calculated an exact blind route, precise coordinates, and an uncompromising local challenge.
             </p>
 
-            <div class="bg-darkBg/80 border border-cardBorder rounded-2xl p-6 text-left space-y-3 max-w-lg mx-auto">
-                <div class="text-xs text-indigo-400 uppercase tracking-wider font-extrabold" data-i18n="unlockedPackage">Unlocked Dossier Includes:</div>
-                <ul class="space-y-2 text-sm text-slate-300">
-                    <li>✨ Exact secret destination coordinates</li>
-                    <li>🗺️ Unspoken local food & spot checklist</li>
-                    <li>📸 The exact photo challenge to prove you did it</li>
-                    <li>🔒 Direct secret access guide</li>
+            <div class="bg-darkBg/90 border border-cardBorder rounded-2xl p-6 text-left space-y-3 max-w-md mx-auto font-mono-custom text-xs">
+                <div class="text-neonCyan uppercase tracking-wider font-extrabold" data-i18n="unlockedPackage">[ ENCRYPTED PACKAGE CONTAINS ]:</div>
+                <ul class="space-y-2 text-slate-300">
+                    <li>✦ Exact hidden location GPS coordinates</li>
+                    <li>✦ Unspoken underground local food checkpoint</li>
+                    <li>✦ Mandatory photographic proof challenge</li>
+                    <li>✦ Emergency exit matrix guidelines</li>
                 </ul>
             </div>
 
-            <div class="pt-4 space-y-4">
-                <div class="text-3xl font-black text-emerald-400">$19 <span class="text-xs text-slate-400 font-normal uppercase">/ Full Secret Dossier</span></div>
+            <div class="pt-2 space-y-4">
+                <div class="text-4xl font-black text-neonCyan font-mono-custom">$19 <span class="text-xs text-slate-400 font-normal uppercase font-sans">/ Permanent Access</span></div>
                 <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                    <button onclick="simulateUnlockTestMode()" class="px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-base transition shadow-lg shadow-indigo-600/30">
-                        🧪 Тестовый режим (Смотреть результат)
+                    <button onclick="simulateUnlockTestMode()" class="px-6 py-4 rounded-xl bg-cardBorder hover:bg-slate-800 text-slate-200 font-bold text-sm transition font-mono-custom border border-slate-700">
+                        🧪 Test Mode (Preview)
                     </button>
-                    <button onclick="unlockDossierReal()" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-black font-extrabold text-base transition shadow-lg shadow-emerald-500/20" data-i18n="unlockBtn">
-                        Оплатить через NOWPayments ⚡️
+                    <button onclick="unlockDossierReal()" class="px-8 py-4 rounded-xl bg-gradient-to-r from-neonCyan to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-black font-extrabold text-base transition shadow-lg shadow-neonCyan/20" data-i18n="unlockBtn">
+                        Decrypt Dossier via NOWPayments ⚡️
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- ТЕСТОВЫЙ ЭКРАН СЕКРЕТНОГО МАРШРУТА (ПОКАЗЫВАЕТСЯ В ТЕСТОВОМ РЕЖИМЕ) -->
-        <div id="secretDossierView" class="glass-panel border-2 border-emerald-500/50 rounded-3xl p-8 sm:p-12 hidden space-y-8 shadow-2xl">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
-                <span class="text-xs uppercase tracking-widest text-emerald-400 font-extrabold">🔓 Dossier Unlocked (Test Mode)</span>
-                <button onclick="resetQuiz()" class="text-xs text-slate-400 hover:text-white underline">Пройти заново</button>
+        <!-- ТЕСТОВЫЙ ЭКРАН РЕЗУЛЬТАТА (ВАУ-ПРЕЗЕНТАЦИЯ МАРШРУТА) -->
+        <div id="secretDossierView" class="glass-panel border-2 border-neonCyan/40 rounded-3xl p-8 sm:p-10 hidden space-y-8 shadow-2xl">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-4 font-mono-custom text-xs">
+                <span class="text-neonCyan font-bold tracking-widest">ACCESS GRANTED // FILE #8894-B</span>
+                <button onclick="resetQuiz()" class="text-slate-400 hover:text-white underline">New Telemetry</button>
             </div>
 
             <div class="space-y-6">
                 <div>
-                    <span class="text-xs uppercase tracking-widest text-slate-400 font-bold">Ваше секретное направление:</span>
-                    <h3 class="text-3xl sm:text-4xl font-black text-white mt-1">Осака / Улица Хозеи (Япония)</h3>
+                    <span class="text-[10px] font-mono-custom uppercase tracking-widest text-slate-400 font-bold">Assigned Destination Vector:</span>
+                    <h3 class="text-3xl sm:text-4xl font-black text-white mt-1 font-mono-custom">OSAKA // Back-Alley Sector 4</h3>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="bg-darkBg/80 border border-cardBorder rounded-2xl p-5 space-y-2">
-                        <div class="text-xs text-indigo-400 font-bold uppercase">📍 Точка назначения</div>
-                        <p class="text-sm text-slate-300">Найти заброшенный полуподвальный бар «Green Rabbit» в переулке без вывесок.</p>
+                    <div class="bg-darkBg border border-cardBorder rounded-2xl p-5 space-y-2">
+                        <div class="text-xs text-neonCyan font-mono-custom font-bold uppercase">📍 Target Coordinates</div>
+                        <p class="text-sm text-slate-300">34.6654° N, 135.5022° E — Find the unmarked door behind the vending machine.</p>
                     </div>
-                    <div class="bg-darkBg/80 border border-cardBorder rounded-2xl p-5 space-y-2">
-                        <div class="text-xs text-indigo-400 font-bold uppercase">📸 Задание / Челлендж</div>
-                        <p class="text-sm text-slate-300">Заказать у бармена зеленый чай жестами, выпить его за стойкой и сфотографировать потолок.</p>
+                    <div class="bg-darkBg border border-cardBorder rounded-2xl p-5 space-y-2">
+                        <div class="text-xs text-neonPurple font-mono-custom font-bold uppercase">📸 Challenge Directive</div>
+                        <p class="text-sm text-slate-300">Order local takoyaki without speaking a single English word, using only hand gestures.</p>
                     </div>
                 </div>
 
-                <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-sm font-medium">
-                    ✨ Поздравляем! В реальной версии здесь генерируется уникальный PDF-паспорт и точные GPS-координаты.
+                <div class="p-4 rounded-2xl bg-neonCyan/10 border border-neonCyan/30 text-neonCyan text-xs font-mono-custom font-medium">
+                    ✦ TELEMETRY NOTE: This is a simulated preview version of your custom generated travel dossier.
                 </div>
             </div>
         </div>
@@ -162,89 +185,89 @@
         const quizData = {
             en: [
                 {
-                    question: "1. What is your biggest nightmare when going on a standard vacation?",
+                    question: "Vector 01: What triggers your deepest travel disgust?",
                     options: [
-                        "Surrounding myself with loud tourist crowds in resort hotels",
-                        "Eating overpriced, tasteless food at main square restaurants",
-                        "Having every single hour planned out like a corporate meeting",
-                        "Getting bored within the first 48 hours"
+                        "Resort bubbles insulated from actual local reality",
+                        "Overpriced tourist traps listed in mainstream blogs",
+                        "Agendas packed tighter than a corporate boardroom meeting",
+                        "Total predictability with zero room for anomalies"
                     ]
                 },
                 {
-                    question: "2. How do you prefer to handle your daily budget while exploring?",
+                    question: "Vector 02: Choose your operational expenditure style:",
                     options: [
-                        "Ultra-minimal: street food, hostels, local buses, maximum immersion",
-                        "Balanced: comfortable bed at night, reckless adventures during the day",
-                        "No limits on experiences, but hate paying for tourist traps"
+                        "Raw survival: night trains, street vendor meals, zero luxury",
+                        "Calculated asymmetry: budget beds by night, absolute freedom by day",
+                        "Resource independent: premium execution, zero tolerance for tourist scams"
                     ]
                 },
                 {
-                    question: "3. What is your tolerance level for chaotic or unpredictable situations?",
+                    question: "Vector 03: How do you react when an itinerary collapses entirely?",
                     options: [
-                        "Bring it on. I thrive when things go off script.",
-                        "I can handle weirdness as long as I have internet and coffee.",
-                        "I prefer structured chaos with a safety net."
+                        "Exhilaration. Real exploration begins when plans break.",
+                        "Adaptable annoyance, quickly solved with coffee and local Wi-Fi",
+                        "Preference for calculated chaos with safety margins"
                     ]
                 },
                 {
-                    question: "4. What kind of environment secretly attracts you the most?",
+                    question: "Vector 04: Which micro-environment draws you into the shadows?",
                     options: [
-                        "A neon-drenched futuristic megacity alleyway at 3 AM",
-                        "A forgotten coastal village where nobody speaks English",
-                        "An ancient misty mountain town with deep local legends",
-                        "An industrial post-cyberpunk European warehouse district"
+                        "A neon-lit cyber alleyway in an Asian mega-city at 3 AM",
+                        "An isolated coastal cliff settlement with an unreadable language",
+                        "An old fog-drenched mountain town with obscure folklore",
+                        "An industrial post-industrial European shipping port"
                     ]
                 },
                 {
-                    question: "5. Are you ready to follow an absurd physical challenge assigned by the system?",
+                    question: "Vector 05: Are you willing to execute a direct behavioral challenge?",
                     options: [
-                        "Yes. Give me a mission and I will execute it.",
-                        "Only if it involves finding exceptional coffee or strange local food.",
-                        "Try me. I have nothing to lose."
+                        "Affirmative. Issue the directive and I will fulfill it.",
+                        "Only if it involves eccentric culinary discoveries or hidden spots",
+                        "Test me. My matrix needs shattering."
                     ]
                 }
             ],
             ru: [
                 {
-                    question: "1. Какой твой главный кошмар в стандартном отпуске?",
+                    question: "Вектор 01: Что вызывает у вас наибольшее отвращение в поездках?",
                     options: [
-                        "Толпы туристов и одуревшие аниматоры в отелях все включено",
-                        "Переоцененная и безвкусная еда в ресторанах на главных площадях",
-                        "Расписанная по минутам скучная экскурсионная программа",
-                        "Тоска и однообразие уже на второй день"
+                        "Курортные «пузыри», изолирующие от реальной жизни",
+                        "Заезженные туристические ловушки из топ-списков блогов",
+                        "Расписанные по минутам скучные экскурсионные рамки",
+                        "Полная предсказуемость без единого шанса на аномалию"
                     ]
                 },
                 {
-                    question: "2. Какой у тебя стиль бюджета в поездках?",
+                    question: "Вектор 02: Выберите ваш операционный финансовый стиль:",
                     options: [
-                        "Хардкор: уличная еда, хостелы, автобусы с местными, полный хардкор",
-                        "Баланс: нормальный отель ночевать, безумные приключения днем",
-                        "Деньги не проблема, лишь бы не платить за унылые туристические ловушки"
+                        "Хардкор: ночные поезда, уличная еда, максимальное погружение",
+                        "Асимметрия: простые ночевки, безумные исследования днем",
+                        "Без ограничений по ресурсам, но с отвращением к туристическому обману"
                     ]
                 },
                 {
-                    question: "3. Как ты относишься к неожиданному хаосу и непредсказуемости?",
-                    options: [
-                        "Обожаю, когда все идет не по плану",
-                        "Нормально, если под рукой есть интернет и кофе",
-                        "Предпочитаю контролируемый экстрим"
+                    question: "Вектор 03: Как вы реагируете, когда планы полностью рушатся?",
+                    Options: [
+                        "Воодушевление. Настоящее исследование начинается после краха планов.",
+                        "Легкое раздражение, решаемое чашкой кофе и локальной сетью",
+                        "Предпочитаю контролируемый хаос с буфером безопасности"
                     ]
                 },
                 {
-                    question: "4. Какая атмосфера манит тебя сильнее всего?",
+                    question: "Вектор 04: Какая среда манит вас в неизвестность?",
                     options: [
-                        "Неоновый лабиринт ночного азиатского мегаполиса в 3 часа ночи",
-                        "Забытая прибрежная деревушка, где никто не говорит по-английски",
-                        "Туманный горный городок со странными местными легендами",
-                        "Индустриальный район европейского портового города"
+                        "Неоновый лабиринт азиатского мегаполиса в 3 часа ночи",
+                        "Отрезанное от мира прибрежное селение с незнакомым языком",
+                        "Туманный горный форпост со странными локальными легендами",
+                        "Индустриальный портовый терминал европейского города"
                     ]
                 },
                 {
-                    question: "5. Готов ли ты выполнить абсурдную миссию, которую тебе назначит система?",
+                    question: "Вектор 05: Готовы ли вы выполнить прямой поведенческий вызов?",
                     options: [
-                        "Давай сюда задачу, я выполню ее любой ценой",
-                        "Только если это связано с поиском странной еды или необычных мест",
-                        "Погнали, мне нечего терять"
+                        "Подтверждаю. Выдайте директиву, я выполню её.",
+                        "Только если это связано со странной едой или потайными местами",
+                        "Проверьте меня. Моя матрица требует перезагрузки."
                     ]
                 }
             ]
@@ -252,26 +275,26 @@
 
         const translations = {
             en: {
-                badge: "Tired of boring standard vacations?",
-                heroTitle1: "Dare to let the algorithm",
-                heroTitle2: "choose your next destination?",
-                heroDesc: "Take our deep psychological quiz. We’ll analyze your travel fatigue, break your comfort zone, and assign you a secret, non-touristic mission anywhere on Earth.",
-                startQuizBtn: "Start the Quiz & Get Your Dare 🚀",
-                resultTitle: "Your Secret Dare is Ready",
-                resultDesc: "Our system processed your travel DNA. We found a hidden location, an absurd challenge, and a secret non-touristic checkpoint specifically tailored to break your routine.",
-                unlockedPackage: "Unlocked Dossier Includes:",
-                unlockBtn: "Proceed to NOWPayments ⚡️"
+                badge: "System Alert: Break your matrix",
+                heroTitle1: "Hand over control",
+                heroTitle2: "to the blind algorithm.",
+                heroDesc: "No tourist brochures. No comfortable resort hotels. Answer 5 psychological telemetry vectors, and receive a non-touristic coordinates dossier designed to shatter your routine.",
+                startQuizBtn: "Initialize Telemetry Quiz ⚡",
+                resultTitle: "Dossier Generated & Locked",
+                resultDesc: "Your telemetry profile has been mapped. The system has calculated an exact blind route, precise coordinates, and an uncompromising local challenge.",
+                unlockedPackage: "[ ENCRYPTED PACKAGE CONTAINS ]:",
+                unlockBtn: "Decrypt Dossier via NOWPayments ⚡️"
             },
             ru: {
-                badge: "Устал от унылых стандартных отпусков?",
-                heroTitle1: "Слабо позволить алгоритму",
-                heroTitle2: "выбрать твое следующее приключение?",
-                heroDesc: "Пройди наш психологический квиз. Мы проанализируем твою дорожную усталость, сломаем зону комфорта и выдадим секретную нетуристическую миссию в любой точке планеты.",
-                startQuizBtn: "Пройти квиз и получить вызов 🚀",
-                resultTitle: "Твой секретный вызов готов",
-                resultDesc: "Система обработала твой тревел-профиль. Мы подобрали скрытую локацию, абсурдный челлендж и секретную нетуристическую точку, чтобы встряхнуть твою рутину.",
-                unlockedPackage: "Секретное досье включает:",
-                unlockBtn: "Оплатить через NOWPayments ⚡️"
+                badge: "Системное предупреждение: сломай матрицу",
+                heroTitle1: "Передайте контроль",
+                heroTitle2: "слепому алгоритму.",
+                heroDesc: "Никаких буклетов и отелей «все включено». Ответьте на 5 психологических векторов и получите досье с нетуристическими координатами для разрушения рутины.",
+                startQuizBtn: "Запустить телеметрию ⚡",
+                resultTitle: "Досье создано и заблокировано",
+                resultDesc: "Ваш профиль телеметрии обработан. Система рассчитала точный слепой маршрут, координаты и бескомпромиссный локальный челлендж.",
+                unlockedPackage: "[ ЗАШИФРОВАННЫЙ ПАКЕТ ВКЛЮЧАЕТ ]:",
+                unlockBtn: "Расшифровать досье через NOWPayments ⚡️"
             }
         };
 
@@ -300,13 +323,19 @@
         function renderQuestion() {
             const qList = quizData[currentLang];
             if (currentQuestionIndex >= qList.length) {
+                // Показываем экран сканирования перед результатами для вау-эффекта
                 document.getElementById('quizContainer').classList.add('hidden');
-                document.getElementById('resultContainer').classList.remove('hidden');
+                document.getElementById('loadingContainer').classList.remove('hidden');
+                
+                setTimeout(() => {
+                    document.getElementById('loadingContainer').classList.add('hidden');
+                    document.getElementById('resultContainer').classList.remove('hidden');
+                }, 1800);
                 return;
             }
 
             const currentQ = qList[currentQuestionIndex];
-            document.getElementById('quizProgress').innerText = currentLang === 'ru' ? `Вопрос ${currentQuestionIndex + 1} из ${qList.length}` : `Question ${currentQuestionIndex + 1} of ${qList.length}`;
+            document.getElementById('quizProgress').innerText = currentLang === 'ru' ? `ВЕКТОР 0${currentQuestionIndex + 1} / 05` : `VECTOR 0${currentQuestionIndex + 1} / 05`;
             document.getElementById('questionText').innerText = currentQ.question;
 
             const optionsContainer = document.getElementById('optionsContainer');
@@ -314,8 +343,8 @@
 
             currentQ.options.forEach((opt, idx) => {
                 const btn = document.createElement('button');
-                btn.className = 'p-5 rounded-2xl bg-cardBg border border-cardBorder hover:border-accent text-left text-slate-200 font-medium text-base transition flex items-center justify-between group';
-                btn.innerHTML = `<span>${opt}</span> <span class="text-indigo-400 opacity-0 group-hover:opacity-100 transition">→</span>`;
+                btn.className = 'p-4 sm:p-5 rounded-2xl bg-cardBg border border-cardBorder hover:border-neonCyan text-left text-slate-200 font-medium text-sm sm:text-base transition flex items-center justify-between group';
+                btn.innerHTML = `<span>${opt}</span> <span class="text-neonCyan opacity-0 group-hover:opacity-100 transition font-mono-custom">→</span>`;
                 btn.onclick = () => selectOption(idx);
                 optionsContainer.appendChild(btn);
             });
