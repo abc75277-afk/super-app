@@ -1,61 +1,305 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en" class="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Дом за один доллар</title>
-<meta name="description" content="Один человек, одна мечта: свой дом и жизнь рядом с детьми. Каждый доллар это один кирпич. Не можете дать доллар? Поделитесь страницей: это тоже добро.">
-<meta property="og:title" content="Дом за один доллар">
-<meta property="og:description" content="Один человек. Одна мечта. Каждый доллар это один кирпич в нашем доме.">
-<meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{--paper:#f6f8fb;--card:#fff;--ink:#14213d;--muted:#4d5b78;--line:#d5dce8;--red:#d62839;--blue:#1d4e89;--sun:#bc002d;
---display:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;--body:'IBM Plex Sans','Segoe UI',system-ui,sans-serif}
-@media(prefers-color-scheme:dark){:root{--paper:#0c1426;--card:#121d36;--ink:#eef2fa;--muted:#a3b0cb;--line:#26345a;--red:#ff5d6c;--blue:#6aa6ee;--sun:#ff4d6d}}
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.65 var(--body);padding-bottom:env(safe-area-inset-bottom,0)}
-h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;letter-spacing:-.02em}
-h1{font-size:clamp(2.3rem,7vw,4.4rem);font-weight:800}
-h2{font-size:clamp(1.6rem,4.5vw,2.4rem);font-weight:800;margin-bottom:.6em}
-p{margin:0 0 1em;max-width:64ch}
-a{color:var(--blue)}
-:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
-.wrap{max-width:980px;margin:0 auto;padding:0 22px}
-.stripe{height:10px;background:repeating-linear-gradient(135deg,var(--red) 0 18px,var(--paper) 18px 30px,var(--blue) 30px 48px,var(--paper) 48px 60px)}
-header{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
-.brand{font:800 1.05rem var(--display)}.brand i{font-style:normal;color:var(--sun)}
-.lead{font-size:1.2rem;color:var(--muted);margin-top:22px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:600 1.02rem var(--body);padding:15px 26px;border-radius:12px;background:var(--sun);color:#fff;transition:transform .15s,filter .15s}
-.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
-.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
-.row{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 8px}
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 4px}
-.chip{border:2px solid var(--line);background:var(--card);color:var(--ink);font:600 1rem var(--body);padding:11px 20px;border-radius:999px;cursor:pointer}
-.chip[aria-pressed=true]{border-color:var(--sun);background:var(--sun);color:#fff}
-.fine{font-size:.88rem;color:var(--muted)}
-.pass{display:grid;grid-template-columns:1fr 170px;background:var(--card);border:2px solid var(--ink);border-radius:18px;margin:34px 0 10px;overflow:hidden}
-.pass-main{padding:24px 26px}
-.route{display:flex;align-items:center;gap:14px;font:800 clamp(1.8rem,6vw,2.7rem) var(--display)}
-.route .line{flex:1;border-top:3px dashed var(--line);min-width:30px}
-.cities{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted)}
-.bricks{display:grid;grid-template-columns:repeat(20,1fr);gap:3px;margin:20px 0 8px}
-.bricks b{height:14px;border-radius:2px;background:var(--line)}.bricks b.on{background:var(--sun)}
-.stub{border-left:2px dashed var(--ink);padding:24px 16px;display:flex;flex-direction:column;justify-content:center;text-align:center;gap:6px}
-.stub .big{font:800 2.6rem var(--display);color:var(--sun);line-height:1.1}
-.stub small{color:var(--muted);font-size:.82rem}
-.nums{display:flex;flex-wrap:wrap;gap:6px 28px;font-weight:600}
-.nums em{font:800 1.4rem var(--display);font-style:normal;margin-right:5px}
-section{padding:54px 0;border-top:1px solid var(--line)}
-.steps{list-style:none;padding:0;margin:0;display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
-.steps li{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
-.steps h3{font-size:1.2rem;margin-bottom:8px}.steps p{margin:0;color:var(--muted);font-size:1rem}
-.cols{display:flex;align-items:flex-end;gap:14px;height:230px;padding:16px 16px 0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow-x:auto}
-.col{flex:0 0 64px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;text-align:center;font-size:.8rem}
-.col .n{font-weight:600;margin-bottom:4px}
-.col .stick{width:100%;background:var(--sun);border-radius:6px 6px 0 0;min-height:6px}
-.col .nm{padding:8px 0;color:var(--muted);line-height:1.2}
-.empty{border:2px dashed var(--line);border-radius:14px;padding:24px;color:var(--muted)}
-.wall{display:grid;gap:14px;grid-template-colu
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Blind Route | Dare to Travel Differently</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#030508',
+                        cardBg: '#090e1a',
+                        cardBorder: '#162035',
+                        accent: '#6366f1',
+                        accentHover: '#4f46e5',
+                        emeraldGlow: '#10b981',
+                        gold: '#f59e0b'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; line-height: 1.7; }
+        .glass-panel { background: linear-gradient(135deg, rgba(9, 14, 26, 0.96) 0%, rgba(3, 5, 8, 0.99) 100%); backdrop-filter: blur(30px); }
+        .glow-effect { box-shadow: 0 0 120px -20px rgba(99, 102, 241, 0.3); }
+        .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #030508; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1f293d; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-darkBg text-slate-100 min-h-screen selection:bg-accent selection:text-white pb-40">
+
+    <!-- НАВИГАЦИЯ -->
+    <header class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center border-b border-slate-800/80">
+        <div class="flex items-center space-x-3">
+            <span class="text-3xl">🧭</span>
+            <div>
+                <span class="font-black text-xl tracking-tight bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">The Blind Route</span>
+                <span class="block text-xs text-slate-400 tracking-widest uppercase font-extrabold mt-0.5">AI-Powered Travel Dares</span>
+            </div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <button onclick="toggleLang()" class="px-5 py-2.5 text-sm font-bold rounded-xl bg-cardBg border border-cardBorder hover:border-accent transition text-slate-200 shadow-lg flex items-center space-x-2">
+                <span>🌐</span>
+                <span id="langLabel">EN / RU</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕЙНЕР -->
+    <main class="max-w-4xl mx-auto px-6 pt-12 space-y-12">
+        
+        <!-- HERO СЕКЦИЯ -->
+        <div id="heroSection" class="glass-panel border border-cardBorder rounded-3xl p-8 sm:p-14 relative overflow-hidden glow-effect text-center space-y-8">
+            <div class="absolute -right-32 -top-32 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-accent/15 border border-accent/30 text-accent text-sm font-extrabold tracking-wider uppercase">
+                <span>⚡</span>
+                <span data-i18n="badge">Tired of boring standard vacations?</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-[1.1] text-white">
+                <span class="bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent" data-i18n="heroTitle1">Dare to let the algorithm</span><br>
+                <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent" data-i18n="heroTitle2">choose your next destination?</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal" data-i18n="heroDesc">
+                Take our deep psychological quiz. We’ll analyze your travel fatigue, break your comfort zone, and assign you a secret, non-touristic mission anywhere on Earth.
+            </p>
+
+            <button onclick="startQuiz()" class="px-10 py-5 rounded-2xl bg-gradient-to-r from-accent to-indigo-600 hover:from-accentHover hover:to-indigo-500 text-white font-extrabold text-lg shadow-xl shadow-accent/30 transition transform hover:-translate-y-0.5" data-i18n="startQuizBtn">
+                Start the Quiz & Get Your Dare 🚀
+            </button>
+        </div>
+
+        <!-- КВИЗ (СКРЫТ ДО СТАРТА) -->
+        <div id="quizContainer" class="glass-panel border border-cardBorder rounded-3xl p-8 sm:p-12 hidden space-y-8">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                <span id="quizProgress" class="text-xs uppercase tracking-widest text-indigo-400 font-extrabold">Question 1 of 5</span>
+                <span class="text-xs text-slate-500 uppercase tracking-widest font-bold">Blind Route Protocol</span>
+            </div>
+
+            <div id="questionText" class="text-2xl sm:text-3xl font-black text-white leading-snug">
+                <!-- Сюда динамически падает вопрос -->
+            </div>
+
+            <div id="optionsContainer" class="grid grid-cols-1 gap-4">
+                <!-- Сюда падают варианты ответов -->
+            </div>
+        </div>
+
+        <!-- РЕЗУЛЬТАТ / ВЫЗОВ (СКРЫТ ДО ЗАВЕРШЕНИЯ КВИЗА) -->
+        <div id="resultContainer" class="glass-panel border-2 border-indigo-500/50 rounded-3xl p-8 sm:p-12 hidden space-y-8 text-center shadow-2xl">
+            <div class="text-4xl">🎯</div>
+            <h2 class="text-3xl sm:text-4xl font-black text-white" data-i18n="resultTitle">Your Secret Dare is Ready</h2>
+            <p class="text-slate-300 text-base max-w-xl mx-auto leading-relaxed" data-i18n="resultDesc">
+                Our system processed your travel DNA. We found a hidden location, an absurd challenge, and a secret non-touristic checkpoint specifically tailored to break your routine.
+            </p>
+
+            <div class="bg-darkBg/80 border border-cardBorder rounded-2xl p-6 text-left space-y-3 max-w-lg mx-auto">
+                <div class="text-xs text-indigo-400 uppercase tracking-wider font-extrabold" data-i18n="unlockedPackage">Unlocked Dossier Includes:</div>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li>✨ Exact secret destination coordinates</li>
+                    <li>🗺️ Unspoken local food & spot checklist</li>
+                    <li>📸 The exact photo challenge to prove you did it</li>
+                    <li>🔒 Direct secret access guide</li>
+                </ul>
+            </div>
+
+            <div class="pt-4">
+                <div class="text-3xl font-black text-emerald-400 mb-4">$19 <span class="text-xs text-slate-400 font-normal uppercase">/ Full Secret Dossier</span></div>
+                <button onclick="unlockDossier()" class="w-full sm:w-auto px-12 py-5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-black font-extrabold text-lg shadow-xl shadow-emerald-500/20 transition" data-i18n="unlockBtn">
+                    Reveal My Destination & Unlock Dossier ⚡️
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- СКРИПТЫ КВИЗА -->
+    <script>
+        let currentLang = 'en';
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+
+        const quizData = {
+            en: [
+                {
+                    question: "1. What is your biggest nightmare when going on a standard vacation?",
+                    options: [
+                        "Surrounding myself with loud tourist crowds in resort hotels",
+                        "Eating overpriced, tasteless food at main square restaurants",
+                        "Having every single hour planned out like a corporate meeting",
+                        "Getting bored within the first 48 hours"
+                    ]
+                },
+                {
+                    question: "2. How do you prefer to handle your daily budget while exploring?",
+                    options: [
+                        "Ultra-minimal: street food, hostels, local buses, maximum immersion",
+                        "Balanced: comfortable bed at night, reckless adventures during the day",
+                        "No limits on experiences, but hate paying for tourist traps"
+                    ]
+                },
+                {
+                    question: "3. What is your tolerance level for chaotic or unpredictable situations?",
+                    options: [
+                        "Bring it on. I thrive when things go off script.",
+                        "I can handle weirdness as long as I have internet and coffee.",
+                        "I prefer structured chaos with a safety net."
+                    ]
+                },
+                {
+                    question: "4. What kind of environment secretly attracts you the most?",
+                    options: [
+                        "A neon-drenched futuristic megacity alleyway at 3 AM",
+                        "A forgotten coastal village where nobody speaks English",
+                        "An ancient misty mountain town with deep local legends",
+                        "An industrial post-cyberpunk European warehouse district"
+                    ]
+                },
+                {
+                    question: "5. Are you ready to follow an absurd physical challenge assigned by the system?",
+                    options: [
+                        "Yes. Give me a mission and I will execute it.",
+                        "Only if it involves finding exceptional coffee or strange local food.",
+                        "Try me. I have nothing to lose."
+                    ]
+                }
+            ],
+            ru: [
+                {
+                    question: "1. Какой твой главный кошмар в стандартном отпуске?",
+                    options: [
+                        "Толпы туристов и одуревшие аниматоры в отелях все включено",
+                        "Переоцененная и безвкусная еда в ресторанах на главных площадях",
+                        "Расписанная по минутам скучная экскурсионная программа",
+                        "Тоска и однообразие уже на второй день"
+                    ]
+                },
+                {
+                    question: "2. Какой у тебя стиль бюджета в поездках?",
+                    options: [
+                        "Хардкор: уличная еда, хостелы, автобусы с местными, полный хардкор",
+                        "Баланс: нормальный отель ночевать, безумные приключения днем",
+                        "Деньги не проблема, лишь бы не платить за унылые туристические ловушки"
+                    ]
+                },
+                {
+                    question: "3. Как ты относишься к неожиданному хаосу и непредсказуемости?",
+                    options: [
+                        "Обожаю, когда все идет не по плану",
+                        "Нормально, если под рукой есть интернет и кофе",
+                        "Предпочитаю контролируемый экстрим"
+                    ]
+                },
+                {
+                    question: "4. Какая атмосфера манит тебя сильнее всего?",
+                    options: [
+                        "Неоновый лабиринт ночного азиатского мегаполиса в 3 часа ночи",
+                        "Забытая прибрежная деревушка, где никто не говорит по-английски",
+                        "Туманный горный городок со странными местными легендами",
+                        "Индустриальный район европейского портового города"
+                    ]
+                },
+                {
+                    question: "5. Готов ли ты выполнить абсурдную миссию, которую тебе назначит система?",
+                    options: [
+                        "Давай сюда задачу, я выполню ее любой ценой",
+                        "Только если это связано с поиском странной еды или необычных мест",
+                        "Погнали, мне нечего терять"
+                    ]
+                }
+            ]
+        };
+
+        const translations = {
+            en: {
+                badge: "Tired of boring standard vacations?",
+                heroTitle1: "Dare to let the algorithm",
+                heroTitle2: "choose your next destination?",
+                heroDesc: "Take our deep psychological quiz. We’ll analyze your travel fatigue, break your comfort zone, and assign you a secret, non-touristic mission anywhere on Earth.",
+                startQuizBtn: "Start the Quiz & Get Your Dare 🚀",
+                resultTitle: "Your Secret Dare is Ready",
+                resultDesc: "Our system processed your travel DNA. We found a hidden location, an absurd challenge, and a secret non-touristic checkpoint specifically tailored to break your routine.",
+                unlockedPackage: "Unlocked Dossier Includes:",
+                unlockBtn: "Reveal My Destination & Unlock Dossier ⚡️"
+            },
+            ru: {
+                badge: "Устал от унылых стандартных отпусков?",
+                heroTitle1: "Слабо позволить алгоритму",
+                heroTitle2: "выбрать твое следующее приключение?",
+                heroDesc: "Пройди наш психологический квиз. Мы проанализируем твою дорожную усталость, сломаем зону комфорта и выдадим секретную нетуристическую миссию в любой точке планеты.",
+                startQuizBtn: "Пройти квиз и получить вызов 🚀",
+                resultTitle: "Твой секретный вызов готов",
+                resultDesc: "Система обработала твой тревел-профиль. Мы подобрали скрытую локацию, абсурдный челлендж и секретную нетуристическую точку, чтобы встряхнуть твою рутину.",
+                unlockedPackage: "Секретное досье включает:",
+                unlockBtn: "Узнать назначение и открыть досье ⚡️"
+            }
+        };
+
+        function toggleLang() {
+            currentLang = currentLang === 'ru' ? 'en' : 'ru';
+            document.getElementById('langLabel').innerText = currentLang === 'ru' ? 'RU / EN' : 'EN / RU';
+            document.documentElement.setAttribute('lang', currentLang);
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+        }
+
+        function startQuiz() {
+            document.getElementById('heroSection').classList.add('hidden');
+            document.getElementById('quizContainer').classList.remove('hidden');
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const qList = quizData[currentLang];
+            if (currentQuestionIndex >= qList.length) {
+                // Квиз завершен -> показываем результат
+                document.getElementById('quizContainer').classList.add('hidden');
+                document.getElementById('resultContainer').classList.remove('hidden');
+                return;
+            }
+
+            const currentQ = qList[currentQuestionIndex];
+            document.getElementById('quizProgress').innerText = currentLang === 'ru' ? `Вопрос ${currentQuestionIndex + 1} из ${qList.length}` : `Question ${currentQuestionIndex + 1} of ${qList.length}`;
+            document.getElementById('questionText').innerText = currentQ.question;
+
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+
+            currentQ.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'p-5 rounded-2xl bg-cardBg border border-cardBorder hover:border-accent text-left text-slate-200 font-medium text-base transition flex items-center justify-between group';
+                btn.innerHTML = `<span>${opt}</span> <span class="text-indigo-400 opacity-0 group-hover:opacity-100 transition">→</span>`;
+                btn.onclick = () => selectOption(idx);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(optionIndex) {
+            userAnswers.push(optionIndex);
+            currentQuestionIndex++;
+            renderQuestion();
+        }
+
+        function unlockDossier() {
+            // Ссылка на оплату или переход к покупке цифрового продукта
+            window.location.href = `https://nowpayments.io/payment?price_amount=19&price_currency=usd`;
+        }
+    </script>
+</body>
+</html>
