@@ -78,23 +78,19 @@
             </button>
         </div>
 
-        <!-- КВИЗ (СКРЫТ ДО СТАРТА) -->
+        <!-- КВИЗ -->
         <div id="quizContainer" class="glass-panel border border-cardBorder rounded-3xl p-8 sm:p-12 hidden space-y-8">
             <div class="flex justify-between items-center border-b border-slate-800 pb-4">
                 <span id="quizProgress" class="text-xs uppercase tracking-widest text-indigo-400 font-extrabold">Question 1 of 5</span>
                 <span class="text-xs text-slate-500 uppercase tracking-widest font-bold">Blind Route Protocol</span>
             </div>
 
-            <div id="questionText" class="text-2xl sm:text-3xl font-black text-white leading-snug">
-                <!-- Сюда динамически падает вопрос -->
-            </div>
+            <div id="questionText" class="text-2xl sm:text-3xl font-black text-white leading-snug"></div>
 
-            <div id="optionsContainer" class="grid grid-cols-1 gap-4">
-                <!-- Сюда падают варианты ответов -->
-            </div>
+            <div id="optionsContainer" class="grid grid-cols-1 gap-4"></div>
         </div>
 
-        <!-- РЕЗУЛЬТАТ / ВЫЗОВ (СКРЫТ ДО ЗАВЕРШЕНИЯ КВИЗА) -->
+        <!-- ЭКРАН ПРЕДВАРИТЕЛЬНОГО РЕЗУЛЬТАТА (Блокировка до разблокировки) -->
         <div id="resultContainer" class="glass-panel border-2 border-indigo-500/50 rounded-3xl p-8 sm:p-12 hidden space-y-8 text-center shadow-2xl">
             <div class="text-4xl">🎯</div>
             <h2 class="text-3xl sm:text-4xl font-black text-white" data-i18n="resultTitle">Your Secret Dare is Ready</h2>
@@ -112,17 +108,52 @@
                 </ul>
             </div>
 
-            <div class="pt-4">
-                <div class="text-3xl font-black text-emerald-400 mb-4">$19 <span class="text-xs text-slate-400 font-normal uppercase">/ Full Secret Dossier</span></div>
-                <button onclick="unlockDossier()" class="w-full sm:w-auto px-12 py-5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-black font-extrabold text-lg shadow-xl shadow-emerald-500/20 transition" data-i18n="unlockBtn">
-                    Reveal My Destination & Unlock Dossier ⚡️
-                </button>
+            <div class="pt-4 space-y-4">
+                <div class="text-3xl font-black text-emerald-400">$19 <span class="text-xs text-slate-400 font-normal uppercase">/ Full Secret Dossier</span></div>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <button onclick="simulateUnlockTestMode()" class="px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-base transition shadow-lg shadow-indigo-600/30">
+                        🧪 Тестовый режим (Смотреть результат)
+                    </button>
+                    <button onclick="unlockDossierReal()" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-black font-extrabold text-base transition shadow-lg shadow-emerald-500/20" data-i18n="unlockBtn">
+                        Оплатить через NOWPayments ⚡️
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ТЕСТОВЫЙ ЭКРАН СЕКРЕТНОГО МАРШРУТА (ПОКАЗЫВАЕТСЯ В ТЕСТОВОМ РЕЖИМЕ) -->
+        <div id="secretDossierView" class="glass-panel border-2 border-emerald-500/50 rounded-3xl p-8 sm:p-12 hidden space-y-8 shadow-2xl">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                <span class="text-xs uppercase tracking-widest text-emerald-400 font-extrabold">🔓 Dossier Unlocked (Test Mode)</span>
+                <button onclick="resetQuiz()" class="text-xs text-slate-400 hover:text-white underline">Пройти заново</button>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-slate-400 font-bold">Ваше секретное направление:</span>
+                    <h3 class="text-3xl sm:text-4xl font-black text-white mt-1">Осака / Улица Хозеи (Япония)</h3>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-darkBg/80 border border-cardBorder rounded-2xl p-5 space-y-2">
+                        <div class="text-xs text-indigo-400 font-bold uppercase">📍 Точка назначения</div>
+                        <p class="text-sm text-slate-300">Найти заброшенный полуподвальный бар «Green Rabbit» в переулке без вывесок.</p>
+                    </div>
+                    <div class="bg-darkBg/80 border border-cardBorder rounded-2xl p-5 space-y-2">
+                        <div class="text-xs text-indigo-400 font-bold uppercase">📸 Задание / Челлендж</div>
+                        <p class="text-sm text-slate-300">Заказать у бармена зеленый чай жестами, выпить его за стойкой и сфотографировать потолок.</p>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-sm font-medium">
+                    ✨ Поздравляем! В реальной версии здесь генерируется уникальный PDF-паспорт и точные GPS-координаты.
+                </div>
             </div>
         </div>
 
     </main>
 
-    <!-- СКРИПТЫ КВИЗА -->
+    <!-- СКРИПТЫ -->
     <script>
         let currentLang = 'en';
         let currentQuestionIndex = 0;
@@ -229,7 +260,7 @@
                 resultTitle: "Your Secret Dare is Ready",
                 resultDesc: "Our system processed your travel DNA. We found a hidden location, an absurd challenge, and a secret non-touristic checkpoint specifically tailored to break your routine.",
                 unlockedPackage: "Unlocked Dossier Includes:",
-                unlockBtn: "Reveal My Destination & Unlock Dossier ⚡️"
+                unlockBtn: "Proceed to NOWPayments ⚡️"
             },
             ru: {
                 badge: "Устал от унылых стандартных отпусков?",
@@ -240,7 +271,7 @@
                 resultTitle: "Твой секретный вызов готов",
                 resultDesc: "Система обработала твой тревел-профиль. Мы подобрали скрытую локацию, абсурдный челлендж и секретную нетуристическую точку, чтобы встряхнуть твою рутину.",
                 unlockedPackage: "Секретное досье включает:",
-                unlockBtn: "Узнать назначение и открыть досье ⚡️"
+                unlockBtn: "Оплатить через NOWPayments ⚡️"
             }
         };
 
@@ -259,6 +290,7 @@
 
         function startQuiz() {
             document.getElementById('heroSection').classList.add('hidden');
+            document.getElementById('secretDossierView').classList.add('hidden');
             document.getElementById('quizContainer').classList.remove('hidden');
             currentQuestionIndex = 0;
             userAnswers = [];
@@ -268,7 +300,6 @@
         function renderQuestion() {
             const qList = quizData[currentLang];
             if (currentQuestionIndex >= qList.length) {
-                // Квиз завершен -> показываем результат
                 document.getElementById('quizContainer').classList.add('hidden');
                 document.getElementById('resultContainer').classList.remove('hidden');
                 return;
@@ -296,8 +327,17 @@
             renderQuestion();
         }
 
-        function unlockDossier() {
-            // Ссылка на оплату или переход к покупке цифрового продукта
+        function simulateUnlockTestMode() {
+            document.getElementById('resultContainer').classList.add('hidden');
+            document.getElementById('secretDossierView').classList.remove('hidden');
+        }
+
+        function resetQuiz() {
+            document.getElementById('secretDossierView').classList.add('hidden');
+            document.getElementById('heroSection').classList.remove('hidden');
+        }
+
+        function unlockDossierReal() {
             window.location.href = `https://nowpayments.io/payment?price_amount=19&price_currency=usd`;
         }
     </script>
