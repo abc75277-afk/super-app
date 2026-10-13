@@ -1,1047 +1,592 @@
 <!DOCTYPE html>
 <html lang="ru" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SOMATO-MASS PRO v6.0 | Ultra-Comprehensive 6-Month Hypertrophy Protocol</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brandDark: '#07090E',
-            brandCard: '#111520',
-            brandBorder: '#222838',
-            brandNeon: '#10B981', 
-            brandAccent: '#3B82F6', 
-            brandFire: '#F59E0B',
-            brandPurple: '#8B5CF6'
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #07090E;
-      color: #F3F4F6;
-    }
-    .glass-panel {
-      background: rgba(17, 21, 32, 0.88);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .glow-neon {
-      box-shadow: 0 0 35px rgba(16, 185, 129, 0.22);
-    }
-    .glow-fire {
-      box-shadow: 0 0 35px rgba(245, 158, 11, 0.22);
-    }
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #07090E;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #222838;
-      border-radius: 3px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #10B981;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOMATO-MASS | Персональный план набора массы</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+  tailwind.config = { darkMode: 'class' };
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #07090E; color: #F3F4F6; }
+  .glass-panel { background: rgba(17,21,32,.88); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.08); }
+  .glow-neon { box-shadow: 0 0 35px rgba(16,185,129,.22); }
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #07090E; }
+  ::-webkit-scrollbar-thumb { background: #222838; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #10B981; }
+</style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-black">
+<body class="min-h-screen flex flex-col justify-between">
 
-  <header class="border-b border-brandBorder/60 sticky top-0 z-50 glass-panel">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-blue-600 flex items-center justify-center font-black text-xl text-black shadow-lg shadow-emerald-500/20">
-          ⚡
-        </div>
-        <div>
-          <h1 class="font-black text-lg leading-tight tracking-wider">SOMATO<span class="text-emerald-400">MASS</span> <span class="text-xs bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded border border-emerald-500/30">v6.0 PRO</span></h1>
-          <p class="text-[11px] text-gray-400" id="headerSubtitle">6-Месячный Хардкорный Движок Набора Массы (Ultra Edition)</p>
-        </div>
-      </div>
-      
-      <div class="flex items-center gap-3">
-        <div id="dashboardLinkContainer" class="hidden">
-          <button onclick="restoreDashboard()" class="px-3 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer">
-            <i class="fa-solid fa-gauge-high"></i> <span id="dashLinkText">Мой Дашборд</span>
-          </button>
-        </div>
-        <div class="flex items-center bg-gray-900 border border-brandBorder rounded-xl p-1 text-xs font-bold">
-          <button onclick="setLang('ru')" id="langBtn-ru" class="px-2.5 py-1 rounded-lg transition cursor-pointer bg-emerald-500 text-black">RU</button>
-          <button onclick="setLang('ua')" id="langBtn-ua" class="px-2.5 py-1 rounded-lg transition cursor-pointer text-gray-400 hover:text-white">UA</button>
-          <button onclick="setLang('en')" id="langBtn-en" class="px-2.5 py-1 rounded-lg transition cursor-pointer text-gray-400 hover:text-white">EN</button>
-        </div>
-      </div>
+<header class="border-b border-white/10 sticky top-0 z-50 glass-panel">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-blue-600 flex items-center justify-center font-black text-black">⚡</div>
+    <div>
+      <h1 class="font-black text-lg tracking-wider">SOMATO<span class="text-emerald-400">MASS</span></h1>
+      <p class="text-[11px] text-gray-400">Персональный план набора массы</p>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main class="max-w-5xl mx-auto px-4 py-8 w-full flex-grow">
+<main class="max-w-5xl mx-auto px-4 py-8 w-full flex-grow">
 
-    <!-- INTRO SCREEN -->
-    <div id="introScreen" class="space-y-12 py-4">
-      <div class="text-center space-y-6 max-w-3xl mx-auto">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs font-extrabold uppercase tracking-wider">
-          🔥 <span id="heroBadge">БЕЗ СКАЗОК И ВОЗДУШНЫХ ЗАМОКОВ • 2000+ СТРОК АЛГОРИТМА</span>
-        </div>
-        
-        <h2 id="heroTitle" class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
-          Здесь нет легких "+10 кг за 2 недели". <br/>
-          <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-500">
-            Здесь пашут 6 месяцев и меняют тело навсегда.
-          </span>
-        </h2>
-
-        <p id="heroDesc" class="text-gray-400 text-sm sm:text-base leading-relaxed">
-          Большинство курсов врут, обещая горы мышц за месяц. Настоящая гипертрофия — это биомеханика, профицит калорий и жесткая прогрессия нагрузок. Наш расширенный алгоритм из **30 глубоких вопросов** пересчитает ваши рабочие веса, сильные и слабые мышечные группы, соматотип и метаболизм в персональный 6-месячный протокол трансформации.
-        </p>
-
-        <div class="pt-2 flex flex-col sm:flex-row justify-center gap-4">
-          <button onclick="startQuiz()" class="px-8 py-4 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-400 text-black font-black text-lg rounded-2xl shadow-xl shadow-emerald-500/25 transform transition active:scale-95 flex items-center justify-center gap-3 cursor-pointer glow-neon">
-            <span id="startBtnText">ЗАПУСТИТЬ 30-ПАРАМЕТРОВЫЙ АНАЛИЗ</span>
-            <i class="fa-solid fa-arrow-right font-black"></i>
-          </button>
-        </div>
+  <!-- INTRO -->
+  <div id="introScreen" class="space-y-10 py-4">
+    <div class="text-center space-y-6 max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs font-extrabold uppercase tracking-wider">
+        Расчёт по вашим данным
       </div>
-
-      <div class="glass-panel p-6 sm:p-8 rounded-3xl border-brandBorder space-y-6">
-        <div class="border-b border-brandBorder pb-4 flex items-center gap-3">
-          <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-lg">
-            🛡️
-          </div>
-          <h3 id="truthTitle" class="text-xl font-bold text-white">Жесткие принципы движка v6.0 и Гарантия Результата</h3>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="bg-gray-900/60 p-5 rounded-2xl border border-brandBorder space-y-2">
-            <div class="text-emerald-400 font-bold text-sm flex items-center gap-2">
-              <i class="fa-solid fa-calculator"></i> <span id="truth1Head">30 Детальных Вопросов</span>
-            </div>
-            <p id="truth1Text" class="text-xs text-gray-400 leading-relaxed">
-              Учитываем силовые (жим, присед, бицепс, подтягивания), суставы, уровень сна, стресса и финансовый бюджет на питание.
-            </p>
-          </div>
-
-          <div class="bg-gray-900/60 p-5 rounded-2xl border border-brandBorder space-y-2">
-            <div class="text-blue-400 font-bold text-sm flex items-center gap-2">
-              <i class="fa-solid fa-utensils"></i> <span id="truth2Head">Конструктор и Замены БЖУ</span>
-            </div>
-            <p id="truth2Text" class="text-xs text-gray-400 leading-relaxed">
-              Интерактивный калькулятор замен продуктов с пересчетом граммов в реальном времени под ваш вес.
-            </p>
-          </div>
-
-          <div class="bg-gray-900/60 p-5 rounded-2xl border border-brandBorder space-y-2">
-            <div class="text-amber-400 font-bold text-sm flex items-center gap-2">
-              <i class="fa-solid fa-shield-halved"></i> <span id="truth3Head">Пожизненный Доступ</span>
-            </div>
-            <p id="truth3Text" class="text-xs text-gray-400 leading-relaxed">
-              Сохраняйте прогресс на устройстве, получайте доступ к дашборду и сертификату в один клик.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- QUIZ SCREEN -->
-    <div id="quizScreen" class="hidden space-y-6">
-      <div class="glass-panel p-4 rounded-2xl border-brandBorder">
-        <div class="flex justify-between items-center text-xs font-bold text-gray-400 mb-2">
-          <span><span id="stepLabel">Вопрос</span> <span id="currentStep">1</span> <span id="ofLabel">из</span> <span id="totalStepsCount">30</span></span>
-          <span id="progressPercent" class="text-emerald-400 font-mono">3.3%</span>
-        </div>
-        <div class="w-full bg-gray-800 h-2.5 rounded-full overflow-hidden">
-          <div id="progressBar" class="bg-gradient-to-r from-emerald-500 via-teal-400 to-blue-500 h-full w-[3.3%] transition-all duration-300"></div>
-        </div>
-      </div>
-
-      <div class="glass-panel p-6 sm:p-8 rounded-3xl border-brandBorder space-y-6">
-        <div class="flex items-center justify-between">
-          <span id="qCategory" class="px-3 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider border border-emerald-500/20">
-            Биометрия
-          </span>
-          <span id="qHint" class="text-[11px] text-gray-500">Вводите точные показатели</span>
-        </div>
-
-        <h3 id="qTitle" class="text-xl sm:text-2xl font-extrabold text-white leading-snug">
-          Загрузка вопроса...
-        </h3>
-
-        <div id="qOptions" class="grid grid-cols-1 gap-3 pt-2"></div>
-      </div>
-
-      <div class="flex justify-between items-center">
-        <button id="prevBtn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold text-sm transition disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-2 cursor-pointer">
-          <i class="fa-solid fa-arrow-left"></i> <span id="prevBtnText">Назад</span>
-        </button>
-        <span id="honestNotice" class="text-xs text-gray-500 hidden sm:inline">Отвечайте максимально честно для правильного расчета весов</span>
-      </div>
-    </div>
-
-    <!-- LOADING SCREEN -->
-    <div id="loadingScreen" class="hidden text-center py-16 space-y-6">
-      <div class="relative w-28 h-28 mx-auto flex items-center justify-center">
-        <div class="absolute inset-0 rounded-full border-4 border-emerald-500/20 border-t-emerald-400 animate-spin"></div>
-        <div class="text-4xl animate-pulse">🧬</div>
-      </div>
-
-      <div class="space-y-2">
-        <h3 id="loadingMainTitle" class="text-2xl font-black text-white">Алгоритм обрабатывает 30 параметров трансформации...</h3>
-        <p id="loadingStatusText" class="text-sm text-emerald-400 font-mono">Расчет BMR, силовых 1ПМ и 6-месячной периодизации [1/6]</p>
-      </div>
-
-      <div class="max-w-md mx-auto bg-gray-900/80 p-4 rounded-2xl border border-brandBorder text-left space-y-2 text-xs font-mono text-gray-400">
-        <div class="flex justify-between"><span>Биометрия & Соматотип:</span><span class="text-emerald-400">Рассчитано</span></div>
-        <div class="flex justify-between"><span>Силовые веса по 24 неделям:</span><span class="text-emerald-400">Оптимизация...</span></div>
-        <div class="flex justify-between"><span>Периодизация объема/интенсивности:</span><span class="text-emerald-400">Формирование...</span></div>
-        <div class="flex justify-between"><span>Калораж и Ротация меню (БЖУ):</span><span class="text-emerald-400">Генерация...</span></div>
-        <div class="flex justify-between"><span>Спортпит и Черный список добавок:</span><span class="text-emerald-400">Готово</span></div>
-      </div>
-    </div>
-
-    <!-- PAYWALL / CHECKOUT SCREEN -->
-    <div id="paywallScreen" class="hidden space-y-8 max-w-2xl mx-auto py-4">
-      <div class="glass-panel p-8 rounded-3xl border-amber-500/40 glow-fire text-center space-y-6">
-        <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-3xl font-black">
-          🔒
-        </div>
-        
-        <div class="space-y-2">
-          <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-black border border-amber-500/30">
-            АНАЛИЗ ЗАВЕРШЕН • 30 ПАРАМЕТРОВ ГОТОВЫ
-          </span>
-          <h2 class="text-2xl sm:text-3xl font-black text-white">Ваш персональный 6-месячный протокол готов к разблокировке</h2>
-          <p class="text-xs sm:text-sm text-gray-300">
-            Алгоритм рассчитал ваши индивидуальные веса для 24 недель тренировок, персональное меню с точным БЖУ до грамма, матрицу замен продуктов и протокол добавок.
-          </p>
-        </div>
-
-        <div class="bg-gray-900/90 p-5 rounded-2xl border border-brandBorder text-left space-y-3">
-          <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Что входит в ваш разблокированный архив:</div>
-          <ul class="text-xs space-y-2 text-gray-300">
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"><span>Полная периодизация на 6 месяцев (Фаза 1, 2, 3)</span></i></li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"><span>Интерактивный конструктор замен продуктов с БЖУ</span></i></li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"><span>Гид по технике упражнений и безопасности суставов</span></i></li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"><span>Официальный сертификат с возможностью экспорта в PDF</span></i></li>
-          </ul>
-        </div>
-
-        <div class="pt-2">
-          <div class="text-3xl font-black text-white mb-4">$4.99 <span class="text-xs text-gray-400 font-normal">единоразово / пожизненный доступ</span></div>
-          <button onclick="simulateCheckout()" class="w-full py-4 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:to-orange-400 text-black font-black text-base rounded-2xl shadow-xl shadow-amber-500/25 transition cursor-pointer flex items-center justify-center gap-2">
-            <i class="fa-solid fa-lock-open"></i> РАЗБЛОКИРОВАТЬ ПРОТОКОЛ ЗА $4.99
-          </button>
-          <p class="text-[11px] text-gray-500 mt-3">Безопасная симуляция платежа. Мгновенная активация дашборда на устройстве.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- RESULT / DASHBOARD SCREEN -->
-    <div id="resultScreen" class="hidden space-y-8">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-brandBorder pb-4">
-        <div>
-          <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-black border border-emerald-500/20">
-            ✅ ПРОТОКОЛ АКТИВИРОВАН • ДОСТУП РАЗБЛОКИРОВАН
-          </span>
-          <h2 id="resHeaderTitle" class="text-2xl sm:text-3xl font-black mt-1">Индивидуальный План Набора Массы</h2>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <button onclick="downloadPDF()" class="px-4 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs rounded-xl flex items-center gap-2 shadow-lg shadow-emerald-500/20 transition cursor-pointer">
-            <i class="fa-solid fa-file-pdf"></i> <span id="btnPdfText">Скачать PDF</span>
-          </button>
-          <button onclick="openCertificateModal()" class="px-4 py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-extrabold text-xs rounded-xl flex items-center gap-2 shadow-lg shadow-purple-500/20 transition cursor-pointer">
-            <i class="fa-solid fa-certificate"></i> <span id="btnCertText">Сертификат</span>
-          </button>
-          <button onclick="shareResult()" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs rounded-xl flex items-center gap-2 shadow-lg shadow-blue-500/20 transition cursor-pointer">
-            <i class="fa-solid fa-share-nodes"></i> <span id="btnShareText">Поделиться</span>
-          </button>
-        </div>
-      </div>
-
-      <div id="pdfArea" class="space-y-8">
-
-        <!-- Somatotype Banner -->
-        <div class="glass-panel p-6 rounded-3xl border-brandBorder space-y-6">
-          <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 border-b border-brandBorder/60 pb-4">
-            <div>
-              <div id="somatoLabel" class="text-xs text-gray-400 font-semibold uppercase tracking-wider">Ваш ключевой соматотип:</div>
-              <div id="primaryTypeTitle" class="text-2xl sm:text-3xl font-black text-emerald-400">ЭКТОМОРФ</div>
-            </div>
-            <div id="userMetricsBadge" class="px-4 py-2 rounded-xl bg-gray-900 text-xs font-bold border border-brandBorder text-gray-300"></div>
-          </div>
-
-          <div class="space-y-3">
-            <div>
-              <div class="flex justify-between text-xs font-bold mb-1">
-                <span class="text-emerald-400" id="labelEcto">Эктоморф (Высокий метаболизм)</span>
-                <span id="ectoPercent">60%</span>
-              </div>
-              <div class="w-full bg-gray-800 h-2.5 rounded-full overflow-hidden">
-                <div id="ectoBar" class="bg-emerald-400 h-full w-[60%]"></div>
-              </div>
-            </div>
-
-            <div>
-              <div class="flex justify-between text-xs font-bold mb-1">
-                <span class="text-blue-400" id="labelMeso">Мезоморф (Атлетический потенциал)</span>
-                <span id="mesoPercent">30%</span>
-              </div>
-              <div class="w-full bg-gray-800 h-2.5 rounded-full overflow-hidden">
-                <div id="mesoBar" class="bg-blue-400 h-full w-[30%]"></div>
-              </div>
-            </div>
-
-            <div>
-              <div class="flex justify-between text-xs font-bold mb-1">
-                <span class="text-amber-400" id="labelEndo">Эндоморф (Склонность к накоплению)</span>
-                <span id="endoPercent">10%</span>
-              </div>
-              <div class="w-full bg-gray-800 h-2.5 rounded-full overflow-hidden">
-                <div id="endoBar" class="bg-amber-400 h-full w-[10%]"></div>
-              </div>
-            </div>
-          </div>
-
-          <p id="somatotypeDescription" class="text-sm text-gray-300 leading-relaxed bg-gray-900/60 p-4 rounded-2xl border border-brandBorder"></p>
-        </div>
-
-        <!-- Macros & Calories -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="glass-panel p-5 rounded-2xl border-emerald-500/30 text-center">
-            <div id="lblCalories" class="text-xs text-gray-400 font-extrabold uppercase">Целевые Калории</div>
-            <div id="resCalories" class="text-2xl sm:text-3xl font-black text-emerald-400 my-1">3 300</div>
-            <div id="lblCaloriesSub" class="text-[10px] text-emerald-500/80 font-bold">С учетом профицита на массу</div>
-          </div>
-
-          <div class="glass-panel p-5 rounded-2xl border-brandBorder text-center">
-            <div id="lblProtein" class="text-xs text-gray-400 font-extrabold uppercase">Белки</div>
-            <div id="resProtein" class="text-2xl font-black text-white my-1">170 г</div>
-            <div id="lblProteinSub" class="text-[10px] text-gray-400">Строительный материал</div>
-          </div>
-
-          <div class="glass-panel p-5 rounded-2xl border-brandBorder text-center">
-            <div id="lblFats" class="text-xs text-gray-400 font-extrabold uppercase">Жиры</div>
-            <div id="resFats" class="text-2xl font-black text-white my-1">85 г</div>
-            <div id="lblFatsSub" class="text-[10px] text-gray-400">Гормональная система</div>
-          </div>
-
-          <div class="glass-panel p-5 rounded-2xl border-brandBorder text-center">
-            <div id="lblCarbs" class="text-xs text-gray-400 font-extrabold uppercase">Углеводы</div>
-            <div id="resCarbs" class="text-2xl font-black text-white my-1">450 г</div>
-            <div id="lblCarbsSub" class="text-[10px] text-gray-400">Главное топливо</div>
-          </div>
-        </div>
-
-        <!-- Workout Program with Month Switcher & Exercise Guides -->
-        <div class="glass-panel p-6 rounded-3xl border-brandBorder space-y-6">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-brandBorder pb-4">
-            <div>
-              <h3 id="workoutSectionTitle" class="text-xl font-black flex items-center gap-2">
-                <i class="fa-solid fa-dumbbell text-emerald-400"></i> Персональная 6-Месячная Программа Тренировок
-              </h3>
-              <p id="workoutSectionSub" class="text-xs text-gray-400 mt-1">Автоматический расчет рабочих весов, подходов и повторений по вашим силовым с гидом по технике</p>
-            </div>
-            <span id="resDaysBadge" class="self-start sm:self-auto text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1.5 rounded-full font-bold border border-emerald-500/20"></span>
-          </div>
-
-          <div class="flex overflow-x-auto gap-2 pb-2 scrollbar-none">
-            <button onclick="selectMonth(1)" id="monthTab-1" class="px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer bg-emerald-500 text-black">Месяц 1-2: База</button>
-            <button onclick="selectMonth(3)" id="monthTab-3" class="px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer bg-gray-900 text-gray-400 hover:text-white border border-brandBorder">Месяц 3-4: Гипертрофия</button>
-            <button onclick="selectMonth(5)" id="monthTab-5" class="px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer bg-gray-900 text-gray-400 hover:text-white border border-brandBorder">Месяц 5-6: Пик Плотности</button>
-          </div>
-
-          <div id="monthGoalBox" class="bg-gradient-to-r from-emerald-950/30 via-gray-900 to-blue-950/30 p-4 rounded-2xl border border-brandBorder text-xs space-y-1"></div>
-
-          <div id="workoutProgramList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-        </div>
-
-        <!-- Nutrition & Substitution Matrix with Weight Scaling -->
-        <div class="glass-panel p-6 rounded-3xl border-brandBorder space-y-6">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-brandBorder pb-4">
-            <div>
-              <h3 id="nutritionSectionTitle" class="text-xl font-black flex items-center gap-2">
-                <i class="fa-solid fa-utensils text-blue-400"></i> Рацион Питания + Конструктор Замен (БЖУ в граммах)
-              </h3>
-              <p id="nutritionSectionSub" class="text-xs text-gray-400 mt-1">Меняйте любые продукты в один клик с идеальным математическим эквивалентом и масштабированием под вес.</p>
-            </div>
-          </div>
-
-          <div class="bg-gray-900/90 p-5 rounded-2xl border border-blue-500/30 space-y-4">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-              <div class="text-xs font-extrabold text-blue-400 uppercase tracking-wider flex items-center gap-2">
-                <i class="fa-solid fa-calculator"></i> <span id="swapToolTitle">Интерактивный Конструктор Замен Продуктов</span>
-              </div>
-              <div class="flex items-center gap-2 text-xs">
-                <span class="text-gray-400">Вес для порций:</span>
-                <select id="weightScaleSelect" onchange="updateWeightScale()" class="bg-gray-800 border border-brandBorder rounded-lg px-2 py-1 text-white font-bold">
-                  <option value="60">60 кг</option>
-                  <option value="70" selected>70 кг</option>
-                  <option value="80">80 кг</option>
-                  <option value="90">90+ кг</option>
-                </select>
-              </div>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div>
-                <label id="lblSwapFrom" class="text-[11px] text-gray-400 font-bold block mb-1">Что заменяем?</label>
-                <select id="swapFromSelect" onchange="calculateFoodSwap()" class="w-full bg-gray-800 border border-brandBorder rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-blue-500">
-                  <option value="chicken">Куриное филе (100г)</option>
-                  <option value="rice">Рис сухой (100г)</option>
-                  <option value="cottage">Творог 5% (100г)</option>
-                  <option value="eggs">Яйца цельные (2 шт / 100г)</option>
-                  <option value="oats">Овсянка сухая (100г)</option>
-                </select>
-              </div>
-
-              <div>
-                <label id="lblSwapGrams" class="text-[11px] text-gray-400 font-bold block mb-1">Исходный вес (грамм):</label>
-                <input type="number" id="swapGramInput" value="100" oninput="calculateFoodSwap()" class="w-full bg-gray-800 border border-brandBorder rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-blue-500">
-              </div>
-
-              <div>
-                <label id="lblSwapTo" class="text-[11px] text-gray-400 font-bold block mb-1">Чем заменить?</label>
-                <select id="swapToSelect" onchange="calculateFoodSwap()" class="w-full bg-gray-800 border border-brandBorder rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-blue-500">
-                  <option value="beef">Говядина постная</option>
-                  <option value="salmon">Лосось / Красная рыба</option>
-                  <option value="buckwheat">Гречка сухая</option>
-                  <option value="pasta">Макароны твердых сортов</option>
-                  <option value="tofu">Тофу / Растительный белок</option>
-                </select>
-              </div>
-            </div>
-
-            <div id="swapResultText" class="p-3 bg-blue-500/10 border border-blue-500/30 rounded-xl text-xs font-bold text-blue-300"></div>
-          </div>
-
-          <div id="mealPlanList" class="space-y-4"></div>
-        </div>
-
-        <!-- Supplements & Blacklist -->
-        <div class="glass-panel p-6 rounded-3xl border-purple-500/30 space-y-6">
-          <div class="border-b border-brandBorder pb-4">
-            <h3 id="suppsSectionTitle" class="text-xl font-black text-purple-400 flex items-center gap-2">
-              <i class="fa-solid fa-pills"></i> Протокол Спортивных Добавок + Черный Список
-            </h3>
-            <p id="suppsSectionSub" class="text-xs text-gray-400 mt-1">Точные дозировки под ваш вес и список пустых добавок, на которые не стоит тратить деньги.</p>
-          </div>
-
-          <div id="supplementsGuideList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-
-          <!-- BLACKLIST SECTION -->
-          <div class="bg-red-950/20 border border-red-500/30 p-5 rounded-2xl space-y-3">
-            <div class="text-xs font-black text-red-400 uppercase tracking-wider flex items-center gap-2">
-              <i class="fa-solid fa-ban"></i> ЧЕРНЫЙ СПИСОК ДОБАВОК (Маркетинг без эффекта):
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-gray-300">
-              <div class="bg-gray-900/80 p-3 rounded-xl border border-red-500/20">
-                <strong class="text-red-300">BCAA в порошке:</strong> Бесполезны при достаточном потреблении общего белка из еды.
-              </div>
-              <div class="bg-gray-900/80 p-3 rounded-xl border border-red-500/20">
-                <strong class="text-red-300">Бустеры тестостерона:</strong> Травяные экстракты не поднимают уровень гормонов выше нормы.
-              </div>
-              <div class="bg-gray-900/80 p-3 rounded-xl border border-red-500/20">
-                <strong class="text-red-300">L-карнитин для набора:</strong> Не имеет никакого анаболического эффекта для гипертрофии.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Interactive Reviews & Completion Section -->
-        <div class="glass-panel p-6 rounded-3xl border-brandBorder space-y-6">
-          <div class="border-b border-brandBorder pb-4 flex justify-between items-center">
-            <div>
-              <h3 class="text-xl font-black text-white flex items-center gap-2">
-                <i class="fa-solid fa-comments text-emerald-400"></i> Отзывы участников протокола
-              </h3>
-              <p class="text-xs text-gray-400">Реальные результаты атлетов после 6 месяцев трансформации</p>
-            </div>
-            <button onclick="openReviewModal()" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-extrabold rounded-xl transition cursor-pointer">
-              + Оставить отзыв
-            </button>
-          </div>
-
-          <div id="reviewsList" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="bg-gray-900/80 p-4 rounded-2xl border border-brandBorder space-y-2">
-              <div class="flex items-center justify-between">
-                <strong class="text-xs text-white">Алексей С. (24 года)</strong>
-                <span class="text-amber-400 text-xs">★★★★★</span>
-              </div>
-              <p class="text-xs text-gray-300 italic">"Набрал 6.8 кг чистой массы за 6 месяцев. Рабочие веса в жиме выросли с 60 до 95 кг. Конструктор замен еды просто спас!"</p>
-            </div>
-            <div class="bg-gray-900/80 p-4 rounded-2xl border border-brandBorder space-y-2">
-              <div class="flex items-center justify-between">
-                <strong class="text-xs text-white">Максим Д. (31 год)</strong>
-                <span class="text-amber-400 text-xs">★★★★★</span>
-              </div>
-              <p class="text-xs text-gray-300 italic">"Никакой воды и сказок. Жесткая система периодизации и точный расчет БЖУ. Тело поменялось кардинально."</p>
-            </div>
-            <div class="bg-gray-900/80 p-4 rounded-2xl border border-brandBorder space-y-2">
-              <div class="flex items-center justify-between">
-                <strong class="text-xs text-white">Дмитрий К. (27 лет)</strong>
-                <span class="text-amber-400 text-xs">★★★★★</span>
-              </div>
-              <p class="text-xs text-gray-300 italic">"Понравился черный список добавок — наконец-то объяснили, на что не нужно тратить деньги в магазине спортпита."</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="text-center pt-4">
-        <button onclick="restartQuiz()" class="px-6 py-3 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold text-sm transition cursor-pointer">
-          <i class="fa-solid fa-rotate-right mr-2"></i> <span id="btnRestartText">Пройти тест заново с новыми данными</span>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+        Персональный план набора массы<br>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-500">на 6 месяцев</span>
+      </h2>
+      <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+        Ответьте на 30 вопросов. Мы рассчитаем ориентировочную норму калорий и белка, рабочие веса для тренировок и примерный рацион.
+        Результаты зависят от питания, сна, регулярности и генетики. Гарантировать конкретный прирост массы нельзя.
+      </p>
+      <div class="pt-2">
+        <button onclick="startQuiz()" class="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black font-black text-lg rounded-2xl shadow-xl transform transition active:scale-95 inline-flex items-center gap-3 glow-neon">
+          Начать расчёт <i class="fa-solid fa-arrow-right"></i>
         </button>
       </div>
     </div>
 
-  </main>
+    <div class="glass-panel p-6 sm:p-8 rounded-3xl space-y-5">
+      <h3 class="text-xl font-bold">Что важно знать до начала</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-sm">
+        <div class="bg-gray-900/60 p-5 rounded-2xl border border-white/10 space-y-2">
+          <div class="text-emerald-400 font-bold"><i class="fa-solid fa-calculator"></i> Расчёты — ориентиры</div>
+          <p class="text-xs text-gray-400">Формулы дают примерную норму. Корректируйте план по своему весу: если вес не меняется две недели, меняйте калории на 100–200 ккал.</p>
+        </div>
+        <div class="bg-gray-900/60 p-5 rounded-2xl border border-white/10 space-y-2">
+          <div class="text-blue-400 font-bold"><i class="fa-solid fa-user-doctor"></i> Не заменяет врача</div>
+          <p class="text-xs text-gray-400">Если есть хронические болезни, травмы, беременность или приём лекарств, сначала проконсультируйтесь с врачом.</p>
+        </div>
+        <div class="bg-gray-900/60 p-5 rounded-2xl border border-white/10 space-y-2">
+          <div class="text-amber-400 font-bold"><i class="fa-solid fa-heart-pulse"></i> Здоровье важнее цифр</div>
+          <p class="text-xs text-gray-400">Если вам тяжело контролировать еду, есть срывы или тревога вокруг питания, остановитесь и обратитесь к специалисту. Этот план не для таких случаев.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <!-- CERTIFICATE MODAL -->
-  <div id="certModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="glass-panel p-6 sm:p-8 rounded-3xl border-emerald-500/40 max-w-xl w-full space-y-6 relative">
-      <button onclick="closeCertificateModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg cursor-pointer">
-        <i class="fa-solid fa-xmark"></i>
+  <!-- QUIZ -->
+  <div id="quizScreen" class="hidden space-y-6">
+    <div class="glass-panel p-4 rounded-2xl">
+      <div class="flex justify-between text-xs font-bold text-gray-400 mb-2">
+        <span>Вопрос <span id="currentStep">1</span> из <span id="totalSteps">30</span></span>
+        <span id="progressPercent" class="text-emerald-400">3%</span>
+      </div>
+      <div class="w-full bg-gray-800 h-2.5 rounded-full overflow-hidden">
+        <div id="progressBar" class="bg-gradient-to-r from-emerald-500 to-blue-500 h-full transition-all duration-300" style="width:3%"></div>
+      </div>
+    </div>
+
+    <div class="glass-panel p-6 sm:p-8 rounded-3xl space-y-6">
+      <span id="qCategory" class="px-3 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase border border-emerald-500/20"></span>
+      <h3 id="qTitle" class="text-xl sm:text-2xl font-extrabold leading-snug"></h3>
+      <div id="qOptions" class="grid grid-cols-1 gap-3 pt-2"></div>
+      <p id="qError" class="text-xs text-red-400 hidden"></p>
+    </div>
+
+    <div class="flex justify-between items-center">
+      <button id="prevBtn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold text-sm disabled:opacity-30 flex items-center gap-2">
+        <i class="fa-solid fa-arrow-left"></i> Назад
       </button>
-
-      <div id="certificatePrintArea" class="bg-gray-950 p-8 rounded-2xl border-2 border-emerald-500/60 text-center space-y-4">
-        <div class="w-12 h-12 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl font-bold">⚡</div>
-        <div class="text-xs tracking-widest text-emerald-400 uppercase font-black">СЕРТИФИКАТ ПРОХОЖДЕНИЯ ПРОТОКОЛА</div>
-        <h3 class="text-2xl font-black text-white">SOMATO-MASS PRO v6.0</h3>
-        <p class="text-xs text-gray-400">Настоящий сертификат подтверждает, что атлет успешно завершил 6-месячный хардкорный курс гипертрофии и трансформации тела.</p>
-        <div class="pt-4 border-t border-brandBorder flex justify-between text-[11px] text-gray-400">
-          <span>Дата: <strong id="certDate" class="text-white">2026-10-13</strong></span>
-          <span>Статус: <strong class="text-emerald-400">Верифицировано PRO</strong></span>
-        </div>
-      </div>
-
-      <div class="flex gap-3">
-        <button onclick="downloadCertificatePDF()" class="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs rounded-xl transition cursor-pointer">
-          Скачать Сертификат (PDF)
-        </button>
-        <button onclick="closeCertificateModal()" class="px-5 py-3 bg-gray-800 hover:bg-gray-700 text-white font-bold text-xs rounded-xl transition cursor-pointer">
-          Закрыть
-        </button>
-      </div>
     </div>
   </div>
 
-  <!-- REVIEW MODAL -->
-  <div id="reviewModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="glass-panel p-6 rounded-3xl border-brandBorder max-w-md w-full space-y-4 relative">
-      <button onclick="closeReviewModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
-      <h3 class="text-lg font-black text-white">Оставить отзыв о протоколе</h3>
-      <div class="space-y-3 text-xs">
-        <div>
-          <label class="text-gray-400 font-bold block mb-1">Ваше Имя и Возраст:</label>
-          <input type="text" id="revName" placeholder="Иван, 25 лет" class="w-full bg-gray-900 border border-brandBorder rounded-xl p-3 text-white focus:outline-none focus:border-emerald-500">
-        </div>
-        <div>
-          <label class="text-gray-400 font-bold block mb-1">Ваша оценка (1-5 звезд):</label>
-          <select id="revStars" class="w-full bg-gray-900 border border-brandBorder rounded-xl p-3 text-white focus:outline-none focus:border-emerald-500">
-            <option value="★★★★★">★★★★★ (5/5 - Отличный результат)</option>
-            <option value="★★★★☆">★★★★☆ (4/5 - Хорошо)</option>
-            <option value="★★★☆☆">★★★☆☆ (3/5 - Нормально)</option>
-          </select>
-        </div>
-        <div>
-          <label class="text-gray-400 font-bold block mb-1">Ваш отзыв и результат:</label>
-          <textarea id="revText" rows="3" placeholder="Набрал 5 кг за 4 месяца..." class="w-full bg-gray-900 border border-brandBorder rounded-xl p-3 text-white focus:outline-none focus:border-emerald-500"></textarea>
-        </div>
-        <button onclick="submitReview()" class="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold rounded-xl transition cursor-pointer">
-          Отправить отзыв
-        </button>
-      </div>
-    </div>
+  <!-- LOADING -->
+  <div id="loadingScreen" class="hidden text-center py-16 space-y-6">
+    <div class="w-20 h-20 mx-auto rounded-full border-4 border-emerald-500/20 border-t-emerald-400 animate-spin"></div>
+    <h3 class="text-2xl font-black">Считаем ваш план...</h3>
+    <p id="loadingStatus" class="text-sm text-emerald-400 font-mono"></p>
   </div>
 
-  <!-- FLOATING LIVE CHAT SUPPORT WIDGET -->
-  <div class="fixed bottom-6 right-6 z-50">
-    <div id="chatWindow" class="hidden glass-panel w-80 sm:w-96 rounded-3xl border-brandBorder shadow-2xl overflow-hidden mb-3 flex flex-col h-[420px]">
-      <div class="bg-gray-900 p-4 border-b border-brandBorder flex justify-between items-center">
-        <div class="flex items-center gap-2">
-          <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></div>
-          <span class="font-bold text-xs text-white">Coach Alex (SOMATO-MASS AI)</span>
-        </div>
-        <button onclick="toggleChat()" class="text-gray-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+  <!-- RESULTS -->
+  <div id="resultScreen" class="hidden space-y-8">
+    <div class="flex flex-col sm:flex-row justify-between gap-4 border-b border-white/10 pb-4">
+      <div>
+        <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-black border border-emerald-500/20">План готов</span>
+        <h2 class="text-2xl sm:text-3xl font-black mt-1">Ваш персональный план</h2>
+        <p class="text-xs text-gray-400 mt-1">Ориентировочные расчёты. Проверяйте вес раз в неделю и корректируйте.</p>
       </div>
-      <div id="chatMessages" class="flex-grow p-4 overflow-y-auto space-y-3 text-xs">
-        <div class="bg-gray-800/80 p-3 rounded-2xl rounded-tl-none max-w-[85%] text-gray-200">
-          Привет! Я ваш виртуальный тренер в SOMATO-MASS PRO v6.0. Задайте любой вопрос по питанию, весам или технике упражнений!
-        </div>
-      </div>
-      <div class="p-3 bg-gray-900 border-t border-brandBorder flex gap-2">
-        <input type="text" id="chatInput" onkeydown="if(event.key==='Enter') sendChatMessage()" placeholder="Спросите о тренировках или питании..." class="flex-grow bg-gray-800 border border-brandBorder rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
-        <button onclick="sendChatMessage()" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-xl transition cursor-pointer">
-          <i class="fa-solid fa-paper-plane"></i>
-        </button>
+      <div class="flex flex-wrap gap-2">
+        <button onclick="downloadPDF()" class="px-4 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs rounded-xl flex items-center gap-2"><i class="fa-solid fa-file-pdf"></i> Скачать PDF</button>
+        <button onclick="restartQuiz()" class="px-4 py-2.5 bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold text-xs rounded-xl flex items-center gap-2"><i class="fa-solid fa-rotate-right"></i> Пройти заново</button>
       </div>
     </div>
 
-    <button onclick="toggleChat()" class="w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-black font-bold text-2xl flex items-center justify-center shadow-2xl shadow-emerald-500/40 transition transform hover:scale-105 cursor-pointer glow-neon">
-      💬
-    </button>
+    <div id="pdfArea" class="space-y-8">
+
+      <!-- Суточная норма -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="glass-panel p-5 rounded-2xl border-emerald-500/30 text-center">
+          <div class="text-xs text-gray-400 font-extrabold uppercase">Калории в день</div>
+          <div id="resCalories" class="text-2xl sm:text-3xl font-black text-emerald-400 my-1">—</div>
+          <div class="text-[10px] text-gray-500">С небольшим профицитом</div>
+        </div>
+        <div class="glass-panel p-5 rounded-2xl text-center">
+          <div class="text-xs text-gray-400 font-extrabold uppercase">Белок</div>
+          <div id="resProtein" class="text-2xl font-black my-1">—</div>
+          <div class="text-[10px] text-gray-500">≈ 2 г на кг веса</div>
+        </div>
+        <div class="glass-panel p-5 rounded-2xl text-center">
+          <div class="text-xs text-gray-400 font-extrabold uppercase">Жиры</div>
+          <div id="resFats" class="text-2xl font-black my-1">—</div>
+          <div class="text-[10px] text-gray-500">≈ 0,9 г на кг веса</div>
+        </div>
+        <div class="glass-panel p-5 rounded-2xl text-center">
+          <div class="text-xs text-gray-400 font-extrabold uppercase">Углеводы</div>
+          <div id="resCarbs" class="text-2xl font-black my-1">—</div>
+          <div class="text-[10px] text-gray-500">Остаток калорий</div>
+        </div>
+      </div>
+
+      <div class="glass-panel p-6 rounded-3xl space-y-3 text-sm">
+        <h3 class="text-lg font-black">Как получены эти цифры</h3>
+        <p id="calcExplain" class="text-gray-300 text-xs leading-relaxed"></p>
+        <p class="text-xs text-gray-500">Если за 2 недели вес не растёт, увеличьте калории на 150–200 ккал. Если растёт быстрее 0,5 кг в неделю, уменьшите на 150 ккал.</p>
+      </div>
+
+      <!-- Тренировки -->
+      <div class="glass-panel p-6 rounded-3xl space-y-5">
+        <div class="flex flex-col sm:flex-row sm:justify-between gap-3 border-b border-white/10 pb-4">
+          <div>
+            <h3 class="text-xl font-black"><i class="fa-solid fa-dumbbell text-emerald-400"></i> Программа тренировок</h3>
+            <p class="text-xs text-gray-400 mt-1">Рабочие веса — ориентиры от ваших показателей. Увеличивайте вес, когда выполняете верхнюю границу повторений с хорошей техникой.</p>
+          </div>
+          <span id="resDays" class="self-start text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1.5 rounded-full font-bold"></span>
+        </div>
+        <div class="flex gap-2 overflow-x-auto">
+          <button onclick="selectMonth(1)" id="mt-1" class="px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap"></button>
+          <button onclick="selectMonth(3)" id="mt-3" class="px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap"></button>
+          <button onclick="selectMonth(5)" id="mt-5" class="px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap"></button>
+        </div>
+        <div id="monthGoal" class="bg-gray-900/70 p-4 rounded-2xl border border-white/10 text-xs space-y-1"></div>
+        <div id="workoutList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+      </div>
+
+      <!-- Конструктор замен -->
+      <div class="glass-panel p-6 rounded-3xl space-y-5">
+        <h3 class="text-xl font-black"><i class="fa-solid fa-scale-balanced text-blue-400"></i> Конструктор замен продуктов</h3>
+        <p class="text-xs text-gray-400">Замены работают внутри одной группы: белковые продукты заменяем по белку, крупы по углеводам. Между группами калории и БЖУ не совпадут, поэтому такие замены не считаются.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label class="text-[11px] text-gray-400 font-bold block mb-1">Заменяем</label>
+            <select id="swapFrom" onchange="calcSwap()" class="w-full bg-gray-800 border border-white/10 rounded-xl p-2.5 text-xs"></select>
+          </div>
+          <div>
+            <label class="text-[11px] text-gray-400 font-bold block mb-1">Вес, г (сухой или сырой, как в таблице)</label>
+            <input type="number" id="swapGrams" value="100" min="0" oninput="calcSwap()" class="w-full bg-gray-800 border border-white/10 rounded-xl p-2.5 text-xs">
+          </div>
+          <div>
+            <label class="text-[11px] text-gray-400 font-bold block mb-1">Чем заменяем</label>
+            <select id="swapTo" onchange="calcSwap()" class="w-full bg-gray-800 border border-white/10 rounded-xl p-2.5 text-xs"></select>
+          </div>
+        </div>
+        <div id="swapResult" class="p-3 bg-blue-500/10 border border-blue-500/30 rounded-xl text-xs font-bold text-blue-200"></div>
+        <p class="text-[10px] text-gray-500">Значения в таблице ориентировочные (усреднённые). Точные данные смотрите на упаковке.</p>
+      </div>
+
+      <!-- Пример рациона -->
+      <div class="glass-panel p-6 rounded-3xl space-y-4">
+        <h3 class="text-xl font-black"><i class="fa-solid fa-utensils text-amber-400"></i> Пример распределения по приёмам пищи</h3>
+        <p class="text-xs text-gray-400">Это пример распределения вашей нормы, а не готовое меню. Подбирайте продукты из конструктора замен и своих любимых блюд.</p>
+        <div id="mealPlan" class="space-y-3"></div>
+      </div>
+
+      <!-- Добавки -->
+      <div class="glass-panel p-6 rounded-3xl space-y-4">
+        <h3 class="text-xl font-black"><i class="fa-solid fa-pills text-purple-400"></i> Добавки: что реально изучено</h3>
+        <p class="text-xs text-gray-400">Добавки не нужны для набора массы, если хватает еды. Ниже то, что имеет доказательную базу. Перед приёмом проконсультируйтесь с врачом.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-gray-300">
+          <div class="bg-gray-900/70 p-4 rounded-xl border border-white/10"><strong class="text-white">Креатин моногидрат.</strong> Исследован лучше всего. Обычно 3–5 г в день, в любое время.</div>
+          <div class="bg-gray-900/70 p-4 rounded-xl border border-white/10"><strong class="text-white">Протеин.</strong> Удобен, если не получается набрать белок из еды. Не обязателен.</div>
+          <div class="bg-gray-900/70 p-4 rounded-xl border border-white/10"><strong class="text-white">Витамин D.</strong> Имеет смысл, если анализ показывает дефицит. Дозу выбирает врач.</div>
+          <div class="bg-gray-900/70 p-4 rounded-xl border border-white/10"><strong class="text-white">Чего не нужно.</strong> Бустеры тестостерона, BCAA при достаточном белке, «жиросжигатели» и L-карнитин для набора массы не дают заметного эффекта.</div>
+        </div>
+      </div>
+
+      <!-- Отзывы -->
+      <div class="glass-panel p-6 rounded-3xl space-y-4">
+        <h3 class="text-xl font-black"><i class="fa-solid fa-comments text-emerald-400"></i> Отзывы участников</h3>
+        <p class="text-xs text-gray-400">Здесь будут отзывы реальных участников с их разрешения. Пока отзывов нет, и мы не будем их придумывать.</p>
+        <div id="reviewsList" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+      </div>
+
+    </div>
   </div>
 
-  <footer class="border-t border-brandBorder/65 py-6 text-center text-xs text-gray-500 glass-panel mt-12">
-    <p>© 2026 SOMATO-MASS PRO v6.0. Ultra-Comprehensive 2000+ Line Hypertrophy Protocol. All rights reserved.</p>
-  </footer>
+</main>
 
-  <script>
-    let currentLang = 'ru';
+<!-- Условия -->
+<section class="max-w-5xl mx-auto px-4 pb-6 w-full">
+  <div class="glass-panel p-6 rounded-3xl space-y-3 text-xs text-gray-400">
+    <h3 class="text-sm font-black text-white">Условия возврата и оплаты</h3>
+    <p>Если в течение 14 дней после покупки вы не хотите продолжать, напишите на <span class="text-white">[ваш email]</span>. Вернём оплату полностью, если вы пройдёте не более двух недель программы и укажете причину. Условия могут меняться, актуальные будут указаны на странице оплаты.</p>
+    <p>Стоимость курса: <span class="text-white">[цена, например 4,99 $]</span>. Оплата и доступ подключаются через платёжный сервис, это отдельная настройка.</p>
+  </div>
+</section>
 
-    const i18n = {
-      ru: {
-        headerSubtitle: "6-Месячный Хардкорный Движок Набора Массы (Ultra Edition)",
-        heroBadge: "БЕЗ СКАЗОК И ВОЗДУШНЫХ ЗАМОКОВ • 2000+ СТРОК АЛГОРИТМА",
-        heroTitle: "Здесь нет легких \"+10 кг за 2 недели\". <br/><span class=\"bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-500\">Здесь пашут 6 месяцев и меняют тело навсегда.</span>",
-        heroDesc: "Большинство курсов врут, обещая горы мышц за месяц. Настоящая гипертрофия — это биомеханика, профицит калорий и жесткая прогрессия нагрузок. Наш расширенный алгоритм из **30 глубоких вопросов** пересчитает ваши рабочие веса, сильные и слабые мышечные группы, соматотип и метаболизм в персональный 6-месячный протокол трансформации.",
-        startBtnText: "ЗАПУСТИТЬ 30-ПАРАМЕТРОВЫЙ АНАЛИЗ",
-        truthTitle: "Жесткие принципы движка v6.0 и Гарантия Результата",
-        truth1Head: "30 Детальных Вопросов",
-        truth1Text: "Учитываем силовые (жим, присед, бицепс, подтягивания), суставы, уровень сна, стресса и финансовый бюджет на питание.",
-        truth2Head: "Конструктор и Замены БЖУ",
-        truth2Text: "Интерактивный калькулятор замен продуктов с пересчетом граммов в реальном времени под ваш вес.",
-        truth3Head: "Пожизненный Доступ",
-        truth3Text: "Сохраняйте прогресс на устройстве, получайте доступ к дашборду и сертификату в один клик.",
-        stepLabel: "Вопрос",
-        ofLabel: "из",
-        prevBtnText: "Назад",
-        honestNotice: "Отвечайте максимально честно для правильного расчета весов",
-        dashLinkText: "Мой Дашборд",
-        btnPdfText: "Скачать PDF",
-        btnCertText: "Сертификат",
-        btnShareText: "Поделиться",
-        btnRestartText: "Пройти тест заново с новыми данными",
-        swapToolTitle: "Интерактивный Конструктор Замен Продуктов",
-        lblSwapFrom: "Что заменяем?",
-        lblSwapGrams: "Исходный вес (грамм):",
-        lblSwapTo: "Чем заменить?",
-        workoutSectionTitle: "Персональная 6-Месячная Программа Тренировок",
-        workoutSectionSub: "Автоматический расчет рабочих весов, подходов и повторений по вашим силовым с гидом по технике",
-        nutritionSectionTitle: "Рацион Питания + Конструктор Замен (БЖУ в граммах)",
-        nutritionSectionSub: "Меняйте любые продукты в один клик с идеальным математическим эквивалентом и масштабированием под вес.",
-        suppsSectionTitle: "Протокол Спортивных Добавок + Черный Список",
-        suppsSectionSub: "Точные дозировки под ваш вес и список пустых добавок, на которые не стоит тратить деньги."
-      },
-      ua: {
-        headerSubtitle: "6-Місячний Хардкорний Двигун Набору Маси (Ultra Edition)",
-        heroBadge: "БЕЗ КАЗОК ТА ПОВІТРЯНИХ ЗАМКІВ • 2000+ РЯДКІВ АЛГОРИТМУ",
-        heroTitle: "Тут немає легких \"+10 кг за 2 тижні\". <br/><span class=\"bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-500\">Тут працюють 6 місяців і змінюють тіло назавжди.</span>",
-        heroDesc: "Більшість курсів брешуть про гори м'язів за місяць. Справжня гіпертрофія — це біомеханіка, профіцит калорій та жорстка прогресія навантажень. Наш розширений алгоритм з **30 глибоких запитань** перерахує ваші робочі ваги у персональний план.",
-        startBtnText: "ЗАПУСТИТИ 30-ПАРАМЕТРОВИЙ АНАЛІЗ",
-        truthTitle: "Жорсткі принципи двигуна v6.0 та Гарантія Результату",
-        truth1Head: "30 Детальних Запитань",
-        truth1Text: "Враховуємо силові, суглоби, сон, стрес та бюджет.",
-        truth2Head: "Конструктор та Заміни БЖУ",
-        truth2Text: "Інтерактивний калькулятор замін продуктів.",
-        truth3Head: "Пожиттєвий Доступ",
-        truth3Text: "Зберігайте прогрес на пристрої та отримуйте доступ до дашборду.",
-        stepLabel: "Крок",
-        ofLabel: "з",
-        prevBtnText: "Назад",
-        honestNotice: "Відповідайте максимально чесно для правильного розрахунку",
-        dashLinkText: "Мій Дашборд",
-        btnPdfText: "Завантажити PDF",
-        btnCertText: "Сертифікат",
-        btnShareText: "Поділитися",
-        btnRestartText: "Пройти тест заново з новими даними",
-        swapToolTitle: "Інтерактивний Конструктор Замін Продуктів",
-        lblSwapFrom: "Що замінюємо?",
-        lblSwapGrams: "Початкова вага (грам):",
-        lblSwapTo: "Чим замінити?",
-        workoutSectionTitle: "Персональна 6-Місячна Програма Тренувань",
-        workoutSectionSub: "Автоматичний розрахунок робочих ваг з гідом по техніці",
-        nutritionSectionTitle: "Раціон Харчування + Конструктор Замін (БЖУ у грамах)",
-        nutritionSectionSub: "Змінюйте будь-які продукти в один клік із масштабуванням під вагу.",
-        suppsSectionTitle: "Протокол Спортивних Добавок + Чорний Список",
-        suppsSectionSub: "Точні дозування під вашу вагу та список пустих добавок."
-      },
-      en: {
-        headerSubtitle: "6-Month Hardcore Mass Transformation Engine (Ultra Edition)",
-        heroBadge: "NO FAIRY TALES • 2000+ LINES ALGORITHM",
-        heroTitle: "No easy \"+10 kg in 2 weeks\" myths. <br/><span class=\"bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-500\">Work hard for 6 months and transform permanently.</span>",
-        heroDesc: "Most courses promise quick muscle magic. True hypertrophy requires biomechanics, caloric surplus, and progressive overload. Our advanced **30-parameter algorithm** calculates your working weights, somatotype, and custom 6-month hypertrophy protocol.",
-        startBtnText: "RUN 30-PARAMETER ANALYSIS",
-        truthTitle: "Engine v6.0 Principles & Guarantee",
-        truth1Head: "30 Detailed Questions",
-        truth1Text: "Tracking strength (bench, squat, curls), joints, sleep, stress, and nutrition budget.",
-        truth2Head: "Macro Food Swap Matrix",
-        truth2Text: "Interactive food substitution calculator with real-time grammage recalculation.",
-        truth3Head: "Lifetime Access",
-        truth3Text: "Save progress locally, unlock dashboard and certificate instantly.",
-        stepLabel: "Step",
-        ofLabel: "of",
-        prevBtnText: "Back",
-        honestNotice: "Answer honestly for correct working weight calculations",
-        dashLinkText: "My Dashboard",
-        btnPdfText: "Download PDF",
-        btnCertText: "Certificate",
-        btnShareText: "Share Result",
-        btnRestartText: "Retake Quiz With New Metrics",
-        swapToolTitle: "Interactive Food Substitution Matrix",
-        lblSwapFrom: "Food to replace:",
-        lblSwapGrams: "Original weight (grams):",
-        lblSwapTo: "Substitute with:",
-        workoutSectionTitle: "Personal 6-Month Progressive Workout Protocol",
-        workoutSectionSub: "Calculated working weights, sets, and rep schemes with technique guides",
-        nutritionSectionTitle: "Rotational Meal Plan + Food Swap Matrix (Macros in grams)",
-        nutritionSectionSub: "Eat what you enjoy. Select any item to get exact macro-equivalent swaps scaled to your body weight.",
-        suppsSectionTitle: "Complete Sports Supplement Guide + Blacklist",
-        suppsSectionSub: "Dosages tailored to your weight and a blacklist of useless supplements."
-      }
-    };
+<footer class="border-t border-white/10 py-6 text-center text-xs text-gray-500">
+  <p>© 2026 SOMATO-MASS. Информация носит справочный характер и не является медицинской консультацией.</p>
+</footer>
 
-    function setLang(lang) {
-      currentLang = lang;
-      ['ru', 'ua', 'en'].forEach(l => {
-        const btn = document.getElementById(`langBtn-${l}`);
-        if (l === lang) {
-          btn.className = "px-2.5 py-1 rounded-lg transition cursor-pointer bg-emerald-500 text-black font-bold";
-        } else {
-          btn.className = "px-2.5 py-1 rounded-lg transition cursor-pointer text-gray-400 hover:text-white";
-        }
-      });
-      const dict = i18n[lang];
-      Object.keys(dict).forEach(key => {
-        const el = document.getElementById(key);
-        if (el) el.innerHTML = dict[key];
-      });
-      if (!document.getElementById('quizScreen').classList.contains('hidden')) {
-        renderQuestion();
-      } else if (!document.getElementById('resultScreen').classList.contains('hidden')) {
-        renderResults();
-      }
-    }
+<script>
+/* ============ ВОПРОСЫ ============ */
+const questions = [
+  { cat:"Биометрия", title:"Ваш возраст (лет)", type:"num", key:"age", ph:"24", min:14, max:90 },
+  { cat:"Биометрия", title:"Рост (см)", type:"num", key:"height", ph:"180", min:120, max:230 },
+  { cat:"Биометрия", title:"Текущий вес (кг)", type:"num", key:"weight", ph:"70", min:30, max:250 },
+  { cat:"Силовые показатели", title:"Рабочий вес на бицепс на 8–10 повторений (кг, гантели или штанга)", type:"num", key:"bicepsW", ph:"14", min:1, max:200 },
+  { cat:"Силовые показатели", title:"Рабочий вес в жиме лежа на 8 повторений (кг)", type:"num", key:"benchW", ph:"60", min:1, max:300 },
+  { cat:"Силовые показатели", title:"Рабочий вес в приседе на 8 повторений (кг)", type:"num", key:"squatW", ph:"70", min:1, max:400 },
+  { cat:"Силовые показатели", title:"Сколько чистых подтягиваний за один подход?", type:"num", key:"pullups", ph:"8", min:0, max:100 },
+  { cat:"Силовые показатели", title:"Рабочий вес в тяге штанги в наклоне на 8 повторений (кг)", type:"num", key:"rowW", ph:"50", min:1, max:300 },
+  { cat:"Силовые показатели", title:"Рабочий вес в армейском жиме на 8 повторений (кг)", type:"num", key:"shoulderW", ph:"35", min:1, max:200 },
+  { cat:"Телосложение", title:"Обхват запястья", type:"opt", opts:[
+    ["Менее 16 см, пальцы перекрывают друг друга", {ecto:3}],
+    ["16–18,5 см, пальцы встык", {meso:3}],
+    ["Более 18,5 см, пальцы не соприкасаются", {endo:3}] ]},
+  { cat:"Телосложение", title:"Строение костей и плеч", type:"opt", opts:[
+    ["Узкие плечи, тонкие кости", {ecto:3}],
+    ["Широкие плечи, крепкий каркас", {meso:3}],
+    ["Массивный каркас, широкий таз", {endo:3}] ]},
+  { cat:"Метаболизм", title:"Как ваш вес реагирует на обычное питание?", type:"opt", opts:[
+    ["Ем много и почти не полнею", {ecto:3}],
+    ["Вес стабилен", {meso:3}],
+    ["Легко набираю жир при лишних калориях", {endo:3}] ]},
+  { cat:"Тренировки", title:"Сколько дней в неделю готовы тренироваться?", type:"opt", opts:[
+    ["2 дня (фулбади)", {days:2}],
+    ["3 дня", {days:3}],
+    ["4 дня", {days:4}],
+    ["5 дней", {days:5}] ]},
+  { cat:"Тренировки", title:"Где будете тренироваться?", type:"opt", opts:[
+    ["Зал", {}], ["Дома: гантели, штанга, турник", {}], ["Уличная площадка", {}] ]},
+  { cat:"Восстановление", title:"Сколько часов в среднем спите?", type:"opt", opts:[
+    ["Менее 6 часов", {}], ["7–8 часов", {}], ["9 и более", {}] ]},
+  { cat:"Питание", title:"Как переносите молочные продукты?", type:"opt", opts:[
+    ["Плохо, после молока вздутие", {}], ["Хорошо", {}] ]},
+  { cat:"Питание", title:"Бюджет на продукты", type:"opt", opts:[
+    ["Базовый (курица, яйца, крупы)", {}], ["Расширенный (рыба, говядина, орехи)", {}] ]},
+  { cat:"Опыт", title:"Стаж силовых тренировок", type:"opt", opts:[
+    ["Менее 6 месяцев", {}], ["От 6 месяцев до 2 лет", {}], ["Более 2 лет", {}] ]},
+  { cat:"Здоровье", title:"Есть ли травмы спины или суставов?", type:"opt", opts:[
+    ["Нет", {}], ["Небольшой дискомфорт", {}], ["Нужны щадящие упражнения", {}] ]},
+  { cat:"Образ жизни", title:"Характер активности в течение дня", type:"opt", opts:[
+    ["Сидячая работа", {}], ["Умеренная, много ходьбы", {}], ["Физическая работа", {}] ]},
+  { cat:"Питание", title:"Сколько приёмов пищи в день комфортно?", type:"opt", opts:[
+    ["3", {}], ["4–5", {}], ["6 и более", {}] ]},
+  { cat:"Вода", title:"Сколько воды пьёте в день?", type:"opt", opts:[
+    ["Менее 1 литра", {}], ["1,5–2 литра", {}], ["Более 2,5 литров", {}] ]},
+  { cat:"Цель", title:"Главная цель на 6 месяцев", type:"opt", opts:[
+    ["Максимум мышц", {}], ["Масса с минимальным жиром", {}], ["Рост силы", {}] ]},
+  { cat:"Стресс", title:"Уровень стресса в обычной жизни", type:"opt", opts:[
+    ["Низкий", {}], ["Средний", {}], ["Высокий", {}] ]},
+  { cat:"Кардио", title:"Отношение к кардио", type:"opt", opts:[
+    ["Не люблю, только силовые", {}], ["15–20 минут после тренировки", {}], ["Регулярный бег или велотренажёр", {}] ]},
+  { cat:"Добавки", title:"Опыт приёма спортивного питания", type:"opt", opts:[
+    ["Не принимал", {}], ["Только протеин или креатин", {}], ["Пробовал много разного", {}] ]},
+  { cat:"Гибкость", title:"Подвижность суставов", type:"opt", opts:[
+    ["Тяжело приседать глубоко", {}], ["Нормальная", {}], ["Отличная", {}] ]},
+  { cat:"Психология", title:"Насколько строго готовы следить за питанием?", type:"opt", opts:[
+    ["Взвешивать каждый приём пищи, мне это подходит", {}],
+    ["Примерно по плану, с гибкостью", {}],
+    ["Нужен свободный рацион без цифр", {}] ]},
+  { cat:"Сон", title:"Просыпаетесь ли отдохнувшим?", type:"opt", opts:[
+    ["Редко", {}], ["В большинстве случаев", {}], ["Почти всегда", {}] ]},
+  { cat:"Готовность", title:"Готовы ли тренироваться регулярно 6 месяцев?", type:"opt", opts:[
+    ["Да, готов", {}], ["Готов, но нужен чёткий план", {}] ]}
+];
 
-    // EXACT 30 DETAILED BIOMETRIC & STRENGTH QUESTIONS
-    const questions = [
-      { category: "Биометрия", title: "1. Ваш точный возраст (лет):", type: "input", key: "age", placeholder: "24" },
-      { category: "Биометрия", title: "2. Ваш точный рост (см):", type: "input", key: "height", placeholder: "180" },
-      { category: "Биометрия", title: "3. Ваш текущий вес (кг):", type: "input", key: "weight", placeholder: "70" },
-      { category: "Силовые показатели", title: "4. Максимальный вес в подъеме на бицепс (гантели/штанга) на 8-10 повторений (кг):", type: "input", key: "bicepsWeight", placeholder: "14" },
-      { category: "Силовые показатели", title: "5. Рабочий вес в жиме лежа на 8 повторений (или сколько отжиманий за подход):", type: "input", key: "benchWeight", placeholder: "60" },
-      { category: "Силовые показатели", title: "6. Рабочий вес в приседаниях со штангой / жиме ногами на 8 повторений (кг):", type: "input", key: "squatWeight", placeholder: "70" },
-      { category: "Силовые показатели", title: "7. Чистые подтягивания на турнике за 1 подход:", type: "input", key: "pullupsMax", placeholder: "8" },
-      { category: "Силовые показатели", title: "8. Рабочий вес в тяге штанги в наклоне на 8 повторений (кг):", type: "input", key: "rowWeight", placeholder: "50" },
-      { category: "Силовые показатели", title: "9. Рабочий вес в армейском жиме стоя на плечи (кг):", type: "input", key: "shoulderWeight", placeholder: "35" },
-      { category: "Антропометрия", title: "10. Обхват вашего запястья:", options: [
-        { text: "Менее 16 см (пальцы с запасом перекрывают друг друга)", score: { ecto: 3, meso: 0, endo: 0 } },
-        { text: "16 - 18.5 см (пальцы встык)", score: { ecto: 1, meso: 3, endo: 0 } },
-        { text: "Более 18.5 см (пальцы не соприкасаются)", score: { ecto: 0, meso: 1, endo: 3 } }
-      ]},
-      { category: "Антропометрия", title: "11. Ширина плеч и костная структура:", options: [
-        { text: "Узкие плечи, тонкие ключицы, длинные конечности", score: { ecto: 3, meso: 0, endo: 0 } },
-        { text: "Широкие плечи, мощный костный каркас", score: { ecto: 0, meso: 3, endo: 0 } },
-        { text: "Массивная грудная клетка, широкая тазовая кость", score: { ecto: 0, meso: 1, endo: 3 } }
-      ]},
-      { category: "Метаболизм", title: "12. Скорость вашего обмена веществ:", options: [
-        { text: "Сверхбыстрый: ем много и не толстею вообще", score: { ecto: 3, meso: 0, endo: 0 } },
-        { text: "Сбалансированный: вес держится стабильно", score: { ecto: 0, meso: 3, endo: 0 } },
-        { text: "Замедленный: быстро набираю жир при лишних калориях", score: { ecto: 0, meso: 0, endo: 3 } }
-      ]},
-      { category: "Тренировки", title: "13. Сколько дней в неделю вы готовы тренироваться?", options: [
-        { text: "2 дня в неделю (Fullbody интенсив)", score: { days: 2 } },
-        { text: "3 дня в неделю (PUSH / PULL / LEGS)", score: { days: 3 } },
-        { text: "4 дня в неделю (Оптимальный сплит для набора массы)", score: { days: 4 } },
-        { text: "5 дней в неделю (Продвинутый хардкор)", score: { days: 5 } }
-      ]},
-      { category: "Тренировки", title: "14. Где вы будете тренироваться?", options: [
-        { text: "В тренажерном зале (полный набор штанг и тренажеров)", score: {} },
-        { text: "Дома с гантелями, штангой и турником", score: {} },
-        { text: "Уличная спортивная площадка (Воркаут + брусья)", score: {} }
-      ]},
-      { category: "Восстановление", title: "15. Сколько часов в сутки вы в среднем спите?", options: [
-        { text: "Менее 6 часов (хронический недосып)", score: {} },
-        { text: "7-8 часов (стандартный сон)", score: {} },
-        { text: "9 и более часов (отличное восстановление)", score: {} }
-      ]},
-      { category: "Питание", title: "16. Переносимость лактозы и молочных продуктов:", options: [
-        { text: "Плохая (вздутие от молока, нужен изолят/безлактозное)", score: {} },
-        { text: "Отличная (усваиваю творог, молоко, сыр без проблем)", score: {} }
-      ]},
-      { category: "Питание", title: "17. Бюджет на продукты питания:", options: [
-        { text: "Базовый (курица, яйца, крупы, базовые продукты)", score: {} },
-        { text: "Продвинутый (говядина, рыбы, орехи, авокадо, спортпит)", score: {} }
-      ]},
-      { category: "Опыт", title: "18. Ваш стаж тренировок с отягощениями:", options: [
-        { text: "Новичок (менее 6 месяцев)", score: {} },
-        { text: "Средний (от 6 месяцев до 2 лет)", score: {} },
-        { text: "Продвинутый (более 2 лет регулярных тренировок)", score: {} }
-      ]},
-      { category: "Здоровье", title: "19. Есть ли у вас хронические травмы позвоночника или суставов?", options: [
-        { text: "Нет никаких ограничений", score: {} },
-        { text: "Есть легкий дискомфорт в пояснице или коленях", score: {} },
-        { text: "Требуются щадящие углы и изоляция", score: {} }
-      ]},
-      { category: "Образ жизни", title: "20. Характер вашей повседневной активности:", options: [
-        { text: "Сидячая работа (офис, компьютер)", score: {} },
-        { text: "Умеренная активность (пешие прогулки, движение)", score: {} },
-        { text: "Физическая работа или высокая активность", score: {} }
-      ]},
-      { category: "Питание", title: "21. Сколько раз в день вам комфортно принимать пищу?", options: [
-        { text: "3 раза в день (плотные порции)", score: {} },
-        { text: "4-5 раз в день (стандартный бодибилдинг режим)", score: {} },
-        { text: "6 и более раз (дробное питание)", score: {} }
-      ]},
-      { category: "Вода", title: "22. Сколько чистой воды вы выпиваете в день?", options: [
-        { text: "Менее 1 литра", score: {} },
-        { text: "1.5 - 2 литра", score: {} },
-        { text: "Более 2.5 литров", score: {} }
-      ]},
-      { category: "Мотивация", title: "23. Ваша главная цель на ближайшие 6 месяцев:", options: [
-        { text: "Набрать максимум чистых мышц (гипертрофия)", score: {} },
-        { text: "Набрать массу с минимальным приростом жира (рекомпозиция)", score: {} },
-        { text: "Увеличить силовые показатели и плотность мускулатуры", score: {} }
-      ]},
-      { category: "Стресс", title: "24. Уровень повседневного стресса на работе / учебе:", options: [
-        { text: "Низкий, спокойная обстановка", score: {} },
-        { text: "Умеренный, стандартный ритм жизни", score: {} },
-        { text: "Высокий стресс и нервное напряжение", score: {} }
-      ]},
-      { category: "Кардио", title: "25. Как вы относитесь к кардионагрузкам?", options: [
-        { text: "Ненавижу кардио, только силовая работа", score: {} },
-        { text: "Готов делать 15-20 минут после тренировки для сердца", score: {} },
-        { text: "Люблю бег или велотренажер в дни отдыха", score: {} }
-      ]},
-      { category: "Спортпит", title: "26. Опыт приема спортивных добавок:", options: [
-        { text: "Никогда ничего не принимал", score: {} },
-        { text: "Пил только протеин или креатин", score: {} },
-        { text: "Использовал широкий комплекс добавок", score: {} }
-      ]},
-      { category: "Гибкость", title: "27. Оценка подвижности суставов и растяжки:", options: [
-        { text: "Дубовая гибкость, тяжело приседать глубоко", score: {} },
-        { text: "Нормальная амплитуда движений", score: {} },
-        { text: "Отличная растяжка и мобильность", score: {} }
-      ]},
-      { category: "Психология", title: "28. Насколько строго вы готовы соблюдать режим питания?", options: [
-        { text: "Готов взвешивать каждый грамм еды", score: {} },
-        { text: "Буду следовать правилу 90/10 с редкими читмилами", score: {} },
-        { text: "Нужен максимально гибкий рацион без жестких рамок", score: {} }
-      ]},
-      { category: "Сон", title: "29. Просыпаетесь ли вы отдохнувшим по утрам?", options: [
-        { text: "Редко, чувствую себя уставшим", score: {} },
-        { text: "В большинстве случаев нормально", score: {} },
-        { text: "Всегда бодр и полон сил", score: {} }
-      ]},
-      { category: "Дисциплина", title: "30. Готовы ли вы пахать 6 месяцев без срывов ради гарантированного результата?", options: [
-        { text: "Да, на все 100%! Готов выкладываться в зале и следовать протоколу", score: {} },
-        { text: "Готов на 80-90%, нужен четкий пошаговый план", score: {} }
-      ]}
-    ];
+/* ============ СОСТОЯНИЕ ============ */
+let idx = 0;
+let answers = new Array(questions.length).fill(null);
+let bio = {};
+let scores = { ecto:0, meso:0, endo:0 };
+let days = 3;
+let monthView = 1;
+let lastResults = null;
 
-    let currentIdx = 0;
-    let userAnswers = new Array(questions.length).fill(null);
-    let userScores = { ecto: 0, meso: 0, endo: 0 };
-    let userBiometrics = { 
-      age: 24, height: 180, weight: 70, days: 4, 
-      bicepsWeight: 14, benchWeight: 60, squatWeight: 70, 
-      pullupsMax: 8, rowWeight: 50, shoulderWeight: 35 
-    };
-    let selectedMonthView = 1;
-    let currentWeightScale = 70;
+const $ = id => document.getElementById(id);
 
-    const introScreen = document.getElementById('introScreen');
-    const quizScreen = document.getElementById('quizScreen');
-    const loadingScreen = document.getElementById('loadingScreen');
-    const paywallScreen = document.getElementById('paywallScreen');
-    const resultScreen = document.getElementById('resultScreen');
+function show(id) {
+  ["introScreen","quizScreen","loadingScreen","resultScreen"].forEach(s => $(s).classList.toggle("hidden", s !== id));
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
-    const currentStepEl = document.getElementById('currentStep');
-    const totalStepsCount = document.getElementById('totalStepsCount');
-    const progressBar = document.getElementById('progressBar');
-    const progressPercent = document.getElementById('progressPercent');
-    const qCategory = document.getElementById('qCategory');
-    const qTitle = document.getElementById('qTitle');
-    const qOptions = document.getElementById('qOptions');
-    const prevBtn = document.getElementById('prevBtn');
+function startQuiz() {
+  $("totalSteps").innerText = questions.length;
+  idx = 0;
+  answers.fill(null);
+  show("quizScreen");
+  renderQuestion();
+}
 
-    // PERSISTENT STORAGE CHECK ON LOAD
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedState = localStorage.getItem('somato_mass_unlocked');
-      if (savedState === 'true') {
-        document.getElementById('dashboardLinkContainer').classList.remove('hidden');
-        const savedBio = localStorage.getItem('somato_mass_biometrics');
-        if (savedBio) {
-          userBiometrics = JSON.parse(savedBio);
-        }
-      }
+function renderQuestion() {
+  const q = questions[idx];
+  $("currentStep").innerText = idx + 1;
+  const pct = Math.round(((idx + 1) / questions.length) * 100);
+  $("progressBar").style.width = pct + "%";
+  $("progressPercent").innerText = pct + "%";
+  $("qCategory").innerText = q.cat;
+  $("qTitle").innerText = q.title;
+  $("qError").classList.add("hidden");
+  $("prevBtn").disabled = idx === 0;
+
+  const box = $("qOptions");
+  box.innerHTML = "";
+
+  if (q.type === "num") {
+    const saved = answers[idx] !== null ? answers[idx] : "";
+    box.innerHTML = `
+      <input id="numInput" type="number" value="${saved}" placeholder="${q.ph}" class="w-full bg-gray-900 border border-white/10 rounded-2xl px-5 py-4 text-white text-lg focus:outline-none focus:border-emerald-500">
+      <button onclick="submitNum()" class="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold rounded-2xl">Далее</button>`;
+    setTimeout(() => {
+      const el = $("numInput");
+      if (el) { el.focus(); el.onkeydown = e => { if (e.key === "Enter") submitNum(); }; }
+    }, 50);
+  } else {
+    q.opts.forEach((opt, i) => {
+      const sel = answers[idx] === i;
+      const b = document.createElement("button");
+      b.className = "w-full text-left p-4 rounded-2xl border transition flex justify-between items-center " +
+        (sel ? "bg-emerald-500/10 border-emerald-500 text-emerald-300 font-bold" : "bg-gray-900/60 border-white/10 hover:border-gray-500");
+      b.innerHTML = `<span class="text-sm">${opt[0]}</span><span class="${sel ? "text-emerald-400" : "text-gray-600"}">●</span>`;
+      b.onclick = () => selectOpt(i);
+      box.appendChild(b);
     });
+  }
+}
 
-    function restoreDashboard() {
-      introScreen.classList.add('hidden');
-      quizScreen.classList.add('hidden');
-      loadingScreen.classList.add('hidden');
-      paywallScreen.classList.add('hidden');
-      resultScreen.classList.remove('hidden');
+function submitNum() {
+  const q = questions[idx];
+  const v = parseFloat($("numInput").value);
+  if (isNaN(v) || v < q.min || v > q.max) {
+    $("qError").innerText = `Введите значение от ${q.min} до ${q.max}.`;
+    $("qError").classList.remove("hidden");
+    return;
+  }
+  bio[q.key] = v;
+  answers[idx] = v;
+  next();
+}
+
+function selectOpt(i) {
+  answers[idx] = i;
+  const sc = questions[idx].opts[i][1];
+  if (sc.days) days = sc.days;
+  renderQuestion();
+  setTimeout(next, 150);
+}
+
+function next() {
+  if (idx < questions.length - 1) { idx++; renderQuestion(); }
+  else finishQuiz();
+}
+
+function prevQuestion() {
+  if (idx > 0) { idx--; renderQuestion(); }
+}
+
+/* ============ РАСЧЁТЫ ============ */
+function finishQuiz() {
+  show("loadingScreen");
+  scores = { ecto:0, meso:0, endo:0 };
+  answers.forEach((a, qi) => {
+    const q = questions[qi];
+    if (q.type === "opt" && a !== null) {
+      const s = q.opts[a][1];
+      scores.ecto += s.ecto || 0;
+      scores.meso += s.meso || 0;
+      scores.endo += s.endo || 0;
+    }
+  });
+  bio.days = days;
+
+  const steps = ["Считаем норму калорий…", "Подбираем белок и жиры…", "Формируем программу тренировок…", "Собираем план питания…"];
+  let i = 0;
+  const t = setInterval(() => {
+    $("loadingStatus").innerText = steps[i];
+    i++;
+    if (i >= steps.length) {
+      clearInterval(t);
+      show("resultScreen");
       renderResults();
     }
+  }, 450);
+}
 
-    function startQuiz() {
-      introScreen.classList.add('hidden');
-      quizScreen.classList.remove('hidden');
-      totalStepsCount.innerText = questions.length;
-      currentIdx = 0;
-      userAnswers.fill(null);
-      renderQuestion();
-    }
+function renderResults() {
+  const w = bio.weight, h = bio.height, a = bio.age;
 
-    function renderQuestion() {
-      const q = questions[currentIdx];
-      currentStepEl.innerText = currentIdx + 1;
-      
-      const percent = Math.round(((currentIdx + 1) / questions.length) * 100);
-      progressBar.style.width = `${percent}%`;
-      progressPercent.innerText = `${percent}%`;
+  // Mifflin–St Jeor
+  const bmr = 10 * w + 6.25 * h - 5 * a + 5;
+  const activity = 1.3 + days * 0.05;         // 2 дня → 1.40, 4 дня → 1.50, 5 дней → 1.55
+  const tdee = Math.round(bmr * activity);
+  const target = Math.round(tdee * 1.10);      // небольшой профицит ~10%
+  const protein = Math.round(w * 2.0);
+  const fats = Math.round(w * 0.9);
+  const carbs = Math.max(0, Math.round((target - protein * 4 - fats * 9) / 4));
 
-      qCategory.innerText = q.category;
-      qTitle.innerText = q.title;
+  $("resCalories").innerText = target + " ккал";
+  $("resProtein").innerText = protein + " г";
+  $("resFats").innerText = fats + " г";
+  $("resCarbs").innerText = carbs + " г";
+  $("calcExplain").innerText =
+    `Базовый обмен по формуле Миффлина–Сан-Жеора: ${Math.round(bmr)} ккал. ` +
+    `С учётом активности (${days} трен./нед.) это около ${tdee} ккал в день. ` +
+    `Добавили около 10% для набора: ${target} ккал. Белок 2 г на кг, жиры около 0,9 г на кг, остальное углеводы.`;
+  $("resDays").innerText = days + " дня(ей) в неделю";
 
-      prevBtn.disabled = (currentIdx === 0);
-      qOptions.innerHTML = '';
+  lastResults = { target, protein, fats, carbs, w };
 
-      if (q.type === 'input') {
-        const inputDiv = document.createElement('div');
-        inputDiv.className = "space-y-4 pt-2";
-        const currentSavedVal = userAnswers[currentIdx] || '';
-        inputDiv.innerHTML = `
-          <input type="number" id="biometricInput" value="${currentSavedVal}" placeholder="${q.placeholder}" class="w-full bg-gray-900 border border-brandBorder rounded-2xl px-5 py-4 text-white text-lg focus:outline-none focus:border-emerald-500 transition" />
-          <button onclick="submitInputAnswer('${q.key}')" class="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold rounded-2xl transition shadow-lg shadow-emerald-500/20 cursor-pointer">
-            Далее ➔
-          </button>
-        `;
-        qOptions.appendChild(inputDiv);
-        setTimeout(() => {
-          const inp = document.getElementById('biometricInput');
-          if (inp) {
-            inp.focus();
-            inp.onkeydown = (e) => { if (e.key === 'Enter') submitInputAnswer(q.key); };
-          }
-        }, 100);
-      } else {
-        q.options.forEach((opt, optIndex) => {
-          const isSelected = userAnswers[currentIdx] === optIndex;
-          const btn = document.createElement('button');
-          btn.className = `w-full text-left p-4 rounded-2xl border transition-all flex items-center justify-between cursor-pointer ${
-            isSelected 
-              ? 'bg-emerald-500/10 border-emerald-500 text-emerald-300 font-bold' 
-              : 'bg-gray-900/60 border-brandBorder hover:border-gray-600 text-gray-200'
-          }`;
-          
-          btn.innerHTML = `
-            <span class="text-sm md:text-base">${opt.text}</span>
-            <div class="w-6 h-6 rounded-full border flex items-center justify-center text-xs ${
-              isSelected ? 'border-emerald-400 bg-emerald-500 text-black font-black' : 'border-gray-600'
-            }">
-              ${isSelected ? '✓' : ''}
-            </div>
-          `;
+  fillSwapSelects();
+  renderMealPlan();
+  renderReviews();
+  selectMonth(1);
+}
 
-          btn.onclick = () => selectOption(optIndex);
-          qOptions.appendChild(btn);
-        });
-      }
-    }
+/* ============ ТРЕНИРОВКИ ============ */
+const monthCfg = {
+  1: { label: "Месяц 1–2: техника и база", goal: "10–12 повторений, RPE 7–8. Осваиваем технику и наращиваем рабочие веса.", k: 0.85 },
+  3: { label: "Месяц 3–4: объём", goal: "8–10 повторений, RPE 8. Добавляем вес, когда выполняется верхняя граница повторений.", k: 1.0 },
+  5: { label: "Месяц 5–6: сила", goal: "5–8 повторений, RPE 8–9. Тяжелее, но с запасом сил. Не доводите каждый подход до отказа.", k: 1.1 }
+};
 
-    function submitInputAnswer(key) {
-      const inp = document.getElementById('biometricInput');
-      const val = inp ? inp.value : '';
-      if (!val || val <= 0) {
-        alert('Пожалуйста, введите корректное числовое значение.');
-        return;
-      }
-      userBiometrics[key] = parseFloat(val);
-      userAnswers[currentIdx] = val;
-      nextStepOrFinish();
-    }
+function selectMonth(m) {
+  monthView = m;
+  [1,3,5].forEach(n => {
+    $("mt-" + n).innerText = monthCfg[n].label;
+    $("mt-" + n).className = "px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap " +
+      (n === m ? "bg-emerald-500 text-black" : "bg-gray-900 text-gray-400 border border-white/10 hover:text-white");
+  });
+  renderWorkout(m);
+}
 
-    function selectOption(optIndex) {
-      userAnswers[currentIdx] = optIndex;
-      const q = questions[currentIdx];
-      if (q.options[optIndex].score && q.options[optIndex].score.days) {
-        userBiometrics.days = q.options[optIndex].score.days;
-      }
-      renderQuestion();
-      setTimeout(() => { nextStepOrFinish(); }, 180);
-    }
+function renderWorkout(m) {
+  const c = monthCfg[m];
+  $("monthGoal").innerHTML = `<div class="font-bold text-emerald-400">${c.label}</div><div class="text-gray-300">${c.goal}</div>`;
+  const k = c.k;
+  const r = v => Math.round(v * k);
+  const days3 = [
+    { title:"День 1: грудь и трицепс", rpe:"RPE 8", rows:[
+      ["Жим штанги лежа", `4 × 8–10, ≈ ${r(bio.benchW)} кг`],
+      ["Жим гантелей на наклонной", `3 × 10, ≈ ${r(bio.benchW * 0.38)} кг`],
+      ["Отжимания на брусьях или с весом", "3 × 8–12"] ]},
+    { title:"День 2: спина и бицепс", rpe:"RPE 8", rows:[
+      ["Подтягивания", `4 × max, цель ${Math.max(1, bio.pullups + (m === 1 ? 2 : 4))}`],
+      ["Тяга штанги в наклоне", `4 × 8, ≈ ${r(bio.rowW)} кг`],
+      ["Подъём штанги на бицепс", `3 × 10, ≈ ${r(bio.bicepsW)} кг`] ]},
+    { title:"День 3: ноги и пресс", rpe:"RPE 8–9", rows:[
+      ["Приседания со штангой", `4 × 8, ≈ ${r(bio.squatW)} кг`],
+      ["Румынская тяга", `4 × 10, ≈ ${r(bio.squatW * 0.7)} кг`],
+      ["Подъём ног в висе", "3 × 12–15"] ]},
+    { title:"День 4: плечи", rpe:"RPE 8", rows:[
+      ["Армейский жим стоя", `4 × 8, ≈ ${r(bio.shoulderW)} кг`],
+      ["Махи гантелями в стороны", "4 × 12–15"],
+      ["Тяга к лицу на блоке", "3 × 12–15"] ]}
+  ];
+  const list = days3.slice(0, Math.min(4, bio.days || 3));
+  $("workoutList").innerHTML = list.map(d => `
+    <div class="bg-gray-900/80 p-4 rounded-2xl border border-white/10 space-y-2">
+      <div class="text-xs font-black text-emerald-400 flex justify-between"><span>${d.title}</span><span class="text-gray-400">${d.rpe}</span></div>
+      <ul class="text-xs space-y-2 text-gray-300">
+        ${d.rows.map(rw => `<li class="flex justify-between gap-3 border-b border-gray-800 pb-1"><span>${rw[0]}</span><span class="font-mono text-emerald-300 text-right">${rw[1]}</span></li>`).join("")}
+      </ul>
+    </div>`).join("");
+}
 
-    function nextStepOrFinish() {
-      if (currentIdx < questions.length - 1) {
-        currentIdx++;
-        renderQuestion();
-      } else {
-        finishQuiz();
-      }
-    }
+/* ============ КОНСТРУКТОР ЗАМЕН ============ */
+// group: "p" — замена по белку, "c" — замена по углеводам. Значения на 100 г, ориентировочно.
+const foods = {
+  chicken:  { name:"Куриное филе (сырое)", group:"p", p:23, c:0,  f:2  },
+  beef:     { name:"Говядина постная (сырая)", group:"p", p:20, c:0,  f:7  },
+  salmon:   { name:"Лосось (сырой)", group:"p", p:20, c:0,  f:12 },
+  cottage:  { name:"Творог 5%", group:"p", p:17, c:3,  f:5  },
+  eggs:     { name:"Яйца куриные (без скорлупы)", group:"p", p:13, c:1,  f:11 },
+  tofu:     { name:"Тофу", group:"p", p:8,  c:2,  f:4  },
+  rice:     { name:"Рис сухой", group:"c", p:7,  c:78, f:1  },
+  buckwheat:{ name:"Гречка сухая", group:"c", p:12, c:68, f:2  },
+  pasta:    { name:"Макароны сухие", group:"c", p:11, c:72, f:1.5 },
+  oats:     { name:"Овсяные хлопья сухие", group:"c", p:12, c:62, f:6  }
+};
 
-    function prevQuestion() {
-      if (currentIdx > 0) {
-        currentIdx--;
-        renderQuestion();
-      }
-    }
+function fillSwapSelects() {
+  const opts = Object.entries(foods).map(([k, v]) => `<option value="${k}">${v.name}</option>`).join("");
+  $("swapFrom").innerHTML = opts;
+  $("swapTo").innerHTML = opts;
+  $("swapTo").value = "beef";
+  calcSwap();
+}
 
-    function finishQuiz() {
-      quizScreen.classList.add('hidden');
-      loadingScreen.classList.remove('hidden');
+function calcSwap() {
+  const a = foods[$("swapFrom").value];
+  const b = foods[$("swapTo").value];
+  const g = parseFloat($("swapGrams").value) || 0;
+  const box = $("swapResult");
+  if (a.group !== b.group) {
+    box.innerText = "Эти продукты из разных групп. Белковые и крупяные продукты нельзя заменять друг на друга без пересчёта, выберите продукты из одной группы.";
+    return;
+  }
+  const key = a.group; // "p" или "c"
+  const need = Math.round((a[key] * g) / b[key]);
+  const label = key === "p" ? "по белку" : "по углеводам";
+  box.innerText = `${g} г «${a.name}» ≈ ${need} г «${b.name}» ${label}.`;
+}
 
-      userScores = { ecto: 0, meso: 0, endo: 0 };
-      userAnswers.forEach((ans, qIdx) => {
-        const q = questions[qIdx];
-        if (q.type !== 'input' && ans !== null) {
-          const score = q.options[ans].score;
-          if (score) {
-            if (score.ecto) userScores.ecto += score.ecto;
-            if (score.meso) userScores.meso += score.meso;
-            if (score.endo) userScores.endo += score.endo;
-          }
-        }
-      });
+/* ============ ПРИМЕР РАСПРЕДЕЛЕНИЯ ============ */
+function renderMealPlan() {
+  const { target, protein, fats, carbs } = lastResults;
+  const meals = [
+    { name:"Завтрак", share:0.25 },
+    { name:"Обед", share:0.30 },
+    { name:"Полдник", share:0.20 },
+    { name:"Ужин", share:0.25 }
+  ];
+  $("mealPlan").innerHTML = meals.map(m => {
+    const kcal = Math.round(target * m.share);
+    const p = Math.round(protein * m.share);
+    const f = Math.round(fats * m.share);
+    const c = Math.round(carbs * m.share);
+    return `<div class="p-4 rounded-2xl bg-gray-900/60 border border-white/10 flex flex-col sm:flex-row sm:justify-between gap-2">
+      <span class="text-sm font-bold">${m.name}</span>
+      <span class="text-xs text-gray-400 font-mono">≈ ${kcal} ккал · Б ${p} г · Ж ${f} г · У ${c} г</span>
+    </div>`;
+  }).join("");
+}
 
-      const statusText = document.getElementById('loadingStatusText');
-      const steps = [
-        "Расчет BMR, силовых 1ПМ и 6-месячной периодизации [1/6]",
-        "Формирование периодизации объема и интенсивности [2/6]",
-        "Вычисление рабочих весов на каждый месяц [3/6]",
-        "Генерация калоража и ротации меню с БЖУ [4/6]",
-        "Сборка протокола добавок и черного списка [5/6]",
-        "Верификация персонального сертификата [6/6]"
-      ];
+/* ============ ОТЗЫВЫ ============ */
+function renderReviews() {
+  $("reviewsList").innerHTML = `
+    <div class="md:col-span-3 bg-gray-900/60 p-6 rounded-2xl border border-white/10 text-center text-xs text-gray-400">
+      Пока отзывов нет. Проходите программу, и если захотите поделиться опытом, напишите нам на <span class="text-white">[ваш email]</span>.
+    </div>`;
+}
 
-      let stepIdx = 0;
-      const interval = setInterval(() => {
-        stepIdx++;
-        if (stepIdx < steps.length) {
-          statusText.innerText = steps[stepIdx];
-        } else {
-          clearInterval(interval);
-          loadingScreen.classList.add('hidden');
-          
-          // Check if already unlocked, otherwise show paywall checkout
-          const isUnlocked = localStorage.getItem('somato_mass_unlocked');
-          if (isUnlocked === 'true') {
-            resultScreen.classList.remove('hidden');
-            renderResults();
-          } else {
-            paywallScreen.classList.remove('hidden');
-          }
-        }
-      }, 500);
-    }
+/* ============ PDF / ПЕРЕЗАПУСК ============ */
+function downloadPDF() {
+  html2pdf().set({
+    margin: 0.3,
+    filename: "SomatoMass_plan.pdf",
+    image: { type: "jpeg", quality: 0.95 },
+    html2canvas: { scale: 2, backgroundColor: "#07090E" },
+    jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+  }).from($("pdfArea")).save();
+}
 
-    function simulateCheckout() {
-      localStorage.setItem('somato_mass_unlocked', 'true');
-      localStorage.setItem('somato_mass_biometrics', JSON.stringify(userBiometrics));
-      paywallScreen.classList.add('hidden');
-      result
+function restartQuiz() {
+  idx = 0;
+  answers.fill(null);
+  bio = {};
+  days = 3;
+  show("introScreen");
+}
+</script>
+</body>
+</html>
