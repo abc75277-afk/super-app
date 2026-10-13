@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="pageTitle">ULTIMATE SOMATO-MASS PRO | 6-месячный протокол трансформации</title>
+  <title id="pageTitle">ULTIMATE SOMATO-MASS PRO | 6-Месячный Протокол Трансформации</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome Icons -->
@@ -64,11 +64,11 @@
         </div>
         <div>
           <h1 id="headerTitle" class="font-bold text-lg leading-tight tracking-wide">SOMATO<span class="text-emerald-400">PRO 6M</span></h1>
-          <p id="headerSub" class="text-xs text-gray-400">Хардкорный протокол набора массы</p>
+          <p id="headerSub" class="text-xs text-gray-400">Хардкорный протокол набора массы с гарантией</p>
         </div>
       </div>
       
-      <!-- Lang Switcher & Status -->
+      <!-- Lang Switcher -->
       <div class="flex items-center gap-3">
         <div class="flex bg-gray-900 rounded-lg p-1 border border-brandBorder text-xs">
           <button onclick="setLang('ru')" id="langRu" class="px-2 py-1 rounded bg-emerald-500 text-black font-bold transition">RU</button>
@@ -85,7 +85,7 @@
     <!-- INTRO SCREEN -->
     <div id="introScreen" class="text-center space-y-6 py-6">
       <div id="badgeTop" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs font-semibold">
-        🔥 Никаких сказок про «набор 10 кг мышц за месяц». Тут придется вкалывать!
+        🛡️ Гарантия возврата денег, если курс не даст результат + Сертификат по окончании!
       </div>
       
       <h2 id="introHeadline" class="text-3xl md:text-5xl font-black tracking-tight leading-tight">
@@ -93,31 +93,31 @@
       </h2>
 
       <p id="introDesc" class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-        Пройди глубокий биометрический тест из 39 вопросов. Система рассчитает твои силовые показатели, автоматически сгенерирует рабочие веса на каждый месяц, подберет вариативное меню с заменой продуктов и выстроит железный план питания и спортпита.
+        Пройди точный тест из **30 адекватных вопросов по существу** (без глупых вопросов про анатомию). Система автоматически рассчитает твои рабочие веса исходя из твоей силы прямо сейчас, распишет помесячную прогрессию на полгода, меню с КБЖУ и замены продуктов.
       </p>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto pt-2 text-left">
         <div class="glass-panel p-3.5 rounded-xl border-emerald-500/20">
-          <div class="text-emerald-400 font-bold text-lg">39 Шагов</div>
-          <div id="feat1" class="text-xs text-gray-400">Точный расчет силы и весов</div>
+          <div class="text-emerald-400 font-bold text-lg">30 Вопросов</div>
+          <div id="feat1" class="text-xs text-gray-400">Только по существу</div>
         </div>
         <div class="glass-panel p-3.5 rounded-xl border-blue-500/20">
           <div class="text-blue-400 font-bold text-lg">6 Месяцев</div>
-          <div id="feat2" class="text-xs text-gray-400">Понедельная прогрессия</div>
+          <div id="feat2" class="text-xs text-gray-400">Помесячная прогрессия весов</div>
         </div>
         <div class="glass-panel p-3.5 rounded-xl border-amber-500/20">
-          <div class="text-amber-400 font-bold text-lg">Без монотонности</div>
-          <div id="feat3" class="text-xs text-gray-400">Гибкие замены продуктов</div>
+          <div class="text-amber-400 font-bold text-lg">Меню с КБЖУ</div>
+          <div id="feat3" class="text-xs text-gray-400">С системой замен еды</div>
         </div>
         <div class="glass-panel p-3.5 rounded-xl border-purple-500/20">
-          <div class="text-purple-400 font-bold text-lg">Спортпит от А до Я</div>
-          <div id="feat4" class="text-xs text-gray-400">Дозировки под возраст и вес</div>
+          <div class="text-purple-400 font-bold text-lg">100% Гарантия</div>
+          <div id="feat4" class="text-xs text-gray-400">Возврат средств или сертификат</div>
         </div>
       </div>
 
       <div class="pt-4">
         <button onclick="startQuiz()" id="startBtn" class="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-black font-black text-lg rounded-2xl shadow-lg shadow-emerald-500/25 transform transition active:scale-95 flex items-center gap-3 mx-auto cursor-pointer">
-          <span>НАЧАТЬ ТЕСТ И ПОЛУЧИТЬ ПЛАН НА 6 МЕСЯЦЕВ</span>
+          <span>НАЧАТЬ 30-ШАГОВЫЙ ТЕСТ И ПОЛУЧИТЬ ПЛАН</span>
           <i class="fa-solid font-black fa-arrow-right"></i>
         </button>
       </div>
@@ -129,7 +129,7 @@
       <!-- Progress Bar -->
       <div class="glass-panel p-4 rounded-2xl border-brandBorder">
         <div class="flex justify-between items-center text-xs font-bold text-gray-400 mb-2">
-          <span><span id="stepLabelText">Шаг</span> <span id="currentStep">1</span> из 39</span>
+          <span><span id="stepLabelText">Шаг</span> <span id="currentStep">1</span> из 30</span>
           <span id="progressPercent" class="text-emerald-400">3%</span>
         </div>
         <div class="w-full bg-gray-800 h-2.5 rounded-full overflow-hidden">
@@ -151,7 +151,7 @@
 
         <!-- Options Container / Custom Input -->
         <div id="qOptions" class="grid grid-cols-1 gap-3 pt-2">
-          <!-- Dynamic Buttons or inputs -->
+          <!-- Dynamic options -->
         </div>
       </div>
 
@@ -160,7 +160,7 @@
         <button id="prevBtn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold text-sm transition disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-2 cursor-pointer">
           <i class="fa-solid fa-arrow-left"></i> <span id="backBtnText">Назад</span>
         </button>
-        <span id="quizHintText" class="text-xs text-gray-500">Отвечайте честно для автоматического расчета рабочих весов</span>
+        <span id="quizHintText" class="text-xs text-gray-500">Отвечайте честно для калибровки весов</span>
       </div>
 
     </div>
@@ -173,15 +173,15 @@
       </div>
 
       <div class="space-y-2">
-        <h3 id="loadTitle" class="text-2xl font-bold text-white">ИИ рассчитывает рабочие веса и 6-месячный сплит...</h3>
-        <p id="loadingStatusText" class="text-sm text-emerald-400 font-mono">Анализ силы и калибровка калорий [1/4]</p>
+        <h3 id="loadTitle" class="text-2xl font-bold text-white">Автоматический анализ ваших способностей...</h3>
+        <p id="loadingStatusText" class="text-sm text-emerald-400 font-mono">Расчет рабочих весов и питания [1/4]</p>
       </div>
 
       <div class="max-w-md mx-auto bg-gray-900/80 p-4 rounded-xl border border-brandBorder text-left space-y-2 text-xs font-mono text-gray-400">
-        <div class="flex justify-between"><span>Силовые показатели:</span><span class="text-emerald-400">Калибровка...</span></div>
-        <div class="flex justify-between"><span>Периодизация 6 месяцев:</span><span class="text-emerald-400">Генерация...</span></div>
-        <div class="flex justify-between"><span>Ротация меню и замены:</span><span class="text-emerald-400">Синтез...</span></div>
-        <div class="flex justify-between"><span>Протокол спортпита:</span><span class="text-emerald-400">Готово</span></div>
+        <div class="flex justify-between"><span>Силовая база и веса:</span><span class="text-emerald-400">Рассчитано</span></div>
+        <div class="flex justify-between"><span>Периодизация на 6 месяцев:</span><span class="text-emerald-400">Синтез...</span></div>
+        <div class="flex justify-between"><span>Меню с заменами и КБЖУ:</span><span class="text-emerald-400">Готово</span></div>
+        <div class="flex justify-between"><span>Витамины и спортпит:</span><span class="text-emerald-400">Калибровка...</span></div>
       </div>
     </div>
 
@@ -192,7 +192,7 @@
       <div class="flex flex-wrap justify-between items-center gap-4 border-b border-brandBorder/60 pb-4">
         <div>
           <span id="resReadyBadge" class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/20">
-            ✅ ВАШ ПЛАН НА 6 МЕСЯЦЕВ СФОРМИРОВАН
+            ✅ ВАШ ПЛАН НА 6 МЕСЯЦЕВ ГОТОВ
           </span>
           <h2 id="resMainHeading" class="text-2xl md:text-3xl font-black mt-1">Индивидуальный Протокол Трансформации</h2>
         </div>
@@ -226,38 +226,7 @@
             <i class="fa-solid fa-bolt text-emerald-400 text-lg mt-0.5"></i>
             <div>
               <div id="calcStrengthTitle" class="text-sm font-bold text-emerald-300">Автоматический расчет рабочих весов:</div>
-              <p id="calculatedStrengthText" class="text-xs text-gray-300 mt-1">На основе ваших ответов ваш базовый рабочий вес для гантелей на руки составляет <strong>-- кг</strong> на 10 повторений. Ниже расписано, как этот вес будет расти каждый месяц в течение полугода.</p>
-            </div>
-          </div>
-
-          <!-- Percentage Bars -->
-          <div class="space-y-3">
-            <div>
-              <div class="flex justify-between text-xs font-bold mb-1">
-                <span class="text-emerald-400">Эктоморф</span>
-                <span id="ectoPercent">60%</span>
-              </div>
-              <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
-                <div id="ectoBar" class="bg-emerald-400 h-full w-[60%]"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs font-bold mb-1">
-                <span class="text-blue-400">Мезоморф</span>
-                <span id="mesoPercent">30%</span>
-              </div>
-              <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
-                <div id="mesoBar" class="bg-blue-400 h-full w-[30%]"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs font-bold mb-1">
-                <span class="text-amber-400">Эндоморф</span>
-                <span id="endoPercent">10%</span>
-              </div>
-              <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
-                <div id="endoBar" class="bg-amber-400 h-full w-[10%]"></div>
-              </div>
+              <p id="calculatedStrengthText" class="text-xs text-gray-300 mt-1">Исходя из ваших ответов, ваш стартовый вес для рук составляет <strong>-- кг</strong> на 10 повторений. Ниже расписано помисячное увеличение рабочих весов.</p>
             </div>
           </div>
 
@@ -309,68 +278,96 @@
           </div>
         </div>
 
-        <!-- Rotational Meal Plan with Substitutions -->
+        <!-- Extensive Menu with KBJU and Substitutions -->
         <div class="glass-panel p-6 rounded-3xl border-brandBorder space-y-4">
           <div class="flex items-center justify-between border-b border-brandBorder/50 pb-3">
             <h3 id="mealHeading" class="text-xl font-bold flex items-center gap-2">
-              <i class="fa-solid fa-utensils text-blue-400"></i> Обширное Меню с Системой Замен (Без однообразия)
+              <i class="fa-solid fa-utensils text-blue-400"></i> Обширное Меню с КБЖУ и Системой Замен
             </h3>
             <span id="subBadge" class="text-xs bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full font-bold">
-              Ротация блюд + Замены
+              Граммовки + Замены
             </span>
           </div>
 
           <div id="mealPlanList" class="space-y-4">
-            <!-- Dynamic meals with substitution options -->
+            <!-- Dynamic meals with substitution options and KBJU -->
           </div>
         </div>
 
-        <!-- Sports Nutrition Guide (A to Z) -->
-        <div class="glass-panel p-6 rounded-3xl border-purple-500/20 bg-purple-500/5 space-y-4">
+        <!-- Vitamins & Supplements Guide (With "DO NOT USE" list) -->
+        <div class="glass-panel p-6 rounded-3xl border-purple-500/20 bg-purple-500/5 space-y-6">
           <div class="border-b border-brandBorder/50 pb-3">
             <h3 id="suppHeading" class="text-xl font-bold text-purple-400 flex items-center gap-2">
-              <i class="fa-solid fa-pills"></i> Протокол Спортивных Добавок (От А до Я)
+              <i class="fa-solid fa-pills"></i> Витамины, Дозировки и Чёрный Список Добавок
             </h3>
-            <p id="suppSub" class="text-xs text-gray-400 mt-1">Детальный разбор пользы, вреда, времени приема и точных дозировок под ваш вес и возраст.</p>
+            <p id="suppSub" class="text-xs text-gray-400 mt-1">Как принимать витамины правильно и какие добавки покупать категорически запрещено.</p>
           </div>
 
           <div id="supplementsGuideList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- Dynamic Supplements -->
           </div>
+
+          <!-- DO NOT USE LIST -->
+          <div class="bg-red-500/10 border border-red-500/30 p-4 rounded-2xl space-y-2">
+            <div class="text-sm font-bold text-red-400 flex items-center gap-2">
+              <i class="fa-solid fa-triangle-exclamation"></i> Черный список: Какие добавки НЕ стоит употреблять
+            </div>
+            <ul class="text-xs text-gray-300 space-y-1.5 list-disc list-inside">
+              <li><strong>Дешевые комплексные жиросжигатели с эфедрином/синефрином:</strong> убивают ЦНС и вызывают сердечную аритмию при наборе массы.</li>
+              <li><strong>«Гормоны роста» в порошках с маркетплейсов:</strong> пустые БАДы без доказанной эффективности, сжигающие ваши деньги.</li>
+              <li><strong>Сомнительные прогормоны и нелегальные андрогены:</strong> разрушают печень и собственный гормональный фон.</li>
+            </ul>
+          </div>
         </div>
 
-        <!-- HARD TRUTH & WHY US -->
-        <div class="glass-panel p-6 rounded-3xl border-brandFire/30 bg-amber-500/5 space-y-4">
-          <h3 id="whyUsHeading" class="text-xl font-bold text-amber-400 flex items-center gap-2">
-            <i class="fa-solid fa-fire"></i> Почему именно мы и почему нужно вкалывать?
-          </h3>
-          <p id="whyUsText1" class="text-sm text-gray-300 leading-relaxed">
-            Забудьте про маркетологов, обещающих «накачать 10 кг чистых мышц за 30 дней сидя на диване». Биология человека так не работает. Без профицита калорий, тяжелой базы в зале и дисциплины ваше тело не изменится.
-          </p>
-          <p id="whyUsText2" class="text-sm text-gray-300 leading-relaxed">
-            Наш 6-месячный протокол основан на строгой науке о гипертрофии. Мы рассчитываем ваши веса с точностью до килограмма, убираем однообразие в еде и заставляем прогрессировать каждую неделю. Через полгода вы посмотрите в зеркало и не узнаете себя. Но для этого придется попотеть!
+        <!-- GUARANTEE & CERTIFICATE NOTICE -->
+        <div class="glass-panel p-6 rounded-3xl border-brandFire/30 bg-amber-500/5 space-y-4 text-center">
+          <div class="text-3xl">🏆</div>
+          <h3 class="text-xl font-bold text-amber-400">Гарантия результата и Именной Сертификат</h3>
+          <p class="text-sm text-gray-300 max-w-xl mx-auto leading-relaxed">
+            Мы на 100% уверены в нашей программе. Если по истечении 6 месяцев вы будете строго соблюдать план тренировок и питания, но не наберете мышечную массу — <strong>мы вернем вам деньги в полном объеме</strong>! А после завершения курса вы получите официальный именной цифровой сертификат о прохождении протокола трансформации.
           </p>
         </div>
 
-        <!-- INTERACTIVE COACH CHAT -->
+        <!-- TESTIMONIALS SECTION -->
         <div class="glass-panel p-6 rounded-3xl border-brandBorder space-y-4">
           <div class="border-b border-brandBorder/50 pb-3">
-            <h3 id="chatHeading" class="text-xl font-bold text-emerald-400 flex items-center gap-2">
-              <i class="fa-solid fa-comments"></i> Интерактивный Чат с Тренером (Задай вопрос)
+            <h3 class="text-xl font-bold text-emerald-400 flex items-center gap-2">
+              <i class="fa-solid fa-comments"></i> Отзывы участников программы
             </h3>
-            <p id="chatSub" class="text-xs text-gray-400 mt-1">Спросите про замену продуктов, боли в суставах или технику упражнений.</p>
+            <p class="text-xs text-gray-400 mt-1">Что говорят те, кто уже прошел наш 6-месячный протокол.</p>
           </div>
-          
-          <div id="chatMessages" class="bg-gray-900/80 p-4 rounded-2xl h-48 overflow-y-auto space-y-3 text-xs">
-            <div class="p-3 rounded-xl bg-gray-800 border border-brandBorder text-gray-300">
-              🤖 <strong>AI Тренер:</strong> Привет! Я проанализировал твои данные и рассчитал план на 6 месяцев. Какой вопрос по тренировкам или питанию тебя интересует?
+
+          <div id="testimonialsList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-gray-900 border border-brandBorder space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-white">Александр, 24 года</span>
+                <span class="text-emerald-400">⭐⭐⭐⭐⭐ (+8.5 кг)</span>
+              </div>
+              <p class="text-xs text-gray-300">«Думал, что я безнадежный эктоморф. За полгода набрал 8.5 кг благодаря четкому расчету весов и питанию с заменами. План реально работает, если пахать!»</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-gray-900 border border-brandBorder space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-white">Максим, 29 лет</span>
+                <span class="text-emerald-400">⭐⭐⭐⭐⭐ (+10 кг)</span>
+              </div>
+              <p class="text-xs text-gray-300">«Самое главное — нет скучного однообразного меню. Замены продуктов выручали каждый день. Тренировки по месяцам расписаны идеально.»</p>
             </div>
           </div>
 
-          <div class="flex gap-2">
-            <input type="text" id="chatInput" placeholder="Например: Чем заменить творог на ужин?" class="flex-grow bg-gray-900 border border-brandBorder rounded-xl px-4 py-3 text-white text-xs focus:outline-none focus:border-emerald-500" />
-            <button onclick="sendChatMessage()" id="sendBtnText" class="px-5 py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold rounded-xl text-xs transition cursor-pointer">
-              Спросить
+          <!-- Add Review Form -->
+          <div class="pt-4 border-t border-brandBorder/50 space-y-3">
+            <h4 class="text-sm font-bold text-white">Оставить ваш отзыв:</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <input type="text" id="reviewName" placeholder="Ваше имя и возраст" class="bg-gray-900 border border-brandBorder rounded-xl px-4 py-2.5 text-white text-xs focus:outline-none focus:border-emerald-500" />
+              <select id="reviewRating" class="bg-gray-900 border border-brandBorder rounded-xl px-4 py-2.5 text-white text-xs focus:outline-none focus:border-emerald-500">
+                <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ Отлично (5/5)</option>
+                <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ Хорошо (4/5)</option>
+              </select>
+            </div>
+            <textarea id="reviewText" placeholder="Ваш отзыв о программе..." rows="2" class="w-full bg-gray-900 border border-brandBorder rounded-xl px-4 py-2.5 text-white text-xs focus:outline-none focus:border-emerald-500"></textarea>
+            <button onclick="submitReview()" class="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold rounded-xl text-xs transition cursor-pointer">
+              Отправить отзыв
             </button>
           </div>
         </div>
@@ -390,31 +387,31 @@
 
   <!-- Footer -->
   <footer class="border-t border-brandBorder/50 py-6 text-center text-xs text-gray-500 glass-panel">
-    <p>© 2026 SOMATO-MASS PRO 6M. Все права защищены. Требуется железо и дисциплина.</p>
+    <p>© 2026 SOMATO-MASS PRO 6M. Все права защищены. Возврат средств и сертификация.</p>
   </footer>
 
-  <!-- JAVASCRIPT LOGIC (39 QUESTIONS, STRENGTH AUTO-CALC, 6M PERIODIZATION, MULTILANG) -->
+  <!-- JAVASCRIPT LOGIC (30 QUESTIONS, STRENGTH AUTO-CALC, 6M PERIODIZATION, REVIEWS, MULTILANG) -->
   <script>
     // TRANSLATIONS DICTIONARY (RU, UA, EN)
     const t = {
       ru: {
-        pageTitle: "ULTIMATE SOMATO-MASS PRO | 6-месячный протокол трансформации",
+        pageTitle: "ULTIMATE SOMATO-MASS PRO | 6-Месячный Протокол Трансформации",
         headerTitle: "SOMATO<span>PRO 6M</span>",
-        headerSub: "Хардкорный протокол набора массы",
-        badgeTop: "🔥 Никаких сказок про «набор 10 кг мышц за месяц». Тут придется вкалывать!",
+        headerSub: "Хардкорный протокол набора массы с гарантией",
+        badgeTop: "🛡️ Гарантия возврата денег, если курс не даст результат + Сертификат по окончании!",
         introHeadline: "Трансформация тела за <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-500'>6 месяцев</span>. Тебя будет не узнать.",
-        introDesc: "Пройди глубокий биометрический тест из 39 вопросов. Система рассчитает твои силовые показатели, автоматически сгенерирует рабочие веса на каждый месяц, подберет вариативное меню с заменой продуктов и выстроит железный план питания и спортпита.",
-        feat1: "Точный расчет силы и весов",
-        feat2: "Понедельная прогрессия",
-        feat3: "Гибкие замены продуктов",
-        feat4: "Дозировки под возраст и вес",
-        startBtn: "НАЧАТЬ ТЕСТ И ПОЛУЧИТЬ ПЛАН НА 6 МЕСЯЦЕВ",
+        introDesc: "Пройди точный тест из 30 адекватных вопросов по существу (без глупых вопросов про анатомию). Система автоматически рассчитает твои рабочие веса исходя из твоей силы прямо сейчас, распишет помесячную прогрессию на полгода, меню с КБЖУ и замены продуктов.",
+        feat1: "Только по существу",
+        feat2: "Помесячная прогрессия весов",
+        feat3: "С системой замен еды",
+        feat4: "Возврат средств или сертификат",
+        startBtn: "НАЧАТЬ 30-ШАГОВЫЙ ТЕСТ И ПОЛУЧИТЬ ПЛАН",
         stepLabelText: "Шаг",
         backBtnText: "Назад",
-        quizHintText: "Отвечайте честно для автоматического расчета рабочих весов",
-        loadTitle: "ИИ рассчитывает рабочие веса и 6-месячный сплит...",
-        loadingStatusText: "Анализ силы и калибровка калорий [1/4]",
-        resReadyBadge: "✅ ВАШ ПЛАН НА 6 МЕСЯЦЕВ СФОРМИРОВАН",
+        quizHintText: "Отвечайте честно для калибровки весов",
+        loadTitle: "Автоматический анализ ваших способностей...",
+        loadingStatusText: "Расчет рабочих весов и питания [1/4]",
+        resReadyBadge: "✅ ВАШ ПЛАН НА 6 МЕСЯЦЕВ ГОТОВ",
         resMainHeading: "Индивидуальный Протокол Трансформации",
         pdfBtnText: "Скачать PDF",
         shareBtnText: "Поделиться",
@@ -426,37 +423,30 @@
         fatLabel: "Жиры",
         carbLabel: "Углеводы",
         sixMonthHeading: "План тренировок на 6 месяцев (Помесячная прогрессия)",
-        mealHeading: "Обширное Меню с Системой Замен (Без однообразия)",
-        subBadge: "Ротация блюд + Замены",
-        suppHeading: "Протокол Спортивных Добавок (От А до Я)",
-        suppSub: "Детальный разбор пользы, вреда, времени приема и точных дозировок под ваш вес и возраст.",
-        whyUsHeading: "Почему именно мы и почему нужно вкалывать?",
-        whyUsText1: "Забудьте про маркетологов, обещающих «накачать 10 кг чистых мышц за 30 дней сидя на диване». Биология человека так не работает. Без профицита калорий, тяжелой базы в зале и дисциплины ваше тело не изменится.",
-        whyUsText2: "Наш 6-месячный протокол основан на строгой науке о гипертрофии. Мы рассчитываем ваши веса с точностью до килограмма, убираем однообразие в еде и заставляем прогрессировать каждую неделю. Через полгода вы посмотрите в зеркало и не узнаете себя. Но для этого придется попотеть!",
-        chatHeading: "Интерактивный Чат с Тренером (Задай вопрос)",
-        chatSub: "Спросите про замену продуктов, боли в суставах или технику упражнений.",
-        chatInputPlaceholder: "Например: Чем заменить творог на ужин?",
-        sendBtnText: "Спросить",
+        mealHeading: "Обширное Меню с КБЖУ и Системой Замен",
+        subBadge: "Граммовки + Замены",
+        suppHeading: "Витамины, Дозировки и Чёрный Список Добавок",
+        suppSub: "Как принимать витамины правильно и какие добавки покупать категорически запрещено.",
         restartBtnText: "Пройти тест заново"
       },
       ua: {
-        pageTitle: "ULTIMATE SOMATO-MASS PRO | 6-місячний протокол трансформації",
+        pageTitle: "ULTIMATE SOMATO-MASS PRO | 6-Місячний Протокол Трансформації",
         headerTitle: "SOMATO<span>PRO 6M</span>",
-        headerSub: "Хардкорний протокол набору маси",
-        badgeTop: "🔥 Жодних казок про «набір 10 кг м'язів за місяць». Тут доведеться впалювати!",
+        headerSub: "Хардкорний протокол набору маси з гарантією",
+        badgeTop: "🛡️ Гарантія повернення грошей, якщо курс не дасть результат + Сертифікат після закінчення!",
         introHeadline: "Трансформація тіла за <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-500'>6 місяців</span>. Тебе буде не впізнати.",
-        introDesc: "Пройди глибокий біометричний тест із 39 питань. Система розрахує твої силові показники, автоматично згенерує робочі ваги на кожен місяць, підбере варіативне меню із заміною продуктів та вибудує залізний план харчування та спортпіту.",
-        feat1: "Точний розрахунок сили та ваги",
-        feat2: "Потижнева прогресія",
-        feat3: "Гнучкі заміни продуктів",
-        feat4: "Дозування під вік та вагу",
-        startBtn: "ПОЧАТИ ТЕСТ І ОТРИМАТИ ПЛАН НА 6 МІСЯЦІВ",
+        introDesc: "Пройди точний тест із 30 адекватних запитань по суті (без дурних запитань про анатомію). Система автоматично розрахує твої робочі ваги виходячи з твоєї сили прямо зараз, розпише помісячну прогресію на пів року, меню з КБЖВ та заміни продуктів.",
+        feat1: "Тільки по суті",
+        feat2: "Помісячна прогресія ваги",
+        feat3: "З системою замін їжі",
+        feat4: "Повернення коштів чи сертифікат",
+        startBtn: "ПОЧАТИ 30-КРОКОВИЙ ТЕСТ І ОТРИМАТИ ПЛАН",
         stepLabelText: "Крок",
         backBtnText: "Назад",
-        quizHintText: "Відповідайте чесно для автоматичного розрахунку робочих ваг",
-        loadTitle: "ШІ розраховує робочі ваги та 6-місячний спліт...",
-        loadingStatusText: "Аналіз сили та калібрування калорій [1/4]",
-        resReadyBadge: "✅ ВАШ ПЛАН НА 6 МІСЯЦІВ СФОРМОВАНО",
+        quizHintText: "Відповідайте чесно для калібрування ваги",
+        loadTitle: "Автоматичний аналіз ваших здібностей...",
+        loadingStatusText: "Розрахунок робочих ваг та харчування [1/4]",
+        resReadyBadge: "✅ ВАШ ПЛАН НА 6 МІСЯЦІВ ГОТОВИЙ",
         resMainHeading: "Індивідуальний Протокол Трансформації",
         pdfBtnText: "Завантажити PDF",
         shareBtnText: "Поділитися",
@@ -468,36 +458,29 @@
         fatLabel: "Жири",
         carbLabel: "Вуглеводи",
         sixMonthHeading: "План тренувань на 6 місяців (Помісячна прогресія)",
-        mealHeading: "Ширливе Меню із Системою Замін (Без одноманітності)",
-        subBadge: "Ротація страв + Заміни",
-        suppHeading: "Протокол Спортивних Добавок (Від А до Я)",
-        suppSub: "Детальний розбір користі, шкоди, часу прийому та точних дозувань під вашу вагу та вік.",
-        whyUsHeading: "Чому саме ми і чому треба впалювати?",
-        whyUsText1: "Забудьте про маркетологів, які обіцяють «накачати 10 кг чистих м'язів за 30 днів сидячи на дивані». Біологія людини так не працює. Без профіциту калорій, важкої бази в залі та дисципліни ваше тіло не зміниться.",
-        whyUsText2: "Наш 6-місячний протокол заснований на суворій науці про гіпертрофію. Ми розраховуємо ваші ваги з точністю до кілограма, прибираємо одноманітність в їжі та змушуємо прогресувати щотижня. Через пів року ви подивитеся в дзеркало і не впізнаєте себе. Але для цього доведеться попотіти!",
-        chatHeading: "Інтерактивний Чат із Тренером (Задай питання)",
-        chatSub: "Запитайте про заміну продуктів, болі в суглобах або техніку вправ.",
-        chatInputPlaceholder: "Наприклад: Чим замінити сир на вечерю?",
-        sendBtnText: "Запитати",
+        mealHeading: "Ширливе Меню з КБЖВ та Системою Замін",
+        subBadge: "Грамівки + Заміни",
+        suppHeading: "Вітаміни, Дозування та Чорний Список Добавок",
+        suppSub: "Як приймати вітаміни правильно і які добавки купувати категорично заборонено.",
         restartBtnText: "Пройти тест заново"
       },
       en: {
         pageTitle: "ULTIMATE SOMATO-MASS PRO | 6-Month Transformation Protocol",
         headerTitle: "SOMATO<span>PRO 6M</span>",
-        headerSub: "Hardcore Mass Building Protocol",
-        badgeTop: "🔥 No fairy tales about gaining 10kg of muscle in a month. You have to work hard!",
+        headerSub: "Hardcore Mass Protocol with Guarantee",
+        badgeTop: "🛡️ Money-back guarantee if the course doesn't work + Certificate upon completion!",
         introHeadline: "Body transformation in <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-500'>6 months</span>. You won't recognize yourself.",
-        introDesc: "Take an in-depth 39-question biometric test. The system calculates your strength metrics, automatically generates working weights for each month, provides rotational meals with substitutes, and builds a rock-solid diet and supplement plan.",
-        feat1: "Exact strength & weight calculation",
-        feat2: "Weekly progression",
-        feat3: "Flexible food substitutes",
-        feat4: "Dosages by age & weight",
-        startBtn: "START TEST & GET 6-MONTH PLAN",
+        introDesc: "Take an exact 30-question test on the point (no silly anatomy questions). The system automatically calculates working weights based on your current strength, sets up monthly progression for half a year, and provides KBJU meal options with substitutes.",
+        feat1: "Straight to the point",
+        feat2: "Monthly weight progression",
+        feat3: "With food substitution system",
+        feat4: "Money-back or certificate",
+        startBtn: "START 30-STEP TEST & GET PLAN",
         stepLabelText: "Step",
         backBtnText: "Back",
-        quizHintText: "Answer honestly for automated working weight calculations",
-        loadTitle: "AI is calculating working weights and 6M split...",
-        loadingStatusText: "Strength analysis & calorie calibration [1/4]",
+        quizHintText: "Answer honestly to calibrate working weights",
+        loadTitle: "Automated analysis of your capabilities...",
+        loadingStatusText: "Calculating working weights & diet [1/4]",
         resReadyBadge: "✅ YOUR 6-MONTH PLAN IS READY",
         resMainHeading: "Individual Transformation Protocol",
         pdfBtnText: "Download PDF",
@@ -510,17 +493,10 @@
         fatLabel: "Fats",
         carbLabel: "Carbs",
         sixMonthHeading: "6-Month Workout Plan (Monthly Progression)",
-        mealHeading: "Extensive Menu with Substitutes (No Monotony)",
-        subBadge: "Meal Rotation + Substitutes",
-        suppHeading: "Sports Supplements Protocol (A to Z)",
-        suppSub: "Detailed breakdown of benefits, side effects, timing, and dosages based on your weight and age.",
-        whyUsHeading: "Why Us and Why You Must Hustle?",
-        whyUsText1: "Forget marketers promising '10kg of pure muscle in 30 days sitting on a couch'. Human biology doesn't work that way. Without a calorie surplus, heavy compound lifts, and discipline, your body won't change.",
-        whyUsText2: "Our 6-month protocol is built on strict hypertrophy science. We calculate your weights down to the kilo, eliminate food monotony, and force weekly progression. In half a year, you'll look in the mirror and be amazed. But you'll have to sweat for it!",
-        chatHeading: "Interactive Coach Chat (Ask a Question)",
-        chatSub: "Ask about food substitutes, joint pain, or exercise form.",
-        chatInputPlaceholder: "E.g., What can I substitute cottage cheese with?",
-        sendBtnText: "Ask",
+        mealHeading: "Extensive Menu with KBJU & Substitutes",
+        subBadge: "Grams + Substitutes",
+        suppHeading: "Vitamins, Dosages & Blacklist of Supplements",
+        suppSub: "How to take vitamins correctly and which supplements are strictly banned.",
         restartBtnText: "Retake Test"
       }
     };
@@ -566,226 +542,182 @@
       document.getElementById('subBadge').innerText = d.subBadge;
       document.getElementById('suppHeading').innerHTML = `<i class="fa-solid fa-pills"></i> ${d.suppHeading}`;
       document.getElementById('suppSub').innerText = d.suppSub;
-      document.getElementById('whyUsHeading').innerHTML = `<i class="fa-solid fa-fire"></i> ${d.whyUsHeading}`;
-      document.getElementById('whyUsText1').innerText = d.whyUsText1;
-      document.getElementById('whyUsText2').innerText = d.whyUsText2;
-      document.getElementById('chatHeading').innerHTML = `<i class="fa-solid fa-comments"></i> ${d.chatHeading}`;
-      document.getElementById('chatSub').innerText = d.chatSub;
-      document.getElementById('chatInput').placeholder = d.chatInputPlaceholder;
-      document.getElementById('sendBtnText').innerText = d.sendBtnText;
       document.getElementById('restartBtnText').innerHTML = `<i class="fa-solid fa-rotate-right mr-2"></i> ${d.restartBtnText}`;
     }
 
-    // 39 COMPREHENSIVE QUESTIONS DATABASE (INCLUDING STRENGTH BENCHMARKS)
+    // EXACT 30 SMART QUESTIONS (NO NONSENSE)
     const questions = [
-      { category: "Биометрия", title: "1. Ваш текущий возраст (лет):", type: "input", key: "age", placeholder: "Например: 23" },
-      { category: "Биометрия", title: "2. Ваш точный рост (см):", type: "input", key: "height", placeholder: "Например: 180" },
-      { category: "Биометрия", title: "3. Ваш текущий вес (кг):", type: "input", key: "weight", placeholder: "Например: 68" },
-      // Strength Benchmark Questions
+      { category: "Биометрия", title: "1. Ваш текущий возраст (лет):", type: "input", key: "age", placeholder: "Например: 22" },
+      { category: "Биометрия", title: "2. Ваш точный рост (см):", type: "input", key: "height", placeholder: "Например: 178" },
+      { category: "Биометрия", title: "3. Ваш текущий вес (кг):", type: "input", key: "weight", placeholder: "Например: 67" },
+      // Strength Benchmark
       { 
         category: "Силовые показатели", 
-        title: "4. Какой максимальный вес гантелей вы можете поднять на бицепс (на руки) на 8-10 чисто повторений?", 
+        title: "4. Какой максимальный вес гантелей вы можете поднять на бицепс (на руки) на 8-10 повторений прямо сейчас?", 
         options: [
-          { text: "До 8 кг (слабый хват и мышцы рук)", score: { ecto: 3 }, strengthVal: 7 },
-          { text: "10 - 14 кг (базовый уровень новичка)", score: { meso: 1 }, strengthVal: 12 },
-          { text: "16 - 22 кг и более (хорошая база)", score: { meso: 3 }, strengthVal: 18 }
+          { text: "До 8 кг (слабый хват и мышцы рук)", strengthVal: 7 },
+          { text: "10 - 14 кг (базовый уровень новичка)", strengthVal: 12 },
+          { text: "16 - 22 кг и более (уверенная база)", strengthVal: 18 }
         ]
       },
       { 
         category: "Силовые показатели", 
-        title: "5. Какой ваш рабочий вес в жиме штанги лежа на 8 повторений (или отжимания с весом)?", 
+        title: "5. Какой ваш рабочий вес в жиме штанги лежа (или отжимания с весом) на 8 повторений?", 
         options: [
-          { text: "Только свой вес / пустой гриф (до 30 кг)", score: { ecto: 3 }, strengthBench: 35 },
-          { text: "40 - 60 кг (уверенный средний уровень)", score: { meso: 2 }, strengthBench: 55 },
-          { text: "70 - 100+ кг (продвинутый атлет)", score: { meso: 3 }, strengthBench: 85 }
+          { text: "Пустой гриф / до 35 кг", strengthBench: 35 },
+          { text: "40 - 65 кг", strengthBench: 55 },
+          { text: "70 - 100+ кг", strengthBench: 85 }
         ]
       },
       { 
-        category: "Силовые показатели", 
-        title: "6. Какой ваш рабочий вес в приседаниях со штангой на 8-10 повторений?", 
+        category: "Зал и Время", 
+        title: "6. Сколько времени за один раз вы готовы проводить в зале (включая разминку)?", 
         options: [
-          { text: "Только вес собственного тела", score: { ecto: 3 }, strengthSquat: 40 },
-          { text: "50 - 70 кг", score: { meso: 2 }, strengthSquat: 65 },
-          { text: "80 - 120+ кг", score: { meso: 3 }, strengthSquat: 100 }
+          { text: "45 - 60 минут (интенсивно)" },
+          { text: "60 - 90 минут (оптимальный темп)" },
+          { text: "Более 90 минут (хардкор)" }
         ]
       },
-      // Anthropometry
-      { category: "Антропометрия", title: "7. Обхват вашего запястья:", options: [
-        { text: "Менее 16 см (пальцы с запасом перекрывают друг друга)", score: { ecto: 3 } },
-        { text: "16 - 18.5 см (пальцы встык)", score: { meso: 3 } },
-        { text: "Более 18.5 см (пальцы не соприкасаются)", score: { endo: 3 } }
+      { 
+        category: "Зал и Время", 
+        title: "7. Сколько дней в неделю вы готовы стабильно тренироваться?", 
+        options: [
+          { text: "2 дня в неделю", days: 2 },
+          { text: "3 дня в неделю", days: 3 },
+          { text: "4 дня в неделю (рекомендуется для 6M протокола)", days: 4 },
+          { text: "5 дней в неделю", days: 5 }
+        ]
+      },
+      // Metabolism & Physique
+      { category: "Телосложение", title: "8. Как ваш организм набирает вес при избытке еды?", options: [
+        { text: "Вообще не набираю, вес стоит на месте (худой тип)" },
+        { text: "Растет плотность и мышцы при хороших тренировках" },
+        { text: "Быстро заплываю жиром на животе и боках" }
       ]},
-      { category: "Антропометрия", title: "8. Ширина плеч и костная структура:", options: [
-        { text: "Узкие плечи, тонкие ключицы, длинные конечности", score: { ecto: 3 } },
-        { text: "Широкие плечи, мощный костный каркас", score: { meso: 3 } },
-        { text: "Массивная грудная клетка, широкая тазовая кость", score: { endo: 3 } }
+      { category: "Телосложение", title: "9. Ваш естественный уровень аппетита:", options: [
+        { text: "Слабый (часто забываю поесть)" },
+        { text: "Нормальный (ем по графику)" },
+        { text: "Повышенный (всегда хочется есть)" }
       ]},
-      { category: "Антропометрия", title: "9. Естественный процент подкожного жира в спокойном состоянии:", options: [
-        { text: "Низкий (вены видны на руках и ногах без напряжения)", score: { ecto: 3 } },
-        { text: "Умеренный (атлетичная форма, легкий рельеф пресса)", score: { meso: 3 } },
-        { text: "Высокий (склонность к набору жира в области живота и боков)", score: { endo: 3 } }
+      { category: "Телосложение", title: "10. Качество вашего сна:", options: [
+        { text: "Чуткий сон, трудно уснуть" },
+        { text: "Крепкий сон 7-8 часов" },
+        { text: "Сплю долго, но встаю уставшим" }
       ]},
-      { category: "Антропометрия", title: "10. Форма мышц при напряжении:", options: [
-        { text: "Длинные и тонкие мышечные волокна", score: { ecto: 3 } },
-        { text: "Плотные объемные «банки» и глубокие сечения", score: { meso: 3 } },
-        { text: "Короткие массивные мышцы с мягкой структурой", score: { endo: 3 } }
+      { category: "Тренировки", title: "11. Ваш стаж силовых тренировок:", options: [
+        { text: "Полный новичок (менее 3 месяцев)" },
+        { text: "Любитель (от 6 месяцев до 2 лет)" },
+        { text: "Опытный атлет (более 2 лет)" }
       ]},
-      { category: "Антропометрия", title: "11. Как выглядит ваша голень и лодыжки?", options: [
-        { text: "Тонкие щиколотки, узкие икроножные мышцы", score: { ecto: 3 } },
-        { text: "Плотные икроножные мышцы средней толщины", score: { meso: 3 } },
-        { text: "Крупные массивные голени и толстые суставы", score: { endo: 3 } }
+      { category: "Тренировки", title: "12. Где вы планируете заниматься?", options: [
+        { text: "В полноценном тренажерном зале" },
+        { text: "Дома с разборными гантелями" },
+        { text: "На уличной спортивной площадке" }
       ]},
-      // Metabolism & Physiology
-      { category: "Метаболизм", title: "12. Скорость вашего обмена веществ (метаболизм):", options: [
-        { text: "Сверхбыстрый: ем сколько угодно и не толстею вообще", score: { ecto: 3 } },
-        { text: "Сбалансированный: вес держится стабильно при обычном питании", score: { meso: 3 } },
-        { text: "Замедленный: набираю вес даже от воздуха", score: { endo: 3 } }
+      { category: "Тренировки", title: "13. Уровень повседневного стресса:", options: [
+        { text: "Низкий" },
+        { text: "Умеренный" },
+        { text: "Высокий" }
       ]},
-      { category: "Метаболизм", title: "13. Реакция организма на увеличение порций еды на 30%:", options: [
-        { text: "Никаких изменений в весе, метаболизм сжигает всё", score: { ecto: 3 } },
-        { text: "Рост качественной плотности и силы в зале", score: { meso: 3 } },
-        { text: "Быстрое образование жировых отложений", score: { endo: 3 } }
+      { category: "Тренировки", title: "14. Как ваши суставы реагируют на нагрузку?", options: [
+        { text: "Требуется хорошая разминка перед весами" },
+        { text: "Отлично, никаких проблем" },
+        { text: "Бывают редкие дискомфортные ощущения" }
       ]},
-      { category: "Метаболизм", title: "14. Уровень ежедневной бытовой активности (NEAT):", options: [
-        { text: "Гиперактивный (постоянно в движении, хожу пешком, суечусь)", score: { ecto: 3 } },
-        { text: "Умеренный (работа/учеба + прогулки)", score: { meso: 3 } },
-        { text: "Сидячий (офисная работа, минимум движений)", score: { endo: 3 } }
+      { category: "Тренировки", title: "15. Ваша главная цель на 6 месяцев:", options: [
+        { text: "Набрать 6-12 кг мышечной массы" },
+        { text: "Построить рельефное атлетичное тело" },
+        { text: "Максимально развить силу и плотность" }
       ]},
-      { category: "Метаболизм", title: "15. Как вы переносите жару и холод?", options: [
-        { text: "Часто мерзнут руки и ноги", score: { ecto: 3 } },
-        { text: "Отличный термоконтроль", score: { meso: 3 } },
-        { text: "Постоянно жарко, быстро потею", score: { endo: 3 } }
+      // Nutrition & Diet
+      { category: "Питание", title: "16. Сколько приемов пищи вы можете делать в день?", options: [
+        { text: "2-3 раза (мало времени)" },
+        { text: "4-5 раз (комфортный режим)" },
+        { text: "6 и более раз" }
       ]},
-      { category: "Метаболизм", title: "16. Уровень аппетита в течение дня:", options: [
-        { text: "Слабый (часто забываю поесть)", score: { ecto: 3 } },
-        { text: "Нормальный (ем по графику 3-4 раза)", score: { meso: 3 } },
-        { text: "Повышенный (постоянное чувство голода)", score: { endo: 3 } }
+      { category: "Питание", title: "17. Переносимость лактозы (молочки):", options: [
+        { text: "Плохо переношу молоко/творог" },
+        { text: "Отлично усваиваю" },
+        { text: "Нейтрально" }
       ]},
-      { category: "Метаболизм", title: "17. Как организм реагирует на углеводы?", options: [
-        { text: "Сгорают в топке, дают легкую энергию", score: { ecto: 3 } },
-        { text: "Наполняют мышцы гликогеном, дают памп", score: { meso: 3 } },
-        { text: "Быстро откладываются в жир и вызывают сонливость", score: { endo: 3 } }
+      { category: "Питание", title: "18. Предпочитаемый источник белка:", options: [
+        { text: "Курица, индейка, яйца, рыба" },
+        { text: "Говядина и красное мясо" },
+        { text: "Творог, сыр, растительный белок" }
       ]},
-      { category: "Метаболизм", title: "18. Сон и восстановление:", options: [
-        { text: "Чуткий сон, трудно уснуть", score: { ecto: 3 } },
-        { text: "Крепкий сон 7-8 часов", score: { meso: 3 } },
-        { text: "Сплю долго, но тяжело раскачаться по утрам", score: { endo: 3 } }
+      { category: "Питание", title: "19. Источники углеводов:", options: [
+        { text: "Рис, гречка, овсянка, макароны" },
+        { text: "Картофель, батат, киноа" },
+        { text: "Цельнозерновой хлеб, фрукты" }
       ]},
-      // Training & Days
-      { category: "Тренировки", title: "19. Сколько дней в неделю вы готовы уделять тренировкам для набора массы?", options: [
-        { text: "2 дня в неделю", score: { days: 2 } },
-        { text: "3 дня в неделю", score: { days: 3 } },
-        { text: "4 дня в неделю (оптимально для 6M протокола)", score: { days: 4 } },
-        { text: "5-6 дней в неделю (продвинутый хардкор)", score: { days: 5 } }
+      { category: "Питание", title: "20. Источники жиров:", options: [
+        { text: "Орехи, авокадо, оливковое масло" },
+        { text: "Красная рыба, желтки яиц" },
+        { text: "Арахисовая паста, семена" }
       ]},
-      { category: "Тренировки", title: "20. Где вы будете тренироваться?", options: [
-        { text: "В полноценном тренажерном зале", score: {} },
-        { text: "Дома с гантелями и турником", score: {} },
-        { text: "На уличной площадке", score: {} }
+      { category: "Питание", title: "21. Разнообразие в еде:", options: [
+        { text: "Хочу максимальное разнообразие (смена блюд)" },
+        { text: "Готовлю на 2 дня вперед" },
+        { text: "Ем одинаковую простую еду" }
       ]},
-      { category: "Тренировки", title: "21. Ваш текущий стаж силовых тренировок:", options: [
-        { text: "Полный новичок (менее 3 месяцев)", score: {} },
-        { text: "Любитель (6 месяцев - 2 года)", score: {} },
-        { text: "Опытный атлет (более 2-3 лет)", score: {} }
+      { category: "Питание", title: "22. Бюджет на продукты питания:", options: [
+        { text: "Экономный (крупы, курица, яйца)" },
+        { text: "Средний (мясо, рыба, орехи)" },
+        { text: "Премиум (стейки, красная рыба, спортпит)" }
       ]},
-      { category: "Тренировки", title: "22. Как ваши мышцы реагируют на нагрузку?", options: [
-        { text: "Долго болят и медленно восстанавливаются", score: {} },
-        { text: "Быстро восстанавливаются, отличный отклик", score: {} },
-        { text: "Сила растет хорошо, но нужен контроль суставов", score: {} }
+      { category: "Питание", title: "23. Потребление воды в день:", options: [
+        { text: "Менее 1 литра" },
+        { text: "1.5 - 2 литра" },
+        { text: "Более 2.5 литров" }
       ]},
-      { category: "Тренировки", title: "23. Какая кардио-нагрузка вам ближе?", options: [
-        { text: "Ненавижу кардио, только железо", score: {} },
-        { text: "Умеренная ходьба для здоровья", score: {} },
-        { text: "Интенсивные круговые тренировки", score: {} }
+      { category: "Питание", title: "24. Опыт приема спортивных добавок:", options: [
+        { text: "Никогда не пробовал" },
+        { text: "Пил протеин / креатин ранее" },
+        { text: "Активно использую добавки" }
       ]},
-      { category: "Тренировки", title: "24. Уровень стресса в повседневной жизни:", options: [
-        { text: "Низкий", score: {} },
-        { text: "Умеренный", score: {} },
-        { text: "Высокий", score: {} }
+      { category: "Питание", title: "25. Переносимость кофеина:", options: [
+        { text: "Плохо переношу кофеин" },
+        { text: "Нормально пью кофе" },
+        { text: "Люблю энергетики и предтрены" }
       ]},
-      { category: "Тренировки", title: "25. Состояние спины и осанка:", options: [
-        { text: "Есть сутулость", score: {} },
-        { text: "Нормальная осанка", score: {} },
-        { text: "Бывают боли в пояснице", score: {} }
+      { category: "Питание", title: "26. Работа желудка:", options: [
+        { text: "Чувствительный желудок" },
+        { text: "Крепкий желудок" },
+        { text: "Быстрый обмен веществ" }
       ]},
-      { category: "Тренировки", title: "26. Готовность соблюдать жесткую дисциплину 6 месяцев:", options: [
-        { text: "Настроен на 100% пахать ради результата!", score: {} },
-        { text: "Буду стараться выполнять план", score: {} },
-        { text: "Нужен гибкий и понятный план", score: {} }
+      { category: "Питание", title: "27. Готовность пить жидкие калории (гейнеры):", options: [
+        { text: "Отлично! Удобно добирать массу" },
+        { text: "Нейтрально" },
+        { text: "Только твердая еда" }
       ]},
-      { category: "Тренировки", title: "27. Главная цель на полгода:", options: [
-        { text: "Набрать 6-12 кг качественной массы и уйти от худобы", score: {} },
-        { text: "Построить рельефное атлетичное тело", score: {} },
-        { text: "Максимально поднять силу и плотность мышц", score: {} }
+      { category: "Питание", title: "28. Уровень вашей дисциплины:", options: [
+        { text: "Настроен строго выполнять план ради результата" },
+        { text: "Буду стараться следовать графику" },
+        { text: "Нужен гибкий формат" }
       ]},
-      // Nutrition & Preferences
-      { category: "Питание", title: "28. Сколько приемов пищи вы можете делать в день?", options: [
-        { text: "2-3 раза (мало времени)", score: {} },
-        { text: "4-5 раз (комфортно)", score: {} },
-        { text: "6 и более раз", score: {} }
+      { category: "Питание", title: "29. Готовы ли вы соблюдать режим витаминов?", options: [
+        { text: "Да, готов пить базовые витамины по инструкции" },
+        : "Только если это критично важно", options: []
       ]},
-      { category: "Питание", title: "29. Переносимость лактозы (молочки):", options: [
-        { text: "Плохо переношу молоко/творог", score: {} },
-        { text: "Отлично усваиваю всю молочку", score: {} },
-        { text: "Нейтрально", score: {} }
-      ]},
-      { category: "Питание", title: "30. Предпочитаемые источники белка:", options: [
-        { text: "Курица, индейка, яйца, рыба", score: {} },
-        { text: "Говядина, красное мясо", score: {} },
-        { text: "Молочные продукты, творог, растительный белок", score: {} }
-      ]},
-      { category: "Питание", title: "31. Углеводная база:", options: [
-        { text: "Рис, гречка, овсянка, макароны", score: {} },
-        { text: "Картофель, батат, булгур, киноа", score: {} },
-        { text: "Цельнозерновой хлеб, фрукты, бобовые", score: {} }
-      ]},
-      { category: "Питание", title: "32. Жиры в рационе:", options: [
-        { text: "Орехи, авокадо, оливковое масло", score: {} },
-        { text: "Красная рыба, рыбий жир, желтки", score: {} },
-        { text: "Арахисовая паста, семена", score: {} }
-      ]},
-      { category: "Питание", title: "33. Отношение к кулинарному разнообразию:", options: [
-        { text: "Хочу максимальное разнообразие (частая смена блюд)", score: {} },
-        { text: "Готовлю на 2 дня вперед", score: {} },
-        { text: "Ем простую одинаковую еду ради удобства", score: {} }
-      ]},
-      { category: "Питание", title: "34. Бюджет на продукты:", options: [
-        { text: "Экономный (крупы, курица, яйца)", score: {} },
-        { text: "Средний (мясо, рыба, орехи, ягоды)", score: {} },
-        { text: "Премиум (стейки, красная рыба, спортпит)", score: {} }
-      ]},
-      { category: "Питание", title: "35. Потребление воды в день:", options: [
-        { text: "Менее 1 литра", score: {} },
-        { text: "1.5 - 2 литра", score: {} },
-        { text: "Более 2.5 литров", score: {} }
-      ]},
-      { category: "Питание", title: "36. Опыт приема спортпита:", options: [
-        { text: "Никогда не пробовал", score: {} },
-        { text: "Пил протеин или креатин ранее", score: {} },
-        { text: "Активно использую добавки", score: {} }
-      ]},
-      { category: "Питание", title: "37. Переносимость кофеина:", options: [
-        { text: "Плохо переношу кофеин", score: {} },
-        { text: "Нормально пью кофе", score: {} },
-        { text: "Люблю энергетики и предтрены", score: {} }
-      ]},
-      { category: "Питание", title: "38. Работа желудка и пищеварение:", options: [
-        { text: "Чувствительный желудок", score: {} },
-        { text: "Крепкий желудок", score: {} },
-        { text: "Быстрый обмен веществ", score: {} }
-      ]},
-      { category: "Питание", title: "39. Готовность пить жидкие калории (гейнеры/коктейли):", options: [
-        { text: "Отлично! Это лучший способ добрать массу", score: {} },
-        { text: "Нейтрально", score: {} },
-        { text: "Только твердая пища", score: {} }
+      { category: "Питание", title: "30. Готовы ли вы пахать в зале ради трансформации за 6 месяцев?", options: [
+        { text: "Да! Я хочу результат и готов вкалывать!" }
       ]}
+    ];
+
+    // Remove empty options array in last question gracefully if any
+    questions[28].options = [
+      { text: "Да, готов пить базовые витамины по инструкции" },
+      { text: "Буду принимать по графику" }
+    ];
+    questions[29].options = [
+      { text: "Да! Я хочу результат и готов вкалывать на 100%!" },
+      { text: "Настроен максимально серьезно" }
     ];
 
     // STATE
     let currentIdx = 0;
     let userAnswers = new Array(questions.length).fill(null);
-    let userScores = { ecto: 0, meso: 0, endo: 0 };
-    let userBiometrics = { age: 22, height: 178, weight: 68, days: 4, strengthArm: 10, strengthBench: 50 };
+    let userBiometrics = { age: 22, height: 178, weight: 67, days: 4, strengthArm: 12, strengthBench: 55 };
     let activeMonthTab = 1;
 
     // DOM ELEMENTS
@@ -888,8 +820,8 @@
       if (currentIdx === 4 && q.options[optIndex].strengthBench) {
         userBiometrics.strengthBench = q.options[optIndex].strengthBench;
       }
-      if (currentIdx === 18 && q.options[optIndex].score && q.options[optIndex].score.days) {
-        userBiometrics.days = q.options[optIndex].score.days;
+      if (currentIdx === 6 && q.options[optIndex].days) {
+        userBiometrics.days = q.options[optIndex].days;
       }
 
       renderQuestion();
@@ -916,25 +848,12 @@
       quizScreen.classList.add('hidden');
       loadingScreen.classList.remove('hidden');
 
-      userScores = { ecto: 0, meso: 0, endo: 0 };
-      userAnswers.forEach((ans, qIdx) => {
-        const q = questions[qIdx];
-        if (q.type !== 'input' && ans !== null) {
-          const score = q.options[ans].score;
-          if (score) {
-            if (score.ecto) userScores.ecto += score.ecto;
-            if (score.meso) userScores.meso += score.meso;
-            if (score.endo) userScores.endo += score.endo;
-          }
-        }
-      });
-
       let stepIdx = 0;
       const steps = [
         "Анализ силовых показателей и веса...",
         "Калибровка 6-месячной периодизации нагрузки...",
-        "Генерация ротируемого меню с заменами...",
-        "Формирование спортпит-протокола..."
+        "Генерация ротируемого меню с заменами и КБЖУ...",
+        "Формирование витаминного протокола..."
       ];
       const statusText = document.getElementById('loadingStatusText');
       const interval = setInterval(() => {
@@ -951,27 +870,14 @@
     }
 
     function renderResults() {
-      const total = userScores.ecto + userScores.meso + userScores.endo || 1;
-      const ectoPct = Math.round((userScores.ecto / total) * 100);
-      const mesoPct = Math.round((userScores.meso / total) * 100);
-      const endoPct = 100 - ectoPct - mesoPct;
-
-      document.getElementById('ectoPercent').innerText = `${ectoPct}%`;
-      document.getElementById('ectoBar').style.width = `${ectoPct}%`;
-      document.getElementById('mesoPercent').innerText = `${mesoPct}%`;
-      document.getElementById('mesoBar').style.width = `${mesoPct}%`;
-      document.getElementById('endoPercent').innerText = `${endoPct}%`;
-      document.getElementById('endoBar').style.width = `${endoPct}%`;
-
       document.getElementById('resAge').innerText = `${userBiometrics.age} лет`;
       document.getElementById('resWeight').innerText = `${userBiometrics.weight} кг`;
       document.getElementById('resHeight').innerText = `${userBiometrics.height} см`;
 
-      // Strength text calculation based on answers
-      const baseArm = userBiometrics.strengthArm;
-      const baseBench = userBiometrics.strengthBench;
+      const armW = userBiometrics.strengthArm;
+      const benchW = userBiometrics.strengthBench;
       document.getElementById('calculatedStrengthText').innerHTML = 
-        `На основе ваших ответов ваш текущий рабочий вес на руки (гантели на бицепс) составляет <strong>${baseArm} кг</strong> на 10 повторений, а жим штанги — <strong>${baseBench} кг</strong>. Ниже расписано, как этот вес будет плавно расти в течение 6 месяцев с гарантией результата.`;
+        `На основе ваших ответов ваш текущий рабочий вес на руки (гантели на бицепс) составляет <strong>${armW} кг</strong> на 10 повторений, а жим лежа — <strong>${benchW} кг</strong>. Ниже расписана помесячная прогрессия нагрузок на полгода с гарантией результата.`;
 
       let bmr = (10 * userBiometrics.weight) + (6.25 * userBiometrics.height) - (5 * userBiometrics.age) + 5;
       let tdee = bmr * 1.35;
@@ -981,21 +887,9 @@
       let fats = Math.round(userBiometrics.weight * 1.1);
       let carbs = Math.round((targetCalories - (protein * 4) - (fats * 9)) / 4);
 
-      let primary = "ЭКТОМОРФ";
-      let desc = "";
-      if (ectoPct >= mesoPct && ectoPct >= endoPct) {
-        primary = "ЭКТОМОРФ (Худощавый тип / Ускоренный метаболизм)";
-        desc = `С учетом возраста (${userBiometrics.age} лет) и веса (${userBiometrics.weight} кг) ваш организм сжигает калории мгновенно. Протокол рассчитан на 6 месяцев мощного профицита (${targetCalories} ккал) и тяжелых базовых тренировок с железной дисциплиной.`;
-      } else if (mesoPct >= ectoPct && mesoPct >= endoPct) {
-        primary = "МЕЗОМОРФ (Атлетичный тип)";
-        desc = `Отличный анаболический отклик. За 6 месяцев строгого следования этому плану вы построите массивное и рельефное тело.`;
-      } else {
-        primary = "ЭНДОМОРФ (Плотный тип)";
-        desc = `Мощная база, но требуется контроль углеводов. План на 6 месяцев построен на чистой гипертрофии без лишнего жира.`;
-      }
+      document.getElementById('primaryTypeTitle').innerText = "ПРОТОКОЛ ЧИСТОЙ ГИПЕРТРОФИИ";
+      document.getElementById('somatotypeDescription').innerText = `С учетом возраста (${userBiometrics.age} лет) и веса (${userBiometrics.weight} кг) ваш организм готов к качественному набору. Программа строго рассчитана на 6 месяцев с профицитом (${targetCalories} ккал) и железной дисциплиной.`;
 
-      document.getElementById('primaryTypeTitle').innerText = primary;
-      document.getElementById('somatotypeDescription').innerText = desc;
       document.getElementById('resCalories').innerText = `${targetCalories} ккал`;
       document.getElementById('resProtein').innerText = `${protein} г`;
       document.getElementById('resFats').innerText = `${fats} г`;
@@ -1003,7 +897,7 @@
 
       renderMonth(1);
       renderMeals();
-      renderSupplements();
+      renderVitamins();
     }
 
     // MONTHLY PERIODIZATION & WEIGHTS ENGINE
@@ -1022,31 +916,31 @@
 
       let w1 = armW;
       let w2 = benchW;
-      let phaseName = "Месяц 1–2: Адаптация и техника";
-      let descText = "Закладываем базу, ставим технику упражнений, приучаем организм к профициту калорий.";
+      let phaseName = "Месяц 1–2: База и постановка техники";
+      let descText = "Адаптация связок, отработка правильной амлитуды, мягкий вход в профицит калорий.";
 
       if (m === 3) {
         w1 = Math.round(armW * 1.25);
         w2 = Math.round(benchW * 1.2);
         phaseName = "Месяц 3–4: Силовой объем и рост мышц";
-        descText = "Увеличиваем рабочие веса, переходим на интенсивный сплит, добавляем прогрессию нагрузок.";
+        descText = "Увеличение рабочих весов каждую неделю, переход на интенсивный сплит.";
       } else if (m === 5) {
         w1 = Math.round(armW * 1.5);
         w2 = Math.round(benchW * 1.4);
         phaseName = "Месяц 5–6: Пиковая гипертрофия (Тебя не узнать)";
-        descText = "Максимальные рабочие веса, работа до отказа, пиковый объем мышечной массы.";
+        descText = "Максимальные рабочие веса, работа до отказа, пиковая масса тела.";
       }
 
       container.innerHTML = `
         <div class="p-4 rounded-2xl bg-gray-900/80 border border-brandBorder space-y-2">
           <div class="flex justify-between items-center">
             <span class="text-xs font-extrabold text-emerald-400 uppercase">${phaseName}</span>
-            <span class="text-xs bg-emerald-500/10 text-emerald-300 px-2.5 py-0.5 rounded font-bold">Прогрессия весов активна</span>
+            <span class="text-xs bg-emerald-500/10 text-emerald-300 px-2.5 py-0.5 rounded font-bold">Веса откалиброваны</span>
           </div>
           <p class="text-xs text-gray-300">${descText}</p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
             <div class="bg-gray-950 p-3 rounded-xl border border-brandBorder">
-              <div class="text-xs font-bold text-white mb-1">🏋️‍♂️ День А: База (Грудь / Плечи / Руки)</div>
+              <div class="text-xs font-bold text-white mb-1">🏋️‍♂️ День А: Верх (Грудь / Бицепс / Трицепс)</div>
               <ul class="text-xs text-gray-300 space-y-1">
                 <li>• Жим штанги лежа: 4 подх × 8 повт. <strong>(${w2} кг)</strong></li>
                 <li>• Жим гантелей на бицепс: 3 подх × 10 повт. <strong>(${w1} кг)</strong></li>
@@ -1054,7 +948,7 @@
               </ul>
             </div>
             <div class="bg-gray-950 p-3 rounded-xl border border-brandBorder">
-              <div class="text-xs font-bold text-white mb-1">🔥 День Б: Тяга и Ноги (Спина / Ноги)</div>
+              <div class="text-xs font-bold text-white mb-1">🔥 День Б: Низ и Спина (Ноги / Тяга)</div>
               <ul class="text-xs text-gray-300 space-y-1">
                 <li>• Тяга штанги в наклоне: 4 подх × 8 повт. <strong>(${Math.round(w2*1.1)} кг)</strong></li>
                 <li>• Приседания со штангой: 4 подх × 8 повт. <strong>(${Math.round(w2*1.3)} кг)</strong></li>
@@ -1066,94 +960,116 @@
       `;
     }
 
-    // ROTATIONAL MEAL PLAN WITH SUBSTITUTIONS
+    // EXTENSIVE MENU WITH KBJU AND SUBSTITUTIONS
     function renderMeals() {
       const container = document.getElementById('mealPlanList');
       container.innerHTML = `
         <div class="p-4 rounded-2xl bg-gray-900/60 border border-brandBorder space-y-2">
           <div class="flex justify-between items-center text-xs font-bold text-emerald-400">
-            <span>🍳 ЗАВТРАК (Ротация и заменяемость):</span>
-            <span class="text-gray-400">~700 ккал</span>
+            <span>🍳 ЗАВТРАК (КБЖУ + Замены):</span>
+            <span class="text-gray-400">~680 ккал (Б: 35г | Ж: 18г | У: 95г)</span>
           </div>
-          <p class="text-xs text-gray-300"><strong>Основа:</strong> Овсяная каша (100г) на молоке + 3 цельных яйца + банан + горсть орехов.</p>
-          <p class="text-xs text-emerald-400/90">🔄 <strong>Чем заменить:</strong> Вместо овсянки берите гречку или рисовые хлопья. Вместо яиц — омлет с сыром или тофу.</p>
+          <p class="text-xs text-gray-300"><strong>Основа:</strong> Овсяная каша (100г сухого веса) + 3 яйца + банан + 30г орехов.</p>
+          <p class="text-xs text-emerald-400/90">🔄 <strong>Чем заменить:</strong> Овсянку можно заменить на гречку или рисовые хлопья. Яйца — на омлет из тофу или сыр сулугуни.</p>
         </div>
 
         <div class="p-4 rounded-2xl bg-gray-900/60 border border-brandBorder space-y-2">
           <div class="flex justify-between items-center text-xs font-bold text-blue-400">
-            <span>🥗 ОБЕД (Белки + Сложные углеводы):</span>
-            <span class="text-gray-400">~900 ккал</span>
+            <span>🥗 ОБЕД (КБЖУ + Замены):</span>
+            <span class="text-gray-400">~850 ккал (Б: 55г | Ж: 15г | У: 110г)</span>
           </div>
-          <p class="text-xs text-gray-300"><strong>Основа:</strong> Куриная грудка или индейка (180г) + Рис басмати / Гречка (120г в сухом виде) + овощи с оливковым маслом.</p>
-          <p class="text-xs text-blue-400/90">🔄 <strong>Чем заменить:</strong> Курицу можно менять на нежирную говядину, индейку или белую рыбу (минтай/треска). Рис — на картофель или макароны твердых сортов.</p>
+          <p class="text-xs text-gray-300"><strong>Основа:</strong> Куриная грудка (180г) + Рис басмати (120г в сухом виде) + салат с оливковым маслом.</p>
+          <p class="text-xs text-blue-400/90">🔄 <strong>Чем заменить:</strong> Курицу можно заменить на говядину, индейку или белую рыбу (минтай). Рис — на картофель или макароны твердых сортов.</p>
         </div>
 
         <div class="p-4 rounded-2xl bg-gray-900/60 border border-brandBorder space-y-2">
           <div class="flex justify-between items-center text-xs font-bold text-amber-400">
-            <span>🥤 ПОЛДНИК (Анаболический коктейль):</span>
-            <span class="text-gray-400">~500 ккал</span>
+            <span>🥤 ПОЛДНИК (КБЖУ + Замены):</span>
+            <span class="text-gray-400">~520 ккал (Б: 40г | Ж: 14г | У: 60г)</span>
           </div>
-          <p class="text-xs text-gray-300"><strong>Основа:</strong> 300 мл молока + 50г овсянки + банан + 30г протеина + 25г арахисовой пасты в блендере.</p>
-          <p class="text-xs text-amber-400/90">🔄 <strong>Чем заменить:</strong> При непереносимости молока используйте соевое/миндальное молоко и растительный протеин.</p>
+          <p class="text-xs text-gray-300"><strong>Основа:</strong> 300 мл молока + 50г овсянки + банан + 30г сывороточного протеина + 25г арахисовой пасты.</p>
+          <p class="text-xs text-amber-400/90">🔄 <strong>Чем заменить:</strong> При непереносимости молока — растительное молоко и веган-протеин.</p>
         </div>
 
         <div class="p-4 rounded-2xl bg-gray-900/60 border border-brandBorder space-y-2">
           <div class="flex justify-between items-center text-xs font-bold text-purple-400">
-            <span>🥩 УЖИН (Восстановление):</span>
-            <span class="text-gray-400">~800 ккал</span>
+            <span>🥩 УЖИН (КБЖУ + Замены):</span>
+            <span class="text-gray-400">~750 ккал (Б: 45г | Ж: 12г | У: 90г)</span>
           </div>
-          <p class="text-xs text-gray-300"><strong>Основа:</strong> Морская рыба (горбуша/треска 200г) + киноа или булгур + тушеные овощи.</p>
-          <p class="text-xs text-purple-400/90">🔄 <strong>Чем заменить:</strong> Рыбу можно заменить на творог 5% (200г) с ягодами или на омлет из 4 белков и 2 желтков.</p>
+          <p class="text-xs text-gray-300"><strong>Основа:</strong> Горбуша или треска (200г) + киноа или булгур (100г) + тушеные овощи.</p>
+          <p class="text-xs text-purple-400/90">🔄 <strong>Чем заменить:</strong> Рыбу можно заменить на творог 5% (200г) с медом или на омлет из 4 белков и 2 цельных яиц.</p>
         </div>
       `;
     }
 
-    // SUPPLEMENTS PROTOCOL
-    function renderSupplements() {
+    // VITAMINS & SUPPLEMENTS GUIDE
+    function renderVitamins() {
       const container = document.getElementById('supplementsGuideList');
       container.innerHTML = `
         <div class="bg-gray-900/90 p-4 rounded-2xl border border-brandBorder space-y-2">
           <div class="flex justify-between items-center">
-            <span class="font-extrabold text-white text-sm">1. Креатин Моногидрат</span>
-            <span class="text-xs text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Сила и объем</span>
+            <span class="font-extrabold text-white text-sm">1. Витамин D3 + K2</span>
+            <span class="text-xs text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded">Гормоны и кости</span>
           </div>
-          <p class="text-xs text-gray-300"><strong>Польза:</strong> Увеличивает силу на 10-15%, задерживает воду в мышцах, стимулирует рост.</p>
-          <p class="text-xs text-gray-300"><strong>Вред/Побочки:</strong> Безопасен при питьевом режиме от 2.5 л воды в день.</p>
-          <p class="text-xs text-gray-400">💊 <strong>Дозировка:</strong> 5г ежедневно в любое время.</p>
+          <p class="text-xs text-gray-300"><strong>Польза:</strong> Регулирует уровень тестостерона, укрепляет костную ткань и иммунитет.</p>
+          <p class="text-xs text-gray-400">💊 <strong>Дозировка:</strong> 4000 МЕ утром во время завтрака с жирами.</p>
         </div>
 
         <div class="bg-gray-900/90 p-4 rounded-2xl border border-brandBorder space-y-2">
           <div class="flex justify-between items-center">
-            <span class="font-extrabold text-white text-sm">2. Сывороточный Протеин (Whey)</span>
-            <span class="text-xs text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded">Строительный блок</span>
+            <span class="font-extrabold text-white text-sm">2. Омега-3 (Рыбий жир)</span>
+            <span class="text-xs text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Суставы & Сердце</span>
           </div>
-          <p class="text-xs text-gray-300"><strong>Польза:</strong> Быстро доставляет аминокислоты в мышцы после тренировки.</p>
-          <p class="text-xs text-gray-300"><strong>Вред/Побочки:</strong> Возможен дискомфорт при непереносимости лактозы.</p>
-          <p class="text-xs text-gray-400">💊 <strong>Дозировка:</strong> 30-40г после тренировки или между едой.</p>
+          <p class="text-xs text-gray-300"><strong>Польза:</strong> Уменьшает воспаление в суставах от тяжелых весов, защищает сердце.</p>
+          <p class="text-xs text-gray-400">💊 <strong>Дозировка:</strong> 2000 мг в сутки (раздеелить на 2 приема с едой).</p>
+        </div>
+
+        <div class="bg-gray-900/90 p-4 rounded-2xl border border-brandBorder space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="font-extrabold text-white text-sm">3. Креатин Моногидрат</span>
+            <span class="text-xs text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded">Сила и масса</span>
+          </div>
+          <p class="text-xs text-gray-300"><strong>Польза:</strong> Самая доказанная добавка для роста силы и гидратации клеток мышц.</p>
+          <p class="text-xs text-gray-400">💊 <strong>Дозировка:</strong> 5 грамм ежедневно в любое время.</p>
+        </div>
+
+        <div class="bg-gray-900/90 p-4 rounded-2xl border border-brandBorder space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="font-extrabold text-white text-sm">4. Магний + Цинк (ZMA)</span>
+            <span class="text-xs text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded">Сон и восстановление</span>
+          </div>
+          <p class="text-xs text-gray-300"><strong>Польза:</strong> Улучшает качество глубокого сна и ночную выработку гормона роста.</p>
+          <p class="text-xs text-gray-400">💊 <strong>Дозировка:</strong> За 30 минут до сна на пустой желудок.</p>
         </div>
       `;
     }
 
-    // INTERACTIVE CHAT BOT
-    function sendChatMessage() {
-      const input = document.getElementById('chatInput');
-      const text = input.value.trim();
-      if (!text) return;
+    // SUBMIT REVIEW
+    function submitReview() {
+      const name = document.getElementById('reviewName').value.trim();
+      const rating = document.getElementById('reviewRating').value;
+      const text = document.getElementById('reviewText').value.trim();
 
-      const chatContainer = document.getElementById('chatMessages');
-      chatContainer.innerHTML += `<div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-200 text-right">👤 <strong>Вы:</strong> ${text}</div>`;
-      input.value = '';
+      if (!name || !text) {
+        alert('Пожалуйста, заполните имя и текст отзыва.');
+        return;
+      }
 
-      setTimeout(() => {
-        let reply = "Отличный вопрос! По нашему 6-месячному протоколу главное — соблюдать профицит калорий и прогрессию весов. Если заменяете продукт — следите за балансом БЖУ.";
-        if (text.toLowerCase().includes('творог')) {
-          reply = "Творог легко заменяется порцией сывороточного протеина с батоном или нежирным сыром (сулугуни/адыгейский) с сопоставимым количеством белка.";
-        } else if (text.toLowerCase().includes('вес') || text.toLowerCase().includes('набрать')) {
-          reply = "Вес пойдет вверх через 2 недели строгого соблюдения калорийности и наших тренировок. Главное — не пропускать приемы пищи!";
-        }
-        chatContainer.innerHTML += `<div class="p-3 rounded-xl bg-gray-800 border border-brandBorder text-gray-300">🤖 <strong>AI Тренер:</strong> ${reply}</div>`;
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-      }, 600);
+      const list = document.getElementById('testimonialsList');
+      const newCard = document.createElement('div');
+      newCard.className = "p-4 rounded-2xl bg-gray-900 border border-brandBorder space-y-2";
+      newCard.innerHTML = `
+        <div class="flex justify-between items-center text-xs">
+          <span class="font-bold text-white">${name}</span>
+          <span class="text-emerald-400">${rating} (Новый)</span>
+        </div>
+        <p class="text-xs text-gray-300">«${text}»</p>
+      `;
+      list.prepend(newCard);
+
+      document.getElementById('reviewName').value = '';
+      document.getElementById('reviewText').value = '';
+      alert('Спасибо! Ваш отзыв успешно добавлен.');
     }
 
     // DOWNLOAD PDF & SHARE
