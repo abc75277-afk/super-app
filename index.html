@@ -13,6 +13,7 @@
   .panel { background: rgba(17,21,32,.92); border: 1px solid rgba(255,255,255,.08); border-radius: 1.5rem; }
   .chip { border: 1px solid rgba(255,255,255,.12); background: #111520; }
   .chip:hover { border-color: #10B981; color: #fff; }
+  .glow-neon { box-shadow: 0 0 35px rgba(16,185,129,.22); }
   details > summary { cursor: pointer; list-style: none; }
   details > summary::-webkit-details-marker { display: none; }
   details[open] > summary .arrow { transform: rotate(90deg); }
@@ -25,58 +26,74 @@
 <body class="min-h-screen flex flex-col">
 
 <header class="border-b border-white/10 sticky top-0 z-40 bg-[#07090E]/95 backdrop-blur">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
     <div class="flex items-center gap-3">
       <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-blue-600 flex items-center justify-center font-black text-black">⚡</div>
       <div>
         <h1 class="font-black text-lg tracking-wider">SOMATO<span class="text-emerald-400">MASS</span></h1>
-        <p class="text-[11px] text-gray-400">Персональный план набора массы</p>
+        <p class="text-[11px] text-gray-400" data-i18n="brandSub"></p>
       </div>
     </div>
-    <nav id="topNav" class="hidden lg:flex gap-2 text-xs font-bold">
-      <a href="#sec-report" class="chip px-3 py-2 rounded-xl">Отчёт</a>
-      <a href="#sec-train" class="chip px-3 py-2 rounded-xl">Тренировки</a>
-      <a href="#sec-food" class="chip px-3 py-2 rounded-xl">Питание</a>
-      <a href="#sec-supp" class="chip px-3 py-2 rounded-xl">Добавки</a>
-      <a href="#sec-rev" class="chip px-3 py-2 rounded-xl">Отзывы</a>
-    </nav>
+    <div class="flex items-center gap-3">
+      <nav id="topNav" class="hidden lg:flex gap-2 text-xs font-bold">
+        <a href="#sec-report" class="chip px-3 py-2 rounded-xl">Отчёт</a>
+        <a href="#sec-train" class="chip px-3 py-2 rounded-xl">Тренировки</a>
+        <a href="#sec-food" class="chip px-3 py-2 rounded-xl">Питание</a>
+        <a href="#sec-supp" class="chip px-3 py-2 rounded-xl">Добавки</a>
+        <a href="#sec-rev" class="chip px-3 py-2 rounded-xl">Отзывы</a>
+      </nav>
+      <div id="langSwitch" class="flex items-center bg-gray-900 border border-white/10 rounded-xl p-1 text-xs font-bold">
+        <button id="lang-ru" onclick="setLang('ru')" class="px-2.5 py-1 rounded-lg">RU</button>
+        <button id="lang-ua" onclick="setLang('ua')" class="px-2.5 py-1 rounded-lg">UA</button>
+        <button id="lang-en" onclick="setLang('en')" class="px-2.5 py-1 rounded-lg">EN</button>
+      </div>
+    </div>
   </div>
 </header>
 
 <main class="max-w-5xl mx-auto px-4 py-8 w-full flex-grow">
 
-  <!-- ЭКРАН 1: ВВОД -->
-  <section id="introScreen" class="space-y-10">
-    <div class="text-center space-y-5 max-w-3xl mx-auto">
-      <span class="inline-block px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs font-extrabold uppercase tracking-wider">Расчёт по вашим данным</span>
-      <h2 class="text-3xl sm:text-5xl font-black leading-tight">Персональный план<br><span class="text-emerald-400">на 6 месяцев</span></h2>
-      <p class="text-gray-400 text-sm sm:text-base leading-relaxed">Ответьте на 30 вопросов. Мы рассчитаем норму калорий и белка, оценим уровень подготовки, составим программу тренировок под ваше оборудование и план питания с вариантами блюд.</p>
-      <p class="text-xs text-gray-500">Результаты зависят от питания, сна, регулярности и индивидуальных особенностей. Точный прирост массы гарантировать нельзя.</p>
-      <button onclick="startQuiz()" class="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black font-black text-lg rounded-2xl shadow-xl inline-flex items-center gap-3">
-        Начать расчёт <i class="fa-solid fa-arrow-right"></i>
-      </button>
+  <!-- ГЛАВНАЯ -->
+  <section id="introScreen" class="space-y-12">
+    <div class="text-center space-y-5 max-w-3xl mx-auto pt-4">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs font-extrabold uppercase tracking-wider" data-i18n="badge"></span>
+      <h2 class="text-3xl sm:text-5xl font-black leading-tight" data-i18n-html="h1"></h2>
+      <p class="text-gray-300 text-sm sm:text-base leading-relaxed" data-i18n="sub"></p>
+      <p class="text-xs text-gray-500" data-i18n="disclaimer"></p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+        <button onclick="startQuiz()" class="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black font-black text-base rounded-2xl glow-neon inline-flex items-center justify-center gap-3" data-i18n="start"></button>
+        <a id="buyBtn" href="#" class="px-8 py-4 border border-white/20 hover:border-amber-400 text-white font-black text-base rounded-2xl inline-flex items-center justify-center gap-3"></a>
+      </div>
+      <p class="text-xs text-gray-400" data-i18n="priceNote"></p>
     </div>
-    <div class="panel p-6 sm:p-8 grid grid-cols-1 md:grid-cols-3 gap-5 text-sm">
-      <div class="bg-gray-900/60 p-5 rounded-2xl border border-white/10 space-y-2">
-        <div class="text-emerald-400 font-bold"><i class="fa-solid fa-calculator"></i> Расчёты — ориентиры</div>
-        <p class="text-xs text-gray-400">Если вес не меняется две недели, меняйте калории на 100–200 ккал и смотрите снова.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="panel p-6 space-y-3">
+        <h3 class="font-black text-emerald-400" data-i18n="c1t"></h3>
+        <ul class="text-sm text-gray-300 space-y-2" data-list="c1"></ul>
       </div>
-      <div class="bg-gray-900/60 p-5 rounded-2xl border border-white/10 space-y-2">
-        <div class="text-blue-400 font-bold"><i class="fa-solid fa-user-doctor"></i> Не заменяет врача</div>
-        <p class="text-xs text-gray-400">Хронические болезни, травмы, беременность, приём лекарств, возраст до 18 лет — перед стартом консультация врача.</p>
+      <div class="panel p-6 space-y-3">
+        <h3 class="font-black text-blue-400" data-i18n="c2t"></h3>
+        <ul class="text-sm text-gray-300 space-y-2" data-list="c2"></ul>
       </div>
-      <div class="bg-gray-900/60 p-5 rounded-2xl border border-white/10 space-y-2">
-        <div class="text-amber-400 font-bold"><i class="fa-solid fa-heart-pulse"></i> Здоровье важнее цифр</div>
-        <p class="text-xs text-gray-400">Если есть срывы, навязчивый подсчёт еды или тревога вокруг питания, обратитесь к специалисту. Этот план не для таких случаев.</p>
+      <div class="panel p-6 space-y-3">
+        <h3 class="font-black text-amber-400" data-i18n="c3t"></h3>
+        <ul class="text-sm text-gray-300 space-y-2" data-list="c3"></ul>
       </div>
+    </div>
+
+    <div class="panel p-6 sm:p-8 text-center space-y-4">
+      <h3 class="text-xl sm:text-2xl font-black" data-i18n="finalH"></h3>
+      <p class="text-sm text-gray-400 max-w-xl mx-auto" data-i18n="finalSub"></p>
+      <a id="finalBuy" href="#" class="inline-flex px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-black rounded-2xl"></a>
     </div>
   </section>
 
-  <!-- ЭКРАН 2: ВОПРОСЫ -->
+  <!-- ВОПРОСЫ -->
   <section id="quizScreen" class="hidden space-y-6">
     <div class="panel p-4">
       <div class="flex justify-between text-xs font-bold text-gray-400 mb-2">
-        <span>Вопрос <span id="curStep">1</span> из <span id="totSteps">30</span></span>
+        <span><span id="qStepWord"></span> <span id="curStep">1</span> <span id="qOfWord"></span> <span id="totSteps">30</span></span>
         <span id="pctLabel" class="text-emerald-400">3%</span>
       </div>
       <div class="w-full bg-gray-800 h-2.5 rounded-full overflow-hidden">
@@ -90,18 +107,18 @@
       <p id="qErr" class="text-xs text-red-400 hidden"></p>
     </div>
     <div>
-      <button id="prevBtn" onclick="prevQ()" class="px-5 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold text-sm disabled:opacity-30"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+      <button id="prevBtn" onclick="prevQ()" class="px-5 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold text-sm disabled:opacity-30"><i class="fa-solid fa-arrow-left"></i> <span data-i18n="back"></span></button>
     </div>
   </section>
 
   <!-- ЗАГРУЗКА -->
   <section id="loadingScreen" class="hidden text-center py-16 space-y-6">
     <div class="w-20 h-20 mx-auto rounded-full border-4 border-emerald-500/20 border-t-emerald-400 animate-spin"></div>
-    <h3 class="text-2xl font-black">Считаем ваш план...</h3>
+    <h3 class="text-2xl font-black" data-i18n="loadTitle"></h3>
     <p id="loadStatus" class="text-sm text-emerald-400 font-mono"></p>
   </section>
 
-  <!-- ЭКРАН 3: РЕЗУЛЬТАТЫ -->
+  <!-- РЕЗУЛЬТАТЫ (пока на русском) -->
   <section id="resultScreen" class="hidden space-y-8">
     <div class="flex flex-col sm:flex-row justify-between gap-4 border-b border-white/10 pb-4">
       <div>
@@ -114,7 +131,6 @@
         <button onclick="restartQuiz()" class="px-4 py-2.5 bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold text-xs rounded-xl flex items-center gap-2"><i class="fa-solid fa-rotate-right"></i> Пройти заново</button>
       </div>
     </div>
-
     <div id="pdfArea" class="space-y-10">
       <div id="sec-report" class="space-y-6"></div>
       <div id="sec-train" class="space-y-6"></div>
@@ -149,75 +165,169 @@
 </div>
 
 <footer class="border-t border-white/10 py-6 text-center text-xs text-gray-500">
-  <p>© 2026 SOMATO-MASS. Информация носит справочный характер и не является медицинской консультацией.</p>
+  <p data-i18n="footer"></p>
 </footer>
 
 <script>
 /* ==================== НАСТРОЙКИ ==================== */
-const SUPPORT_EMAIL = "you@example.com"; // замените на свою почту
-// Реальные отзывы добавляйте сюда с разрешения автора: { name: "Имя, 25 лет", text: "Текст отзыва" }
-const REVIEWS = [];
+const CONFIG = {
+  PRICE: "4,99 $",
+  PAY_URL: "#",                  // ссылка на оплату из платёжного сервиса
+  SUPPORT_EMAIL: "you@example.com"
+};
+const REVIEWS = [];              // сюда добавляйте только реальные отзывы с разрешения
+
+/* ==================== ТЕКСТЫ ИНТЕРФЕЙСА ==================== */
+const T = {
+  ru: {
+    brandSub: "Персональный план набора массы",
+    badge: "Расчёт по вашим данным",
+    h1: "Перестаньте гадать:<br><span class='text-emerald-400'>план набора массы на 6 месяцев под вас</span>",
+    sub: "Ответьте на 30 вопросов за 5 минут. Получите отчёт о подготовке, программу тренировок на 2–5 дней с инструкцией к каждому упражнению, план питания в граммах и список добавок: что принимать и чего избегать.",
+    disclaimer: "Результаты зависят от питания, сна, регулярности и особенностей организма. Точный прирост массы гарантировать нельзя.",
+    start: "Пройти бесплатный расчёт",
+    buy: "Купить курс — {p}",
+    priceNote: "Оплата разово. Возврат денег в течение 14 дней, если курс вам не подошёл.",
+    c1t: "Что внутри курса",
+    c1: ["Отчёт по тесту: уровень, телосложение, силовые показатели", "Программа тренировок на 2–5 дней с разминкой", "Инструкция и частая ошибка к каждому упражнению", "План питания с граммами и вариантами блюд", "Добавки: что принимать, в каких дозах, и чего нельзя"],
+    c2t: "Как это работает",
+    c2: ["Ответьте на 30 вопросов за 5 минут", "Получите отчёт и план на 6 месяцев", "Тренируйтесь по программе, записывайте рабочие веса", "Раз в 2 недели смотрите на вес и корректируйте калории"],
+    c3t: "Условия",
+    c3: ["Возврат денег в течение 14 дней, если курс вам не подошёл. Напишите нам на почту.", "Сертификат о прохождении курса с вашим именем. Выдаём после завершения программы, по запросу на почту.", "Программа не заменяет врача. При травмах, болезнях или беременности сначала консультация.", "Результат зависит от сна, питания и регулярности тренировок."],
+    finalH: "Готовы начать?",
+    finalSub: "Полный курс: отчёт, программа тренировок, план питания, добавки и сертификат о прохождении. Возврат в течение 14 дней.",
+    finalBuy: "Купить курс — {p}",
+    back: "Назад",
+    next: "Далее",
+    qStep: "Вопрос",
+    qOf: "из",
+    numErr: (a, b) => `Введите значение от ${a} до ${b}.`,
+    loadTitle: "Считаем ваш план...",
+    loadSteps: ["Считаем норму калорий и БЖУ…", "Оцениваем уровень подготовки…", "Подбираем программу тренировок…", "Собираем план питания и добавок…", "Формируем отчёт…"],
+    footer: "© 2026 SOMATO-MASS. Информация носит справочный характер и не является медицинской консультацией."
+  },
+  ua: {
+    brandSub: "Персональний план набору маси",
+    badge: "Розрахунок за вашими даними",
+    h1: "Перестаньте гадати:<br><span class='text-emerald-400'>план набору маси на 6 місяців під вас</span>",
+    sub: "Дайте відповіді на 30 запитань за 5 хвилин. Отримайте звіт про підготовку, програму тренувань на 2–5 днів з інструкцією до кожної вправи, план харчування в грамах і список добавок: що приймати і чого уникати.",
+    disclaimer: "Результати залежать від харчування, сну, регулярності та особливостей організму. Точний приріст маси гарантувати не можна.",
+    start: "Пройти безкоштовний розрахунок",
+    buy: "Купити курс — {p}",
+    priceNote: "Одноразова оплата. Повернення коштів протягом 14 днів, якщо курс вам не підійшов.",
+    c1t: "Що всередині курсу",
+    c1: ["Звіт за тестом: рівень, статура, силові показники", "Програма тренувань на 2–5 днів з розминкою", "Інструкція і типова помилка до кожної вправи", "План харчування з грамами і варіантами страв", "Добавки: що приймати, у яких дозах і чого не можна"],
+    c2t: "Як це працює",
+    c2: ["Дайте відповіді на 30 запитань за 5 хвилин", "Отримайте звіт і план на 6 місяців", "Тренуйтеся за програмою, записуйте робочі ваги", "Раз на 2 тижні дивіться на вагу і коригуйте калорії"],
+    c3t: "Умови",
+    c3: ["Повернення коштів протягом 14 днів, якщо курс вам не підійшов. Напишіть нам на пошту.", "Сертифікат про проходження курсу з вашим ім'ям. Видаємо після завершення програми, за запитом на пошту.", "Програма не замінює лікаря. При травмах, хворобах чи вагітності спершу консультація.", "Результат залежить від сну, харчування і регулярності тренувань."],
+    finalH: "Готові почати?",
+    finalSub: "Повний курс: звіт, програма тренувань, план харчування, добавки і сертифікат про проходження. Повернення протягом 14 днів.",
+    finalBuy: "Купити курс — {p}",
+    back: "Назад",
+    next: "Далі",
+    qStep: "Питання",
+    qOf: "з",
+    numErr: (a, b) => `Введіть значення від ${a} до ${b}.`,
+    loadTitle: "Розраховуємо ваш план...",
+    loadSteps: ["Рахуємо норму калорій і БЖВ…", "Оцінюємо рівень підготовки…", "Підбираємо програму тренувань…", "Складаємо план харчування і добавок…", "Формуємо звіт…"],
+    footer: "© 2026 SOMATO-MASS. Інформація має довідковий характер і не є медичною консультацією."
+  },
+  en: {
+    brandSub: "Personal muscle-gain plan",
+    badge: "Calculated from your data",
+    h1: "Stop guessing:<br><span class='text-emerald-400'>a 6-month muscle-gain plan built for you</span>",
+    sub: "Answer 30 questions in about 5 minutes. Get a fitness report, a 2–5 day training program with instructions for every exercise, a meal plan in grams, and a supplement guide: what to take and what to avoid.",
+    disclaimer: "Results depend on nutrition, sleep, consistency and your body. Exact muscle gain cannot be guaranteed.",
+    start: "Take the free calculation",
+    buy: "Buy the course — {p}",
+    priceNote: "One-time payment. Full refund within 14 days if the course isn't right for you.",
+    c1t: "What's inside",
+    c1: ["Test report: level, body type, strength numbers", "Training program for 2–5 days with a warm-up", "Instructions and common mistakes for every exercise", "Meal plan in grams with meal options", "Supplements: what to take, doses, and what to avoid"],
+    c2t: "How it works",
+    c2: ["Answer 30 questions in about 5 minutes", "Get your report and a 6-month plan", "Train with the program and log your working weights", "Every 2 weeks check your weight and adjust calories"],
+    c3t: "Terms",
+    c3: ["Full refund within 14 days if the course isn't right for you. Just email us.", "A certificate of course completion with your name, issued after you finish the program, on request by email.", "The program doesn't replace a doctor. For injuries, illness or pregnancy, consult a doctor first.", "Results depend on sleep, nutrition and training consistency."],
+    finalH: "Ready to start?",
+    finalSub: "Full course: report, training program, meal plan, supplement guide and a completion certificate. Refund within 14 days.",
+    finalBuy: "Buy the course — {p}",
+    back: "Back",
+    next: "Next",
+    qStep: "Question",
+    qOf: "of",
+    numErr: (a, b) => `Enter a value from ${a} to ${b}.`,
+    loadTitle: "Calculating your plan...",
+    loadSteps: ["Calculating calories and macros…", "Assessing your training level…", "Selecting your training program…", "Building the meal plan and supplements…", "Preparing your report…"],
+    footer: "© 2026 SOMATO-MASS. Informational only, not medical advice."
+  }
+};
+
+let LANG = "ru";
+const LI = { ru:0, ua:1, en:2 };
+const tx = o => (typeof o === "string" ? o : o[LANG]);
 
 /* ==================== ВОПРОСЫ ==================== */
-// key — куда сохраняется ответ; vals — числовое значение для каждого варианта (если нужно)
 const Q = [
-  { c:"Биометрия", t:"Ваш возраст (лет)", type:"num", key:"age", min:14, max:90, ph:"24" },
-  { c:"Биометрия", t:"Рост (см)", type:"num", key:"height", min:120, max:230, ph:"180" },
-  { c:"Биометрия", t:"Текущий вес (кг)", type:"num", key:"weight", min:30, max:250, ph:"70" },
-  { c:"Силовые показатели", t:"Рабочий вес на бицепс на 8–10 повторений (кг, гантели или штанга)", type:"num", key:"bicepsW", min:1, max:200, ph:"14" },
-  { c:"Силовые показатели", t:"Рабочий вес в жиме лежа на 8 повторений (кг)", type:"num", key:"benchW", min:1, max:300, ph:"60" },
-  { c:"Силовые показатели", t:"Рабочий вес в приседе на 8 повторений (кг)", type:"num", key:"squatW", min:1, max:400, ph:"70" },
-  { c:"Силовые показатели", t:"Сколько чистых подтягиваний за один подход? (0, если не можете)", type:"num", key:"pullups", min:0, max:100, ph:"5" },
-  { c:"Силовые показатели", t:"Рабочий вес в тяге штанги в наклоне на 8 повторений (кг)", type:"num", key:"rowW", min:1, max:300, ph:"50" },
-  { c:"Силовые показатели", t:"Рабочий вес в армейском жиме на 8 повторений (кг)", type:"num", key:"shoulderW", min:1, max:200, ph:"35" },
-  { c:"Телосложение", t:"Обхват запястья", opts:[
-    ["Менее 16 см, пальцы перекрывают друг друга", {ecto:3}],
-    ["16–18,5 см, пальцы встык", {meso:3}],
-    ["Более 18,5 см, пальцы не соприкасаются", {endo:3}] ]},
-  { c:"Телосложение", t:"Строение плеч и костей", opts:[
-    ["Узкие плечи, тонкие кости", {ecto:3}],
-    ["Широкие плечи, крепкий каркас", {meso:3}],
-    ["Массивный каркас, широкий таз", {endo:3}] ]},
-  { c:"Метаболизм", t:"Как вес реагирует на обычное питание?", opts:[
-    ["Ем много и почти не полнею", {ecto:3}],
-    ["Вес стабилен", {meso:3}],
-    ["Легко набираю жир при лишних калориях", {endo:3}] ]},
-  { c:"Тренировки", t:"Сколько дней в неделю готовы тренироваться?", key:"days", vals:[2,3,4,5], opts:[
-    ["2 дня", {}], ["3 дня", {}], ["4 дня", {}], ["5 дней", {}] ]},
-  { c:"Тренировки", t:"Где будете тренироваться?", key:"loc", opts:[
-    ["Тренажёрный зал", {}], ["Дома: гантели, штанга, турник", {}], ["Уличная площадка: турник, брусья", {}] ]},
-  { c:"Биометрия", t:"Пол (для формулы расчёта калорий)", key:"sex", vals:[5,-161], opts:[
-    ["Мужской", {}], ["Женский", {}] ]},
-  { c:"Восстановление", t:"Сколько часов в среднем спите?", key:"sleep", opts:[
-    ["Менее 6 часов", {}], ["7–8 часов", {}], ["9 и более", {}] ]},
-  { c:"Питание", t:"Как переносите молочные продукты?", key:"lactose", opts:[
-    ["Плохо, после молока вздутие", {}], ["Переношу нормально", {}] ]},
-  { c:"Питание", t:"Бюджет на продукты", key:"budget", opts:[
-    ["Базовый: курица, яйца, крупы, сезонные овощи", {}], ["Расширенный: рыба, говядина, орехи", {}] ]},
-  { c:"Опыт", t:"Стаж силовых тренировок", key:"exp", opts:[
-    ["Менее 6 месяцев", {}], ["От 6 месяцев до 2 лет", {}], ["Более 2 лет регулярно", {}] ]},
-  { c:"Здоровье", t:"Есть ли травмы спины, колен или плеч?", key:"injury", opts:[
-    ["Нет ограничений", {}], ["Небольшой дискомфорт", {}], ["Нужны щадящие упражнения", {}] ]},
-  { c:"Образ жизни", t:"Характер активности в течение дня", key:"act", opts:[
-    ["Сидячая работа", {}], ["Умеренная, много ходьбы", {}], ["Физическая работа", {}] ]},
-  { c:"Питание", t:"Как часто едите рыбу?", key:"fish", opts:[
-    ["Почти не ем", {}], ["1–2 раза в неделю", {}], ["3 раза и чаще", {}] ]},
-  { c:"Цель", t:"Главная цель на 6 месяцев", key:"goal", opts:[
-    ["Максимум чистой массы", {}], ["Масса с минимальным жиром", {}], ["Рост силы", {}] ]},
-  { c:"Стресс", t:"Уровень стресса в обычной жизни", key:"stress", opts:[
-    ["Низкий", {}], ["Средний", {}], ["Высокий", {}] ]},
-  { c:"Кардио", t:"Отношение к кардио", key:"cardio", opts:[
-    ["Не люблю, только силовые", {}], ["15–20 минут после тренировки", {}], ["Регулярный бег или велотренажёр", {}] ]},
-  { c:"Добавки", t:"Опыт приёма спортивного питания", key:"supp", opts:[
-    ["Не принимал", {}], ["Только протеин или креатин", {}], ["Пробовал разное", {}] ]},
-  { c:"Гибкость", t:"Подвижность суставов", key:"flex", opts:[
-    ["Тяжело приседать глубоко", {}], ["Нормальная", {}], ["Отличная", {}] ]},
-  { c:"Питание", t:"Насколько строго готовы следить за питанием?", key:"disc", opts:[
-    ["Готов взвешивать и считать еду", {}], ["По плану, с гибкостью", {}], ["Нужен свободный рацион без цифр", {}] ]},
-  { c:"Сон", t:"Просыпаетесь ли отдохнувшим?", key:"wake", opts:[
-    ["Редко, чувствую усталость", {}], ["В большинстве случаев нормально", {}], ["Почти всегда бодр", {}] ]},
-  { c:"Готовность", t:"Готовы тренироваться регулярно 6 месяцев?", key:"ready", opts:[
-    ["Да, готов", {}], ["Готов, но нужен чёткий план", {}] ]}
+  { c:{ru:"Биометрия",ua:"Біометрія",en:"Biometrics"}, t:{ru:"Ваш возраст (лет)",ua:"Ваш вік (років)",en:"Your age (years)"}, type:"num", key:"age", min:14, max:90, ph:"24" },
+  { c:{ru:"Биометрия",ua:"Біометрія",en:"Biometrics"}, t:{ru:"Рост (см)",ua:"Зріст (см)",en:"Height (cm)"}, type:"num", key:"height", min:120, max:230, ph:"180" },
+  { c:{ru:"Биометрия",ua:"Біометрія",en:"Biometrics"}, t:{ru:"Текущий вес (кг)",ua:"Поточна вага (кг)",en:"Current weight (kg)"}, type:"num", key:"weight", min:30, max:250, ph:"70" },
+  { c:{ru:"Силовые показатели",ua:"Силові показники",en:"Strength"}, t:{ru:"Рабочий вес на бицепс на 8–10 повторений (кг, гантели или штанга)",ua:"Робоча вага на біцепс на 8–10 повторень (кг, гантелі або штанга)",en:"Working weight for curls, 8–10 reps (kg, dumbbells or barbell)"}, type:"num", key:"bicepsW", min:1, max:200, ph:"14" },
+  { c:{ru:"Силовые показатели",ua:"Силові показники",en:"Strength"}, t:{ru:"Рабочий вес в жиме лежа на 8 повторений (кг)",ua:"Робоча вага в жимі лежачи на 8 повторень (кг)",en:"Working weight in bench press, 8 reps (kg)"}, type:"num", key:"benchW", min:1, max:300, ph:"60" },
+  { c:{ru:"Силовые показатели",ua:"Силові показники",en:"Strength"}, t:{ru:"Рабочий вес в приседе на 8 повторений (кг)",ua:"Робоча вага в присіданні на 8 повторень (кг)",en:"Working weight in squat, 8 reps (kg)"}, type:"num", key:"squatW", min:1, max:400, ph:"70" },
+  { c:{ru:"Силовые показатели",ua:"Силові показники",en:"Strength"}, t:{ru:"Сколько чистых подтягиваний за один подход? (0, если не можете)",ua:"Скільки чистих підтягувань за один підхід? (0, якщо не можете)",en:"How many strict pull-ups in one set? (0 if you can't)"}, type:"num", key:"pullups", min:0, max:100, ph:"5" },
+  { c:{ru:"Силовые показатели",ua:"Силові показники",en:"Strength"}, t:{ru:"Рабочий вес в тяге штанги в наклоне на 8 повторений (кг)",ua:"Робоча вага в тязі штанги в нахилі на 8 повторень (кг)",en:"Working weight in bent-over row, 8 reps (kg)"}, type:"num", key:"rowW", min:1, max:300, ph:"50" },
+  { c:{ru:"Силовые показатели",ua:"Силові показники",en:"Strength"}, t:{ru:"Рабочий вес в армейском жиме на 8 повторений (кг)",ua:"Робоча вага в армійському жимі на 8 повторень (кг)",en:"Working weight in overhead press, 8 reps (kg)"}, type:"num", key:"shoulderW", min:1, max:200, ph:"35" },
+  { c:{ru:"Телосложение",ua:"Статура",en:"Build"}, t:{ru:"Обхват запястья",ua:"Обхват зап'ястя",en:"Wrist circumference"}, opts:[
+    [{ru:"Менее 16 см, пальцы перекрывают друг друга",ua:"Менше 16 см, пальці перекривають одне одного",en:"Under 16 cm, fingers overlap"}, {ecto:3}],
+    [{ru:"16–18,5 см, пальцы встык",ua:"16–18,5 см, пальці впритул",en:"16–18.5 cm, fingers touch"}, {meso:3}],
+    [{ru:"Более 18,5 см, пальцы не соприкасаются",ua:"Понад 18,5 см, пальці не стикаються",en:"Over 18.5 cm, fingers don't touch"}, {endo:3}] ]},
+  { c:{ru:"Телосложение",ua:"Статура",en:"Build"}, t:{ru:"Строение плеч и костей",ua:"Будова плечей і кісток",en:"Shoulder and bone structure"}, opts:[
+    [{ru:"Узкие плечи, тонкие кости",ua:"Вузькі плечі, тонкі кістки",en:"Narrow shoulders, slim bones"}, {ecto:3}],
+    [{ru:"Широкие плечи, крепкий каркас",ua:"Широкі плечі, міцний каркас",en:"Broad shoulders, sturdy frame"}, {meso:3}],
+    [{ru:"Массивный каркас, широкий таз",ua:"Масивний каркас, широкий таз",en:"Heavy frame, wide hips"}, {endo:3}] ]},
+  { c:{ru:"Метаболизм",ua:"Метаболізм",en:"Metabolism"}, t:{ru:"Как вес реагирует на обычное питание?",ua:"Як вага реагує на звичайне харчування?",en:"How does your weight respond to normal eating?"}, opts:[
+    [{ru:"Ем много и почти не полнею",ua:"Їм багато і майже не повнішаю",en:"I eat a lot and barely gain"}, {ecto:3}],
+    [{ru:"Вес стабилен",ua:"Вага стабільна",en:"My weight stays stable"}, {meso:3}],
+    [{ru:"Легко набираю жир при лишних калориях",ua:"Легко набираю жир при зайвих калоріях",en:"I gain fat easily with extra calories"}, {endo:3}] ]},
+  { c:{ru:"Тренировки",ua:"Тренування",en:"Training"}, t:{ru:"Сколько дней в неделю готовы тренироваться?",ua:"Скільки днів на тиждень готові тренуватися?",en:"How many days a week can you train?"}, key:"days", vals:[2,3,4,5], opts:[
+    [{ru:"2 дня",ua:"2 дні",en:"2 days"}, {}], [{ru:"3 дня",ua:"3 дні",en:"3 days"}, {}], [{ru:"4 дня",ua:"4 дні",en:"4 days"}, {}], [{ru:"5 дней",ua:"5 днів",en:"5 days"}, {}] ]},
+  { c:{ru:"Тренировки",ua:"Тренування",en:"Training"}, t:{ru:"Где будете тренироваться?",ua:"Де будете тренуватися?",en:"Where will you train?"}, key:"loc", opts:[
+    [{ru:"Тренажёрный зал",ua:"Тренажерний зал",en:"Gym"}, {}],
+    [{ru:"Дома: гантели, штанга, турник",ua:"Вдома: гантелі, штанга, турнік",en:"At home: dumbbells, barbell, pull-up bar"}, {}],
+    [{ru:"Уличная площадка: турник, брусья",ua:"Вуличний майданчик: турнік, бруси",en:"Outdoor park: pull-up bar, parallel bars"}, {}] ]},
+  { c:{ru:"Биометрия",ua:"Біометрія",en:"Biometrics"}, t:{ru:"Пол (для формулы расчёта калорий)",ua:"Стать (для формули розрахунку калорій)",en:"Sex (for the calorie formula)"}, key:"sex", vals:[5,-161], opts:[
+    [{ru:"Мужской",ua:"Чоловіча",en:"Male"}, {}], [{ru:"Женский",ua:"Жіноча",en:"Female"}, {}] ]},
+  { c:{ru:"Восстановление",ua:"Відновлення",en:"Recovery"}, t:{ru:"Сколько часов в среднем спите?",ua:"Скільки годин у середньому спите?",en:"How many hours do you sleep on average?"}, key:"sleep", opts:[
+    [{ru:"Менее 6 часов",ua:"Менше 6 годин",en:"Under 6 hours"}, {}], [{ru:"7–8 часов",ua:"7–8 годин",en:"7–8 hours"}, {}], [{ru:"9 и более",ua:"9 і більше",en:"9 or more"}, {}] ]},
+  { c:{ru:"Питание",ua:"Харчування",en:"Nutrition"}, t:{ru:"Как переносите молочные продукты?",ua:"Як переносите молочні продукти?",en:"How well do you tolerate dairy?"}, key:"lactose", opts:[
+    [{ru:"Плохо, после молока вздутие",ua:"Погано, після молока здуття",en:"Poorly, bloating after milk"}, {}], [{ru:"Переношу нормально",ua:"Переношу нормально",en:"Fine"}, {}] ]},
+  { c:{ru:"Питание",ua:"Харчування",en:"Nutrition"}, t:{ru:"Бюджет на продукты",ua:"Бюджет на продукти",en:"Food budget"}, key:"budget", opts:[
+    [{ru:"Базовый: курица, яйца, крупы, сезонные овощи",ua:"Базовий: курка, яйця, крупи, сезонні овочі",en:"Basic: chicken, eggs, grains, seasonal vegetables"}, {}],
+    [{ru:"Расширенный: рыба, говядина, орехи",ua:"Розширений: риба, яловичина, горіхи",en:"Extended: fish, beef, nuts"}, {}] ]},
+  { c:{ru:"Опыт",ua:"Досвід",en:"Experience"}, t:{ru:"Стаж силовых тренировок",ua:"Стаж силових тренувань",en:"Strength training experience"}, key:"exp", opts:[
+    [{ru:"Менее 6 месяцев",ua:"Менше 6 місяців",en:"Under 6 months"}, {}], [{ru:"От 6 месяцев до 2 лет",ua:"Від 6 місяців до 2 років",en:"6 months to 2 years"}, {}], [{ru:"Более 2 лет регулярно",ua:"Понад 2 роки регулярно",en:"Over 2 years, regularly"}, {}] ]},
+  { c:{ru:"Здоровье",ua:"Здоров'я",en:"Health"}, t:{ru:"Есть ли травмы спины, колен или плеч?",ua:"Чи є травми спини, колін або плечей?",en:"Any back, knee or shoulder injuries?"}, key:"injury", opts:[
+    [{ru:"Нет ограничений",ua:"Немає обмежень",en:"No limitations"}, {}], [{ru:"Небольшой дискомфорт",ua:"Невеликий дискомфорт",en:"Mild discomfort"}, {}], [{ru:"Нужны щадящие упражнения",ua:"Потрібні щадні вправи",en:"Need gentle exercises"}, {}] ]},
+  { c:{ru:"Образ жизни",ua:"Спосіб життя",en:"Lifestyle"}, t:{ru:"Характер активности в течение дня",ua:"Характер активності протягом дня",en:"Daily activity level"}, key:"act", opts:[
+    [{ru:"Сидячая работа",ua:"Сидяча робота",en:"Desk job"}, {}], [{ru:"Умеренная, много ходьбы",ua:"Помірна, багато ходьби",en:"Moderate, lots of walking"}, {}], [{ru:"Физическая работа",ua:"Фізична робота",en:"Physical job"}, {}] ]},
+  { c:{ru:"Питание",ua:"Харчування",en:"Nutrition"}, t:{ru:"Как часто едите рыбу?",ua:"Як часто їсте рибу?",en:"How often do you eat fish?"}, key:"fish", opts:[
+    [{ru:"Почти не ем",ua:"Майже не їм",en:"Almost never"}, {}], [{ru:"1–2 раза в неделю",ua:"1–2 рази на тиждень",en:"1–2 times a week"}, {}], [{ru:"3 раза и чаще",ua:"3 рази і частіше",en:"3+ times a week"}, {}] ]},
+  { c:{ru:"Цель",ua:"Мета",en:"Goal"}, t:{ru:"Главная цель на 6 месяцев",ua:"Головна мета на 6 місяців",en:"Main goal for 6 months"}, key:"goal", opts:[
+    [{ru:"Максимум чистой массы",ua:"Максимум чистої маси",en:"Maximum lean mass"}, {}], [{ru:"Масса с минимальным жиром",ua:"Маса з мінімумом жиру",en:"Mass with minimal fat"}, {}], [{ru:"Рост силы",ua:"Зростання сили",en:"Strength gain"}, {}] ]},
+  { c:{ru:"Стресс",ua:"Стрес",en:"Stress"}, t:{ru:"Уровень стресса в обычной жизни",ua:"Рівень стресу у звичайному житті",en:"Everyday stress level"}, key:"stress", opts:[
+    [{ru:"Низкий",ua:"Низький",en:"Low"}, {}], [{ru:"Средний",ua:"Середній",en:"Medium"}, {}], [{ru:"Высокий",ua:"Високий",en:"High"}, {}] ]},
+  { c:{ru:"Кардио",ua:"Кардіо",en:"Cardio"}, t:{ru:"Отношение к кардио",ua:"Ставлення до кардіо",en:"Attitude to cardio"}, key:"cardio", opts:[
+    [{ru:"Не люблю, только силовые",ua:"Не люблю, тільки силові",en:"I dislike it, strength only"}, {}], [{ru:"15–20 минут после тренировки",ua:"15–20 хвилин після тренування",en:"15–20 min after training"}, {}], [{ru:"Регулярный бег или велотренажёр",ua:"Регулярний біг або велотренажер",en:"Regular running or bike"}, {}] ]},
+  { c:{ru:"Добавки",ua:"Добавки",en:"Supplements"}, t:{ru:"Опыт приёма спортивного питания",ua:"Досвід прийому спортивного харчування",en:"Sports supplement experience"}, key:"supp", opts:[
+    [{ru:"Не принимал",ua:"Не приймав",en:"None"}, {}], [{ru:"Только протеин или креатин",ua:"Тільки протеїн або креатин",en:"Only protein or creatine"}, {}], [{ru:"Пробовал разное",ua:"Пробував різне",en:"Tried various"}, {}] ]},
+  { c:{ru:"Гибкость",ua:"Гнучкість",en:"Flexibility"}, t:{ru:"Подвижность суставов",ua:"Рухливість суглобів",en:"Joint mobility"}, key:"flex", opts:[
+    [{ru:"Тяжело приседать глубоко",ua:"Важко присідати глибоко",en:"Hard to squat deep"}, {}], [{ru:"Нормальная",ua:"Нормальна",en:"Normal"}, {}], [{ru:"Отличная",ua:"Відмінна",en:"Excellent"}, {}] ]},
+  { c:{ru:"Питание",ua:"Харчування",en:"Nutrition"}, t:{ru:"Насколько строго готовы следить за питанием?",ua:"Наскільки суворо готові стежити за харчуванням?",en:"How strictly can you follow a diet?"}, key:"disc", opts:[
+    [{ru:"Готов взвешивать и считать еду",ua:"Готовий зважувати і рахувати їжу",en:"I'll weigh and count food"}, {}], [{ru:"По плану, с гибкостью",ua:"За планом, з гнучкістю",en:"To a plan, with flexibility"}, {}], [{ru:"Нужен свободный рацион без цифр",ua:"Потрібен вільний раціон без цифр",en:"I need a free diet without numbers"}, {}] ]},
+  { c:{ru:"Сон",ua:"Сон",en:"Sleep"}, t:{ru:"Просыпаетесь ли отдохнувшим?",ua:"Чи прокидаєтеся відпочилим?",en:"Do you wake up rested?"}, key:"wake", opts:[
+    [{ru:"Редко, чувствую усталость",ua:"Рідко, відчуваю втому",en:"Rarely, I feel tired"}, {}], [{ru:"В большинстве случаев нормально",ua:"Здебільшого нормально",en:"Usually fine"}, {}], [{ru:"Почти всегда бодр",ua:"Майже завжди бадьорий",en:"Almost always energised"}, {}] ]},
+  { c:{ru:"Готовность",ua:"Готовність",en:"Readiness"}, t:{ru:"Готовы тренироваться регулярно 6 месяцев?",ua:"Чи готові тренуватися регулярно 6 місяців?",en:"Ready to train regularly for 6 months?"}, key:"ready", opts:[
+    [{ru:"Да, готов",ua:"Так, готовий",en:"Yes"}, {}], [{ru:"Готов, но нужен чёткий план",ua:"Готовий, але потрібен чіткий план",en:"Yes, but I need a clear plan"}, {}] ]}
 ];
 
 /* ==================== СОСТОЯНИЕ ==================== */
@@ -226,20 +336,48 @@ let answers = new Array(Q.length).fill(null);
 let bio = {};
 let R = null;
 let mealIdx = { B:0, L:0, S:0, D:0 };
-let monthIdx = 0; // 0 = месяц 1-2, 1 = 3-4, 2 = 5-6
+let monthIdx = 0;
 
 const $ = id => document.getElementById(id);
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const val = (q, i) => q.vals ? q.vals[i] : i;
 
+/* ==================== ЯЗЫК ==================== */
+function setLang(l) {
+  LANG = l;
+  applyI18n();
+}
+
+function applyI18n() {
+  const d = T[LANG];
+  document.documentElement.lang = LANG === "ua" ? "uk" : LANG;
+  document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = d[el.dataset.i18n]; });
+  document.querySelectorAll("[data-i18n-html]").forEach(el => { el.innerHTML = d[el.dataset.i18nHtml]; });
+  document.querySelectorAll("[data-list]").forEach(ul => {
+    ul.innerHTML = d[ul.dataset.list].map(x => `<li class="flex gap-2"><span class="text-emerald-400">✓</span><span>${x}</span></li>`).join("");
+  });
+  $("buyBtn").textContent = d.buy.replace("{p}", CONFIG.PRICE);
+  $("buyBtn").href = CONFIG.PAY_URL;
+  $("finalBuy").textContent = d.finalBuy.replace("{p}", CONFIG.PRICE);
+  $("finalBuy").href = CONFIG.PAY_URL;
+  $("qStepWord").textContent = d.qStep;
+  $("qOfWord").textContent = d.qOf;
+  ["ru","ua","en"].forEach(l => {
+    $("lang-" + l).className = "px-2.5 py-1 rounded-lg transition " +
+      (l === LANG ? "bg-emerald-500 text-black" : "text-gray-400 hover:text-white");
+  });
+  if (!$("quizScreen").classList.contains("hidden")) renderQ();
+}
+
+/* ==================== ЭКРАНЫ ==================== */
 function show(id) {
   ["introScreen","quizScreen","loadingScreen","resultScreen"].forEach(s => $(s).classList.toggle("hidden", s !== id));
   $("topNav").classList.toggle("hidden", id !== "resultScreen");
+  $("langSwitch").classList.toggle("hidden", id === "resultScreen");
   window.scrollTo({ top:0, behavior:"smooth" });
 }
 
 function startQuiz() {
-  $("totSteps").innerText = Q.length;
   idx = 0;
   answers.fill(null);
   bio = {};
@@ -247,16 +385,20 @@ function startQuiz() {
   renderQ();
 }
 
+/* ==================== ВОПРОСЫ ==================== */
 function renderQ() {
   const q = Q[idx];
+  const d = T[LANG];
   $("curStep").innerText = idx + 1;
+  $("totSteps").innerText = Q.length;
   const pct = Math.round(((idx + 1) / Q.length) * 100);
   $("progBar").style.width = pct + "%";
   $("pctLabel").innerText = pct + "%";
-  $("qCat").innerText = q.c;
-  $("qTitle").innerText = q.t;
+  $("qCat").innerText = tx(q.c);
+  $("qTitle").innerText = tx(q.t);
   $("qErr").classList.add("hidden");
   $("prevBtn").disabled = idx === 0;
+  $("prevBtn").querySelector("span").innerText = d.back;
 
   const box = $("qOpts");
   box.innerHTML = "";
@@ -265,7 +407,7 @@ function renderQ() {
     const saved = answers[idx] !== null ? answers[idx] : "";
     box.innerHTML = `
       <input id="numIn" type="number" value="${saved}" placeholder="${q.ph}" class="w-full bg-gray-900 border border-white/10 rounded-2xl px-5 py-4 text-white text-lg focus:outline-none focus:border-emerald-500">
-      <button onclick="submitNum()" class="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold rounded-2xl">Далее</button>`;
+      <button onclick="submitNum()" class="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold rounded-2xl">${d.next}</button>`;
     setTimeout(() => {
       const el = $("numIn");
       if (el) { el.focus(); el.onkeydown = e => { if (e.key === "Enter") submitNum(); }; }
@@ -276,7 +418,7 @@ function renderQ() {
       const b = document.createElement("button");
       b.className = "w-full text-left p-4 rounded-2xl border flex justify-between items-center transition " +
         (sel ? "bg-emerald-500/10 border-emerald-500 text-emerald-300 font-bold" : "bg-gray-900/60 border-white/10 hover:border-gray-500");
-      b.innerHTML = `<span class="text-sm">${o[0]}</span><span>${sel ? "●" : "○"}</span>`;
+      b.innerHTML = `<span class="text-sm">${tx(o[0])}</span><span>${sel ? "●" : "○"}</span>`;
       b.onclick = () => selectOpt(i);
       box.appendChild(b);
     });
@@ -287,7 +429,7 @@ function submitNum() {
   const q = Q[idx];
   const v = parseFloat($("numIn").value);
   if (isNaN(v) || v < q.min || v > q.max) {
-    $("qErr").innerText = `Введите значение от ${q.min} до ${q.max}.`;
+    $("qErr").innerText = T[LANG].numErr(q.min, q.max);
     $("qErr").classList.remove("hidden");
     return;
   }
@@ -315,7 +457,9 @@ function prevQ() {
 
 function finishQuiz() {
   show("loadingScreen");
-  const steps = ["Считаем норму калорий и БЖУ…", "Оцениваем уровень подготовки…", "Подбираем программу тренировок…", "Собираем план питания и добавок…", "Формируем отчёт…"];
+  $("loadTitle") && 0;
+  document.querySelector("#loadingScreen h3").innerText = T[LANG].loadTitle;
+  const steps = T[LANG].loadSteps;
   let i = 0;
   const t = setInterval(() => {
     $("loadStatus").innerText = steps[i];
@@ -342,20 +486,17 @@ function buildResults() {
   const carbs = Math.max(0, Math.round((kcal - protein * 4 - fats * 9) / 4));
   const bmi = w / Math.pow(h / 100, 2);
 
-  // Силовые показатели относительно веса
   const benchR = bio.benchW / w;
   const squatR = bio.squatW / w;
   const lvlBench = benchR < 0.6 ? 0 : benchR < 1.0 ? 1 : 2;
   const lvlSquat = squatR < 0.8 ? 0 : squatR < 1.5 ? 1 : 2;
   const lvlPull  = bio.pullups < 5 ? 0 : bio.pullups < 12 ? 1 : 2;
 
-  // Общий уровень подготовки (0–100)
   let readiness = 20 + bio.exp * 15 + Math.min(benchR, 1.2) * 25 + Math.min(squatR, 1.6) * 20
                 + Math.min(bio.pullups, 12) / 12 * 10 + bio.sleep * 5 - bio.stress * 5;
   readiness = Math.round(clamp(readiness, 0, 100));
   const level = readiness < 40 ? 0 : readiness < 70 ? 1 : 2;
 
-  // Тип телосложения
   const tot = { ecto:0, meso:0, endo:0 };
   answers.forEach((a2, qi) => {
     const q = Q[qi];
@@ -370,7 +511,6 @@ function buildResults() {
   const bodyType = pct.ecto >= pct.meso && pct.ecto >= pct.endo ? "Эктоморф" :
                    pct.meso >= pct.endo ? "Мезоморф" : "Эндоморф";
 
-  // Риски
   const flags = [];
   if (bio.sleep === 0) flags.push("Сон меньше 6 часов. Восстановление будет слабым, рост массы замедлится. Старайтесь спать 7–9 часов.");
   if (bio.stress === 2) flags.push("Высокий стресс мешает восстановлению и аппетиту. Заложите дни отдыха и не добавляйте объём без необходимости.");
@@ -379,7 +519,6 @@ function buildResults() {
   if (bio.flex === 0) flags.push("Подвижность ограничена. Добавьте 5–10 минут мобилити перед тренировкой и не опускайтесь в приседе глубже, чем позволяет техника.");
   if (bio.cardio === 0) flags.push("Кардио не любите: достаточно ходьбы 8–10 тысяч шагов в день, это поддерживает здоровье и расход энергии.");
 
-  // Приоритеты
   const priorities = [];
   if (lvlBench === 0) priorities.push("Жим лёжа ниже нормы: больше внимания грудным и трицепсу, добавлены подходы в жиме.");
   if (lvlSquat === 0) priorities.push("Приседания ниже нормы: укрепляйте ноги, начинайте с техники и уменьшенного веса.");
@@ -394,11 +533,11 @@ function buildResults() {
     benchR, squatR, lvlBench, lvlSquat, lvlPull,
     readiness, level, bodyType, pct, flags, priorities,
     days: bio.days, loc: bio.loc, injury: bio.injury, budget: bio.budget,
-    lactose: bio.lactose, weight: w, fish: bio.fish
+    lactose: bio.lactose, weight: w, fish: bio.fish, supp: bio.supp, exp: bio.exp
   };
 }
 
-/* ==================== РЕНДЕР ВСЕГО ==================== */
+/* ==================== РЕНДЕР ==================== */
 const LVL = ["Начинающий", "Средний", "Продвинутый"];
 const LVL_COLOR = ["text-amber-400", "text-blue-400", "text-emerald-400"];
 
@@ -410,7 +549,7 @@ function renderAll() {
   renderReviews();
 }
 
-/* ---------- 1. ОТЧЁТ ---------- */
+/* ---------- ОТЧЁТ ---------- */
 function renderReport() {
   const r = R;
   const gainTxt = [
@@ -419,8 +558,8 @@ function renderReport() {
     "0,1–0,25 кг чистой массы в месяц. За 6 месяцев это примерно 0,5–1,5 кг, прирост идёт медленнее."
   ][r.level];
   const lvlTable = [
-    ["Жим лёжа", (bio.benchW).toFixed(0) + " кг", r.benchR.toFixed(2) + " × вес", r.lvlBench],
-    ["Приседания", (bio.squatW).toFixed(0) + " кг", r.squatR.toFixed(2) + " × вес", r.lvlSquat],
+    ["Жим лёжа", bio.benchW.toFixed(0) + " кг", r.benchR.toFixed(2) + " × вес", r.lvlBench],
+    ["Приседания", bio.squatW.toFixed(0) + " кг", r.squatR.toFixed(2) + " × вес", r.lvlSquat],
     ["Подтягивания", bio.pullups + " раз", "—", r.lvlPull]
   ];
   $("sec-report").innerHTML = `
@@ -496,9 +635,7 @@ function renderReport() {
     </div>`;
 }
 
-/* ---------- 2. ТРЕНИРОВКИ ---------- */
-// Упражнения: n — название, m — группа, eq — "g" (нужен зал), "a" (любой вариант), base/k — расчёт веса от показателя,
-// t — тип (bodyweight/time), alt — замена, если нет зала, how — как выполнять, mist — частая ошибка
+/* ---------- ТРЕНИРОВКИ ---------- */
 const EX = {
   squat:   { n:"Приседания со штангой", m:"Ноги, ягодицы", eq:"g", base:"squat", k:1, alt:"goblet",
              how:"Гриф на верхней части трапеций, ноги на ширине плеч, носки чуть наружу. Отведите таз назад и вниз до параллели бедра с полом, затем встаньте, толкая пол ногами.",
@@ -601,7 +738,6 @@ const EX = {
              mist:"Движение идёт из пресса, а не из шеи." }
 };
 
-// Шаблоны дней: [ключ упражнения, тип (h — базовое, i — изоляция), подходы]
 const TEMPLATES = {
   2: [
     { name:"День A: всё тело", rows:[["squat","h",3],["bench","h",3],["row","h",3],["ohp","h",3],["curl","i",3],["pushdown","i",3],["calf","i",3],["plank","i",3]] },
@@ -627,7 +763,6 @@ const TEMPLATES = {
   ]
 };
 
-// Замены при травмах: нагрузку на поясницу и колени уменьшаем
 const SAFE_SWAP = { squat:"legpress", rdl:"legcurl", ohp:"dbpress" };
 
 const PHASE = [
@@ -731,7 +866,7 @@ function renderTraining() {
         <ul class="list-disc list-inside space-y-1">
           <li>Если все подходы выполнены в верхней границе повторений с хорошей техникой, добавьте 2,5 кг в следующей тренировке.</li>
           <li>Если повторов меньше нижней границы, оставьте вес тот же и делайте тренировку ещё раз.</li>
-          <li>Пауза между подходами: отдых указан в карточке упражнения. Сокращать отдых в базовых упражнениях не нужно.</li>
+          <li>Отдых между подходами указан в карточке упражнения. В базовых упражнениях его не сокращайте.</li>
           <li>Разминочные подходы не считаются рабочими. Делайте их с весом, где легко.</li>
           <li>Если появилась боль в суставе (не мышечная усталость), остановитесь и замените упражнение.</li>
         </ul>
@@ -744,8 +879,7 @@ function setMonth(i) {
   renderTraining();
 }
 
-/* ---------- 3. ПИТАНИЕ ---------- */
-// ING — значения на 100 г, ориентировочные
+/* ---------- ПИТАНИЕ ---------- */
 const ING = {
   oats:    { n:"Овсяные хлопья (сухие)", k:375, p:13,  f:6.5, c:64 },
   eggs:    { n:"Яйца (без скорлупы)",   k:155, p:13,  f:11,  c:1.1 },
@@ -771,7 +905,6 @@ const ING = {
   olive:   { n:"Оливковое масло",       k:884, p:0,   f:100, c:0 }
 };
 
-// Блюда: t — приём пищи (B завтрак, L обед, S перекус, D ужин), dairy — молочное, adv — дороже
 const DISHES = [
   { id:"B1", t:"B", n:"Овсянка с яйцами и бананом", dairy:true, adv:false,
     items:[["oats",80],["eggs",150],["banana",100],["milk",200]],
@@ -914,7 +1047,7 @@ function cycleMeal(t) {
   renderFood();
 }
 
-/* ---------- 4. ДОБАВКИ ---------- */
+/* ---------- ДОБАВКИ ---------- */
 function renderSupp() {
   const r = R;
   const gap = Math.max(0, r.protein - Math.round(r.weight * 1.4));
@@ -1033,7 +1166,7 @@ function renderSupp() {
     </div>`;
 }
 
-/* ---------- 5. ОТЗЫВЫ ---------- */
+/* ---------- ОТЗЫВЫ ---------- */
 function renderReviews() {
   const list = REVIEWS.length
     ? REVIEWS.map(r => `
@@ -1070,7 +1203,7 @@ function submitRev() {
   if (!$("revConsent").checked) { alert("Нужно согласие на публикацию."); return; }
   const subject = encodeURIComponent("Отзыв о программе SOMATO-MASS");
   const body = encodeURIComponent(`Имя: ${name}\n\nОтзыв:\n${text}\n\nСогласие на публикацию: да`);
-  window.location.href = `mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
+  window.location.href = `mailto:${CONFIG.SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
   closeRev();
 }
 
@@ -1094,6 +1227,9 @@ function restartQuiz() {
   monthIdx = 0;
   show("introScreen");
 }
+
+/* ==================== СТАРТ ==================== */
+applyI18n();
 </script>
 </body>
 </html>
