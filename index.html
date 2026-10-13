@@ -93,7 +93,7 @@
       </h2>
 
       <p id="introDesc" class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-        Пройди точный тест из **30 адекватных вопросов по существу** (без глупых вопросов про анатомию). Система автоматически рассчитает твои рабочие веса исходя из твоей силы прямо сейчас, распишет помесячную прогрессию на полгода, меню с КБЖУ и замены продуктов.
+        Пройди точный тест из **30 адекватных вопросов по существу** (никаких глупых вопросов про анатомию). Система автоматически рассчитает твои рабочие веса исходя из твоей силы прямо сейчас, распишет помесячную прогрессию на полгода, меню с КБЖУ и замены продуктов.
       </p>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto pt-2 text-left">
@@ -214,7 +214,7 @@
           <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 border-b border-brandBorder/50 pb-4">
             <div>
               <div id="domTypeLabel" class="text-xs text-gray-400 font-semibold uppercase">Ваш соматотип и силовой уровень:</div>
-              <div id="primaryTypeTitle" class="text-2xl md:text-3xl font-black text-emerald-400">ЭКТОМОРФ</div>
+              <div id="primaryTypeTitle" class="text-2xl md:text-3xl font-black text-emerald-400">ПРОТОКОЛ ЧИСТОЙ ГИПЕРТРОФИИ</div>
             </div>
             <div id="userMetricsBadge" class="self-start md:self-auto px-4 py-2 rounded-xl bg-gray-900 text-xs font-bold border border-brandBorder text-gray-300">
               Возраст: <span id="resAge" class="text-white">--</span> | Вес: <span id="resWeight" class="text-white">--</span> | Рост: <span id="resHeight" class="text-white">--</span>
@@ -226,7 +226,7 @@
             <i class="fa-solid fa-bolt text-emerald-400 text-lg mt-0.5"></i>
             <div>
               <div id="calcStrengthTitle" class="text-sm font-bold text-emerald-300">Автоматический расчет рабочих весов:</div>
-              <p id="calculatedStrengthText" class="text-xs text-gray-300 mt-1">Исходя из ваших ответов, ваш стартовый вес для рук составляет <strong>-- кг</strong> на 10 повторений. Ниже расписано помисячное увеличение рабочих весов.</p>
+              <p id="calculatedStrengthText" class="text-xs text-gray-300 mt-1">Исходя из ваших ответов, ваш стартовый вес для рук составляет <strong>-- кг</strong> на 10 повторений. Ниже расписано помесячное увеличение рабочих весов.</p>
             </div>
           </div>
 
@@ -390,9 +390,8 @@
     <p>© 2026 SOMATO-MASS PRO 6M. Все права защищены. Возврат средств и сертификация.</p>
   </footer>
 
-  <!-- JAVASCRIPT LOGIC (30 QUESTIONS, STRENGTH AUTO-CALC, 6M PERIODIZATION, REVIEWS, MULTILANG) -->
+  <!-- JAVASCRIPT LOGIC -->
   <script>
-    // TRANSLATIONS DICTIONARY (RU, UA, EN)
     const t = {
       ru: {
         pageTitle: "ULTIMATE SOMATO-MASS PRO | 6-Месячный Протокол Трансформации",
@@ -400,7 +399,7 @@
         headerSub: "Хардкорный протокол набора массы с гарантией",
         badgeTop: "🛡️ Гарантия возврата денег, если курс не даст результат + Сертификат по окончании!",
         introHeadline: "Трансформация тела за <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-500'>6 месяцев</span>. Тебя будет не узнать.",
-        introDesc: "Пройди точный тест из 30 адекватных вопросов по существу (без глупых вопросов про анатомию). Система автоматически рассчитает твои рабочие веса исходя из твоей силы прямо сейчас, распишет помесячную прогрессию на полгода, меню с КБЖУ и замены продуктов.",
+        introDesc: "Пройди точный тест из 30 адекватных вопросов по существу. Система автоматически рассчитает твои рабочие веса исходя из твоей силы прямо сейчас, распишет помесячную прогрессию на полгода, меню с КБЖУ и замены продуктов.",
         feat1: "Только по существу",
         feat2: "Помесячная прогрессия весов",
         feat3: "С системой замен еды",
@@ -435,7 +434,7 @@
         headerSub: "Хардкорний протокол набору маси з гарантією",
         badgeTop: "🛡️ Гарантія повернення грошей, якщо курс не дасть результат + Сертифікат після закінчення!",
         introHeadline: "Трансформація тіла за <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-500'>6 місяців</span>. Тебе буде не впізнати.",
-        introDesc: "Пройди точний тест із 30 адекватних запитань по суті (без дурних запитань про анатомію). Система автоматично розрахує твої робочі ваги виходячи з твоєї сили прямо зараз, розпише помісячну прогресію на пів року, меню з КБЖВ та заміни продуктів.",
+        introDesc: "Пройди точний тест із 30 адекватних запитань по суті. Система автоматично розрахує твої робочі ваги виходячи з твоєї сили прямо зараз, розпише помісячну прогресію на пів року, меню з КБЖВ та заміни продуктів.",
         feat1: "Тільки по суті",
         feat2: "Помісячна прогресія ваги",
         feat3: "З системою замін їжі",
@@ -470,7 +469,7 @@
         headerSub: "Hardcore Mass Protocol with Guarantee",
         badgeTop: "🛡️ Money-back guarantee if the course doesn't work + Certificate upon completion!",
         introHeadline: "Body transformation in <span class='bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-500'>6 months</span>. You won't recognize yourself.",
-        introDesc: "Take an exact 30-question test on the point (no silly anatomy questions). The system automatically calculates working weights based on your current strength, sets up monthly progression for half a year, and provides KBJU meal options with substitutes.",
+        introDesc: "Take an exact 30-question test on the point. The system automatically calculates working weights based on your current strength, sets up monthly progression for half a year, and provides KBJU meal options with substitutes.",
         feat1: "Straight to the point",
         feat2: "Monthly weight progression",
         feat3: "With food substitution system",
@@ -545,12 +544,10 @@
       document.getElementById('restartBtnText').innerHTML = `<i class="fa-solid fa-rotate-right mr-2"></i> ${d.restartBtnText}`;
     }
 
-    // EXACT 30 SMART QUESTIONS (NO NONSENSE)
     const questions = [
       { category: "Биометрия", title: "1. Ваш текущий возраст (лет):", type: "input", key: "age", placeholder: "Например: 22" },
       { category: "Биометрия", title: "2. Ваш точный рост (см):", type: "input", key: "height", placeholder: "Например: 178" },
       { category: "Биометрия", title: "3. Ваш текущий вес (кг):", type: "input", key: "weight", placeholder: "Например: 67" },
-      // Strength Benchmark
       { 
         category: "Силовые показатели", 
         title: "4. Какой максимальный вес гантелей вы можете поднять на бицепс (на руки) на 8-10 повторений прямо сейчас?", 
@@ -588,7 +585,6 @@
           { text: "5 дней в неделю", days: 5 }
         ]
       },
-      // Metabolism & Physique
       { category: "Телосложение", title: "8. Как ваш организм набирает вес при избытке еды?", options: [
         { text: "Вообще не набираю, вес стоит на месте (худой тип)" },
         { text: "Растет плотность и мышцы при хороших тренировках" },
@@ -629,7 +625,6 @@
         { text: "Построить рельефное атлетичное тело" },
         { text: "Максимально развить силу и плотность" }
       ]},
-      // Nutrition & Diet
       { category: "Питание", title: "16. Сколько приемов пищи вы можете делать в день?", options: [
         { text: "2-3 раза (мало времени)" },
         { text: "4-5 раз (комфортный режим)" },
@@ -697,30 +692,18 @@
       ]},
       { category: "Питание", title: "29. Готовы ли вы соблюдать режим витаминов?", options: [
         { text: "Да, готов пить базовые витамины по инструкции" },
-        : "Только если это критично важно", options: []
+        { text: "Буду принимать по графику" }
       ]},
       { category: "Питание", title: "30. Готовы ли вы пахать в зале ради трансформации за 6 месяцев?", options: [
-        { text: "Да! Я хочу результат и готов вкалывать!" }
+        { text: "Да! Я хочу результат и готов вкалывать на 100%!" }
       ]}
     ];
 
-    // Remove empty options array in last question gracefully if any
-    questions[28].options = [
-      { text: "Да, готов пить базовые витамины по инструкции" },
-      { text: "Буду принимать по графику" }
-    ];
-    questions[29].options = [
-      { text: "Да! Я хочу результат и готов вкалывать на 100%!" },
-      { text: "Настроен максимально серьезно" }
-    ];
-
-    // STATE
     let currentIdx = 0;
     let userAnswers = new Array(questions.length).fill(null);
     let userBiometrics = { age: 22, height: 178, weight: 67, days: 4, strengthArm: 12, strengthBench: 55 };
     let activeMonthTab = 1;
 
-    // DOM ELEMENTS
     const introScreen = document.getElementById('introScreen');
     const quizScreen = document.getElementById('quizScreen');
     const loadingScreen = document.getElementById('loadingScreen');
@@ -900,7 +883,6 @@
       renderVitamins();
     }
 
-    // MONTHLY PERIODIZATION & WEIGHTS ENGINE
     function switchMonth(monthNum) {
       activeMonthTab = monthNum;
       document.getElementById('mTab1').className = monthNum === 1 ? "px-3 py-1.5 rounded-lg bg-emerald-500 text-black font-bold transition cursor-pointer" : "px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition cursor-pointer";
@@ -960,7 +942,6 @@
       `;
     }
 
-    // EXTENSIVE MENU WITH KBJU AND SUBSTITUTIONS
     function renderMeals() {
       const container = document.getElementById('mealPlanList');
       container.innerHTML = `
@@ -1002,7 +983,6 @@
       `;
     }
 
-    // VITAMINS & SUPPLEMENTS GUIDE
     function renderVitamins() {
       const container = document.getElementById('supplementsGuideList');
       container.innerHTML = `
@@ -1044,7 +1024,6 @@
       `;
     }
 
-    // SUBMIT REVIEW
     function submitReview() {
       const name = document.getElementById('reviewName').value.trim();
       const rating = document.getElementById('reviewRating').value;
@@ -1072,7 +1051,6 @@
       alert('Спасибо! Ваш отзыв успешно добавлен.');
     }
 
-    // DOWNLOAD PDF & SHARE
     function downloadPDF() {
       const element = document.getElementById('pdfArea');
       const opt = {
