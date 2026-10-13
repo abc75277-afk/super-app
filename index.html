@@ -1,196 +1,858 @@
-<!DOCTYPE html>
-<html lang="ru" class="dark">
+<!DOCTYPE1 html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Клуб Побега | Жизнь вне матрицы</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        darkBg: '#020408',
-                        cardBg: '#070b14',
-                        cardBorder: '#131c31',
-                        accent: '#6366f1',
-                        accentHover: '#4f46e5',
-                        emeraldGlow: '#10b981'
-                    }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOMATO-BUILDER Pro | ИИ-Анализ Соматотипа и Массонабора</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- HTML2PDF Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#0A0C10',
+            brandCard: '#131722',
+            brandBorder: '#2A3042',
+            brandNeon: '#10B981', // Emerald glow
+            brandAccent: '#3B82F6', // Cyber blue
+            brandFire: '#F59E0B'
+          }
         }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .glass-panel { background: linear-gradient(135deg, rgba(7, 11, 20, 0.95) 0%, rgba(2, 4, 8, 0.99) 100%); backdrop-filter: blur(40px); }
-        .glow-effect { box-shadow: 0 0 100px -20px rgba(99, 102, 241, 0.2); }
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #020408; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1f293d; border-radius: 3px; }
-    </style>
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #0A0C10;
+      color: #F3F4F6;
+    }
+    .glass-panel {
+      background: rgba(19, 23, 34, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glow-neon {
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+    }
+    .glow-accent {
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.25);
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0A0C10;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2A3042;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #10B981;
+    }
+  </style>
 </head>
-<body class="bg-darkBg text-slate-100 min-h-screen selection:bg-accent selection:text-white pb-32">
+<body class="min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-black">
 
-    <!-- НАВИГАЦИЯ -->
-    <header class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center border-b border-slate-800/60">
-        <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-accent font-bold text-lg">⚡</div>
-            <div>
-                <span class="font-black text-xl tracking-tight text-white">КЛУБ ПОБЕГА</span>
-                <span class="block text-[10px] text-slate-400 tracking-widest uppercase font-bold">Закрытое комьюнити // 2026</span>
-            </div>
+  <!-- Header -->
+  <header class="border-b border-brandBorder/50 sticky top-0 z-50 glass-panel">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-blue-600 flex items-center justify-center font-black text-xl text-black shadow-lg shadow-emerald-500/20">
+          ⚡
         </div>
-        <div class="flex items-center space-x-4">
-            <span class="px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-                🟢 Места открыты
-            </span>
+        <div>
+          <h1 class="font-bold text-lg leading-tight tracking-wide">SOMATO<span class="text-emerald-400">BUILDER</span></h1>
+          <p class="text-xs text-gray-400">TikTok Mass Protocol v4.2</p>
         </div>
-    </header>
+      </div>
+      <div class="flex items-center gap-2 text-xs font-semibold">
+        <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> ИИ Подборка
+        </span>
+      </div>
+    </div>
+  </header>
 
-    <!-- ОСНОВНОЙ КОНТЕЙНЕР -->
-    <main class="max-w-4xl mx-auto px-6 pt-16 space-y-16">
-        
-        <!-- HERO СЕКЦИЯ -->
-        <div id="heroSection" class="glass-panel border border-cardBorder rounded-3xl p-8 sm:p-16 relative overflow-hidden glow-effect text-center space-y-8">
-            <div class="absolute -right-32 -top-32 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
+  <!-- Main Container -->
+  <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-grow">
 
-            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-extrabold tracking-wider uppercase">
-                <span>🔥</span>
-                <span>Для тех, кому надоело жить по шаблону</span>
-            </div>
+    <!-- INTRO SCREEN -->
+    <div id="introScreen" class="text-center space-y-6 py-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs font-semibold">
+        🔥 Специально для тех, кто не может набрать массу
+      </div>
+      
+      <h2 class="text-3xl md:text-5xl font-black tracking-tight leading-tight">
+        Узнай свой <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-500">генетический тип</span> и составь персональный план массонабора
+      </h2>
 
-            <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-[1.08] text-white">
-                Хватит откладывать жизнь<br>
-                <span class="bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">на потом.</span>
-            </h1>
+      <p class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+        Пройди глубокий тест из **25 вопросов**. Наш алгоритм рассчитает пропорцию Эктоморфа, Мезоморфа и Эндоморфа, подберет профицит калорий и создаст идеальную программу тренировок.
+      </p>
 
-            <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal">
-                Закрытое комьюнити и честная база знаний для тех, кто хочет вырваться из офисной рутины, научиться зарабатывать удаленно и путешествовать без привязки к месту.
-            </p>
-
-            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button onclick="openCheckout()" class="w-full sm:w-auto px-10 py-5 rounded-2xl bg-gradient-to-r from-accent to-indigo-600 hover:from-accentHover hover:to-indigo-500 text-white font-extrabold text-base shadow-xl shadow-accent/30 transition transform hover:-translate-y-0.5">
-                    Вступить в Клуб (1,490 ₽ / навсегда) 🚀
-                </button>
-                <button onclick="simulateDashboard()" class="w-full sm:w-auto px-8 py-5 rounded-2xl bg-cardBg border border-cardBorder hover:border-accent text-slate-300 font-bold text-base transition">
-                    🧪 Посмотреть кабинет изнутри
-                </button>
-            </div>
-            
-            <p class="text-xs text-slate-500">Мгновенный доступ в закрытый телеграм-канал и базу знаний после оплаты.</p>
+      <div class="grid grid-cols-3 gap-3 max-w-lg mx-auto pt-2 text-left">
+        <div class="glass-panel p-3 rounded-xl border-emerald-500/20">
+          <div class="text-emerald-400 font-bold text-lg">⚡ 25</div>
+          <div class="text-xs text-gray-400">Вопросов анализа</div>
         </div>
-
-        <!-- ЧТО ВНУТРИ -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="glass-panel border border-cardBorder rounded-3xl p-8 space-y-4">
-                <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-accent text-xl font-bold">01</div>
-                <h3 class="text-xl font-bold text-white">Закрытый Телеграм-чат</h3>
-                <p class="text-sm text-slate-400 leading-relaxed">Живое общение с единомышленниками, которые тоже строят свою независимость, делятся опытом и поддерживают друг друга.</p>
-            </div>
-
-            <div class="glass-panel border border-cardBorder rounded-3xl p-8 space-y-4">
-                <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-accent text-xl font-bold">02</div>
-                <h3 class="text-xl font-bold text-white">Прямая связь со мной</h3>
-                <p class="text-sm text-slate-400 leading-relaxed">Никаких кураторов и ботов. Личные разборы, честные ответы на вопросы и вся изнанка создания контента без цензуры.</p>
-            </div>
-
-            <div class="glass-panel border border-cardBorder rounded-3xl p-8 space-y-4">
-                <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-accent text-xl font-bold">03</div>
-                <h3 class="text-xl font-bold text-white">База знаний и гайды</h3>
-                <p class="text-sm text-slate-400 leading-relaxed">Готовые инструкции по дешевым перелетам, удаленной работе, старту в соцсетях и организации жизни за границей.</p>
-            </div>
+        <div class="glass-panel p-3 rounded-xl border-blue-500/20">
+          <div class="text-blue-400 font-bold text-lg">🎯 100%</div>
+          <div class="text-xs text-gray-400">Персонализация</div>
         </div>
-
-        <!-- ДАШБОРД УЧАСТНИКА (ПРЕМИУМ-ПРЕВЬЮ) -->
-        <div id="memberDashboard" class="glass-panel border-2 border-indigo-500/40 rounded-3xl p-8 sm:p-12 hidden space-y-8 shadow-2xl">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
-                <div class="flex items-center space-x-3">
-                    <span class="h-3 w-3 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="text-xs uppercase tracking-widest text-emerald-400 font-extrabold">Кабинет участника // Тестовый режим</span>
-                </div>
-                <button onclick="closeDashboard()" class="text-xs text-slate-400 hover:text-white underline">← На главную</button>
-            </div>
-
-            <div class="space-y-6">
-                <div>
-                    <h2 class="text-3xl font-black text-white">Добро пожаловать в Клуб!</h2>
-                    <p class="text-sm text-slate-400 mt-1">Так выглядит личный кабинет участника изнутри. Вот что ждет тебя после входа:</p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="bg-darkBg border border-cardBorder rounded-2xl p-6 space-y-3">
-                        <div class="text-xs text-indigo-400 uppercase tracking-wider font-bold">📁 Свежий материал</div>
-                        <h4 class="text-lg font-bold text-white">Как стартовать в TikTok и Reels с нуля в 2026 году</h4>
-                        <p class="text-xs text-slate-400">Пошаговый разбор алгоритмов, поиск цепляющих тем и съемка на телефон без дорогого оборудования.</p>
-                        <button class="px-4 py-2 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-bold hover:bg-indigo-500/20 transition">Смотреть материал ↗</button>
-                    </div>
-
-                    <div class="bg-darkBg border border-cardBorder rounded-2xl p-6 space-y-3">
-                        <div class="text-xs text-indigo-400 uppercase tracking-wider font-bold">💬 Закрытое комьюнити</div>
-                        <h4 class="text-lg font-bold text-white">Доступ в секретный Телеграм-канал</h4>
-                        <p class="text-xs text-slate-400">Прямая ссылка на чат резидентов, еженедельные голосовые стримы и живое общение.</p>
-                        <button class="px-4 py-2 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-bold hover:bg-indigo-500/20 transition">Войти в чат ↗</button>
-                    </div>
-                </div>
-
-                <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-medium">
-                    ✨ ТЕСТОВЫЙ РЕЖИМ: В реальной работе этот экран доступен только тем, кто прошел оплату.
-                </div>
-            </div>
+        <div class="glass-panel p-3 rounded-xl border-amber-500/20">
+          <div class="text-amber-400 font-bold text-lg">📊 КБЖУ</div>
+          <div class="text-xs text-gray-400">Точный расчёт</div>
         </div>
+      </div>
 
-    </main>
-
-    <!-- МОДАЛЬНОЕ ОКНО ОПЛАТЫ -->
-    <div id="checkoutModal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 z-50">
-        <div class="glass-panel border border-indigo-500/40 rounded-3xl max-w-md w-full p-8 relative shadow-2xl space-y-6">
-            <button onclick="closeCheckout()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
-            <div class="text-center space-y-2">
-                <div class="text-xs uppercase tracking-widest text-indigo-400 font-bold">Регистрация в Клубе</div>
-                <h3 class="text-2xl font-black text-white">Получить доступ</h3>
-                <p class="text-sm text-slate-400">Единоразовый платеж • 1,490 ₽</p>
-            </div>
-
-            <div class="space-y-4 pt-2">
-                <button onclick="redirectToPayment()" class="w-full py-4 rounded-xl bg-gradient-to-r from-accent to-indigo-600 hover:from-accentHover hover:to-indigo-500 text-white font-extrabold text-base transition shadow-lg shadow-accent/30">
-                    Перейти к оплате ⚡️
-                </button>
-                <div class="text-center">
-                    <span class="text-[11px] text-slate-500">🔒 Безопасная оплата картой или криптовалютой.</span>
-                </div>
-            </div>
-        </div>
+      <div class="pt-4">
+        <button onclick="startQuiz()" class="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-black font-black text-lg rounded-2xl shadow-lg shadow-emerald-500/25 transform transition active:scale-95 flex items-center gap-3 mx-auto">
+          <span>НАЧАТЬ ТЕСТ (25 ВОПРОСОВ)</span>
+          <i class="fa-solid font-black fa-arrow-right"></i>
+        </button>
+      </div>
     </div>
 
-    <!-- СКРИПТЫ -->
-    <script>
-        function openCheckout() {
-            document.getElementById('checkoutModal').classList.remove('hidden');
-            document.getElementById('checkoutModal').classList.add('flex');
-        }
+    <!-- QUIZ CONTAINER (Hidden by default) -->
+    <div id="quizScreen" class="hidden space-y-6">
+      
+      <!-- Progress Bar -->
+      <div class="glass-panel p-4 rounded-2xl border-brandBorder">
+        <div class="flex justify-between items-center text-xs font-bold text-gray-400 mb-2">
+          <span>Вопрос <span id="currentStep">1</span> из 25</span>
+          <span id="progressPercent" class="text-emerald-400">4%</span>
+        </div>
+        <div class="w-full bg-gray-800 h-2.5 rounded-full overflow-hidden">
+          <div id="progressBar" class="bg-gradient-to-r from-emerald-500 to-blue-500 h-full w-[4%] transition-all duration-300"></div>
+        </div>
+      </div>
 
-        function closeCheckout() {
-            document.getElementById('checkoutModal').classList.remove('flex');
-            document.getElementById('checkoutModal').classList.add('hidden');
-        }
+      <!-- Question Box -->
+      <div class="glass-panel p-6 md:p-8 rounded-3xl border-brandBorder space-y-6">
+        <div class="flex items-center gap-3">
+          <span id="qCategory" class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            Генетика
+          </span>
+        </div>
 
-        function redirectToPayment() {
-            // Ссылка на твою оплату (можешь заменить на свою платежную ссылку)
-            window.location.href = `https://nowpayments.io/payment?price_amount=19&price_currency=usd`;
-        }
+        <h3 id="qTitle" class="text-xl md:text-2xl font-bold text-white leading-snug">
+          Загрузка вопроса...
+        </h3>
 
-        function simulateDashboard() {
-            document.getElementById('heroSection').classList.add('hidden');
-            document.getElementById('memberDashboard').classList.remove('hidden');
-        }
+        <!-- Options Container -->
+        <div id="qOptions" class="grid grid-cols-1 gap-3 pt-2">
+          <!-- Dynamic Buttons go here -->
+        </div>
+      </div>
 
-        function closeDashboard() {
-            document.getElementById('memberDashboard').classList.add('hidden');
-            document.getElementById('heroSection').classList.remove('hidden');
+      <!-- Navigation -->
+      <div class="flex justify-between items-center">
+        <button id="prevBtn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold text-sm transition disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-2">
+          <i class="fa-solid fa-arrow-left"></i> Назад
+        </button>
+        <span class="text-xs text-gray-500">Выбирайте наиболее точный ответ</span>
+      </div>
+
+    </div>
+
+    <!-- LOADING SCREEN -->
+    <div id="loadingScreen" class="hidden text-center py-16 space-y-6">
+      <div class="relative w-24 h-24 mx-auto flex items-center justify-center">
+        <div class="absolute inset-0 rounded-full border-4 border-emerald-500/20 border-t-emerald-400 animate-spin"></div>
+        <div class="text-3xl">🧬</div>
+      </div>
+
+      <div class="space-y-2">
+        <h3 class="text-2xl font-bold text-white">ИИ анализирует ваши ответы...</h3>
+        <p id="loadingStatusText" class="text-sm text-emerald-400 font-mono">Расчет скорости метаболизма [1/4]</p>
+      </div>
+
+      <div class="max-w-md mx-auto bg-gray-900/80 p-4 rounded-xl border border-brandBorder text-left space-y-2 text-xs font-mono text-gray-400">
+        <div class="flex justify-between"><span>Соматотип:</span><span class="text-emerald-400">Определен</span></div>
+        <div class="flex justify-between"><span>Калорийный профицит:</span><span class="text-emerald-400">Рассчитывается...</span></div>
+        <div class="flex justify-between"><span>Тренировочный объем:</span><span class="text-emerald-400">Оптимизация...</span></div>
+      </div>
+    </div>
+
+    <!-- RESULT SCREEN -->
+    <div id="resultScreen" class="hidden space-y-8">
+      
+      <!-- Top Action Bar -->
+      <div class="flex flex-wrap justify-between items-center gap-4 border-b border-brandBorder/60 pb-4">
+        <div>
+          <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/20">
+            ✅ ПЛАН СФОРМИРОВАН
+          </span>
+          <h2 class="text-2xl md:text-3xl font-black mt-1">Твой Персональный Протокол</h2>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="downloadPDF()" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs rounded-xl flex items-center gap-2 shadow-lg shadow-emerald-500/20 transition">
+            <i class="fa-solid fa-file-pdf"></i> Скачать PDF
+          </button>
+          <button onclick="shareResult()" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl flex items-center gap-2 shadow-lg shadow-blue-500/20 transition">
+            <i class="fa-solid fa-share-nodes"></i> Поделиться
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable Area -->
+      <div id="pdfArea" class="space-y-6">
+
+        <!-- Somatotype Breakdown Card -->
+        <div class="glass-panel p-6 rounded-3xl border-brandBorder space-y-6">
+          <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 border-b border-brandBorder/50 pb-4">
+            <div>
+              <div class="text-xs text-gray-400 font-semibold uppercase">Твой доминирующий соматотип:</div>
+              <div id="primaryTypeTitle" class="text-3xl font-black text-emerald-400">ЭКТОМОРФ</div>
+            </div>
+            <div id="typeBadge" class="self-start md:self-auto px-4 py-1.5 rounded-full bg-gray-800 text-xs font-bold border border-gray-700">
+              Высокая скорость обмена веществ
+            </div>
+          </div>
+
+          <!-- Percentage Bars -->
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span class="text-emerald-400">Эктоморф (Худощавый / Быстрый метаболизм)</span>
+                <span id="ectoPercent">60%</span>
+              </div>
+              <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                <div id="ectoBar" class="bg-emerald-400 h-full w-[60%]"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span class="text-blue-400">Мезоморф (Атлетичный / Набор мышц)</span>
+                <span id="mesoPercent">30%</span>
+              </div>
+              <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                <div id="mesoBar" class="bg-blue-400 h-full w-[30%]"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span class="text-amber-400">Эндоморф (Крупный / Склонность к жиру)</span>
+                <span id="endoPercent">10%</span>
+              </div>
+              <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                <div id="endoBar" class="bg-amber-400 h-full w-[10%]"></div>
+              </div>
+            </div>
+          </div>
+
+          <p id="somatotypeDescription" class="text-sm text-gray-300 leading-relaxed bg-gray-900/50 p-4 rounded-xl border border-brandBorder">
+            Загрузка описания...
+          </p>
+        </div>
+
+        <!-- Target Calories & Macros -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="glass-panel p-5 rounded-2xl border-emerald-500/20 text-center">
+            <div class="text-xs text-gray-400 font-bold uppercase">Целевые Калории</div>
+            <div id="resCalories" class="text-3xl font-black text-emerald-400 my-1">3 100</div>
+            <div class="text-[10px] text-emerald-500/80 font-bold">Профицит +15%</div>
+          </div>
+          <div class="glass-panel p-5 rounded-2xl border-brandBorder text-center">
+            <div class="text-xs text-gray-400 font-bold uppercase">Белки</div>
+            <div id="resProtein" class="text-2xl font-black text-white my-1">160 г</div>
+            <div class="text-[10px] text-gray-400">2.0г / кг веса</div>
+          </div>
+          <div class="glass-panel p-5 rounded-2xl border-brandBorder text-center">
+            <div class="text-xs text-gray-400 font-bold uppercase">Жиры</div>
+            <div id="resFats" class="text-2xl font-black text-white my-1">85 г</div>
+            <div class="text-[10px] text-gray-400">1.1г / кг веса</div>
+          </div>
+          <div class="glass-panel p-5 rounded-2xl border-brandBorder text-center">
+            <div class="text-xs text-gray-400 font-bold uppercase">Углеводы</div>
+            <div id="resCarbs" class="text-2xl font-black text-white my-1">420 г</div>
+            <div class="text-[10px] text-gray-400">Основной источник энергии</div>
+          </div>
+        </div>
+
+        <!-- Workout Plan -->
+        <div class="glass-panel p-6 rounded-3xl border-brandBorder space-y-4">
+          <div class="flex items-center justify-between border-b border-brandBorder/50 pb-3">
+            <h3 class="text-xl font-bold flex items-center gap-2">
+              <i class="fa-solid fa-dumbbell text-emerald-400"></i> Программа Тренировок на Массу
+            </h3>
+            <span id="splitBadge" class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full font-bold">
+              4-дневный сплит
+            </span>
+          </div>
+
+          <div id="workoutProgramList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Dynamic workout cards -->
+          </div>
+        </div>
+
+        <!-- Nutrition & Meal Plan -->
+        <div class="glass-panel p-6 rounded-3xl border-brandBorder space-y-4">
+          <div class="flex items-center justify-between border-b border-brandBorder/50 pb-3">
+            <h3 class="text-xl font-bold flex items-center gap-2">
+              <i class="fa-solid fa-utensils text-blue-400"></i> Рацион Питания на День
+            </h3>
+            <span class="text-xs bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full font-bold">
+              5 Приемов пищи
+            </span>
+          </div>
+
+          <div id="mealPlanList" class="space-y-3">
+            <!-- Dynamic meal list -->
+          </div>
+        </div>
+
+        <!-- Bio-Hacks / Secrets -->
+        <div class="glass-panel p-6 rounded-3xl border-amber-500/20 bg-amber-500/5 space-y-3">
+          <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
+            <i class="fa-solid fa-bolt"></i> Секретные Читы для Вашего Типа:
+          </h3>
+          <ul id="secretTipsList" class="text-sm space-y-2 text-gray-300 list-disc list-inside">
+            <!-- Dynamic Tips -->
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Restart -->
+      <div class="text-center pt-4">
+        <button onclick="restartQuiz()" class="px-6 py-3 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold text-sm transition">
+          <i class="fa-solid fa-rotate-right mr-2"></i> Пройти тест заново
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-brandBorder/50 py-6 text-center text-xs text-gray-500 glass-panel">
+    <p>© 2026 SOMATO-BUILDER Pro. Разработано для вирусирования в TikTok.</p>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // 25 QUESTIONS DATABASE
+    const questions = [
+      {
+        category: "Антропометрия",
+        title: "1. Обхват вашего запястья (обхватите запястье другой рукой пальцами):",
+        options: [
+          { text: "Большой и указательный палец свободно перекрывают друг друга", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Пальцы соприкасаются встык", score: { ecto: 1, meso: 3, endo: 0 } },
+          { text: "Пальцы не соприкасаются, между ними есть зазор", score: { ecto: 0, meso: 1, endo: 3 } }
+        ]
+      },
+      {
+        category: "Антропометрия",
+        title: "2. Строение ваших плеч и грудной клетки:",
+        options: [
+          { text: "Узкие плечи, плоская грудная клетка", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Широкие атлетичные плечи, развитая грудная клетка", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Округлые широкие плечи, массивный торс", score: { ecto: 0, meso: 1, endo: 3 } }
+        ]
+      },
+      {
+        category: "Метаболизм",
+        title: "3. Что происходит, если вы много едите в течение 1-2 недель?",
+        options: [
+          { text: "Вес вообще не меняется или растет максимум на пару сот грамм", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Растет чистая мышечная масса, тело становится плотнее", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Быстро появляется жирок на животе и боках", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Генетика",
+        title: "4. Какая у вас естественная толщина жировой прослойки в спокойном состоянии?",
+        options: [
+          { text: "Минимальная (видна венозность и рельеф костей)", score: { ecto: 3, meso: 1, endo: 0 } },
+          { text: "Умеренная (пресс проглядывает без особых усилий)", score: { ecto: 1, meso: 3, endo: 0 } },
+          { text: "Высокая (склонность к отложению жира внизу живота)", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Метаболизм",
+        title: "5. Как ваш организм реагирует на углеводы (хлеб, каши, сладости)?",
+        options: [
+          { text: "Дают энергию, никакого прибавления жира", score: { ecto: 3, meso: 1, endo: 0 } },
+          { text: "Забивают мышцы гликогеном, давая отличный памп", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Вызывают сонливость и быстро откладываются в жир", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Физиология",
+        title: "6. Форма ваших мышц и суставов:",
+        options: [
+          { text: "Длинные мышцы, тонкие суставы и тонкие кости", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Плотные брюшки мышц, средние крепкие суставы", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Крупные массивные кости и широкие суставы", score: { ecto: 0, meso: 1, endo: 3 } }
+        ]
+      },
+      {
+        category: "Опыт",
+        title: "7. Ваш текущий вес и рост:",
+        options: [
+          { text: "Дефицит массы (рост минус 115 и более)", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Норма / Атлетичное тело (рост минус 100-105)", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Избыточная масса / Плотное телосложение", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Энергетика",
+        title: "8. Ваш уровень повседневной бытовой активности (NEAT):",
+        options: [
+          { text: "Гиперактивный (постоянно двигаюсь, суечусь, не сижу на месте)", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Умеренный (достаточно энергии для тренировок и дел)", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Малоподвижный (люблю спокойный отдых, быстро устаю)", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Питание",
+        title: "9. Ваш аппетит в течение дня:",
+        options: [
+          { text: "Слабый (часто забываю поесть, быстро наедаюсь)", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Стабильный (ем строго по расписанию 3-4 раза)", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Повышенный (постоянно хочется перекусить)", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Тренировки",
+        title: "10. Как реагируют ваши мышцы на силовые нагрузки?",
+        options: [
+          { text: "Очень долго восстанавливаются, часто возникает перетренированность", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Быстро растут веса и объемы от любых базовых упражнений", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Сила растет хорошо, но вместе с мышцами прибавляется жирок", score: { ecto: 0, meso: 1, endo: 3 } }
+        ]
+      },
+      {
+        category: "Физиология",
+        title: "11. Ваша естественная осанка:",
+        options: [
+          { text: "Плечи слегка сведены вперед, сутуловатость", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Прямая, расправленные плечи", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Широкая спина, массивный позвоночный столб", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Метаболизм",
+        title: "12. Что происходит, если вы пропустите 2-3 приема пищи?",
+        options: [
+          { text: "Сразу сдуваюсь и теряю в весе 1-2 кг за день", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Ничего страшного, форма не меняется", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Организм переходит в режим экономии, потом переедаю", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Генетика",
+        title: "13. Какая форма ваших ягодичных мышц и бедер?",
+        options: [
+          { text: "Узкий таз, плоские ягодицы, худые ноги", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Плотные округлые мышцы ног и мощный таз", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Широкие бедра, склонность к накоплению жира внизу", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Восстановление",
+        title: "14. Качество и продолжительность вашего сна:",
+        options: [
+          { text: "Чуткий сон, часто просыпаюсь, сложно уснуть", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Крепкий сон 7-8 часов, встаю бодрым", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Сплю долго, но часто встаю уставшим", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Стресс",
+        title: "15. Как стресс влияет на ваш вес?",
+        options: [
+          { text: "При стрессе мгновенно худею и теряю аппетит", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Стресс почти не сказывается на массе", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Заедаю стресс и быстро набираю лишний вес", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Тренировки",
+        title: "16. Где вы планируете тренироваться?",
+        options: [
+          { text: "В тренажерном зале (полный набор штанг и тренажеров)", score: { ecto: 1, meso: 2, endo: 1 } },
+          { text: "Дома (турник, брусья, гантели)", score: { ecto: 2, meso: 1, endo: 1 } },
+          { text: "Уличная площадка (Street Workout)", score: { ecto: 2, meso: 1, endo: 1 } }
+        ]
+      },
+      {
+        category: "Опыт",
+        title: "17. Ваш стаж силовой подготовки:",
+        options: [
+          { text: "Полный новичок (менее 3 месяцев)", score: { ecto: 2, meso: 1, endo: 1 } },
+          { text: "Любитель (от 6 месяцев до 2 лет)", score: { ecto: 1, meso: 2, endo: 1 } },
+          { text: "Опытный (более 2 лет регулярного кача)", score: { ecto: 0, meso: 3, endo: 0 } }
+        ]
+      },
+      {
+        category: "Питание",
+        title: "18. Сколько раз в день вы реально можете регулярно есть?",
+        options: [
+          { text: "2-3 раза (больше не влезает или нет времени)", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "4-5 раз (комфортный режим)", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "6 и более раз (могу есть постоянно)", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Физиология",
+        title: "19. Венозность на руках и предплечьях:",
+        options: [
+          { text: "Вены хорошо видны всегда, даже без нагрузки", score: { ecto: 3, meso: 1, endo: 0 } },
+          { text: "Вены проявляются во время тренировки и пампа", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Вены скрыты под слоем кожи и жирка", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Здоровье",
+        title: "20. Температура тела и ощущение тепла:",
+        options: [
+          { text: "Часто мерзнут руки и ноги", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Нормальный термоконтроль", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Постоянно жарко, быстро потею", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Выносливость",
+        title: "21. Какой вид нагрузок вам дается проще всего?",
+        options: [
+          { text: "Длительный бег, кардио, бег на выносливость", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Спринт, прыжки, взрывная сила", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Поднятие тяжестей на малое количество повторений", score: { ecto: 0, meso: 1, endo: 3 } }
+        ]
+      },
+      {
+        category: "Анатомия",
+        title: "22. Длина ваших конечностей относительно туловища:",
+        options: [
+          { text: "Длинные руки и ноги по сравнению с торсом", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Пропорциональная длина", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Короткие массивные конечности", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Питание",
+        title: "23. Переваривание молочных продуктов и тяжелой пищи:",
+        options: [
+          { text: "Бывает тяжесть, молочка тяжело усваивается", score: { ecto: 2, meso: 0, endo: 1 } },
+          { text: "Отличный желудок, усваиваю любую еду", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Еда усваивается быстро, но часто хочется еще", score: { ecto: 0, meso: 0, endo: 3 } }
+        ]
+      },
+      {
+        category: "Цель",
+        title: "24. Какая ваша главная приоритетная цель?",
+        options: [
+          { text: "Набрать хотя бы 5-8 кг любого веса (главное не быть худым)", score: { ecto: 3, meso: 0, endo: 0 } },
+          { text: "Набрать 5-10 кг сухих рельефных мышц", score: { ecto: 0, meso: 3, endo: 0 } },
+          { text: "Увеличить силу и пережечь жир в мышцы", score: { ecto: 0, meso: 1, endo: 3 } }
+        ]
+      },
+      {
+        category: "Дисциплина",
+        title: "25. Готовы ли вы строго следовать графику и спать 8 часов?",
+        options: [
+          { text: "Да, готов на 100% ради результата!", score: { ecto: 1, meso: 2, endo: 1 } },
+          { text: "Буду стараться, но возможны сбои", score: { ecto: 1, meso: 1, endo: 1 } },
+          { text: "Мне нужен максимально простой и гибкий план", score: { ecto: 2, meso: 0, endo: 1 } }
+        ]
+      }
+    ];
+
+    // STATE
+    let currentIdx = 0;
+    let userAnswers = new Array(questions.length).fill(null);
+    let userScores = { ecto: 0, meso: 0, endo: 0 };
+
+    // DOM ELEMENTS
+    const introScreen = document.getElementById('introScreen');
+    const quizScreen = document.getElementById('quizScreen');
+    const loadingScreen = document.getElementById('loadingScreen');
+    const resultScreen = document.getElementById('resultScreen');
+
+    const currentStepEl = document.getElementById('currentStep');
+    const progressBar = document.getElementById('progressBar');
+    const progressPercent = document.getElementById('progressPercent');
+    const qCategory = document.getElementById('qCategory');
+    const qTitle = document.getElementById('qTitle');
+    const qOptions = document.getElementById('qOptions');
+    const prevBtn = document.getElementById('prevBtn');
+
+    // START QUIZ
+    function startQuiz() {
+      introScreen.classList.add('hidden');
+      quizScreen.classList.remove('hidden');
+      currentIdx = 0;
+      userAnswers.fill(null);
+      renderQuestion();
+    }
+
+    // RENDER QUESTION
+    function renderQuestion() {
+      const q = questions[currentIdx];
+      currentStepEl.innerText = currentIdx + 1;
+      
+      const percent = Math.round(((currentIdx + 1) / questions.length) * 100);
+      progressBar.style.width = `${percent}%`;
+      progressPercent.innerText = `${percent}%`;
+
+      qCategory.innerText = q.category;
+      qTitle.innerText = q.title;
+
+      prevBtn.disabled = (currentIdx === 0);
+
+      qOptions.innerHTML = '';
+      q.options.forEach((opt, optIndex) => {
+        const isSelected = userAnswers[currentIdx] === optIndex;
+        const btn = document.createElement('button');
+        btn.className = `w-full text-left p-4 rounded-2xl border transition-all flex items-center justify-between ${
+          isSelected 
+            ? 'bg-emerald-500/10 border-emerald-500 text-emerald-300 font-bold' 
+            : 'bg-gray-900/60 border-brandBorder hover:border-gray-600 text-gray-200'
+        }`;
+        
+        btn.innerHTML = `
+          <span class="text-sm md:text-base">${opt.text}</span>
+          <div class="w-6 h-6 rounded-full border flex items-center justify-center text-xs ${
+            isSelected ? 'border-emerald-400 bg-emerald-500 text-black font-black' : 'border-gray-600'
+          }">
+            ${isSelected ? '✓' : ''}
+          </div>
+        `;
+
+        btn.onclick = () => selectOption(optIndex);
+        qOptions.appendChild(btn);
+      });
+    }
+
+    // SELECT OPTION
+    function selectOption(optIndex) {
+      userAnswers[currentIdx] = optIndex;
+      renderQuestion();
+
+      setTimeout(() => {
+        if (currentIdx < questions.length - 1) {
+          currentIdx++;
+          renderQuestion();
+        } else {
+          finishQuiz();
         }
-    </script>
+      }, 200);
+    }
+
+    // PREV QUESTION
+    function prevQuestion() {
+      if (currentIdx > 0) {
+        currentIdx--;
+        renderQuestion();
+      }
+    }
+
+    // FINISH & CALCULATE
+    function finishQuiz() {
+      quizScreen.classList.add('hidden');
+      loadingScreen.classList.remove('hidden');
+
+      // Calculate Scores
+      userScores = { ecto: 0, meso: 0, endo: 0 };
+      userAnswers.forEach((ansIdx, qIdx) => {
+        if (ansIdx !== null) {
+          const score = questions[qIdx].options[ansIdx].score;
+          userScores.ecto += score.ecto;
+          userScores.meso += score.meso;
+          userScores.endo += score.endo;
+        }
+      });
+
+      // Loading Animation Steps
+      const statusText = document.getElementById('loadingStatusText');
+      const steps = [
+        "Расчет скорости метаболизма...",
+        "Анализ соотношения Экто/Мезо/Эндо...",
+        "Генерация профицита калорий и БЖУ...",
+        "Формирование тренировочного сплита..."
+      ];
+
+      let stepIdx = 0;
+      const interval = setInterval(() => {
+        stepIdx++;
+        if (stepIdx < steps.length) {
+          statusText.innerText = steps[stepIdx];
+        } else {
+          clearInterval(interval);
+          loadingScreen.classList.add('hidden');
+          resultScreen.classList.remove('hidden');
+          renderResults();
+        }
+      }, 700);
+    }
+
+    // RENDER RESULTS
+    function renderResults() {
+      const total = userScores.ecto + userScores.meso + userScores.endo || 1;
+      const ectoPct = Math.round((userScores.ecto / total) * 100);
+      const mesoPct = Math.round((userScores.meso / total) * 100);
+      const endoPct = 100 - ectoPct - mesoPct;
+
+      document.getElementById('ectoPercent').innerText = `${ectoPct}%`;
+      document.getElementById('ectoBar').style.width = `${ectoPct}%`;
+
+      document.getElementById('mesoPercent').innerText = `${mesoPct}%`;
+      document.getElementById('mesoBar').style.width = `${mesoPct}%`;
+
+      document.getElementById('endoPercent').innerText = `${endoPct}%`;
+      document.getElementById('endoBar').style.width = `${endoPct}%`;
+
+      // Determine Primary Somatotype
+      let primary = "ЭКТОМОРФ";
+      let desc = "";
+      let calories = 3100;
+      let protein = 160;
+      let fats = 85;
+      let carbs = 420;
+
+      if (ectoPct >= mesoPct && ectoPct >= endoPct) {
+        primary = "ЭКТОМОРФ (Халявный метаболизм)";
+        desc = "У вас ускоренный обмен веществ и быстрая бытовая активность. Организм сжигает калории с огромной скоростью. Главный секрет вашего роста — частые высококалорийные приемы пищи, жидкие калории (смузи/гейнеры) и тяжелые базовые тренировки не дольше 45-50 минут.";
+        calories = 3200; protein = 155; fats = 90; carbs = 440;
+      } else if (mesoPct >= ectoPct && mesoPct >= endoPct) {
+        primary = "МЕЗОМОРФ (Оптимальный генетический потенциал)";
+        desc = "Отличный генетический отклик на силовые нагрузки. Ваши мышцы легко накапливают гликоген и быстро восстанавливаются. Вам подходит класический 4-дневный объемный сплит с прогрессией нагрузок.";
+        calories = 2950; protein = 175; fats = 80; carbs = 380;
+      } else {
+        primary = "ЭНДОМОРФ (Плотное телосложение)";
+        desc = "Мощная костная структура и высокая сила, но есть склонность к накоплению жира. Вам нужен умеренный профицит калорий (+10%), высокий уровень белка и контроль быстрых углеводов.";
+        calories = 2700; protein = 185; fats = 75; carbs = 320;
+      }
+
+      document.getElementById('primaryTypeTitle').innerText = primary;
+      document.getElementById('somatotypeDescription').innerText = desc;
+
+      document.getElementById('resCalories').innerText = `${calories} ккал`;
+      document.getElementById('resProtein').innerText = `${protein} г`;
+      document.getElementById('resFats').innerText = `${fats} г`;
+      document.getElementById('resCarbs').innerText = `${carbs} г`;
+
+      // Workout Split Render
+      const workoutContainer = document.getElementById('workoutProgramList');
+      workoutContainer.innerHTML = `
+        <div class="bg-gray-900/80 p-4 rounded-2xl border border-brandBorder">
+          <div class="text-xs font-bold text-emerald-400 mb-1">ДЕНЬ 1: ГРУДЬ + ТРИЦЕПС</div>
+          <ul class="text-xs space-y-1.5 text-gray-300">
+            <li>• Жим штанги лежа: 4 подх × 8-10 повторов</li>
+            <li>• Жим гантелей на наклонной: 3 подх × 10 повторов</li>
+            <li>• Отжимания на брусьях: 3 подх × max</li>
+            <li>• Французский жир лежа: 3 подх × 12 повторов</li>
+          </ul>
+        </div>
+        <div class="bg-gray-900/80 p-4 rounded-2xl border border-brandBorder">
+          <div class="text-xs font-bold text-blue-400 mb-1">ДЕНЬ 2: СПИНА + БИЦЕПС</div>
+          <ul class="text-xs space-y-1.5 text-gray-300">
+            <li>• Подтягивания широким хватом: 4 подх × 8-10</li>
+            <li>• Тяга штанги в наклоне: 4 подх × 8 повторов</li>
+            <li>• Тяга верхнего блока: 3 подх × 12 повторов</li>
+            <li>• Подъем штанги на бицепс: 3 подх × 10 повторов</li>
+          </ul>
+        </div>
+        <div class="bg-gray-900/80 p-4 rounded-2xl border border-brandBorder">
+          <div class="text-xs font-bold text-amber-400 mb-1">ДЕНЬ 3: НОГИ + ПРЕСС</div>
+          <ul class="text-xs space-y-1.5 text-gray-300">
+            <li>• Приседания со штангой: 4 подх × 8 повторов</li>
+            <li>• Жим ногами в тренажере: 3 подх × 10 повторов</li>
+            <li>• Румынская тяга: 3 подх × 10 повторов</li>
+            <li>• Подъем ног в висе: 3 подх × 15 повторов</li>
+          </ul>
+        </div>
+        <div class="bg-gray-900/80 p-4 rounded-2xl border border-brandBorder">
+          <div class="text-xs font-bold text-purple-400 mb-1">ДЕНЬ 4: ПЛЕЧИ + ТРАПЕЦИИ</div>
+          <ul class="text-xs space-y-1.5 text-gray-300">
+            <li>• Армейский жир стоя: 4 подх × 8 повторов</li>
+            <li>• Махи гантелями в стороны: 4 подх × 12 повторов</li>
+            <li>• Махи в наклоне (задняя дельта): 3 подх × 12</li>
+            <li>• Шраги с гантелями: 3 подх × 15 повторов</li>
+          </ul>
+        </div>
+      `;
+
+      // Meal Plan Render
+      const mealContainer = document.getElementById('mealPlanList');
+      mealContainer.innerHTML = `
+        <div class="flex justify-between items-center p-3 rounded-xl bg-gray-900/60 border border-brandBorder text-xs">
+          <span class="font-bold text-emerald-400">Завтрак:</span>
+          <span class="text-gray-300">Овсянка 100g + 3 яйца + банановый коктейль</span>
+        </div>
+        <div class="flex justify-between items-center p-3 rounded-xl bg-gray-900/60 border border-brandBorder text-xs">
+          <span class="font-bold text-emerald-400">Перекус 1:</span>
+          <span class="text-gray-300">Творог 200g + горсть орехов (миндаль/грецкий)</span>
+        </div>
+        <div class="flex justify-between items-center p-3 rounded-xl bg-gray-900/60 border border-brandBorder text-xs">
+          <span class="font-bold text-emerald-400">Обед:</span>
+          <span class="text-gray-300">Куриное филе 180g + Гречка/Рис 120g + овощи</span>
+        </div>
+        <div class="flex justify-between items-center p-3 rounded-xl bg-gray-900/60 border border-brandBorder text-xs">
+          <span class="font-bold text-emerald-400">Перекус 2:</span>
+          <span class="text-gray-300">Домашний гейнер (молоко, овсянка, банан, арахисовая паста)</span>
+        </div>
+        <div class="flex justify-between items-center p-3 rounded-xl bg-gray-900/60 border border-brandBorder text-xs">
+          <span class="font-bold text-emerald-400">Ужин:</span>
+          <span class="text-gray-300">Рыба/Говядина 150g + Отварной картофель + зелень</span>
+        </div>
+      `;
+
+      // Secrets
+      const tipsContainer = document.getElementById('secretTipsList');
+      tipsContainer.innerHTML = `
+        <li><strong>Пейте калории:</strong> Если еда не влезает, делайте жидкие коктейли в блендере (овсянка + молоко + банан + арахисовое масло).</li>
+        <li><strong>Креатин моногидрат:</strong> Принимайте 5г креатина каждый день с соком для насыщения мышц водой и гликогеном.</li>
+        <li><strong>Сон не менее 8 часов:</strong> Пик секреции гормона роста происходит в фазе глубокого сна.</li>
+      `;
+    }
+
+    // DOWNLOAD PDF
+    function downloadPDF() {
+      const element = document.getElementById('pdfArea');
+      const opt = {
+        margin:       0.3,
+        filename:     'SomatoBuilder_Mass_Plan.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, backgroundColor: '#0A0C10' },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(element).save();
+    }
+
+    // SHARE
+    function shareResult() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Мой результат массонабора',
+          text: 'Я прошел тест из 25 вопросов и получил персональную программу массонабора! Проверь свой соматотип:',
+          url: window.location.href,
+        });
+      } else {
+        alert('Ссылка на тест скопирована в буфер обмена!');
+        navigator.clipboard.writeText(window.location.href);
+      }
+    }
+
+    // RESTART
+    function restartQuiz() {
+      resultScreen.classList.add('hidden');
+      introScreen.classList.remove('hidden');
+    }
+  </script>
 </body>
 </html>
