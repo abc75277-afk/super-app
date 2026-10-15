@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" class="dark">
+<html lang="ru" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,135 +7,182 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
-  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #07090E; color: #F3F4F6; }
-  .panel { background: rgba(17,21,32,.92); border: 1px solid rgba(255,255,255,.08); border-radius: 1.5rem; }
-  .chip { border: 1px solid rgba(255,255,255,.12); background: #111520; }
-  .chip:hover { border-color: #10B981; color: #fff; }
-  .glow-neon { box-shadow: 0 0 35px rgba(16,185,129,.22); }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+  :root {
+    --bg: #07090E; --surface: #111520; --surface-2: #161B29; --border: rgba(255,255,255,.08);
+    --text: #F3F4F6; --muted: #9CA3AF; --accent: #10B981; --accent-2: #3B82F6; --warn: #F59E0B; --danger: #EF4444;
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+  }
+  [data-theme="light"] {
+    --bg: #F5F7FB; --surface: #FFFFFF; --surface-2: #F1F4FA; --border: rgba(15,23,42,.08);
+    --text: #0F172A; --muted: #64748B; --shadow: 0 10px 30px rgba(15,23,42,.08);
+  }
+  * { box-sizing: border-box; }
+  body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); transition: background .3s, color .3s; min-height: 100vh; display: flex; flex-direction: column; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 1.25rem; box-shadow: var(--shadow); }
+  .muted { color: var(--muted); }
+  .btn-primary { background: linear-gradient(135deg, #10B981, #14B8A6); color: #04110C; font-weight: 800; border-radius: .9rem; box-shadow: 0 10px 25px rgba(16,185,129,.25); transition: transform .15s, box-shadow .2s; }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(16,185,129,.35); }
+  .btn-ghost { border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: .9rem; font-weight: 700; transition: background .2s; }
+  .btn-ghost:hover { background: var(--surface-2); }
+  .chip { border: 1px solid var(--border); background: var(--surface); border-radius: 999px; padding: .45rem .9rem; font-size: .8rem; font-weight: 600; color: var(--muted); transition: all .2s; white-space: nowrap; }
+  .chip:hover, .chip.on { color: var(--text); border-color: var(--accent); background: rgba(16,185,129,.08); }
+  .tab { border-radius: .8rem; padding: .55rem 1rem; font-size: .85rem; font-weight: 700; white-space: nowrap; transition: all .2s; }
+  .tab.on { background: var(--accent); color: #04110C; }
+  .tab:not(.on) { background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
+  .tab:not(.on):hover { color: var(--text); }
   details > summary { cursor: pointer; list-style: none; }
   details > summary::-webkit-details-marker { display: none; }
   details[open] > summary .arrow { transform: rotate(90deg); }
-  table.mt { width: 100%; border-collapse: collapse; font-size: 12px; }
-  table.mt td, table.mt th { padding: 6px 8px; border-bottom: 1px solid rgba(255,255,255,.07); text-align: left; vertical-align: top; }
-  table.mt th { color: #9CA3AF; font-weight: 700; }
-  input, select, textarea { color-scheme: dark; }
-  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-thumb { background: #222838; border-radius: 3px; }
+  .arrow { transition: transform .2s; }
+  table.mt { width: 100%; border-collapse: collapse; font-size: .82rem; }
+  table.mt td, table.mt th { padding: .6rem .7rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+  table.mt th { color: var(--muted); font-weight: 700; font-size: .74rem; text-transform: uppercase; letter-spacing: .04em; }
+  input, select, textarea { color-scheme: light dark; background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: .75rem; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(16,185,129,.15); }
+  .stat { font-variant-numeric: tabular-nums; }
+  .fade-in { animation: fadeIn .45s ease both; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .spin { animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  ::-webkit-scrollbar { width: 8px; height: 8px; } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  .hscroll { overflow-x: auto; scrollbar-width: none; } .hscroll::-webkit-scrollbar { display: none; }
 </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body>
 
-<header class="border-b border-white/10 sticky top-0 z-40 bg-[#07090E]/95 backdrop-blur">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3 flex-wrap">
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-blue-600 flex items-center justify-center font-black text-black">⚡</div>
-      <div>
-        <h1 class="font-black text-lg tracking-wider">SOMATO<span class="text-emerald-400">MASS</span></h1>
-        <p class="text-[11px] text-gray-400" data-i18n="brandSub"></p>
+<!-- HEADER -->
+<header class="sticky top-0 z-40 backdrop-blur-xl border-b" style="background: color-mix(in srgb, var(--bg) 85%, transparent); border-color: var(--border);">
+  <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
+    <a href="#top" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center font-black text-black" style="background: linear-gradient(135deg,#10B981,#3B82F6);">⚡</div>
+      <div class="leading-tight">
+        <div class="font-black tracking-wide">SOMATO<span style="color:var(--accent)">MASS</span></div>
+        <div class="text-[11px] muted" data-i18n="brandSub"></div>
       </div>
-    </div>
-    <div class="flex items-center gap-3">
-      <nav id="topNav" class="hidden lg:flex gap-2 text-xs font-bold">
-        <a href="#sec-report" class="chip px-3 py-2 rounded-xl">Отчёт</a>
-        <a href="#sec-train" class="chip px-3 py-2 rounded-xl">Тренировки</a>
-        <a href="#sec-journal" class="chip px-3 py-2 rounded-xl">Журнал</a>
-        <a href="#sec-food" class="chip px-3 py-2 rounded-xl">Питание</a>
-        <a href="#sec-supp" class="chip px-3 py-2 rounded-xl">Добавки</a>
-        <a href="#sec-shop" class="chip px-3 py-2 rounded-xl">Спорт-питание</a>
-        <a href="#sec-rev" class="chip px-3 py-2 rounded-xl">Отзывы</a>
-      </nav>
-      <div id="langSwitch" class="flex items-center bg-gray-900 border border-white/10 rounded-xl p-1 text-xs font-bold">
-        <button id="lang-ru" onclick="setLang('ru')" class="px-2.5 py-1 rounded-lg">RU</button>
-        <button id="lang-ua" onclick="setLang('ua')" class="px-2.5 py-1 rounded-lg">UA</button>
-        <button id="lang-en" onclick="setLang('en')" class="px-2.5 py-1 rounded-lg">EN</button>
+    </a>
+    <nav id="topNav" class="hidden lg:flex gap-2">
+      <a href="#sec-report" class="chip">Отчёт</a>
+      <a href="#sec-train" class="chip">Тренировки</a>
+      <a href="#sec-journal" class="chip">Журнал</a>
+      <a href="#sec-food" class="chip">Питание</a>
+      <a href="#sec-supp" class="chip">Добавки</a>
+      <a href="#sec-shop" class="chip">Спорт-питание</a>
+      <a href="#sec-rev" class="chip">Отзывы</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button id="themeBtn" onclick="toggleTheme()" class="btn-ghost w-10 h-10 flex items-center justify-center" title="Тема"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
+      <div id="langSwitch" class="flex items-center p-1 rounded-xl border text-xs font-bold" style="background:var(--surface); border-color:var(--border);">
+        <button id="lang-ru" onclick="setLang('ru')" class="px-2.5 py-1.5 rounded-lg">RU</button>
+        <button id="lang-ua" onclick="setLang('ua')" class="px-2.5 py-1.5 rounded-lg">UA</button>
+        <button id="lang-en" onclick="setLang('en')" class="px-2.5 py-1.5 rounded-lg">EN</button>
       </div>
     </div>
   </div>
 </header>
 
-<main class="max-w-5xl mx-auto px-4 py-8 w-full flex-grow">
+<main id="top" class="max-w-6xl mx-auto px-5 py-10 w-full flex-grow">
 
   <!-- ГЛАВНАЯ -->
-  <section id="introScreen" class="space-y-12">
-    <div class="text-center space-y-5 max-w-3xl mx-auto pt-4">
-      <span class="inline-block px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs font-extrabold uppercase tracking-wider" data-i18n="badge"></span>
-      <h2 class="text-3xl sm:text-5xl font-black leading-tight" data-i18n-html="h1"></h2>
-      <p class="text-gray-300 text-sm sm:text-base leading-relaxed" data-i18n="sub"></p>
-      <p class="text-xs text-gray-500" data-i18n="disclaimer"></p>
-      <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-        <button onclick="startQuiz()" class="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black font-black text-base rounded-2xl glow-neon" data-i18n="start"></button>
-        <a id="buyBtn" href="#" class="px-8 py-4 border border-white/20 hover:border-amber-400 text-white font-black text-base rounded-2xl inline-flex items-center justify-center"></a>
+  <section id="introScreen" class="space-y-14 fade-in">
+    <div class="grid lg:grid-cols-2 gap-10 items-center pt-6">
+      <div class="space-y-6">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold" style="background:rgba(245,158,11,.12); color:var(--warn); border:1px solid rgba(245,158,11,.3);" data-i18n="badge"></span>
+        <h1 class="text-4xl sm:text-5xl font-black leading-[1.1] tracking-tight" data-i18n-html="h1"></h1>
+        <p class="text-base leading-relaxed muted" data-i18n="sub"></p>
+        <p class="text-xs muted" data-i18n="disclaimer"></p>
+        <div class="flex flex-col sm:flex-row gap-3 pt-1">
+          <button onclick="startQuiz()" class="btn-primary px-7 py-4 text-base" data-i18n="start"></button>
+          <a id="buyBtn" href="#" class="btn-ghost px-7 py-4 text-base flex items-center justify-center"></a>
+        </div>
+        <button id="resumeBtn" onclick="resumePlan()" class="hidden text-sm font-semibold" style="color:var(--accent)" data-i18n="open"></button>
+        <p class="text-xs muted" data-i18n="priceNote"></p>
       </div>
-      <button id="resumeBtn" onclick="resumePlan()" class="hidden text-sm text-emerald-400 underline" data-i18n="open"></button>
-      <p class="text-xs text-gray-400" data-i18n="priceNote"></p>
+      <div class="card p-6 space-y-4 fade-in">
+        <div class="flex items-center justify-between">
+          <div class="text-sm font-bold">Пример отчёта</div>
+          <span class="text-[11px] px-2 py-1 rounded-lg font-bold" style="background:rgba(16,185,129,.12); color:var(--accent);">демо</span>
+        </div>
+        <div class="grid grid-cols-3 gap-3 text-center">
+          <div class="rounded-2xl p-4" style="background:var(--surface-2);"><div class="text-[11px] muted uppercase font-bold">Калории</div><div class="text-xl font-black stat mt-1">2 850</div></div>
+          <div class="rounded-2xl p-4" style="background:var(--surface-2);"><div class="text-[11px] muted uppercase font-bold">Белок</div><div class="text-xl font-black stat mt-1">150 г</div></div>
+          <div class="rounded-2xl p-4" style="background:var(--surface-2);"><div class="text-[11px] muted uppercase font-bold">Блоков</div><div class="text-xl font-black stat mt-1">6</div></div>
+        </div>
+        <div class="h-56"><canvas id="demoChart"></canvas></div>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div class="panel p-6 space-y-3">
-        <h3 class="font-black text-emerald-400" data-i18n="c1t"></h3>
-        <ul class="text-sm text-gray-300 space-y-2" data-list="c1"></ul>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="card p-6 space-y-3">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-lg" style="background:rgba(16,185,129,.12);">📊</div>
+        <h3 class="font-extrabold text-lg" data-i18n="c1t"></h3>
+        <ul class="text-sm muted space-y-2" data-list="c1"></ul>
       </div>
-      <div class="panel p-6 space-y-3">
-        <h3 class="font-black text-blue-400" data-i18n="c2t"></h3>
-        <ul class="text-sm text-gray-300 space-y-2" data-list="c2"></ul>
+      <div class="card p-6 space-y-3">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-lg" style="background:rgba(59,130,246,.12);">🔁</div>
+        <h3 class="font-extrabold text-lg" data-i18n="c2t"></h3>
+        <ul class="text-sm muted space-y-2" data-list="c2"></ul>
       </div>
-      <div class="panel p-6 space-y-3">
-        <h3 class="font-black text-amber-400" data-i18n="c3t"></h3>
-        <ul class="text-sm text-gray-300 space-y-2" data-list="c3"></ul>
+      <div class="card p-6 space-y-3">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-lg" style="background:rgba(245,158,11,.12);">🛡️</div>
+        <h3 class="font-extrabold text-lg" data-i18n="c3t"></h3>
+        <ul class="text-sm muted space-y-2" data-list="c3"></ul>
       </div>
     </div>
 
-    <div class="panel p-6 sm:p-8 text-center space-y-4">
-      <h3 class="text-xl sm:text-2xl font-black" data-i18n="finalH"></h3>
-      <p class="text-sm text-gray-400 max-w-xl mx-auto" data-i18n="finalSub"></p>
-      <a id="finalBuy" href="#" class="inline-flex px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-black rounded-2xl"></a>
+    <div class="card p-8 sm:p-10 text-center space-y-4" style="background: linear-gradient(135deg, rgba(16,185,129,.12), rgba(59,130,246,.08));">
+      <h3 class="text-2xl sm:text-3xl font-black" data-i18n="finalH"></h3>
+      <p class="text-sm muted max-w-xl mx-auto" data-i18n="finalSub"></p>
+      <a id="finalBuy" href="#" class="btn-primary inline-flex px-8 py-4 text-base"></a>
     </div>
   </section>
 
   <!-- ВОПРОСЫ -->
-  <section id="quizScreen" class="hidden space-y-6">
-    <div class="panel p-4">
-      <div class="flex justify-between text-xs font-bold text-gray-400 mb-2">
+  <section id="quizScreen" class="hidden space-y-6 max-w-2xl mx-auto fade-in">
+    <div class="card p-5">
+      <div class="flex justify-between text-xs font-bold muted mb-3">
         <span><span id="qStepWord"></span> <span id="curStep">1</span> <span id="qOfWord"></span> <span id="totSteps">38</span></span>
-        <span id="pctLabel" class="text-emerald-400">3%</span>
+        <span id="pctLabel" style="color:var(--accent)">3%</span>
       </div>
-      <div class="w-full bg-gray-800 h-2.5 rounded-full overflow-hidden">
-        <div id="progBar" class="bg-gradient-to-r from-emerald-500 to-blue-500 h-full transition-all duration-300" style="width:3%"></div>
+      <div class="w-full h-2 rounded-full overflow-hidden" style="background:var(--surface-2);">
+        <div id="progBar" class="h-full rounded-full transition-all duration-500" style="width:3%; background: linear-gradient(90deg,#10B981,#3B82F6);"></div>
       </div>
     </div>
-    <div class="panel p-6 sm:p-8 space-y-6">
-      <span id="qCat" class="px-3 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase border border-emerald-500/20"></span>
-      <h3 id="qTitle" class="text-xl sm:text-2xl font-extrabold leading-snug"></h3>
-      <div id="qOpts" class="grid grid-cols-1 gap-3 pt-2"></div>
-      <p id="qErr" class="text-xs text-red-400 hidden"></p>
+    <div class="card p-7 sm:p-9 space-y-6">
+      <span id="qCat" class="inline-block px-3 py-1 rounded-lg text-xs font-bold uppercase" style="background:rgba(16,185,129,.12); color:var(--accent);"></span>
+      <h2 id="qTitle" class="text-xl sm:text-2xl font-extrabold leading-snug"></h2>
+      <div id="qOpts" class="grid grid-cols-1 gap-3"></div>
+      <p id="qErr" class="text-xs hidden" style="color:var(--danger)"></p>
     </div>
     <div>
-      <button id="prevBtn" onclick="prevQ()" class="px-5 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold text-sm disabled:opacity-30"><i class="fa-solid fa-arrow-left"></i> <span data-i18n="back"></span></button>
+      <button id="prevBtn" onclick="prevQ()" class="btn-ghost px-5 py-2.5 text-sm"><i class="fa-solid fa-arrow-left"></i> <span data-i18n="back"></span></button>
     </div>
   </section>
 
   <!-- ЗАГРУЗКА -->
-  <section id="loadingScreen" class="hidden text-center py-16 space-y-6">
-    <div class="w-20 h-20 mx-auto rounded-full border-4 border-emerald-500/20 border-t-emerald-400 animate-spin"></div>
-    <h3 id="loadTitle" class="text-2xl font-black"></h3>
-    <p id="loadStatus" class="text-sm text-emerald-400 font-mono"></p>
+  <section id="loadingScreen" class="hidden text-center py-24 space-y-6">
+    <div class="w-16 h-16 mx-auto rounded-full border-4 spin" style="border-color:rgba(16,185,129,.2); border-top-color:var(--accent);"></div>
+    <h2 id="loadTitle" class="text-2xl font-black"></h2>
+    <p id="loadStatus" class="text-sm font-mono" style="color:var(--accent)"></p>
   </section>
 
   <!-- РЕЗУЛЬТАТЫ -->
-  <section id="resultScreen" class="hidden space-y-8">
-    <div class="flex flex-col sm:flex-row justify-between gap-4 border-b border-white/10 pb-4">
+  <section id="resultScreen" class="hidden space-y-8 fade-in">
+    <div class="card p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
       <div>
-        <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-black border border-emerald-500/20">План готов</span>
-        <h2 class="text-2xl sm:text-3xl font-black mt-1">Ваш персональный план</h2>
-        <p class="text-xs text-gray-400 mt-1">Ориентировочные расчёты. Сохраняются в этом браузере, после обновления страницы план остаётся.</p>
+        <span class="inline-block px-3 py-1 rounded-lg text-xs font-bold" style="background:rgba(16,185,129,.12); color:var(--accent);">План готов</span>
+        <h2 class="text-2xl sm:text-3xl font-black mt-2">Ваш персональный план</h2>
+        <p class="text-xs muted mt-1">Ориентировочные расчёты. Сохраняются в этом браузере.</p>
       </div>
       <div class="flex flex-wrap gap-2">
-        <button onclick="openDone()" class="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs rounded-xl flex items-center gap-2"><i class="fa-solid fa-flag-checkered"></i> <span data-i18n="done"></span></button>
-        <button onclick="downloadPDF()" class="px-4 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs rounded-xl flex items-center gap-2"><i class="fa-solid fa-file-pdf"></i> PDF</button>
-        <button onclick="restartQuiz()" class="px-4 py-2.5 bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold text-xs rounded-xl flex items-center gap-2"><i class="fa-solid fa-rotate-right"></i> <span data-i18n="reset"></span></button>
+        <button onclick="openDone()" class="btn-primary px-4 py-2.5 text-xs"><i class="fa-solid fa-flag-checkered"></i> <span data-i18n="done"></span></button>
+        <button onclick="downloadPDF()" class="btn-ghost px-4 py-2.5 text-xs"><i class="fa-solid fa-file-pdf"></i> PDF</button>
+        <button onclick="restartQuiz()" class="btn-ghost px-4 py-2.5 text-xs"><i class="fa-solid fa-rotate-right"></i> <span data-i18n="reset"></span></button>
       </div>
     </div>
+
     <div id="pdfArea" class="space-y-10">
       <div id="sec-report" class="space-y-6"></div>
       <div id="sec-train" class="space-y-6"></div>
@@ -149,74 +196,66 @@
 </main>
 
 <!-- Модалка: курс пройден -->
-<div id="doneModal" class="fixed inset-0 z-50 bg-black/80 hidden items-center justify-center p-4">
-  <div class="panel p-6 max-w-md w-full space-y-5 relative">
-    <button onclick="closeDone()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-    <h3 class="text-lg font-black" data-i18n="done"></h3>
-    <p class="text-xs text-gray-400" data-i18n="doneInfo"></p>
-    <div>
-      <label class="text-xs text-gray-400 font-bold block mb-1" data-i18n="nameLabel"></label>
-      <input id="certName" class="w-full bg-gray-900 border border-white/10 rounded-xl p-3 text-white text-sm">
-      <p class="text-[11px] text-gray-500 mt-1" data-i18n="nameHint"></p>
+<div id="doneModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" style="background:rgba(0,0,0,.6); backdrop-filter: blur(4px);">
+  <div class="card p-7 max-w-md w-full space-y-5 relative fade-in">
+    <button onclick="closeDone()" class="absolute top-4 right-4 muted hover:opacity-70"><i class="fa-solid fa-xmark"></i></button>
+    <h3 class="text-xl font-black" data-i18n="done"></h3>
+    <p class="text-xs muted" data-i18n="doneInfo"></p>
+    <div class="space-y-1">
+      <label class="text-xs font-bold muted" data-i18n="nameLabel"></label>
+      <input id="certName" class="w-full px-4 py-3 text-sm">
+      <p class="text-[11px] muted" data-i18n="nameHint"></p>
     </div>
-    <div>
-      <div class="text-xs text-gray-400 font-bold mb-2" data-i18n="rate"></div>
-      <div id="stars" class="flex gap-2 text-3xl text-gray-600"></div>
+    <div class="space-y-2">
+      <div class="text-xs font-bold muted" data-i18n="rate"></div>
+      <div id="stars" class="flex gap-2 text-3xl" style="color:var(--border)"></div>
     </div>
-    <div>
-      <label class="text-xs text-gray-400 font-bold block mb-1" data-i18n="email"></label>
-      <input id="certEmail" type="email" class="w-full bg-gray-900 border border-white/10 rounded-xl p-3 text-white text-sm" placeholder="you@example.com">
+    <div class="space-y-1">
+      <label class="text-xs font-bold muted" data-i18n="email"></label>
+      <input id="certEmail" type="email" class="w-full px-4 py-3 text-sm" placeholder="you@example.com">
     </div>
-    <button onclick="sendDone()" class="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold rounded-xl" data-i18n="send"></button>
-    <p id="doneMsg" class="text-xs text-emerald-400 hidden"></p>
+    <button onclick="sendDone()" class="btn-primary w-full py-3 text-sm" data-i18n="send"></button>
+    <p id="doneMsg" class="text-xs hidden"></p>
   </div>
 </div>
 
 <!-- Модалка: отзыв -->
-<div id="revModal" class="fixed inset-0 z-50 bg-black/80 hidden items-center justify-center p-4">
-  <div class="panel p-6 max-w-md w-full space-y-4 relative">
-    <button onclick="closeRev()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+<div id="revModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" style="background:rgba(0,0,0,.6); backdrop-filter: blur(4px);">
+  <div class="card p-7 max-w-md w-full space-y-4 relative fade-in">
+    <button onclick="closeRev()" class="absolute top-4 right-4 muted hover:opacity-70"><i class="fa-solid fa-xmark"></i></button>
     <h3 class="text-lg font-black">Добавить отзыв</h3>
-    <p class="text-xs text-gray-400">Отзыв уйдёт нам на почту и будет опубликован после проверки. Пишите только реальный опыт.</p>
+    <p class="text-xs muted">Отзыв уйдёт нам на почту и будет опубликован после проверки. Пишите только реальный опыт.</p>
     <div class="space-y-3 text-xs">
-      <div>
-        <label class="text-gray-400 font-bold block mb-1">Имя и возраст</label>
-        <input id="revName" class="w-full bg-gray-900 border border-white/10 rounded-xl p-3 text-white" placeholder="Иван, 25 лет">
-      </div>
-      <div>
-        <label class="text-gray-400 font-bold block mb-1">Ваш опыт и результат</label>
-        <textarea id="revText" rows="4" class="w-full bg-gray-900 border border-white/10 rounded-xl p-3 text-white" placeholder="Что делали, сколько времени, что изменилось"></textarea>
-      </div>
-      <label class="flex items-start gap-2 text-gray-300">
-        <input id="revConsent" type="checkbox" class="mt-0.5"> Я разрешаю опубликовать моё имя и текст отзыва.
-      </label>
-      <button onclick="submitRev()" class="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold rounded-xl">Отправить</button>
+      <div class="space-y-1"><label class="font-bold muted">Имя и возраст</label><input id="revName" class="w-full px-4 py-3" placeholder="Иван, 25 лет"></div>
+      <div class="space-y-1"><label class="font-bold muted">Ваш опыт и результат</label><textarea id="revText" rows="4" class="w-full px-4 py-3" placeholder="Что делали, сколько времени, что изменилось"></textarea></div>
+      <label class="flex items-start gap-2"><input id="revConsent" type="checkbox" class="mt-0.5"> Я разрешаю опубликовать моё имя и текст отзыва.</label>
+      <button onclick="submitRev()" class="btn-primary w-full py-3 text-sm">Отправить</button>
     </div>
   </div>
 </div>
 
 <!-- Помощник курса -->
-<button id="botBtn" onclick="toggleBot()" class="fixed bottom-4 right-4 z-40 w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black text-xl shadow-xl">
+<button id="botBtn" onclick="toggleBot()" class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full btn-primary text-xl flex items-center justify-center">
   <i class="fa-solid fa-comments"></i>
 </button>
-<div id="botPanel" class="fixed bottom-20 right-4 z-40 w-[92vw] max-w-sm panel hidden flex-col overflow-hidden" style="height:480px">
-  <div class="px-4 py-3 border-b border-white/10 flex justify-between items-center">
+<div id="botPanel" class="fixed bottom-24 right-5 z-40 w-[92vw] max-w-sm card hidden flex-col overflow-hidden" style="height:500px">
+  <div class="px-5 py-4 border-b flex justify-between items-center" style="border-color:var(--border)">
     <div>
-      <div class="font-black text-sm" data-i18n="botTitle"></div>
-      <div class="text-[10px] text-gray-500" data-i18n="botHint"></div>
+      <div class="font-extrabold text-sm" data-i18n="botTitle"></div>
+      <div class="text-[11px] muted" data-i18n="botHint"></div>
     </div>
-    <button onclick="toggleBot()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+    <button onclick="toggleBot()" class="muted hover:opacity-70"><i class="fa-solid fa-xmark"></i></button>
   </div>
   <div id="botMsgs" class="flex-1 overflow-y-auto p-4 space-y-3 text-xs"></div>
   <div id="botQuick" class="px-4 pb-2 flex flex-wrap gap-2"></div>
-  <p class="px-4 pb-2 text-[10px] text-gray-500" data-i18n="botDisclaimer"></p>
-  <div class="p-3 border-t border-white/10 flex gap-2">
-    <input id="botIn" class="flex-1 bg-gray-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white">
-    <button id="botSendBtn" onclick="botSend()" class="px-3 py-2 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs rounded-xl"><i class="fa-solid fa-paper-plane"></i></button>
+  <p class="px-4 pb-2 text-[10px] muted" data-i18n="botDisclaimer"></p>
+  <div class="p-3 border-t flex gap-2" style="border-color:var(--border)">
+    <input id="botIn" class="flex-1 px-3 py-2 text-xs">
+    <button id="botSendBtn" onclick="botSend()" class="btn-primary px-3 py-2 text-xs"><i class="fa-solid fa-paper-plane"></i></button>
   </div>
 </div>
 
-<footer class="border-t border-white/10 py-6 text-center text-xs text-gray-500">
+<footer class="border-t py-8 text-center text-xs muted" style="border-color:var(--border)">
   <p data-i18n="footer"></p>
 </footer>
 
@@ -228,19 +267,31 @@ const CONFIG = {
   SUPPORT_EMAIL: "you@example.com"
 };
 const REVIEWS = []; // только реальные отзывы с разрешения автора
-
-// Партнёрские ссылки на спортивное питание (добавляются только после проверки продукта)
+// Партнёрские ссылки (добавляются только после проверки продукта)
 // Пример: { name:"Креатин моногидрат 300 г", desc:"Монопрепарат, 3–5 г в день", url:"https://..." }
 const PARTNERS = [];
 
-const KEY = "somatomass_v9";
+const KEY = "somatomass_v10";
+
+/* ==================== ТЕМА ==================== */
+function applyTheme(t) {
+  document.documentElement.setAttribute("data-theme", t);
+  document.documentElement.className = t === "light" ? "" : "dark";
+  $("themeIcon").className = t === "light" ? "fa-solid fa-sun" : "fa-solid fa-moon";
+  try { localStorage.setItem(KEY + "_theme", t); } catch (e) {}
+  if (window.Chart) updateChartsTheme();
+}
+function toggleTheme() {
+  const cur = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+  applyTheme(cur === "light" ? "dark" : "light");
+}
 
 /* ==================== ТЕКСТЫ ИНТЕРФЕЙСА ==================== */
 const T = {
   ru: {
     brandSub: "Персональный план набора массы",
     badge: "Расчёт по вашим данным",
-    h1: "Перестаньте гадать:<br><span class='text-emerald-400'>план набора массы на 6 месяцев под вас</span>",
+    h1: "Перестаньте гадать:<br><span style='color:var(--accent)'>план набора массы на 6 месяцев под вас</span>",
     sub: "Ответьте на 38 вопросов за 6–8 минут. Получите отчёт о подготовке, программу тренировок на 2–5 дней с инструкцией к каждому упражнению, журнал тренировок, план питания в граммах и список добавок.",
     disclaimer: "Результаты зависят от питания, сна, регулярности и особенностей организма. Точный прирост массы гарантировать нельзя.",
     start: "Пройти бесплатный расчёт",
@@ -248,7 +299,7 @@ const T = {
     buy: "Купить курс — {p}",
     priceNote: "Оплата разово. Возврат денег в течение 14 дней, если курс вам не подошёл.",
     c1t: "Что внутри курса",
-    c1: ["Отчёт по тесту: уровень, телосложение, силовые показатели", "Программа на 2–5 дней с разминкой и всеми группами мышц", "Инструкция и частая ошибка к каждому упражнению", "Журнал тренировок и таблица результатов", "План питания в граммах и список добавок"],
+    c1: ["Отчёт по тесту: уровень, телосложение, силовые показатели", "Программа на 2–5 дней с разминкой и всеми группами мышц", "Инструкция и частая ошибка к каждому упражнению", "Журнал тренировок с графиком прогресса", "План питания в граммах и список добавок"],
     c2t: "Как это работает",
     c2: ["Ответьте на 38 вопросов за 6–8 минут", "Получите отчёт и план на 6 месяцев", "Тренируйтесь и записывайте подходы в журнал", "Вес растёт по вашим результатам", "В конце нажмите «Курс пройден» и получите сертификат"],
     c3t: "Условия",
@@ -287,12 +338,16 @@ const T = {
     shopDisc: "Ссылки могут быть партнёрскими: если вы купите по ним, мы можем получить комиссию. Цена для вас не меняется. Рекомендуем только продукты с доказательной базой и проверенным составом.",
     shopEmpty: "Раздел пополняется. Здесь появятся проверенные продукты с партнёрскими ссылками.",
     shopBtn: "Перейти к товару",
-    factorsTitle: "Что влияет на результат"
+    factorsTitle: "Что влияет на результат",
+    chartWeight: "Прогноз рабочих весов по блокам",
+    chartMacro: "Суточная норма",
+    chartProgress: "Рост максимума (1ПМ) по журналу",
+    chartLevel: "Уровень подготовки"
   },
   ua: {
     brandSub: "Персональний план набору маси",
     badge: "Розрахунок за вашими даними",
-    h1: "Перестаньте гадати:<br><span class='text-emerald-400'>план набору маси на 6 місяців під вас</span>",
+    h1: "Перестаньте гадати:<br><span style='color:var(--accent)'>план набору маси на 6 місяців під вас</span>",
     sub: "Дайте відповіді на 38 запитань за 6–8 хвилин. Отримайте звіт про підготовку, програму на 2–5 днів з інструкцією до кожної вправи, щоденник тренувань, план харчування в грамах і список добавок.",
     disclaimer: "Результати залежать від харчування, сну, регулярності та особливостей організму. Точний приріст маси гарантувати не можна.",
     start: "Пройти безкоштовний розрахунок",
@@ -300,7 +355,7 @@ const T = {
     buy: "Купити курс — {p}",
     priceNote: "Одноразова оплата. Повернення коштів протягом 14 днів, якщо курс вам не підійшов.",
     c1t: "Що всередині курсу",
-    c1: ["Звіт за тестом: рівень, статура, силові показники", "Програма на 2–5 днів з розминкою", "Інструкція і типова помилка до кожної вправи", "Щоденник тренувань і таблиця результатів", "План харчування в грамах і список добавок"],
+    c1: ["Звіт за тестом: рівень, статура, силові показники", "Програма на 2–5 днів з розминкою", "Інструкція і типова помилка до кожної вправи", "Щоденник тренувань з графіком прогресу", "План харчування в грамах і список добавок"],
     c2t: "Як це працює",
     c2: ["Дайте відповіді на 38 запитань за 6–8 хвилин", "Отримайте звіт і план на 6 місяців", "Тренуйтеся і записуйте підходи", "Вага зростає за вашими результатами", "Наприкінці натисніть «Курс пройдено» і отримайте сертифікат"],
     c3t: "Умови",
@@ -339,20 +394,24 @@ const T = {
     shopDisc: "Посилання можуть бути партнерськими: якщо ви купите за ними, ми можемо отримати комісію. Ціна для вас не змінюється. Рекомендуємо лише продукти з доказовою базою і перевіреним складом.",
     shopEmpty: "Розділ поповнюється. Тут з'являться перевірені продукти з партнерськими посиланнями.",
     shopBtn: "Перейти до товару",
-    factorsTitle: "Що впливає на результат"
+    factorsTitle: "Що впливає на результат",
+    chartWeight: "Прогноз робочих ваг по блоках",
+    chartMacro: "Добова норма",
+    chartProgress: "Зростання максимуму (1ПМ) за журналом",
+    chartLevel: "Рівень підготовки"
   },
   en: {
     brandSub: "Personal muscle-gain plan",
     badge: "Calculated from your data",
-    h1: "Stop guessing:<br><span class='text-emerald-400'>a 6-month muscle-gain plan built for you</span>",
-    sub: "Answer 38 questions in about 6–8 minutes. Get a fitness report, a 2–5 day training program with instructions for every exercise, a training log, a meal plan in grams and a supplement guide.",
+    h1: "Stop guessing:<br><span style='color:var(--accent)'>a 6-month muscle-gain plan built for you</span>",
+    sub: "Answer 38 questions in about 6–8 minutes. Get a fitness report, a 2–5 day training program with instructions for every exercise, a training log with progress charts, a meal plan in grams and a supplement guide.",
     disclaimer: "Results depend on nutrition, sleep, consistency and your body. Exact muscle gain cannot be guaranteed.",
     start: "Take the free calculation",
     open: "Open my saved plan",
     buy: "Buy the course — {p}",
     priceNote: "One-time payment. Full refund within 14 days if the course isn't right for you.",
     c1t: "What's inside",
-    c1: ["Test report: level, body type, strength numbers", "2–5 day program with a warm-up and all muscle groups", "Instructions and common mistakes for every exercise", "Training log and results table", "Meal plan in grams and supplement guide"],
+    c1: ["Test report: level, body type, strength numbers", "2–5 day program with a warm-up and all muscle groups", "Instructions and common mistakes for every exercise", "Training log with progress charts", "Meal plan in grams and supplement guide"],
     c2t: "How it works",
     c2: ["Answer 38 questions in about 6–8 minutes", "Get your report and a 6-month plan", "Train and log your sets", "Weights rise based on your results", "At the end press \"Course completed\" to get your certificate"],
     c3t: "Terms",
@@ -391,7 +450,11 @@ const T = {
     shopDisc: "Links may be affiliate links: if you buy through them we may receive a commission. The price for you stays the same. We only recommend products with an evidence base and a verified composition.",
     shopEmpty: "This section is being filled. Verified products with affiliate links will appear here.",
     shopBtn: "Go to product",
-    factorsTitle: "What affects your results"
+    factorsTitle: "What affects your results",
+    chartWeight: "Working weight forecast by block",
+    chartMacro: "Daily target",
+    chartProgress: "Max (1RM) growth from the log",
+    chartLevel: "Training level"
   }
 };
 
@@ -518,6 +581,7 @@ let blockIdx = 0;
 let weekIdx = 0;
 let hasSaved = false;
 let botHistory = [];
+const charts = {};
 
 function saveAll() {
   try {
@@ -539,6 +603,10 @@ function loadAll() {
       hasSaved = true;
     }
   } catch (e) {}
+  try {
+    const t = localStorage.getItem(KEY + "_theme");
+    if (t) applyTheme(t);
+  } catch (e) {}
 }
 
 /* ==================== ЯЗЫК ==================== */
@@ -554,7 +622,7 @@ function applyI18n() {
   document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = d[el.dataset.i18n]; });
   document.querySelectorAll("[data-i18n-html]").forEach(el => { el.innerHTML = d[el.dataset.i18nHtml]; });
   document.querySelectorAll("[data-list]").forEach(ul => {
-    ul.innerHTML = d[ul.dataset.list].map(x => `<li class="flex gap-2"><span class="text-emerald-400">✓</span><span>${x}</span></li>`).join("");
+    ul.innerHTML = d[ul.dataset.list].map(x => `<li class="flex gap-2"><span style="color:var(--accent)">✓</span><span>${x}</span></li>`).join("");
   });
   $("buyBtn").textContent = d.buy.replace("{p}", CONFIG.PRICE);
   $("buyBtn").href = CONFIG.PAY_URL;
@@ -565,11 +633,12 @@ function applyI18n() {
   $("botIn").placeholder = d.botPlaceholder;
   $("resumeBtn").classList.toggle("hidden", !hasSaved);
   ["ru","ua","en"].forEach(l => {
-    $("lang-" + l).className = "px-2.5 py-1 rounded-lg transition " +
-      (l === LANG ? "bg-emerald-500 text-black" : "text-gray-400 hover:text-white");
+    $("lang-" + l).className = "px-2.5 py-1.5 rounded-lg transition " +
+      (l === LANG ? "text-black" : "muted");
+    $("lang-" + l).style.background = l === LANG ? "var(--accent)" : "transparent";
   });
   if (!$("quizScreen").classList.contains("hidden")) renderQ();
-  if (R && !$("resultScreen").classList.contains("hidden")) renderShop();
+  if (R && !$("resultScreen").classList.contains("hidden")) { renderShop(); renderReviews(); }
   renderStars();
 }
 
@@ -616,8 +685,8 @@ function renderQ() {
   if (q.type === "num") {
     const saved = answers[idx] !== null ? answers[idx] : "";
     box.innerHTML = `
-      <input id="numIn" type="number" value="${saved}" placeholder="${q.ph}" class="w-full bg-gray-900 border border-white/10 rounded-2xl px-5 py-4 text-white text-lg focus:outline-none focus:border-emerald-500">
-      <button onclick="submitNum()" class="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold rounded-2xl">${d.next}</button>`;
+      <input id="numIn" type="number" value="${saved}" placeholder="${q.ph}" class="w-full px-5 py-4 text-lg">
+      <button onclick="submitNum()" class="btn-primary w-full py-4 text-base">${d.next}</button>`;
     setTimeout(() => {
       const el = $("numIn");
       if (el) { el.focus(); el.onkeydown = e => { if (e.key === "Enter") submitNum(); }; }
@@ -626,9 +695,10 @@ function renderQ() {
     q.opts.forEach((o, i) => {
       const sel = answers[idx] === i;
       const b = document.createElement("button");
-      b.className = "w-full text-left p-4 rounded-2xl border flex justify-between items-center transition " +
-        (sel ? "bg-emerald-500/10 border-emerald-500 text-emerald-300 font-bold" : "bg-gray-900/60 border-white/10 hover:border-gray-500");
-      b.innerHTML = `<span class="text-sm">${tx(o[0])}</span><span>${sel ? "●" : "○"}</span>`;
+      b.className = "w-full text-left p-4 rounded-2xl border flex justify-between items-center transition";
+      b.style.background = sel ? "rgba(16,185,129,.1)" : "var(--surface-2)";
+      b.style.borderColor = sel ? "var(--accent)" : "var(--border)";
+      b.innerHTML = `<span class="text-sm font-semibold">${tx(o[0])}</span><span style="color:${sel ? "var(--accent)" : "var(--muted)"}">${sel ? "●" : "○"}</span>`;
       b.onclick = () => selectOpt(i);
       box.appendChild(b);
     });
@@ -761,9 +831,122 @@ function buildResults() {
   };
 }
 
+/* ==================== ГРАФИКИ ==================== */
+function chartColors() {
+  const dark = document.documentElement.getAttribute("data-theme") !== "light";
+  return {
+    text: dark ? "#9CA3AF" : "#64748B",
+    grid: dark ? "rgba(255,255,255,.06)" : "rgba(15,23,42,.06)",
+    accent: "#10B981", accent2: "#3B82F6", warn: "#F59E0B"
+  };
+}
+
+function makeChart(id, config) {
+  if (!window.Chart || !$(id)) return;
+  if (charts[id]) charts[id].destroy();
+  charts[id] = new Chart($(id), config);
+}
+
+function baseOpts(extra = {}) {
+  const c = chartColors();
+  return Object.assign({
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: c.text, font: { family: "Inter", size: 12 } } } },
+    scales: {
+      x: { ticks: { color: c.text }, grid: { color: c.grid } },
+      y: { ticks: { color: c.text }, grid: { color: c.grid } }
+    }
+  }, extra);
+}
+
+function updateChartsTheme() {
+  Object.keys(charts).forEach(id => { if (charts[id]) charts[id].destroy(); delete charts[id]; });
+  if (R && !$("resultScreen").classList.contains("hidden")) renderCharts();
+  if (!$("introScreen").classList.contains("hidden")) renderDemoChart();
+}
+
+function renderDemoChart() {
+  const c = chartColors();
+  makeChart("demoChart", {
+    type: "line",
+    data: {
+      labels: ["Блок 1","Блок 2","Блок 3","Блок 4","Блок 5","Блок 6"],
+      datasets: [{ label: "Жим, кг", data: [60,63,67,70,74,78], borderColor: c.accent, backgroundColor: "rgba(16,185,129,.15)", fill: true, tension: .35, pointRadius: 4 }]
+    },
+    options: baseOpts()
+  });
+}
+
+function renderCharts() {
+  if (!R) return;
+  const c = chartColors();
+  const labels = BLOCKS.map(b => b.name.replace("Блок ", "Б"));
+  const bench = BLOCKS.map((B, b) => loadFor(EX.bench, b, BLOCK_REPS[b][1], 1));
+  const squat = BLOCKS.map((B, b) => loadFor(EX.squat, b, BLOCK_REPS[b][1], 1));
+  const row = BLOCKS.map((B, b) => loadFor(EX.row, b, BLOCK_REPS[b][1], 1));
+
+  makeChart("weightChart", {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [
+        { label: "Жим лёжа, кг", data: bench, backgroundColor: c.accent, borderRadius: 6 },
+        { label: "Приседания, кг", data: squat, backgroundColor: c.accent2, borderRadius: 6 },
+        { label: "Тяга, кг", data: row, backgroundColor: c.warn, borderRadius: 6 }
+      ]
+    },
+    options: baseOpts()
+  });
+
+  const macro = [R.protein * 4, R.fats * 9, R.carbs * 4];
+  makeChart("macroChart", {
+    type: "doughnut",
+    data: {
+      labels: ["Белки", "Жиры", "Углеводы"],
+      datasets: [{ data: macro, backgroundColor: [c.accent, c.warn, c.accent2], borderWidth: 0 }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, cutout: "68%",
+      plugins: { legend: { position: "bottom", labels: { color: c.text } } } }
+  });
+
+  const lifts = [
+    ["squat", "Приседания", c.accent2],
+    ["bench", "Жим лёжа", c.accent],
+    ["row", "Тяга", c.warn]
+  ];
+  const dates = [...new Set(journal.map(e => e.date))].sort();
+  const progressDatasets = lifts.map(([k, name, color]) => {
+    const data = dates.map(d => {
+      const logs = journal.filter(e => e.date <= d && e.lift === k && e.weight > 0).map(e => oneRM(e.weight, e.reps));
+      return logs.length ? Math.round(Math.max(...logs) * 10) / 10 : null;
+    });
+    return { label: name, data, borderColor: color, backgroundColor: color, tension: .3, spanGaps: true };
+  });
+  makeChart("progressChart", {
+    type: "line",
+    data: { labels: dates.length ? dates : ["—"], datasets: progressDatasets.length ? progressDatasets : [] },
+    options: baseOpts()
+  });
+}
+
 /* ==================== РЕНДЕР ==================== */
 const LVL = ["Начинающий", "Средний", "Продвинутый"];
-const LVL_COLOR = ["text-amber-400", "text-blue-400", "text-emerald-400"];
+const LVL_COLOR = ["#F59E0B", "#3B82F6", "#10B981"];
+
+function ring(p, color, label, sub) {
+  const r = 46, cf = 2 * Math.PI * r;
+  return `
+    <div class="flex flex-col items-center gap-2">
+      <svg width="120" height="120" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="${r}" fill="none" stroke="var(--surface-2)" stroke-width="10"></circle>
+        <circle cx="60" cy="60" r="${r}" fill="none" stroke="${color}" stroke-width="10" stroke-linecap="round"
+          stroke-dasharray="${cf}" stroke-dashoffset="${cf * (1 - p / 100)}" transform="rotate(-90 60 60)"></circle>
+        <text x="60" y="66" text-anchor="middle" font-size="20" font-weight="800" fill="var(--text)">${Math.round(p)}%</text>
+      </svg>
+      <div class="text-xs font-bold">${label}</div>
+      <div class="text-[11px] muted">${sub}</div>
+    </div>`;
+}
 
 function renderAll() {
   renderReport();
@@ -773,6 +956,7 @@ function renderAll() {
   renderSupp();
   renderShop();
   renderReviews();
+  renderCharts();
 }
 
 /* ---------- ОТЧЁТ ---------- */
@@ -801,81 +985,103 @@ function renderReport() {
   ][bio.alcohol];
   const sleepTxt = ["Менее 6 ч", "7–8 ч", "9+ ч"][bio.sleep];
   const waterTxt = ["Меньше 1 л", "1–2 л", "2–3 л", "Больше 3 л"][bio.water];
+  const bmiTxt = r.bmi < 18.5 ? "Недостаток массы" : r.bmi < 25 ? "Норма" : r.bmi < 30 ? "Избыток" : "Высокий";
 
   $("sec-report").innerHTML = `
-    <div class="panel p-6 space-y-6">
-      <h3 class="text-xl font-black"><i class="fa-solid fa-file-lines text-emerald-400"></i> Отчёт по тесту</h3>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-        <div class="bg-gray-900/70 rounded-2xl p-4 border border-white/10">
-          <div class="text-[11px] text-gray-400 font-bold uppercase">Уровень</div>
-          <div class="text-lg font-black ${LVL_COLOR[r.level]}">${LVL[r.level]}</div>
-          <div class="text-[10px] text-gray-500">Оценка ${r.readiness} из 100</div>
+    <div class="card p-7 space-y-7">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(16,185,129,.12); color:var(--accent)"><i class="fa-solid fa-file-lines"></i></div>
+        <h3 class="text-xl font-black">Отчёт по тесту</h3>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="rounded-2xl p-5" style="background:var(--surface-2)">
+          <div class="text-[11px] font-bold uppercase muted">Уровень</div>
+          <div class="text-lg font-black mt-1" style="color:${LVL_COLOR[r.level]}">${LVL[r.level]}</div>
+          <div class="text-[11px] muted">Оценка ${r.readiness} из 100</div>
         </div>
-        <div class="bg-gray-900/70 rounded-2xl p-4 border border-white/10">
-          <div class="text-[11px] text-gray-400 font-bold uppercase">Телосложение</div>
-          <div class="text-lg font-black">${r.bodyType}</div>
-          <div class="text-[10px] text-gray-500">Э ${r.pct.ecto}% · М ${r.pct.meso}% · Эн ${r.pct.endo}%</div>
+        <div class="rounded-2xl p-5" style="background:var(--surface-2)">
+          <div class="text-[11px] font-bold uppercase muted">Телосложение</div>
+          <div class="text-lg font-black mt-1">${r.bodyType}</div>
+          <div class="text-[11px] muted">Э ${r.pct.ecto}% · М ${r.pct.meso}% · Эн ${r.pct.endo}%</div>
         </div>
-        <div class="bg-gray-900/70 rounded-2xl p-4 border border-white/10">
-          <div class="text-[11px] text-gray-400 font-bold uppercase">ИМТ</div>
-          <div class="text-lg font-black">${r.bmi.toFixed(1)}</div>
-          <div class="text-[10px] text-gray-500">${r.bmi < 18.5 ? "Недостаток массы" : r.bmi < 25 ? "Норма" : r.bmi < 30 ? "Избыток" : "Высокий"}</div>
+        <div class="rounded-2xl p-5" style="background:var(--surface-2)">
+          <div class="text-[11px] font-bold uppercase muted">ИМТ</div>
+          <div class="text-lg font-black mt-1 stat">${r.bmi.toFixed(1)}</div>
+          <div class="text-[11px] muted">${bmiTxt}</div>
         </div>
-        <div class="bg-gray-900/70 rounded-2xl p-4 border border-white/10">
-          <div class="text-[11px] text-gray-400 font-bold uppercase">Тренировки</div>
-          <div class="text-lg font-black">${r.days} раза/нед</div>
-          <div class="text-[10px] text-gray-500">${["Зал", "Дом", "Улица"][r.loc]}</div>
+        <div class="rounded-2xl p-5" style="background:var(--surface-2)">
+          <div class="text-[11px] font-bold uppercase muted">Тренировки</div>
+          <div class="text-lg font-black mt-1">${r.days} раза/нед</div>
+          <div class="text-[11px] muted">${["Зал", "Дом", "Улица"][r.loc]}</div>
         </div>
       </div>
 
+      <div class="grid md:grid-cols-3 gap-6 items-center">
+        ${ring(r.readiness, "var(--accent)", "Готовность", "к программе")}
+        ${ring(Math.min(100, Math.round(r.kcal / 40)), "var(--accent-2)", "Калории", r.kcal + " ккал в день")}
+        ${ring(Math.min(100, Math.round(r.protein / 2)), "var(--warn)", "Белок", r.protein + " г в день")}
+      </div>
+
       <div>
-        <h4 class="font-bold mb-2">Силовые показатели</h4>
-        <table class="mt">
+        <h4 class="font-bold mb-3">Силовые показатели</h4>
+        <div class="overflow-x-auto"><table class="mt">
           <tr><th>Упражнение</th><th>Рабочий вес / результат</th><th>Соотношение</th><th>Уровень</th></tr>
-          ${lvlTable.map(row => `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td class="${LVL_COLOR[row[3]]} font-bold">${LVL[row[3]]}</td></tr>`).join("")}
-        </table>
-        <p class="text-[11px] text-gray-500 mt-2">Оценка по отношению веса в жиме и приседе к массе тела и по числу подтягиваний. Это ориентир, а не норматив.</p>
+          ${lvlTable.map(row => `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td class="font-bold" style="color:${LVL_COLOR[row[3]]}">${LVL[row[3]]}</td></tr>`).join("")}
+        </table></div>
+        <p class="text-[11px] muted mt-2">Оценка по отношению веса в жиме и приседе к массе тела и по числу подтягиваний. Это ориентир, а не норматив.</p>
       </div>
 
       <div>
-        <h4 class="font-bold mb-2">${T[LANG].factorsTitle}</h4>
-        <table class="mt">
+        <h4 class="font-bold mb-3">${T[LANG].factorsTitle}</h4>
+        <div class="overflow-x-auto"><table class="mt">
           <tr><th>Фактор</th><th>Ваш ответ</th><th>Влияние на рост мышц и сердце</th></tr>
           <tr><td>Курение</td><td>${smokeTxt[0]}</td><td>${smokeTxt[1]}</td></tr>
           <tr><td>Алкоголь</td><td>${alcTxt[0]}</td><td>${alcTxt[1]}</td></tr>
           <tr><td>Сон</td><td>${sleepTxt}</td><td>Рост мышц идёт во время сна. Меньше 7 часов заметно снижает восстановление и прирост силы.</td></tr>
           <tr><td>Вода</td><td>${waterTxt}</td><td>Вода нужна для работы мышц и восстановления. Обезвоживание снижает силу и выносливость.</td></tr>
-        </table>
+        </table></div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="bg-gray-900/70 p-5 rounded-2xl border border-white/10 space-y-2">
-          <div class="font-bold text-emerald-400">Суточная норма</div>
-          <div class="text-sm">Калории: <b>${r.kcal} ккал</b></div>
-          <div class="text-sm">Белки: <b>${r.protein} г</b> · Жиры: <b>${r.fats} г</b> · Углеводы: <b>${r.carbs} г</b></div>
-          <p class="text-[11px] text-gray-500">Базовый обмен ${r.bmr} ккал, с учётом активности ${r.tdee} ккал, для роста массы добавлен небольшой профицит. Если вес не растёт две недели, добавьте 150–200 ккал.</p>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="rounded-2xl p-6 space-y-2" style="background:var(--surface-2)">
+          <div class="font-bold" style="color:var(--accent)">Суточная норма</div>
+          <div class="text-sm">Калории: <b class="stat">${r.kcal} ккал</b></div>
+          <div class="text-sm">Белки: <b class="stat">${r.protein} г</b> · Жиры: <b class="stat">${r.fats} г</b> · Углеводы: <b class="stat">${r.carbs} г</b></div>
+          <p class="text-[11px] muted">Базовый обмен ${r.bmr} ккал, с учётом активности ${r.tdee} ккал, для роста массы добавлен небольшой профицит. Если вес не растёт две недели, добавьте 150–200 ккал.</p>
         </div>
-        <div class="bg-gray-900/70 p-5 rounded-2xl border border-white/10 space-y-2">
-          <div class="font-bold text-blue-400">Реалистичный прогноз</div>
+        <div class="rounded-2xl p-6 space-y-2" style="background:var(--surface-2)">
+          <div class="font-bold" style="color:var(--accent-2)">Реалистичный прогноз</div>
           <p class="text-sm">${gainTxt}</p>
-          <p class="text-[11px] text-gray-500">Это типичные оценки для таких программ, а не гарантия. Конкретный результат зависит от вас.</p>
+          <p class="text-[11px] muted">Это типичные оценки для таких программ, а не гарантия. Конкретный результат зависит от вас.</p>
         </div>
       </div>
 
-      <div class="bg-gray-900/70 p-5 rounded-2xl border border-white/10 space-y-2">
-        <div class="font-bold text-amber-400">Главные задачи на 6 месяцев</div>
-        <ol class="list-decimal list-inside text-sm space-y-1 text-gray-200">${r.priorities.map(p => `<li>${p}</li>`).join("")}</ol>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="rounded-2xl p-5" style="background:var(--surface-2)">
+          <div class="text-sm font-bold mb-3">${T[LANG].chartWeight}</div>
+          <div class="h-64"><canvas id="weightChart"></canvas></div>
+        </div>
+        <div class="rounded-2xl p-5" style="background:var(--surface-2)">
+          <div class="text-sm font-bold mb-3">${T[LANG].chartMacro}</div>
+          <div class="h-64"><canvas id="macroChart"></canvas></div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl p-6 space-y-3" style="background:var(--surface-2)">
+        <div class="font-bold" style="color:var(--warn)">Главные задачи на 6 месяцев</div>
+        <ol class="list-decimal list-inside text-sm space-y-1">${r.priorities.map(p => `<li>${p}</li>`).join("")}</ol>
       </div>
 
       ${r.flags.length ? `
-      <div class="bg-red-950/30 p-5 rounded-2xl border border-red-500/30 space-y-2">
-        <div class="font-bold text-red-400">На что обратить внимание</div>
-        <ul class="list-disc list-inside text-sm space-y-1 text-gray-200">${r.flags.map(f => `<li>${f}</li>`).join("")}</ul>
+      <div class="rounded-2xl p-6 space-y-2" style="background:rgba(239,68,68,.07); border:1px solid rgba(239,68,68,.25)">
+        <div class="font-bold" style="color:var(--danger)">На что обратить внимание</div>
+        <ul class="list-disc list-inside text-sm space-y-1">${r.flags.map(f => `<li>${f}</li>`).join("")}</ul>
       </div>` : ""}
 
-      <div class="bg-gray-900/70 p-5 rounded-2xl border border-white/10 space-y-2 text-sm">
+      <div class="rounded-2xl p-6 space-y-2 text-sm" style="background:var(--surface-2)">
         <div class="font-bold">Как контролировать прогресс</div>
-        <ul class="list-disc list-inside text-gray-300 space-y-1">
+        <ul class="list-disc list-inside muted space-y-1">
           <li>Взвешивайтесь 2–3 раза в неделю утром, натощак, и смотрите на среднее за неделю.</li>
           <li>Раз в 2 недели измеряйте талию, грудь, руку, бедро.</li>
           <li>Фото раз в 4 недели в одинаковом освещении.</li>
@@ -1099,19 +1305,19 @@ function renderTraining() {
     const rows = d.rows.map(([key, tier]) => {
       const p = prescribe(key, tier, b, w);
       return `
-        <details class="bg-gray-900/70 rounded-xl border border-white/10 p-3">
-          <summary class="flex justify-between items-center gap-3 text-sm">
-            <span class="font-bold">${p.ex.n}</span>
-            <span class="arrow text-gray-500 transition">▸</span>
+        <details class="rounded-2xl p-4" style="background:var(--surface-2)">
+          <summary class="flex justify-between items-center gap-3">
+            <span class="font-bold text-sm">${p.ex.n}</span>
+            <span class="arrow muted"><i class="fa-solid fa-chevron-right text-xs"></i></span>
           </summary>
-          <div class="grid grid-cols-3 gap-2 text-xs text-gray-300 mt-3">
-            <div><span class="text-gray-500">Подходы</span><br><b>${p.sets}</b></div>
-            <div><span class="text-gray-500">Повторы</span><br><b>${p.repsTxt}</b></div>
-            <div><span class="text-gray-500">Вес</span><br><b>${p.loadTxt}</b></div>
+          <div class="grid grid-cols-3 gap-3 text-xs mt-4">
+            <div class="rounded-xl p-3" style="background:var(--surface)"><div class="muted">Подходы</div><div class="font-black text-base mt-1">${p.sets}</div></div>
+            <div class="rounded-xl p-3" style="background:var(--surface)"><div class="muted">Повторы</div><div class="font-black text-base mt-1">${p.repsTxt}</div></div>
+            <div class="rounded-xl p-3" style="background:var(--surface)"><div class="muted">Вес</div><div class="font-black text-base mt-1">${p.loadTxt}</div></div>
           </div>
-          <div class="text-[11px] text-gray-500 mt-2">Отдых: ${p.rest} · Группа: ${p.ex.m}</div>
-          <div class="text-xs text-gray-300 mt-3"><b class="text-emerald-400">Как выполнять:</b> ${p.ex.how}</div>
-          <div class="text-xs text-gray-400 mt-2"><b class="text-red-400">Частая ошибка:</b> ${p.ex.mist}</div>
+          <div class="text-[11px] muted mt-3">Отдых: ${p.rest} · Группа: ${p.ex.m}</div>
+          <div class="text-xs mt-3"><b style="color:var(--accent)">Как выполнять:</b> ${p.ex.how}</div>
+          <div class="text-xs muted mt-2"><b style="color:var(--danger)">Частая ошибка:</b> ${p.ex.mist}</div>
         </details>`;
     }).join("");
 
@@ -1125,38 +1331,45 @@ function renderTraining() {
         : "10 тяг резинки к груди, 10 лёгких тяг к поясу, 1 разминочный подход на 50% от рабочего веса";
 
     return `
-      <div class="panel p-5 space-y-3">
+      <div class="card p-6 space-y-4">
         <div class="flex justify-between items-center">
-          <h4 class="font-black">${d.name}</h4>
-          <span class="text-[11px] text-gray-500">День ${di + 1} из ${days.length}</span>
+          <h4 class="font-extrabold">${d.name}</h4>
+          <span class="text-[11px] font-bold px-2 py-1 rounded-lg" style="background:var(--surface-2)">День ${di + 1} / ${days.length}</span>
         </div>
-        <div class="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-3 text-xs text-gray-300">
-          <b class="text-emerald-400">Разминка (8–10 мин):</b> 5 минут лёгкого кардио, затем ${warm}. 2 минуты мобилити для суставов, которые будете нагружать.
+        <div class="rounded-xl p-4 text-xs" style="background:rgba(16,185,129,.07); border:1px solid rgba(16,185,129,.2)">
+          <b style="color:var(--accent)">Разминка (8–10 мин):</b> 5 минут лёгкого кардио, затем ${warm}. 2 минуты мобилити для суставов, которые будете нагружать.
         </div>
         <div class="space-y-2">${rows}</div>
       </div>`;
   }).join("");
 
   $("sec-train").innerHTML = `
-    <div class="panel p-6 space-y-5">
-      <div class="border-b border-white/10 pb-4">
-        <h3 class="text-xl font-black"><i class="fa-solid fa-dumbbell text-emerald-400"></i> Программа тренировок</h3>
-        <p class="text-xs text-gray-400 mt-1">${R.days} дня в неделю, ${["зал", "дом", "улица"][R.loc]}. Все основные группы мышц прорабатываются за неделю.</p>
+    <div class="card p-7 space-y-6">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(16,185,129,.12); color:var(--accent)"><i class="fa-solid fa-dumbbell"></i></div>
+        <div>
+          <h3 class="text-xl font-black">Программа тренировок</h3>
+          <p class="text-xs muted mt-1">${R.days} дня в неделю, ${["зал", "дом", "улица"][R.loc]}. Все основные группы мышц прорабатываются за неделю.</p>
+        </div>
       </div>
-      <div class="flex gap-2 overflow-x-auto pb-1">
-        ${BLOCKS.map((B, i) => `<button onclick="setBlock(${i})" class="px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap ${i === b ? "bg-emerald-500 text-black" : "bg-gray-900 text-gray-400 border border-white/10"}">${B.name}</button>`).join("")}
+
+      <div class="hscroll flex gap-2 pb-1">
+        ${BLOCKS.map((B, i) => `<button onclick="setBlock(${i})" class="tab ${i === b ? "on" : ""}">${B.name}</button>`).join("")}
       </div>
-      <div class="flex gap-2 overflow-x-auto pb-1">
-        ${[0,1,2,3].map(i => `<button onclick="setWeek(${i})" class="px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap ${i === w ? "bg-blue-500 text-white" : "bg-gray-900 text-gray-400 border border-white/10"}">Неделя ${i + 1}${i === 3 ? " (разгрузка)" : ""}</button>`).join("")}
+      <div class="hscroll flex gap-2 pb-1">
+        ${[0,1,2,3].map(i => `<button onclick="setWeek(${i})" class="tab ${i === w ? "on" : ""}">Неделя ${i + 1}${i === 3 ? " · разгрузка" : ""}</button>`).join("")}
       </div>
-      <div class="bg-gray-900/70 p-4 rounded-2xl border border-white/10 text-xs space-y-1">
-        <div class="font-bold text-emerald-400">Повторы в этой неделе: ${BLOCK_REPS[b][w]} · Подходы: ${BLOCK_SETS[b]}</div>
-        <div class="text-gray-300">${w === 3 ? "Разгрузочная неделя: меньше подходов и веса, чтобы восстановиться. Не пропускайте её." : "Веса рассчитываются по вашему максимуму и числу повторений. Если все подходы выполнены с хорошей техникой и запасом сил, в следующей неделе берите чуть больше."}</div>
+
+      <div class="rounded-2xl p-5 text-sm" style="background:var(--surface-2)">
+        <div class="font-bold" style="color:var(--accent)">Повторы в этой неделе: ${BLOCK_REPS[b][w]} · Подходы: ${BLOCK_SETS[b]}</div>
+        <div class="muted mt-1 text-xs">${w === 3 ? "Разгрузочная неделя: меньше подходов и веса, чтобы восстановиться. Не пропускайте её." : "Веса рассчитываются по вашему максимуму и числу повторений. Если все подходы выполнены с хорошей техникой и запасом сил, в следующей неделе берите чуть больше."}</div>
       </div>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">${cards}</div>
-      <div class="bg-gray-900/70 p-5 rounded-2xl border border-white/10 text-xs space-y-2 text-gray-300">
-        <div class="font-bold text-white">Правила прогрессии</div>
-        <ul class="list-disc list-inside space-y-1">
+
+      <div class="grid lg:grid-cols-2 gap-5">${cards}</div>
+
+      <div class="rounded-2xl p-6 space-y-2 text-sm" style="background:var(--surface-2)">
+        <div class="font-bold">Правила прогрессии</div>
+        <ul class="list-disc list-inside muted text-xs space-y-1">
           <li>Выполнили все подходы на верхней границе повторений с хорошей техникой — в следующем блоке вес растёт сам.</li>
           <li>Повторов меньше нижней границы — оставьте вес тем же и повторите неделю.</li>
           <li>Записывайте в журнал лучший рабочий подход по базовым упражнениям: по нему пересчитывается максимум.</li>
@@ -1171,48 +1384,42 @@ function renderTraining() {
 function renderJournalSection() {
   const opts = Object.keys(EX).map(k => `<option value="${k}">${EX[k].n}</option>`).join("");
   $("sec-journal").innerHTML = `
-    <div class="panel p-6 space-y-6">
-      <div class="border-b border-white/10 pb-4">
-        <h3 class="text-xl font-black"><i class="fa-solid fa-book text-blue-400"></i> Журнал тренировок</h3>
-        <p class="text-xs text-gray-400 mt-1">Записывайте лучший рабочий подход после тренировки. Для основных упражнений (присед, жим, тяга, армейский жим, бицепс) по записям пересчитывается максимум и растут рабочие веса.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+    <div class="card p-7 space-y-6">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(59,130,246,.12); color:var(--accent-2)"><i class="fa-solid fa-book"></i></div>
         <div>
-          <label class="text-gray-400 font-bold block mb-1">Дата</label>
-          <input id="jD" type="date" class="w-full bg-gray-900 border border-white/10 rounded-xl p-2.5 text-white">
-        </div>
-        <div class="md:col-span-2">
-          <label class="text-gray-400 font-bold block mb-1">Упражнение</label>
-          <select id="jEx" class="w-full bg-gray-900 border border-white/10 rounded-xl p-2.5 text-white">${opts}</select>
-        </div>
-        <div>
-          <label class="text-gray-400 font-bold block mb-1">Вес, кг (0 для веса тела)</label>
-          <input id="jW" type="number" min="0" step="0.5" class="w-full bg-gray-900 border border-white/10 rounded-xl p-2.5 text-white">
-        </div>
-        <div>
-          <label class="text-gray-400 font-bold block mb-1">Повторы в подходе</label>
-          <input id="jR" type="number" min="1" class="w-full bg-gray-900 border border-white/10 rounded-xl p-2.5 text-white">
-        </div>
-        <div>
-          <label class="text-gray-400 font-bold block mb-1">Подходов</label>
-          <input id="jS" type="number" min="1" value="1" class="w-full bg-gray-900 border border-white/10 rounded-xl p-2.5 text-white">
-        </div>
-        <div class="md:col-span-3">
-          <label class="text-gray-400 font-bold block mb-1">Заметка (необязательно)</label>
-          <input id="jN" class="w-full bg-gray-900 border border-white/10 rounded-xl p-2.5 text-white" placeholder="Например: легко, техника чистая">
+          <h3 class="text-xl font-black">Журнал тренировок</h3>
+          <p class="text-xs muted mt-1">Записывайте лучший рабочий подход после тренировки. По основным упражнениям (присед, жим, тяга, армейский жим, бицепс) по записям пересчитывается максимум и растут рабочие веса.</p>
         </div>
       </div>
-      <button onclick="addJournal()" class="px-5 py-3 bg-blue-500 hover:bg-blue-400 text-white font-extrabold text-xs rounded-xl">Добавить запись</button>
+
+      <div class="grid md:grid-cols-3 gap-4 text-xs">
+        <div class="space-y-1"><label class="font-bold muted">Дата</label><input id="jD" type="date" class="w-full px-3 py-2.5"></div>
+        <div class="md:col-span-2 space-y-1"><label class="font-bold muted">Упражнение</label><select id="jEx" class="w-full px-3 py-2.5">${opts}</select></div>
+        <div class="space-y-1"><label class="font-bold muted">Вес, кг (0 для веса тела)</label><input id="jW" type="number" min="0" step="0.5" class="w-full px-3 py-2.5"></div>
+        <div class="space-y-1"><label class="font-bold muted">Повторы в подходе</label><input id="jR" type="number" min="1" class="w-full px-3 py-2.5"></div>
+        <div class="space-y-1"><label class="font-bold muted">Подходов</label><input id="jS" type="number" min="1" value="1" class="w-full px-3 py-2.5"></div>
+        <div class="md:col-span-3 space-y-1"><label class="font-bold muted">Заметка (необязательно)</label><input id="jN" class="w-full px-3 py-2.5" placeholder="Например: легко, техника чистая"></div>
+      </div>
+      <button onclick="addJournal()" class="btn-primary px-6 py-3 text-sm">Добавить запись</button>
+
+      <div class="rounded-2xl p-5" style="background:var(--surface-2)">
+        <div class="text-sm font-bold mb-3">${T[LANG].chartProgress}</div>
+        <div class="h-64"><canvas id="progressChart"></canvas></div>
+        <p class="text-[11px] muted mt-2">График появится, когда добавите первые записи. Точки — максимум 1ПМ на дату записи.</p>
+      </div>
+
       <div>
-        <h4 class="font-bold mb-2">Мои записи</h4>
+        <h4 class="font-bold mb-3">Мои записи</h4>
         <div class="overflow-x-auto"><table class="mt" id="jTable"></table></div>
-        <p id="jEmpty" class="text-xs text-gray-500 mt-2">Записей пока нет.</p>
+        <p id="jEmpty" class="text-xs muted mt-2">Записей пока нет.</p>
       </div>
+
       <div>
-        <h4 class="font-bold mb-2">Результаты и прогноз весов</h4>
+        <h4 class="font-bold mb-3">Результаты и прогноз весов</h4>
         <div class="overflow-x-auto"><table class="mt" id="pTable"></table></div>
         <div class="overflow-x-auto mt-4"><table class="mt" id="fTable"></table></div>
-        <p class="text-[11px] text-gray-500 mt-2">Прогноз считается, пока в журнале нет записей по упражнению. Как только записи появились, прогноз заменяется вашими результатами.</p>
+        <p class="text-[11px] muted mt-2">Прогноз считается, пока в журнале нет записей по упражнению. Как только записи появились, прогноз заменяется вашими результатами.</p>
       </div>
     </div>`;
 
@@ -1246,6 +1453,7 @@ function addJournal() {
   renderJournal();
   renderProgress();
   renderTraining();
+  renderCharts();
 }
 
 function delJournal(id) {
@@ -1254,6 +1462,7 @@ function delJournal(id) {
   renderJournal();
   renderProgress();
   renderTraining();
+  renderCharts();
 }
 
 function renderJournal() {
@@ -1270,8 +1479,8 @@ function renderJournal() {
         <td>${e.reps}</td>
         <td>${e.sets}</td>
         <td>${e.lift && e.weight ? oneRM(e.weight, e.reps).toFixed(1) + " кг" : "—"}</td>
-        <td class="text-gray-400">${esc(e.note || "")}</td>
-        <td><button onclick="delJournal(${e.id})" class="text-red-400 hover:text-red-300"><i class="fa-solid fa-trash"></i></button></td>
+        <td class="muted">${esc(e.note || "")}</td>
+        <td><button onclick="delJournal(${e.id})" style="color:var(--danger)"><i class="fa-solid fa-trash"></i></button></td>
       </tr>`).join("")}`;
 }
 
@@ -1296,7 +1505,7 @@ function renderProgress() {
         <td>${name}</td>
         <td>${testRM.toFixed(1)} кг</td>
         <td>${best ? best.toFixed(1) + " кг" : "—"}</td>
-        <td class="font-bold text-emerald-300">${base1RM(k).toFixed(1)} кг</td>
+        <td class="font-bold" style="color:var(--accent)">${base1RM(k).toFixed(1)} кг</td>
       </tr>`;
     }).join("")}`;
 
@@ -1428,42 +1637,43 @@ function renderFood() {
     const calc = calcDish(dish, target);
     sums.k += calc.tot.k; sums.p += calc.tot.p; sums.f += calc.tot.f; sums.c += calc.tot.c;
     return `
-      <div class="panel p-5 space-y-3">
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+      <div class="card p-6 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
           <div>
-            <div class="text-[11px] text-gray-500 font-bold uppercase">${MEAL_NAME[t]} · ≈ ${Math.round(target)} ккал</div>
-            <h4 class="font-black text-lg">${dish.n}</h4>
+            <div class="text-[11px] font-bold uppercase muted">${MEAL_NAME[t]} · ≈ ${Math.round(target)} ккал</div>
+            <h4 class="font-extrabold text-lg mt-1">${dish.n}</h4>
           </div>
-          <button onclick="cycleMeal('${t}')" class="self-start px-3 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-xs font-bold">
-            Другой вариант (${idx2 + 1}/${opts.length})
-          </button>
+          <button onclick="cycleMeal('${t}')" class="btn-ghost px-4 py-2 text-xs">Другой вариант (${idx2 + 1}/${opts.length})</button>
         </div>
-        <table class="mt">
+        <div class="overflow-x-auto"><table class="mt">
           <tr><th>Продукт</th><th>Граммы</th><th>Ккал</th><th>Б</th><th>Ж</th><th>У</th></tr>
           ${calc.rows.map(r => `<tr><td>${r.n}</td><td>${r.g}</td><td>${Math.round(r.k)}</td><td>${r.p.toFixed(0)}</td><td>${r.f.toFixed(0)}</td><td>${r.c.toFixed(0)}</td></tr>`).join("")}
           <tr class="font-bold"><td>Итого</td><td></td><td>${Math.round(calc.tot.k)}</td><td>${calc.tot.p.toFixed(0)}</td><td>${calc.tot.f.toFixed(0)}</td><td>${calc.tot.c.toFixed(0)}</td></tr>
-        </table>
-        <p class="text-xs text-gray-400"><b class="text-gray-300">Приготовление:</b> ${dish.prep}</p>
+        </table></div>
+        <p class="text-xs muted"><b style="color:var(--text)">Приготовление:</b> ${dish.prep}</p>
       </div>`;
   }).join("");
 
   $("sec-food").innerHTML = `
-    <div class="panel p-6 space-y-5">
-      <div class="border-b border-white/10 pb-4">
-        <h3 class="text-xl font-black"><i class="fa-solid fa-utensils text-amber-400"></i> План питания</h3>
-        <p class="text-xs text-gray-400 mt-1">Норма: ${R.kcal} ккал, белок ${R.protein} г, жиры ${R.fats} г, углеводы ${R.carbs} г. Граммы уже пересчитаны под вашу норму. Нажимайте «Другой вариант», чтобы менять блюда.</p>
-        ${R.lactose === 0 ? `<p class="text-xs text-blue-300 mt-2">Молочные блюда скрыты, вы указали, что молоко переносите плохо.</p>` : ""}
-        ${R.budget === 0 ? `<p class="text-xs text-blue-300 mt-1">Блюда с лососем и орехами скрыты, вы выбрали базовый бюджет.</p>` : ""}
+    <div class="card p-7 space-y-6">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(245,158,11,.12); color:var(--warn)"><i class="fa-solid fa-utensils"></i></div>
+        <div>
+          <h3 class="text-xl font-black">План питания</h3>
+          <p class="text-xs muted mt-1">Норма: ${R.kcal} ккал, белок ${R.protein} г, жиры ${R.fats} г, углеводы ${R.carbs} г. Граммы уже пересчитаны под вашу норму. Нажимайте «Другой вариант», чтобы менять блюда.</p>
+        </div>
       </div>
+      ${R.lactose === 0 ? `<p class="text-xs" style="color:var(--accent-2)">Молочные блюда скрыты, вы указали, что молоко переносите плохо.</p>` : ""}
+      ${R.budget === 0 ? `<p class="text-xs" style="color:var(--accent-2)">Блюда с лососем и орехами скрыты, вы выбрали базовый бюджет.</p>` : ""}
       ${blocks}
-      <div class="bg-gray-900/70 p-5 rounded-2xl border border-white/10 text-sm space-y-1">
+      <div class="rounded-2xl p-6 space-y-1 text-sm" style="background:var(--surface-2)">
         <div class="font-bold">Итого за день (выбранные блюда)</div>
-        <div>${Math.round(sums.k)} ккал · Белок ${sums.p.toFixed(0)} г · Жиры ${sums.f.toFixed(0)} г · Углеводы ${sums.c.toFixed(0)} г</div>
-        <div class="text-[11px] text-gray-500">Небольшое отклонение (±5%) от нормы допустимо. Если вес растёт слишком быстро или медленно, корректируйте порции, а не меню целиком.</div>
+        <div class="stat">${Math.round(sums.k)} ккал · Белок ${sums.p.toFixed(0)} г · Жиры ${sums.f.toFixed(0)} г · Углеводы ${sums.c.toFixed(0)} г</div>
+        <div class="text-[11px] muted">Небольшое отклонение (±5%) от нормы допустимо. Если вес растёт слишком быстро или медленно, корректируйте порции, а не меню целиком.</div>
       </div>
-      <div class="bg-gray-900/70 p-5 rounded-2xl border border-white/10 text-xs space-y-2 text-gray-300">
-        <div class="font-bold text-white">Правила питания</div>
-        <ul class="list-disc list-inside space-y-1">
+      <div class="rounded-2xl p-6 space-y-2 text-xs" style="background:var(--surface-2)">
+        <div class="font-bold text-sm">Правила питания</div>
+        <ul class="list-disc list-inside muted space-y-1">
           <li>Белок распределяйте по 3–5 приёмам пищи, по 25–40 г на приём.</li>
           <li>Углеводы больше в дни тренировок и вокруг них, меньше в дни отдыха.</li>
           <li>Пейте воду: ориентир 30–35 мл на кг веса в день, плюс больше в жару и при тренировках.</li>
@@ -1491,7 +1701,7 @@ function renderSupp() {
     {
       name: "Креатин моногидрат",
       level: "Рекомендуется",
-      color: "text-emerald-400",
+      color: "var(--accent)",
       why: "Один из самых изученных спортивных препаратов. Повышает силу и помогает набирать мышечную массу при регулярных тренировках.",
       dose: `${creatineG} г в день, каждый день, в любое время, можно с едой.`,
       how: "Размешайте в воде или соке. Насыщения не требуется. Курсы не нужны."
@@ -1499,7 +1709,7 @@ function renderSupp() {
     {
       name: "Сывороточный протеин",
       level: proteinServings > 0 ? "Нужен" : "По желанию",
-      color: proteinServings > 0 ? "text-amber-400" : "text-gray-400",
+      color: proteinServings > 0 ? "var(--warn)" : "var(--muted)",
       why: proteinServings > 0
         ? `Из еды вы получаете примерно ${Math.round(r.weight * 1.4)} г белка, а норма ${r.protein} г. Не хватает около ${Math.round(gap)} г.`
         : `Еда покрывает норму белка (${r.protein} г). Протеин можно не брать.`,
@@ -1509,7 +1719,7 @@ function renderSupp() {
     {
       name: "Витамин D3",
       level: "Рекомендуется в холодный сезон",
-      color: "text-blue-400",
+      color: "var(--accent-2)",
       why: "Нужен для мышц, иммунитета и гормонального фона. С октября по март солнечного света обычно не хватает.",
       dose: "1000–2000 МЕ в день. Точную дозу лучше подобрать по анализу 25(OH)D у врача.",
       how: "Принимайте утром вместе с едой, содержащей жиры. Не превышайте 4000 МЕ без рекомендации врача."
@@ -1517,7 +1727,7 @@ function renderSupp() {
     {
       name: "Омега-3 (EPA + DHA)",
       level: fishLow ? "Рекомендуется" : "По желанию",
-      color: fishLow ? "text-emerald-400" : "text-gray-400",
+      color: fishLow ? "var(--accent)" : "var(--muted)",
       why: fishLow
         ? "Рыбы в рационе мало. Омега-3 поддерживает сердце, сосуды и восстановление."
         : "Рыба есть в рационе, добавка не обязательна.",
@@ -1527,7 +1737,7 @@ function renderSupp() {
     {
       name: "Кофеин (перед тренировкой, по желанию)",
       level: "По желанию",
-      color: "text-gray-400",
+      color: "var(--muted)",
       why: "Может повысить энергию и силу. Эффект обычно заметен, если вы не пьёте кофе каждый день.",
       dose: "100–200 мг за 30–60 минут до тренировки. Не больше 400 мг в день суммарно с кофе и чаем.",
       how: "Не принимайте после 16:00, чтобы не нарушить сон. Если есть проблемы с сердцем или давлением, не принимайте."
@@ -1537,7 +1747,7 @@ function renderSupp() {
     takeList.push({
       name: "Бета-аланин",
       level: "По желанию, при опыте",
-      color: "text-gray-400",
+      color: "var(--muted)",
       why: "Помогает выдерживать более длинные тяжёлые подходы (8–12 повторений и больше).",
       dose: "3,2 г в день, разделите на 2–4 приёма.",
       how: "Может вызывать покалывание кожи, это безвредно. Для эффекта нужен курс 4 недели и больше."
@@ -1559,37 +1769,40 @@ function renderSupp() {
   ];
 
   $("sec-supp").innerHTML = `
-    <div class="panel p-6 space-y-6">
-      <div class="border-b border-white/10 pb-4">
-        <h3 class="text-xl font-black"><i class="fa-solid fa-pills text-purple-400"></i> Добавки: что принимать и что нельзя</h3>
-        <p class="text-xs text-gray-400 mt-1">Добавки не заменяют еду, сон и тренировки. Перед приёмом проконсультируйтесь с врачом, особенно при хронических болезнях, беременности или приёме лекарств.</p>
+    <div class="card p-7 space-y-7">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(139,92,246,.14); color:#A78BFA"><i class="fa-solid fa-pills"></i></div>
+        <div>
+          <h3 class="text-xl font-black">Добавки: что принимать и что нельзя</h3>
+          <p class="text-xs muted mt-1">Добавки не заменяют еду, сон и тренировки. Перед приёмом проконсультируйтесь с врачом, особенно при хронических болезнях, беременности или приёме лекарств.</p>
+        </div>
       </div>
       <div>
-        <h4 class="font-black text-emerald-400 mb-3">Что принимать</h4>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <h4 class="font-bold mb-3" style="color:var(--accent)">Что принимать</h4>
+        <div class="grid md:grid-cols-2 gap-4">
           ${takeList.map(s => `
-            <div class="bg-gray-900/70 p-5 rounded-2xl border border-white/10 space-y-2">
+            <div class="rounded-2xl p-5 space-y-2" style="background:var(--surface-2)">
               <div class="flex justify-between items-center gap-2">
-                <span class="font-black">${s.name}</span>
-                <span class="text-[11px] font-bold ${s.color}">${s.level}</span>
+                <span class="font-extrabold">${s.name}</span>
+                <span class="text-[11px] font-bold" style="color:${s.color}">${s.level}</span>
               </div>
-              <p class="text-xs text-gray-300"><b>Зачем:</b> ${s.why}</p>
-              <p class="text-xs text-gray-300"><b>Доза:</b> ${s.dose}</p>
-              <p class="text-xs text-gray-400"><b>Как принимать:</b> ${s.how}</p>
+              <p class="text-xs muted"><b style="color:var(--text)">Зачем:</b> ${s.why}</p>
+              <p class="text-xs muted"><b style="color:var(--text)">Доза:</b> ${s.dose}</p>
+              <p class="text-xs muted"><b style="color:var(--text)">Как принимать:</b> ${s.how}</p>
             </div>`).join("")}
         </div>
       </div>
       <div>
-        <h4 class="font-black text-red-400 mb-3">Чего нельзя принимать</h4>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <h4 class="font-bold mb-3" style="color:var(--danger)">Чего нельзя принимать</h4>
+        <div class="grid md:grid-cols-2 gap-3">
           ${avoidList.map(a => `
-            <div class="bg-red-950/20 p-4 rounded-xl border border-red-500/20 text-xs">
-              <div class="font-bold text-red-300">${a.name}</div>
-              <div class="text-gray-400 mt-1">${a.why}</div>
+            <div class="rounded-xl p-4 text-xs" style="background:rgba(239,68,68,.06); border:1px solid rgba(239,68,68,.2)">
+              <div class="font-bold" style="color:var(--danger)">${a.name}</div>
+              <div class="muted mt-1">${a.why}</div>
             </div>`).join("")}
         </div>
       </div>
-      <div class="bg-gray-900/70 p-5 rounded-2xl border border-white/10 text-xs text-gray-400">
+      <div class="rounded-2xl p-5 text-xs muted" style="background:var(--surface-2)">
         Не принимайте добавки при беременности, кормлении грудью, до 18 лет, при заболеваниях почек, печени, сердца, при диабете и при приёме лекарств без консультации врача. Если появились боли в груди, сердцебиение, сыпь, резкое ухудшение самочувствия, прекратите приём и обратитесь к врачу.
       </div>
     </div>`;
@@ -1600,20 +1813,23 @@ function renderShop() {
   const d = T[LANG];
   const cards = PARTNERS.length
     ? PARTNERS.map(p => `
-        <div class="bg-gray-900/70 p-5 rounded-2xl border border-white/10 space-y-2 flex flex-col">
-          <div class="font-black">${esc(p.name)}</div>
-          <p class="text-xs text-gray-400 flex-1">${esc(p.desc || "")}</p>
-          <a href="${esc(p.url)}" target="_blank" rel="sponsored noopener noreferrer" class="self-start px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs rounded-xl">${d.shopBtn}</a>
+        <div class="rounded-2xl p-6 flex flex-col gap-2" style="background:var(--surface-2)">
+          <div class="font-extrabold">${esc(p.name)}</div>
+          <p class="text-xs muted flex-1">${esc(p.desc || "")}</p>
+          <a href="${esc(p.url)}" target="_blank" rel="sponsored noopener noreferrer" class="btn-primary self-start px-4 py-2 text-xs mt-2">${d.shopBtn}</a>
         </div>`).join("")
-    : `<div class="md:col-span-2 bg-gray-900/60 p-6 rounded-2xl border border-white/10 text-center text-xs text-gray-400">${d.shopEmpty}</div>`;
+    : `<div class="md:col-span-2 rounded-2xl p-8 text-center text-xs muted" style="background:var(--surface-2)">${d.shopEmpty}</div>`;
 
   $("sec-shop").innerHTML = `
-    <div class="panel p-6 space-y-5">
-      <div class="border-b border-white/10 pb-4">
-        <h3 class="text-xl font-black"><i class="fa-solid fa-bag-shopping text-amber-400"></i> ${d.shopTitle}</h3>
-        <p class="text-[11px] text-gray-500 mt-2">${d.shopDisc}</p>
+    <div class="card p-7 space-y-6">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(245,158,11,.12); color:var(--warn)"><i class="fa-solid fa-bag-shopping"></i></div>
+        <div>
+          <h3 class="text-xl font-black">${d.shopTitle}</h3>
+          <p class="text-[11px] muted mt-2">${d.shopDisc}</p>
+        </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">${cards}</div>
+      <div class="grid md:grid-cols-2 gap-4">${cards}</div>
     </div>`;
 }
 
@@ -1621,24 +1837,27 @@ function renderShop() {
 function renderReviews() {
   const list = REVIEWS.length
     ? REVIEWS.map(r => `
-        <div class="bg-gray-900/80 p-4 rounded-2xl border border-white/10 space-y-2">
-          <div class="flex justify-between"><strong class="text-xs">${esc(r.name)}</strong><span class="text-amber-400 text-xs">★★★★★</span></div>
-          <p class="text-xs text-gray-300 italic">«${esc(r.text)}»</p>
+        <div class="rounded-2xl p-5 space-y-2" style="background:var(--surface-2)">
+          <div class="flex justify-between items-center"><strong class="text-xs">${esc(r.name)}</strong><span class="text-xs" style="color:var(--warn)">★★★★★</span></div>
+          <p class="text-xs muted italic">«${esc(r.text)}»</p>
         </div>`).join("")
-    : `<div class="md:col-span-3 bg-gray-900/60 p-6 rounded-2xl border border-white/10 text-center text-xs text-gray-400">
+    : `<div class="md:col-span-3 rounded-2xl p-8 text-center text-xs muted" style="background:var(--surface-2)">
          Отзывов пока нет. Если вы проходите программу, поделитесь опытом: кнопка ниже.
        </div>`;
 
   $("sec-rev").innerHTML = `
-    <div class="panel p-6 space-y-5">
-      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 border-b border-white/10 pb-4">
-        <div>
-          <h3 class="text-xl font-black"><i class="fa-solid fa-comments text-emerald-400"></i> Отзывы участников</h3>
-          <p class="text-xs text-gray-400 mt-1">Публикуем только реальные отзывы с разрешения автора.</p>
+    <div class="card p-7 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(16,185,129,.12); color:var(--accent)"><i class="fa-solid fa-comments"></i></div>
+          <div>
+            <h3 class="text-xl font-black">Отзывы участников</h3>
+            <p class="text-xs muted mt-1">Публикуем только реальные отзывы с разрешения автора.</p>
+          </div>
         </div>
-        <button onclick="openRev()" class="px-4 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs rounded-xl">+ Добавить отзыв</button>
+        <button onclick="openRev()" class="btn-primary px-4 py-2.5 text-xs">+ Добавить отзыв</button>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">${list}</div>
+      <div class="grid md:grid-cols-3 gap-4">${list}</div>
     </div>`;
 }
 
@@ -1674,7 +1893,7 @@ function renderStars() {
   const box = $("stars");
   if (!box) return;
   box.innerHTML = [1,2,3,4,5].map(i =>
-    `<button onclick="setStars(${i})" class="${i <= rating ? "text-amber-400" : "text-gray-600"} hover:text-amber-300">★</button>`
+    `<button onclick="setStars(${i})" style="color:${i <= rating ? "var(--warn)" : "var(--border)"}">★</button>`
   ).join("");
 }
 
@@ -1688,9 +1907,9 @@ function sendDone() {
   const name = $("certName").value.trim();
   const email = $("certEmail").value.trim();
   const msg = $("doneMsg");
-  if (name.length < 2) { msg.textContent = T[LANG].needName; msg.className = "text-xs text-red-400"; return; }
-  if (!rating) { msg.textContent = T[LANG].needRate; msg.className = "text-xs text-red-400"; return; }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = T[LANG].badEmail; msg.className = "text-xs text-red-400"; return; }
+  if (name.length < 2) { msg.textContent = T[LANG].needName; msg.className = "text-xs"; msg.style.color = "var(--danger)"; msg.classList.remove("hidden"); return; }
+  if (!rating) { msg.textContent = T[LANG].needRate; msg.className = "text-xs"; msg.style.color = "var(--danger)"; msg.classList.remove("hidden"); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = T[LANG].badEmail; msg.className = "text-xs"; msg.style.color = "var(--danger)"; msg.classList.remove("hidden"); return; }
   userName = name;
   courseDone = true;
   saveAll();
@@ -1698,7 +1917,9 @@ function sendDone() {
   const body = encodeURIComponent(`Имя для сертификата: ${name}\nПочта: ${email}\nОценка курса: ${rating} из 5\nЯзык: ${LANG}`);
   window.location.href = `mailto:${CONFIG.SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
   msg.textContent = T[LANG].thanks.replace("{e}", email);
-  msg.className = "text-xs text-emerald-400";
+  msg.className = "text-xs";
+  msg.style.color = "var(--accent)";
+  msg.classList.remove("hidden");
 }
 
 /* ==================== ПОМОЩНИК КУРСА (ИИ через /api/chat) ==================== */
@@ -1718,7 +1939,7 @@ function toggleBot() {
   if (open && !$("botMsgs").childElementCount) {
     botSay("bot", T[LANG].botHint + ".");
     $("botQuick").innerHTML = QUICK.map((f, i) =>
-      `<button onclick="botAsk(${i})" class="px-2.5 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-[11px]">${f[LANG]}</button>`
+      `<button onclick="botAsk(${i})" class="chip">${f[LANG]}</button>`
     ).join("");
   }
 }
@@ -1726,7 +1947,7 @@ function toggleBot() {
 function botSay(who, html) {
   const d = document.createElement("div");
   d.className = who === "me" ? "text-right" : "text-left";
-  d.innerHTML = `<span class="inline-block px-3 py-2 rounded-xl max-w-[85%] text-left ${who === "me" ? "bg-emerald-500 text-black" : "bg-gray-800 text-gray-200"}">${html}</span>`;
+  d.innerHTML = `<span class="inline-block px-3.5 py-2.5 rounded-2xl max-w-[85%] text-left" style="${who === "me" ? "background:var(--accent); color:#04110C;" : "background:var(--surface-2); color:var(--text);"}">${html}</span>`;
   $("botMsgs").appendChild(d);
   $("botMsgs").scrollTop = $("botMsgs").scrollHeight;
   return d;
@@ -1745,7 +1966,7 @@ async function botSend() {
   botSay("me", esc(text));
   botHistory.push({ role:"user", content:text });
 
-  const wait = botSay("bot", `<span class="text-gray-500">${T[LANG].botTyping}</span>`);
+  const wait = botSay("bot", `<span class="muted">${T[LANG].botTyping}</span>`);
 
   let reply;
   let ok = false;
@@ -1776,11 +1997,12 @@ document.addEventListener("keydown", e => {
 
 /* ==================== PDF / СБРОС ==================== */
 function downloadPDF() {
+  const isLight = document.documentElement.getAttribute("data-theme") === "light";
   html2pdf().set({
     margin: 0.3,
     filename: "SomatoMass_plan.pdf",
     image: { type:"jpeg", quality:0.95 },
-    html2canvas: { scale:2, backgroundColor:"#07090E" },
+    html2canvas: { scale:2, backgroundColor: isLight ? "#F5F7FB" : "#07090E" },
     jsPDF: { unit:"in", format:"letter", orientation:"portrait" }
   }).from($("pdfArea")).save();
 }
@@ -1800,14 +2022,18 @@ function restartQuiz() {
   weekIdx = 0;
   hasSaved = false;
   botHistory = [];
+  Object.keys(charts).forEach(id => { if (charts[id]) charts[id].destroy(); delete charts[id]; });
   try { localStorage.removeItem(KEY); } catch (e) {}
   applyI18n();
   show("introScreen");
+  renderDemoChart();
 }
 
 /* ==================== СТАРТ ==================== */
 loadAll();
 applyI18n();
+if (!document.documentElement.getAttribute("data-theme")) applyTheme("dark");
+renderDemoChart();
 </script>
 </body>
 </html>
