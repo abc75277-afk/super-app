@@ -23,10 +23,12 @@
     --warn: #F59E0B;
     --danger: #EF4444;
     --shadow:
-      0 1px 0 rgba(255,255,255,.05) inset,
-      0 1px 2px rgba(0,0,0,.6),
-      0 24px 48px -18px rgba(0,0,0,.95),
-      0 0 0 1px rgba(255,255,255,.04);
+      0 1px 0 rgba(255,255,255,.07) inset,
+      0 2px 4px rgba(0,0,0,.5),
+      0 10px 20px -6px rgba(0,0,0,.55),
+      0 28px 56px -14px rgba(0,0,0,.85),
+      0 56px 100px -36px rgba(16,185,129,.16),
+      0 0 0 1px rgba(255,255,255,.05);
     --glow: 0 0 46px -8px rgba(16,185,129,.42);
   }
   [data-theme="light"] {
@@ -37,8 +39,10 @@
     --text: #0F172A;
     --muted: #64748B;
     --shadow:
-      0 1px 2px rgba(15,23,42,.05),
-      0 14px 34px -14px rgba(15,23,42,.18);
+      0 1px 0 rgba(255,255,255,.9) inset,
+      0 2px 4px rgba(15,23,42,.05),
+      0 12px 24px -8px rgba(15,23,42,.12),
+      0 32px 60px -22px rgba(15,23,42,.22);
     --glow: 0 0 40px -10px rgba(16,185,129,.35);
   }
 
@@ -175,6 +179,34 @@
 
   .glow-text { text-shadow: 0 0 40px rgba(16,185,129,.35); }
 
+
+  /* ===================== 3D ЭФФЕКТЫ ===================== */
+  main { perspective: 1400px; perspective-origin: 50% 0; }
+  .screen-3d { animation: screenIn .85s cubic-bezier(.2,.8,.2,1) both; transform-origin: 50% 0; }
+  @keyframes screenIn {
+    from { opacity: 0; transform: rotateX(-12deg) translateY(36px) translateZ(-140px) scale(.95); filter: blur(4px); }
+    to   { opacity: 1; transform: none; filter: none; }
+  }
+  .card.lift, .tilt {
+    transform: perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  .card.lift:hover, .tilt:hover { --ty: -4px; transform: perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-4px); }
+  .tilting { transition: transform .08s linear, box-shadow .35s !important; }
+  .cert {
+    position: relative; border-radius: 1.1rem; padding: 1.6rem 1.4rem; text-align: center; overflow: hidden;
+    background: linear-gradient(135deg, rgba(245,158,11,.14), rgba(16,185,129,.1) 55%, rgba(59,130,246,.1)), var(--surface-2);
+    border: 1px solid rgba(245,158,11,.4);
+    box-shadow: 0 1px 0 rgba(255,255,255,.08) inset, 0 20px 40px -14px rgba(0,0,0,.8), 0 50px 90px -30px rgba(245,158,11,.3);
+  }
+  .cert::before { content:""; position:absolute; inset:8px; border:1px dashed rgba(245,158,11,.35); border-radius:.8rem; pointer-events:none; }
+  .cert-name { font-size: 1.6rem; font-weight: 900; color: var(--warn); text-shadow: 0 0 30px rgba(245,158,11,.4); }
+  @media (prefers-reduced-motion: reduce) {
+    .screen-3d { animation: none; }
+    .card.lift, .tilt { transform: none !important; }
+  }
+
   /* ===================== МОБИЛЬНАЯ АДАПТАЦИЯ ===================== */
   @media (max-width: 640px) {
     body { font-size: 15px; }
@@ -294,7 +326,7 @@
 <!-- HEADER -->
 <header class="sticky top-0 z-40 header-glass">
   <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
-    <a href="#top" class="flex items-center gap-3">
+    <a href="./" onclick="event.preventDefault(); location.reload();" class="flex items-center gap-3" aria-label="SOMATO-MASS">
       <div class="w-10 h-10 rounded-xl flex items-center justify-center font-black text-black" style="background:linear-gradient(135deg,#10B981,#3B82F6); box-shadow:0 10px 24px -8px rgba(16,185,129,.7);">⚡</div>
       <div class="leading-tight">
         <div class="font-black tracking-wide">SOMATO<span style="color:var(--accent)">MASS</span></div>
@@ -348,7 +380,7 @@
         <button id="resumeBtn" onclick="resumePlan()" class="hidden text-sm font-semibold glow-text" style="color:var(--accent)" data-i18n="open"></button>
         <p class="text-xs muted" data-i18n="priceNote"></p>
       </div>
-      <div class="card p-6 space-y-4 fade-in" style="box-shadow: var(--shadow), 0 40px 80px -30px rgba(16,185,129,.25);">
+      <div class="card tilt p-6 space-y-4 fade-in" style="box-shadow: var(--shadow), 0 40px 80px -30px rgba(16,185,129,.25);">
         <div class="flex items-center justify-between">
           <div class="text-sm font-bold">Пример прогресса</div>
           <span class="text-[11px] px-2.5 py-1 rounded-lg font-bold" style="background:rgba(16,185,129,.12); color:var(--accent); box-shadow:0 0 18px -6px rgba(16,185,129,.6);">демо</span>
@@ -377,6 +409,20 @@
         <div class="w-11 h-11 rounded-xl flex items-center justify-center text-lg" style="background:rgba(245,158,11,.12); box-shadow:0 8px 20px -10px rgba(245,158,11,.7);">🛡️</div>
         <h3 class="font-extrabold text-lg" data-i18n="c3t"></h3>
         <ul class="text-sm muted space-y-2" data-list="c3"></ul>
+      </div>
+    </div>
+
+    <div class="card p-6 sm:p-10 grid md:grid-cols-2 gap-8 items-center">
+      <div class="space-y-3">
+        <h3 class="text-2xl sm:text-3xl font-black" data-i18n="certH"></h3>
+        <p class="text-sm muted leading-relaxed" data-i18n="certSub"></p>
+      </div>
+      <div class="cert tilt space-y-2">
+        <div class="text-xs font-bold tracking-widest" style="color:var(--warn)" data-i18n="certBadge"></div>
+        <div class="text-[11px] muted" data-i18n="certFor"></div>
+        <div class="cert-name" data-i18n="certName"></div>
+        <div class="text-xs muted" data-i18n="certDone"></div>
+        <div class="text-xs font-bold pt-2" data-i18n="certClub"></div>
       </div>
     </div>
 
@@ -553,6 +599,13 @@ const T = {
     c3: ["Возврат денег в течение 14 дней, если курс вам не подошёл. Напишите нам на почту.", "Сертификат о прохождении курса с вашим именем. Высылаем на почту после проверки прохождения программы.", "Программа не заменяет врача. При травмах, болезнях или беременности сначала консультация.", "Результат зависит от сна, питания и регулярности тренировок."],
     finalH: "Готовы начать?",
     finalSub: "Полный курс: отчёт, программа, журнал, план питания, добавки и сертификат. Возврат в течение 14 дней.",
+    certBadge: "Сертификат",
+    certFor: "Настоящим подтверждается, что",
+    certName: "Ваше Имя",
+    certDone: "успешно прошёл(ла) курс SOMATO-MASS",
+    certClub: "Клуб SOMATO-MASS",
+    certH: "После курса вы получите сертификат",
+    certSub: "Сертификат от нашего клуба о прохождении курса с вашим именем. Высылаем на почту после проверки прохождения программы.",
     finalBuy: "Купить курс — {p}",
     back: "Назад",
     next: "Далее",
@@ -609,6 +662,13 @@ const T = {
     c3: ["Повернення коштів протягом 14 днів, якщо курс вам не підійшов. Напишіть нам на пошту.", "Сертифікат про проходження курсу з вашим ім'ям. Надсилаємо на пошту після перевірки.", "Програма не замінює лікаря. При травмах, хворобах чи вагітності спершу консультація.", "Результат залежить від сну, харчування і регулярності тренувань."],
     finalH: "Готові почати?",
     finalSub: "Повний курс: звіт, програма, щоденник, план харчування, добавки і сертифікат. Повернення протягом 14 днів.",
+    certBadge: "Сертифікат",
+    certFor: "Цим підтверджується, що",
+    certName: "Ваше Ім'я",
+    certDone: "успішно пройшов(ла) курс SOMATO-MASS",
+    certClub: "Клуб SOMATO-MASS",
+    certH: "Після курсу ви отримаєте сертифікат",
+    certSub: "Сертифікат від нашого клубу про проходження курсу з вашим іменем. Надсилаємо на пошту після перевірки проходження програми.",
     finalBuy: "Купити курс — {p}",
     back: "Назад",
     next: "Далі",
@@ -665,6 +725,13 @@ const T = {
     c3: ["Full refund within 14 days if the course isn't right for you. Just email us.", "A certificate of completion with your name, sent by email after we verify completion.", "The program doesn't replace a doctor. For injuries, illness or pregnancy, consult a doctor first.", "Results depend on sleep, nutrition and training consistency."],
     finalH: "Ready to start?",
     finalSub: "Full course: report, program, training log, meal plan, supplements and a certificate. Refund within 14 days.",
+    certBadge: "Certificate",
+    certFor: "This certifies that",
+    certName: "Your Name",
+    certDone: "has successfully completed the SOMATO-MASS course",
+    certClub: "SOMATO-MASS Club",
+    certH: "Finish the course, get a certificate",
+    certSub: "A certificate of completion from our club with your name. We email it after we verify you completed the program.",
     finalBuy: "Buy the course — {p}",
     back: "Back",
     next: "Next",
@@ -705,7 +772,14 @@ const T = {
   }
 };
 
-let LANG = "ru";
+function detectLang() {
+  try { const s = localStorage.getItem(KEY + "_lang"); if (s && T[s]) return s; } catch (e) {}
+  const n = ((navigator.languages && navigator.languages[0]) || navigator.language || "en").toLowerCase();
+  if (n.startsWith("ru")) return "ru";
+  if (n.startsWith("uk")) return "ua";
+  return "en";
+}
+let LANG = detectLang();
 const tx = o => (typeof o === "string" ? o : o[LANG]);
 const $ = id => document.getElementById(id);
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
@@ -846,7 +920,7 @@ function loadAll() {
       userName = d.userName || "";
       courseDone = !!d.courseDone;
       rating = d.rating || 0;
-      if (d.lang) LANG = d.lang;
+      try { if (d.lang && !localStorage.getItem(KEY + "_lang")) LANG = d.lang; } catch (e) {}
       hasSaved = true;
     }
   } catch (e) {}
@@ -859,6 +933,7 @@ function loadAll() {
 /* ==================== ЯЗЫК ==================== */
 function setLang(l) {
   LANG = l;
+  try { localStorage.setItem(KEY + "_lang", l); } catch (e) {}
   saveAll();
   applyI18n();
 }
@@ -896,6 +971,8 @@ function show(id) {
   $("topNav").classList.toggle("hidden", id !== "resultScreen");
   $("mobNav").classList.toggle("hidden", id !== "resultScreen");
   $("langSwitch").classList.toggle("hidden", id === "resultScreen");
+  const el = $(id);
+  el.classList.remove("screen-3d"); void el.offsetWidth; el.classList.add("screen-3d");
   window.scrollTo({ top:0, behavior:"smooth" });
 }
 
@@ -2327,6 +2404,25 @@ function restartQuiz() {
   applyI18n();
   show("introScreen");
   renderDemoChart();
+}
+
+/* ==================== НАКЛОН КАРТОЧЕК ==================== */
+if (window.matchMedia("(hover:hover) and (pointer:fine)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.addEventListener("pointermove", e => {
+    const el = e.target.closest && e.target.closest(".card.lift, .tilt");
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+    el.classList.add("tilting");
+    el.style.setProperty("--ry", (x * 10).toFixed(2) + "deg");
+    el.style.setProperty("--rx", (-y * 10).toFixed(2) + "deg");
+  });
+  document.addEventListener("pointerout", e => {
+    const el = e.target.closest && e.target.closest(".card.lift, .tilt");
+    if (!el || el.contains(e.relatedTarget)) return;
+    el.classList.remove("tilting");
+    el.style.setProperty("--ry", "0deg"); el.style.setProperty("--rx", "0deg");
+  });
 }
 
 /* ==================== СТАРТ ==================== */
