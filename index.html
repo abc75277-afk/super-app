@@ -10,54 +10,179 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
   :root {
-    --bg: #07090E; --surface: #111520; --surface-2: #161B29; --border: rgba(255,255,255,.08);
-    --text: #F3F4F6; --muted: #9CA3AF; --accent: #10B981; --accent-2: #3B82F6; --warn: #F59E0B; --danger: #EF4444;
-    --shadow: 0 10px 30px rgba(0,0,0,.35);
+    --bg: #000000;
+    --surface: #0A0C11;
+    --surface-2: #10131B;
+    --border: rgba(255,255,255,.07);
+    --text: #F5F7FA;
+    --muted: #8B93A7;
+    --accent: #10B981;
+    --accent-2: #3B82F6;
+    --warn: #F59E0B;
+    --danger: #EF4444;
+    --shadow:
+      0 1px 0 rgba(255,255,255,.05) inset,
+      0 1px 2px rgba(0,0,0,.6),
+      0 24px 48px -18px rgba(0,0,0,.95),
+      0 0 0 1px rgba(255,255,255,.04);
+    --glow: 0 0 46px -8px rgba(16,185,129,.42);
   }
   [data-theme="light"] {
-    --bg: #F5F7FB; --surface: #FFFFFF; --surface-2: #F1F4FA; --border: rgba(15,23,42,.08);
-    --text: #0F172A; --muted: #64748B; --shadow: 0 10px 30px rgba(15,23,42,.08);
+    --bg: #F5F7FB;
+    --surface: #FFFFFF;
+    --surface-2: #F1F4FA;
+    --border: rgba(15,23,42,.08);
+    --text: #0F172A;
+    --muted: #64748B;
+    --shadow:
+      0 1px 2px rgba(15,23,42,.05),
+      0 14px 34px -14px rgba(15,23,42,.18);
+    --glow: 0 0 40px -10px rgba(16,185,129,.35);
   }
+
   * { box-sizing: border-box; }
-  body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); transition: background .3s, color .3s; min-height: 100vh; display: flex; flex-direction: column; }
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 1.25rem; box-shadow: var(--shadow); }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background:
+      radial-gradient(1100px 520px at 50% -12%, rgba(16,185,129,.12), transparent 62%),
+      radial-gradient(900px 460px at 100% 0%, rgba(59,130,246,.08), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background .3s, color .3s;
+  }
+
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,0) 40%), var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
+  }
+  .card.lift:hover { transform: translateY(-3px); box-shadow: var(--shadow), var(--glow); }
+
   .muted { color: var(--muted); }
-  .btn-primary { background: linear-gradient(135deg, #10B981, #14B8A6); color: #04110C; font-weight: 800; border-radius: .9rem; box-shadow: 0 10px 25px rgba(16,185,129,.25); transition: transform .15s, box-shadow .2s; }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(16,185,129,.35); }
-  .btn-ghost { border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: .9rem; font-weight: 700; transition: background .2s; }
-  .btn-ghost:hover { background: var(--surface-2); }
-  .chip { border: 1px solid var(--border); background: var(--surface); border-radius: 999px; padding: .45rem .9rem; font-size: .8rem; font-weight: 600; color: var(--muted); transition: all .2s; white-space: nowrap; }
-  .chip:hover, .chip.on { color: var(--text); border-color: var(--accent); background: rgba(16,185,129,.08); }
-  .tab { border-radius: .8rem; padding: .55rem 1rem; font-size: .85rem; font-weight: 700; white-space: nowrap; transition: all .2s; }
-  .tab.on { background: var(--accent); color: #04110C; }
-  .tab:not(.on) { background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
-  .tab:not(.on):hover { color: var(--text); }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #10B981, #14B8A6);
+    color: #03130D;
+    font-weight: 800;
+    border-radius: .95rem;
+    box-shadow: 0 12px 28px -10px rgba(16,185,129,.7), inset 0 1px 0 rgba(255,255,255,.28);
+    transition: transform .18s, box-shadow .25s, filter .25s;
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 18px 36px -10px rgba(16,185,129,.8), inset 0 1px 0 rgba(255,255,255,.28); filter: brightness(1.05); }
+  .btn-primary:active { transform: translateY(0) scale(.98); }
+  .btn-primary:disabled { opacity: .5; }
+
+  .btn-ghost {
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)), var(--surface);
+    color: var(--text);
+    border-radius: .95rem;
+    font-weight: 700;
+    box-shadow: 0 1px 2px rgba(0,0,0,.5);
+    transition: background .2s, box-shadow .25s, transform .18s;
+  }
+  .btn-ghost:hover { box-shadow: 0 10px 24px -10px rgba(0,0,0,.9); transform: translateY(-1px); }
+
+  .chip {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 999px;
+    padding: .45rem .95rem;
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--muted);
+    white-space: nowrap;
+    box-shadow: 0 1px 2px rgba(0,0,0,.5);
+    transition: all .2s;
+  }
+  .chip:hover, .chip.on { color: var(--text); border-color: rgba(16,185,129,.5); background: rgba(16,185,129,.08); box-shadow: 0 0 22px -6px rgba(16,185,129,.5); }
+
+  .tab {
+    border-radius: .85rem;
+    padding: .6rem 1.05rem;
+    font-size: .85rem;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: all .25s;
+  }
+  .tab.on {
+    background: linear-gradient(135deg,#10B981,#14B8A6);
+    color: #03130D;
+    box-shadow: 0 10px 24px -8px rgba(16,185,129,.7), inset 0 1px 0 rgba(255,255,255,.25);
+  }
+  .tab:not(.on) {
+    background: var(--surface);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 2px rgba(0,0,0,.5);
+  }
+  .tab:not(.on):hover { color: var(--text); box-shadow: 0 8px 20px -10px rgba(0,0,0,.9); }
+
+  .header-glass {
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 12px 32px -18px rgba(0,0,0,.95);
+  }
+
+  input, select, textarea {
+    color-scheme: light dark;
+    background: var(--surface-2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: .8rem;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,.45);
+    transition: border-color .2s, box-shadow .2s;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: rgba(16,185,129,.7);
+    box-shadow: 0 0 0 3px rgba(16,185,129,.15), inset 0 1px 3px rgba(0,0,0,.45);
+  }
+
   details > summary { cursor: pointer; list-style: none; }
   details > summary::-webkit-details-marker { display: none; }
   details[open] > summary .arrow { transform: rotate(90deg); }
-  .arrow { transition: transform .2s; }
+  details { transition: box-shadow .3s; }
+  details[open] { box-shadow: 0 16px 34px -18px rgba(0,0,0,.95), 0 0 0 1px rgba(16,185,129,.18); }
+  .arrow { transition: transform .25s; }
+
   table.mt { width: 100%; border-collapse: collapse; font-size: .82rem; }
-  table.mt td, table.mt th { padding: .6rem .7rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
-  table.mt th { color: var(--muted); font-weight: 700; font-size: .74rem; text-transform: uppercase; letter-spacing: .04em; }
-  input, select, textarea { color-scheme: light dark; background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: .75rem; }
-  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(16,185,129,.15); }
+  table.mt td, table.mt th { padding: .65rem .75rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+  table.mt th { color: var(--muted); font-weight: 700; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; }
+  table.mt tr:hover td { background: rgba(255,255,255,.015); }
+
   .stat { font-variant-numeric: tabular-nums; }
-  .fade-in { animation: fadeIn .45s ease both; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .fade-in { animation: fadeIn .55s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
   .spin { animation: spin 1s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
-  ::-webkit-scrollbar { width: 8px; height: 8px; } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-  .hscroll { overflow-x: auto; scrollbar-width: none; } .hscroll::-webkit-scrollbar { display: none; }
+
+  .hscroll { overflow-x: auto; scrollbar-width: none; }
+  .hscroll::-webkit-scrollbar { display: none; }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-thumb { background: #1A1E29; border-radius: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+
+  .glow-text { text-shadow: 0 0 40px rgba(16,185,129,.35); }
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
-<header class="sticky top-0 z-40 backdrop-blur-xl border-b" style="background: color-mix(in srgb, var(--bg) 85%, transparent); border-color: var(--border);">
+<header class="sticky top-0 z-40 header-glass">
   <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
     <a href="#top" class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl flex items-center justify-center font-black text-black" style="background: linear-gradient(135deg,#10B981,#3B82F6);">⚡</div>
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center font-black text-black" style="background:linear-gradient(135deg,#10B981,#3B82F6); box-shadow:0 10px 24px -8px rgba(16,185,129,.7);">⚡</div>
       <div class="leading-tight">
         <div class="font-black tracking-wide">SOMATO<span style="color:var(--accent)">MASS</span></div>
         <div class="text-[11px] muted" data-i18n="brandSub"></div>
@@ -74,7 +199,7 @@
     </nav>
     <div class="flex items-center gap-2">
       <button id="themeBtn" onclick="toggleTheme()" class="btn-ghost w-10 h-10 flex items-center justify-center" title="Тема"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
-      <div id="langSwitch" class="flex items-center p-1 rounded-xl border text-xs font-bold" style="background:var(--surface); border-color:var(--border);">
+      <div id="langSwitch" class="flex items-center p-1 rounded-xl text-xs font-bold" style="background:var(--surface); border:1px solid var(--border); box-shadow:0 1px 2px rgba(0,0,0,.5);">
         <button id="lang-ru" onclick="setLang('ru')" class="px-2.5 py-1.5 rounded-lg">RU</button>
         <button id="lang-ua" onclick="setLang('ua')" class="px-2.5 py-1.5 rounded-lg">UA</button>
         <button id="lang-en" onclick="setLang('en')" class="px-2.5 py-1.5 rounded-lg">EN</button>
@@ -87,52 +212,52 @@
 
   <!-- ГЛАВНАЯ -->
   <section id="introScreen" class="space-y-14 fade-in">
-    <div class="grid lg:grid-cols-2 gap-10 items-center pt-6">
+    <div class="grid lg:grid-cols-2 gap-12 items-center pt-6">
       <div class="space-y-6">
-        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold" style="background:rgba(245,158,11,.12); color:var(--warn); border:1px solid rgba(245,158,11,.3);" data-i18n="badge"></span>
-        <h1 class="text-4xl sm:text-5xl font-black leading-[1.1] tracking-tight" data-i18n-html="h1"></h1>
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold" style="background:rgba(245,158,11,.1); color:var(--warn); border:1px solid rgba(245,158,11,.3); box-shadow:0 0 24px -8px rgba(245,158,11,.5);" data-i18n="badge"></span>
+        <h1 class="text-4xl sm:text-5xl font-black leading-[1.08] tracking-tight" data-i18n-html="h1"></h1>
         <p class="text-base leading-relaxed muted" data-i18n="sub"></p>
         <p class="text-xs muted" data-i18n="disclaimer"></p>
         <div class="flex flex-col sm:flex-row gap-3 pt-1">
           <button onclick="startQuiz()" class="btn-primary px-7 py-4 text-base" data-i18n="start"></button>
           <a id="buyBtn" href="#" class="btn-ghost px-7 py-4 text-base flex items-center justify-center"></a>
         </div>
-        <button id="resumeBtn" onclick="resumePlan()" class="hidden text-sm font-semibold" style="color:var(--accent)" data-i18n="open"></button>
+        <button id="resumeBtn" onclick="resumePlan()" class="hidden text-sm font-semibold glow-text" style="color:var(--accent)" data-i18n="open"></button>
         <p class="text-xs muted" data-i18n="priceNote"></p>
       </div>
-      <div class="card p-6 space-y-4 fade-in">
+      <div class="card p-6 space-y-4 fade-in" style="box-shadow: var(--shadow), 0 40px 80px -30px rgba(16,185,129,.25);">
         <div class="flex items-center justify-between">
-          <div class="text-sm font-bold">Пример отчёта</div>
-          <span class="text-[11px] px-2 py-1 rounded-lg font-bold" style="background:rgba(16,185,129,.12); color:var(--accent);">демо</span>
+          <div class="text-sm font-bold">Пример прогресса</div>
+          <span class="text-[11px] px-2.5 py-1 rounded-lg font-bold" style="background:rgba(16,185,129,.12); color:var(--accent); box-shadow:0 0 18px -6px rgba(16,185,129,.6);">демо</span>
         </div>
         <div class="grid grid-cols-3 gap-3 text-center">
-          <div class="rounded-2xl p-4" style="background:var(--surface-2);"><div class="text-[11px] muted uppercase font-bold">Калории</div><div class="text-xl font-black stat mt-1">2 850</div></div>
-          <div class="rounded-2xl p-4" style="background:var(--surface-2);"><div class="text-[11px] muted uppercase font-bold">Белок</div><div class="text-xl font-black stat mt-1">150 г</div></div>
-          <div class="rounded-2xl p-4" style="background:var(--surface-2);"><div class="text-[11px] muted uppercase font-bold">Блоков</div><div class="text-xl font-black stat mt-1">6</div></div>
+          <div class="rounded-2xl p-4 lift" style="background:var(--surface-2); box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 10px 24px -14px rgba(0,0,0,.9);"><div class="text-[11px] muted uppercase font-bold">Калории</div><div class="text-xl font-black stat mt-1">2 900</div></div>
+          <div class="rounded-2xl p-4 lift" style="background:var(--surface-2); box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 10px 24px -14px rgba(0,0,0,.9);"><div class="text-[11px] muted uppercase font-bold">Белок</div><div class="text-xl font-black stat mt-1">150 г</div></div>
+          <div class="rounded-2xl p-4 lift" style="background:var(--surface-2); box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 10px 24px -14px rgba(0,0,0,.9);"><div class="text-[11px] muted uppercase font-bold">Блоков</div><div class="text-xl font-black stat mt-1">6</div></div>
         </div>
         <div class="h-56"><canvas id="demoChart"></canvas></div>
       </div>
     </div>
 
     <div class="grid md:grid-cols-3 gap-5">
-      <div class="card p-6 space-y-3">
-        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-lg" style="background:rgba(16,185,129,.12);">📊</div>
+      <div class="card lift p-6 space-y-3">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-lg" style="background:rgba(16,185,129,.12); box-shadow:0 8px 20px -10px rgba(16,185,129,.7);">📊</div>
         <h3 class="font-extrabold text-lg" data-i18n="c1t"></h3>
         <ul class="text-sm muted space-y-2" data-list="c1"></ul>
       </div>
-      <div class="card p-6 space-y-3">
-        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-lg" style="background:rgba(59,130,246,.12);">🔁</div>
+      <div class="card lift p-6 space-y-3">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-lg" style="background:rgba(59,130,246,.12); box-shadow:0 8px 20px -10px rgba(59,130,246,.7);">🔁</div>
         <h3 class="font-extrabold text-lg" data-i18n="c2t"></h3>
         <ul class="text-sm muted space-y-2" data-list="c2"></ul>
       </div>
-      <div class="card p-6 space-y-3">
-        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-lg" style="background:rgba(245,158,11,.12);">🛡️</div>
+      <div class="card lift p-6 space-y-3">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-lg" style="background:rgba(245,158,11,.12); box-shadow:0 8px 20px -10px rgba(245,158,11,.7);">🛡️</div>
         <h3 class="font-extrabold text-lg" data-i18n="c3t"></h3>
         <ul class="text-sm muted space-y-2" data-list="c3"></ul>
       </div>
     </div>
 
-    <div class="card p-8 sm:p-10 text-center space-y-4" style="background: linear-gradient(135deg, rgba(16,185,129,.12), rgba(59,130,246,.08));">
+    <div class="card p-8 sm:p-12 text-center space-y-4" style="background: radial-gradient(600px 240px at 50% 0%, rgba(16,185,129,.18), transparent 70%), linear-gradient(180deg, rgba(255,255,255,.03), transparent), var(--surface); box-shadow: var(--shadow), 0 40px 90px -40px rgba(16,185,129,.35);">
       <h3 class="text-2xl sm:text-3xl font-black" data-i18n="finalH"></h3>
       <p class="text-sm muted max-w-xl mx-auto" data-i18n="finalSub"></p>
       <a id="finalBuy" href="#" class="btn-primary inline-flex px-8 py-4 text-base"></a>
@@ -146,8 +271,8 @@
         <span><span id="qStepWord"></span> <span id="curStep">1</span> <span id="qOfWord"></span> <span id="totSteps">38</span></span>
         <span id="pctLabel" style="color:var(--accent)">3%</span>
       </div>
-      <div class="w-full h-2 rounded-full overflow-hidden" style="background:var(--surface-2);">
-        <div id="progBar" class="h-full rounded-full transition-all duration-500" style="width:3%; background: linear-gradient(90deg,#10B981,#3B82F6);"></div>
+      <div class="w-full h-2 rounded-full overflow-hidden" style="background:var(--surface-2); box-shadow: inset 0 1px 2px rgba(0,0,0,.6);">
+        <div id="progBar" class="h-full rounded-full transition-all duration-500" style="width:3%; background: linear-gradient(90deg,#10B981,#3B82F6); box-shadow: 0 0 14px rgba(16,185,129,.6);"></div>
       </div>
     </div>
     <div class="card p-7 sm:p-9 space-y-6">
@@ -163,7 +288,7 @@
 
   <!-- ЗАГРУЗКА -->
   <section id="loadingScreen" class="hidden text-center py-24 space-y-6">
-    <div class="w-16 h-16 mx-auto rounded-full border-4 spin" style="border-color:rgba(16,185,129,.2); border-top-color:var(--accent);"></div>
+    <div class="w-16 h-16 mx-auto rounded-full border-4 spin" style="border-color:rgba(16,185,129,.2); border-top-color:var(--accent); box-shadow:0 0 40px -8px rgba(16,185,129,.6);"></div>
     <h2 id="loadTitle" class="text-2xl font-black"></h2>
     <p id="loadStatus" class="text-sm font-mono" style="color:var(--accent)"></p>
   </section>
@@ -172,7 +297,7 @@
   <section id="resultScreen" class="hidden space-y-8 fade-in">
     <div class="card p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
       <div>
-        <span class="inline-block px-3 py-1 rounded-lg text-xs font-bold" style="background:rgba(16,185,129,.12); color:var(--accent);">План готов</span>
+        <span class="inline-block px-3 py-1 rounded-lg text-xs font-bold" style="background:rgba(16,185,129,.12); color:var(--accent); box-shadow:0 0 18px -6px rgba(16,185,129,.6);">План готов</span>
         <h2 class="text-2xl sm:text-3xl font-black mt-2">Ваш персональный план</h2>
         <p class="text-xs muted mt-1">Ориентировочные расчёты. Сохраняются в этом браузере.</p>
       </div>
@@ -196,7 +321,7 @@
 </main>
 
 <!-- Модалка: курс пройден -->
-<div id="doneModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" style="background:rgba(0,0,0,.6); backdrop-filter: blur(4px);">
+<div id="doneModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" style="background:rgba(0,0,0,.7); backdrop-filter: blur(6px);">
   <div class="card p-7 max-w-md w-full space-y-5 relative fade-in">
     <button onclick="closeDone()" class="absolute top-4 right-4 muted hover:opacity-70"><i class="fa-solid fa-xmark"></i></button>
     <h3 class="text-xl font-black" data-i18n="done"></h3>
@@ -208,7 +333,7 @@
     </div>
     <div class="space-y-2">
       <div class="text-xs font-bold muted" data-i18n="rate"></div>
-      <div id="stars" class="flex gap-2 text-3xl" style="color:var(--border)"></div>
+      <div id="stars" class="flex gap-2 text-3xl"></div>
     </div>
     <div class="space-y-1">
       <label class="text-xs font-bold muted" data-i18n="email"></label>
@@ -220,7 +345,7 @@
 </div>
 
 <!-- Модалка: отзыв -->
-<div id="revModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" style="background:rgba(0,0,0,.6); backdrop-filter: blur(4px);">
+<div id="revModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" style="background:rgba(0,0,0,.7); backdrop-filter: blur(6px);">
   <div class="card p-7 max-w-md w-full space-y-4 relative fade-in">
     <button onclick="closeRev()" class="absolute top-4 right-4 muted hover:opacity-70"><i class="fa-solid fa-xmark"></i></button>
     <h3 class="text-lg font-black">Добавить отзыв</h3>
@@ -239,7 +364,7 @@
   <i class="fa-solid fa-comments"></i>
 </button>
 <div id="botPanel" class="fixed bottom-24 right-5 z-40 w-[92vw] max-w-sm card hidden flex-col overflow-hidden" style="height:500px">
-  <div class="px-5 py-4 border-b flex justify-between items-center" style="border-color:var(--border)">
+  <div class="px-5 py-4 flex justify-between items-center" style="border-bottom:1px solid var(--border)">
     <div>
       <div class="font-extrabold text-sm" data-i18n="botTitle"></div>
       <div class="text-[11px] muted" data-i18n="botHint"></div>
@@ -249,13 +374,13 @@
   <div id="botMsgs" class="flex-1 overflow-y-auto p-4 space-y-3 text-xs"></div>
   <div id="botQuick" class="px-4 pb-2 flex flex-wrap gap-2"></div>
   <p class="px-4 pb-2 text-[10px] muted" data-i18n="botDisclaimer"></p>
-  <div class="p-3 border-t flex gap-2" style="border-color:var(--border)">
+  <div class="p-3 flex gap-2" style="border-top:1px solid var(--border)">
     <input id="botIn" class="flex-1 px-3 py-2 text-xs">
     <button id="botSendBtn" onclick="botSend()" class="btn-primary px-3 py-2 text-xs"><i class="fa-solid fa-paper-plane"></i></button>
   </div>
 </div>
 
-<footer class="border-t py-8 text-center text-xs muted" style="border-color:var(--border)">
+<footer class="py-8 text-center text-xs muted" style="border-top:1px solid var(--border)">
   <p data-i18n="footer"></p>
 </footer>
 
@@ -276,7 +401,6 @@ const KEY = "somatomass_v10";
 /* ==================== ТЕМА ==================== */
 function applyTheme(t) {
   document.documentElement.setAttribute("data-theme", t);
-  document.documentElement.className = t === "light" ? "" : "dark";
   $("themeIcon").className = t === "light" ? "fa-solid fa-sun" : "fa-solid fa-moon";
   try { localStorage.setItem(KEY + "_theme", t); } catch (e) {}
   if (window.Chart) updateChartsTheme();
@@ -291,7 +415,7 @@ const T = {
   ru: {
     brandSub: "Персональный план набора массы",
     badge: "Расчёт по вашим данным",
-    h1: "Перестаньте гадать:<br><span style='color:var(--accent)'>план набора массы на 6 месяцев под вас</span>",
+    h1: "Перестаньте гадать:<br><span class='glow-text' style='color:var(--accent)'>план набора массы на 6 месяцев под вас</span>",
     sub: "Ответьте на 38 вопросов за 6–8 минут. Получите отчёт о подготовке, программу тренировок на 2–5 дней с инструкцией к каждому упражнению, журнал тренировок, план питания в граммах и список добавок.",
     disclaimer: "Результаты зависят от питания, сна, регулярности и особенностей организма. Точный прирост массы гарантировать нельзя.",
     start: "Пройти бесплатный расчёт",
@@ -299,7 +423,7 @@ const T = {
     buy: "Купить курс — {p}",
     priceNote: "Оплата разово. Возврат денег в течение 14 дней, если курс вам не подошёл.",
     c1t: "Что внутри курса",
-    c1: ["Отчёт по тесту: уровень, телосложение, силовые показатели", "Программа на 2–5 дней с разминкой и всеми группами мышц", "Инструкция и частая ошибка к каждому упражнению", "Журнал тренировок с графиком прогресса", "План питания в граммах и список добавок"],
+    c1: ["Отчёт по тесту: уровень, телосложение, силовые показатели", "Программа на 2–5 дней с разминкой и всеми группами мышц", "Инструкция и частая ошибка к каждому упражнению", "Журнал тренировок с графиком прогресса", "План питания из 5 приёмов в граммах и список добавок"],
     c2t: "Как это работает",
     c2: ["Ответьте на 38 вопросов за 6–8 минут", "Получите отчёт и план на 6 месяцев", "Тренируйтесь и записывайте подходы в журнал", "Вес растёт по вашим результатам", "В конце нажмите «Курс пройден» и получите сертификат"],
     c3t: "Условия",
@@ -340,14 +464,14 @@ const T = {
     shopBtn: "Перейти к товару",
     factorsTitle: "Что влияет на результат",
     chartWeight: "Прогноз рабочих весов по блокам",
-    chartMacro: "Суточная норма",
+    chartMacro: "Суточная норма БЖУ",
     chartProgress: "Рост максимума (1ПМ) по журналу",
     chartLevel: "Уровень подготовки"
   },
   ua: {
     brandSub: "Персональний план набору маси",
     badge: "Розрахунок за вашими даними",
-    h1: "Перестаньте гадати:<br><span style='color:var(--accent)'>план набору маси на 6 місяців під вас</span>",
+    h1: "Перестаньте гадати:<br><span class='glow-text' style='color:var(--accent)'>план набору маси на 6 місяців під вас</span>",
     sub: "Дайте відповіді на 38 запитань за 6–8 хвилин. Отримайте звіт про підготовку, програму на 2–5 днів з інструкцією до кожної вправи, щоденник тренувань, план харчування в грамах і список добавок.",
     disclaimer: "Результати залежать від харчування, сну, регулярності та особливостей організму. Точний приріст маси гарантувати не можна.",
     start: "Пройти безкоштовний розрахунок",
@@ -355,7 +479,7 @@ const T = {
     buy: "Купити курс — {p}",
     priceNote: "Одноразова оплата. Повернення коштів протягом 14 днів, якщо курс вам не підійшов.",
     c1t: "Що всередині курсу",
-    c1: ["Звіт за тестом: рівень, статура, силові показники", "Програма на 2–5 днів з розминкою", "Інструкція і типова помилка до кожної вправи", "Щоденник тренувань з графіком прогресу", "План харчування в грамах і список добавок"],
+    c1: ["Звіт за тестом: рівень, статура, силові показники", "Програма на 2–5 днів з розминкою", "Інструкція і типова помилка до кожної вправи", "Щоденник тренувань з графіком прогресу", "План харчування з 5 прийомів у грамах і список добавок"],
     c2t: "Як це працює",
     c2: ["Дайте відповіді на 38 запитань за 6–8 хвилин", "Отримайте звіт і план на 6 місяців", "Тренуйтеся і записуйте підходи", "Вага зростає за вашими результатами", "Наприкінці натисніть «Курс пройдено» і отримайте сертифікат"],
     c3t: "Умови",
@@ -396,22 +520,22 @@ const T = {
     shopBtn: "Перейти до товару",
     factorsTitle: "Що впливає на результат",
     chartWeight: "Прогноз робочих ваг по блоках",
-    chartMacro: "Добова норма",
+    chartMacro: "Добова норма БЖВ",
     chartProgress: "Зростання максимуму (1ПМ) за журналом",
     chartLevel: "Рівень підготовки"
   },
   en: {
     brandSub: "Personal muscle-gain plan",
     badge: "Calculated from your data",
-    h1: "Stop guessing:<br><span style='color:var(--accent)'>a 6-month muscle-gain plan built for you</span>",
-    sub: "Answer 38 questions in about 6–8 minutes. Get a fitness report, a 2–5 day training program with instructions for every exercise, a training log with progress charts, a meal plan in grams and a supplement guide.",
+    h1: "Stop guessing:<br><span class='glow-text' style='color:var(--accent)'>a 6-month muscle-gain plan built for you</span>",
+    sub: "Answer 38 questions in about 6–8 minutes. Get a fitness report, a 2–5 day training program with instructions for every exercise, a training log with progress charts, a 5-meal plan in grams and a supplement guide.",
     disclaimer: "Results depend on nutrition, sleep, consistency and your body. Exact muscle gain cannot be guaranteed.",
     start: "Take the free calculation",
     open: "Open my saved plan",
     buy: "Buy the course — {p}",
     priceNote: "One-time payment. Full refund within 14 days if the course isn't right for you.",
     c1t: "What's inside",
-    c1: ["Test report: level, body type, strength numbers", "2–5 day program with a warm-up and all muscle groups", "Instructions and common mistakes for every exercise", "Training log with progress charts", "Meal plan in grams and supplement guide"],
+    c1: ["Test report: level, body type, strength numbers", "2–5 day program with a warm-up and all muscle groups", "Instructions and common mistakes for every exercise", "Training log with progress charts", "5-meal plan in grams and supplement guide"],
     c2t: "How it works",
     c2: ["Answer 38 questions in about 6–8 minutes", "Get your report and a 6-month plan", "Train and log your sets", "Weights rise based on your results", "At the end press \"Course completed\" to get your certificate"],
     c3t: "Terms",
@@ -452,7 +576,7 @@ const T = {
     shopBtn: "Go to product",
     factorsTitle: "What affects your results",
     chartWeight: "Working weight forecast by block",
-    chartMacro: "Daily target",
+    chartMacro: "Daily macro target",
     chartProgress: "Max (1RM) growth from the log",
     chartLevel: "Training level"
   }
@@ -576,7 +700,7 @@ let journal = [];
 let userName = "";
 let courseDone = false;
 let rating = 0;
-let mealIdx = { B:0, L:0, S:0, D:0 };
+let mealIdx = { B:0, M:0, L:0, P:0, D:0 };
 let blockIdx = 0;
 let weekIdx = 0;
 let hasSaved = false;
@@ -605,7 +729,7 @@ function loadAll() {
   } catch (e) {}
   try {
     const t = localStorage.getItem(KEY + "_theme");
-    if (t) applyTheme(t);
+    if (t) document.documentElement.setAttribute("data-theme", t);
   } catch (e) {}
 }
 
@@ -633,9 +757,10 @@ function applyI18n() {
   $("botIn").placeholder = d.botPlaceholder;
   $("resumeBtn").classList.toggle("hidden", !hasSaved);
   ["ru","ua","en"].forEach(l => {
-    $("lang-" + l).className = "px-2.5 py-1.5 rounded-lg transition " +
-      (l === LANG ? "text-black" : "muted");
-    $("lang-" + l).style.background = l === LANG ? "var(--accent)" : "transparent";
+    $("lang-" + l).className = "px-2.5 py-1.5 rounded-lg transition " + (l === LANG ? "" : "muted");
+    $("lang-" + l).style.background = l === LANG ? "linear-gradient(135deg,#10B981,#14B8A6)" : "transparent";
+    $("lang-" + l).style.color = l === LANG ? "#03130D" : "";
+    $("lang-" + l).style.boxShadow = l === LANG ? "0 6px 16px -6px rgba(16,185,129,.7)" : "none";
   });
   if (!$("quizScreen").classList.contains("hidden")) renderQ();
   if (R && !$("resultScreen").classList.contains("hidden")) { renderShop(); renderReviews(); }
@@ -695,9 +820,10 @@ function renderQ() {
     q.opts.forEach((o, i) => {
       const sel = answers[idx] === i;
       const b = document.createElement("button");
-      b.className = "w-full text-left p-4 rounded-2xl border flex justify-between items-center transition";
+      b.className = "w-full text-left p-4 rounded-2xl border flex justify-between items-center transition lift";
       b.style.background = sel ? "rgba(16,185,129,.1)" : "var(--surface-2)";
-      b.style.borderColor = sel ? "var(--accent)" : "var(--border)";
+      b.style.borderColor = sel ? "rgba(16,185,129,.7)" : "var(--border)";
+      b.style.boxShadow = sel ? "0 0 26px -8px rgba(16,185,129,.6)" : "0 1px 2px rgba(0,0,0,.5)";
       b.innerHTML = `<span class="text-sm font-semibold">${tx(o[0])}</span><span style="color:${sel ? "var(--accent)" : "var(--muted)"}">${sel ? "●" : "○"}</span>`;
       b.onclick = () => selectOpt(i);
       box.appendChild(b);
@@ -760,7 +886,8 @@ function buildResults() {
   const bmr = 10 * w + 6.25 * h - 5 * a + bio.sex;
   const actFactor = 1.2 + bio.days * 0.04 + [-0.05, 0, 0.08][bio.act];
   const tdee = Math.round(bmr * actFactor);
-  const goalK = [1.10, 1.02, 1.06][bio.goal] + (bio.appetite === 0 ? 0.03 : 0);
+  // Профицит для набора массы: 15–20% в зависимости от цели, +3% при слабом аппетите
+  const goalK = [1.20, 1.15, 1.17][bio.goal] + (bio.appetite === 0 ? 0.03 : 0);
   const kcal = Math.round(tdee * goalK);
   const protein = Math.round(w * 2.0);
   const fats = Math.round(w * 0.9);
@@ -803,7 +930,7 @@ function buildResults() {
   if (bio.injury >= 1) flags.push("Есть ограничения по суставам или спине. Работайте без боли, с умеренным весом. При боли или онемении прекратите упражнение и обратитесь к врачу или физиотерапевту.");
   if (bio.lactose === 0) flags.push("Молочные продукты переносите плохо. В рационе используются безлактозные и растительные варианты, протеин берите без лактозы или изолят.");
   if (bio.water === 0) flags.push("Воды мало. Для роста мышц и восстановления ориентир 30–35 мл на кг веса в день, плюс больше при тренировках.");
-  if (bio.meals === 0) flags.push("Два приёма пищи в день мало для набора массы. Распределите белок и калории на 4–5 приёмов.");
+  if (bio.meals === 0) flags.push("Два приёма пищи в день мало для набора массы. В плане 5 приёмов: так белок и калории усваиваются лучше.");
   if (bio.appetite === 0) flags.push("При слабом аппетите набор массы идёт труднее. Добавляйте калорийные продукты и жидкие приёмы (смузи, каши), а не большие порции.");
   if (bio.flex === 0) flags.push("Подвижность ограничена. Добавьте 5–10 минут мобилити перед тренировкой и не опускайтесь в приседе глубже, чем позволяет техника.");
   if (bio.cardio === 0) flags.push("Кардио не любите: достаточно ходьбы 8–10 тысяч шагов в день, это поддерживает здоровье и расход энергии.");
@@ -835,9 +962,9 @@ function buildResults() {
 function chartColors() {
   const dark = document.documentElement.getAttribute("data-theme") !== "light";
   return {
-    text: dark ? "#9CA3AF" : "#64748B",
-    grid: dark ? "rgba(255,255,255,.06)" : "rgba(15,23,42,.06)",
-    accent: "#10B981", accent2: "#3B82F6", warn: "#F59E0B"
+    text: dark ? "#8B93A7" : "#64748B",
+    grid: dark ? "rgba(255,255,255,.05)" : "rgba(15,23,42,.06)",
+    accent: "#10B981", accent2: "#3B82F6", warn: "#F59E0B", violet: "#A78BFA"
   };
 }
 
@@ -871,7 +998,7 @@ function renderDemoChart() {
     type: "line",
     data: {
       labels: ["Блок 1","Блок 2","Блок 3","Блок 4","Блок 5","Блок 6"],
-      datasets: [{ label: "Жим, кг", data: [60,63,67,70,74,78], borderColor: c.accent, backgroundColor: "rgba(16,185,129,.15)", fill: true, tension: .35, pointRadius: 4 }]
+      datasets: [{ label: "Жим, кг", data: [60,63,67,70,74,78], borderColor: c.accent, backgroundColor: "rgba(16,185,129,.12)", fill: true, tension: .35, pointRadius: 4, pointBackgroundColor: c.accent }]
     },
     options: baseOpts()
   });
@@ -890,9 +1017,9 @@ function renderCharts() {
     data: {
       labels,
       datasets: [
-        { label: "Жим лёжа, кг", data: bench, backgroundColor: c.accent, borderRadius: 6 },
-        { label: "Приседания, кг", data: squat, backgroundColor: c.accent2, borderRadius: 6 },
-        { label: "Тяга, кг", data: row, backgroundColor: c.warn, borderRadius: 6 }
+        { label: "Жим лёжа, кг", data: bench, backgroundColor: c.accent, borderRadius: 8 },
+        { label: "Приседания, кг", data: squat, backgroundColor: c.accent2, borderRadius: 8 },
+        { label: "Тяга, кг", data: row, backgroundColor: c.warn, borderRadius: 8 }
       ]
     },
     options: baseOpts()
@@ -903,9 +1030,9 @@ function renderCharts() {
     type: "doughnut",
     data: {
       labels: ["Белки", "Жиры", "Углеводы"],
-      datasets: [{ data: macro, backgroundColor: [c.accent, c.warn, c.accent2], borderWidth: 0 }]
+      datasets: [{ data: macro, backgroundColor: [c.accent, c.warn, c.accent2], borderWidth: 0, hoverOffset: 8 }]
     },
-    options: { responsive: true, maintainAspectRatio: false, cutout: "68%",
+    options: { responsive: true, maintainAspectRatio: false, cutout: "70%",
       plugins: { legend: { position: "bottom", labels: { color: c.text } } } }
   });
 
@@ -920,11 +1047,11 @@ function renderCharts() {
       const logs = journal.filter(e => e.date <= d && e.lift === k && e.weight > 0).map(e => oneRM(e.weight, e.reps));
       return logs.length ? Math.round(Math.max(...logs) * 10) / 10 : null;
     });
-    return { label: name, data, borderColor: color, backgroundColor: color, tension: .3, spanGaps: true };
+    return { label: name, data, borderColor: color, backgroundColor: color, tension: .3, spanGaps: true, pointRadius: 4 };
   });
   makeChart("progressChart", {
     type: "line",
-    data: { labels: dates.length ? dates : ["—"], datasets: progressDatasets.length ? progressDatasets : [] },
+    data: { labels: dates.length ? dates : ["—"], datasets: progressDatasets },
     options: baseOpts()
   });
 }
@@ -937,7 +1064,7 @@ function ring(p, color, label, sub) {
   const r = 46, cf = 2 * Math.PI * r;
   return `
     <div class="flex flex-col items-center gap-2">
-      <svg width="120" height="120" viewBox="0 0 120 120">
+      <svg width="120" height="120" viewBox="0 0 120 120" style="filter: drop-shadow(0 0 14px ${color}55)">
         <circle cx="60" cy="60" r="${r}" fill="none" stroke="var(--surface-2)" stroke-width="10"></circle>
         <circle cx="60" cy="60" r="${r}" fill="none" stroke="${color}" stroke-width="10" stroke-linecap="round"
           stroke-dasharray="${cf}" stroke-dashoffset="${cf * (1 - p / 100)}" transform="rotate(-90 60 60)"></circle>
@@ -986,31 +1113,32 @@ function renderReport() {
   const sleepTxt = ["Менее 6 ч", "7–8 ч", "9+ ч"][bio.sleep];
   const waterTxt = ["Меньше 1 л", "1–2 л", "2–3 л", "Больше 3 л"][bio.water];
   const bmiTxt = r.bmi < 18.5 ? "Недостаток массы" : r.bmi < 25 ? "Норма" : r.bmi < 30 ? "Избыток" : "Высокий";
+  const shadowTile = "background:var(--surface-2); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 16px 32px -18px rgba(0,0,0,.95);";
 
   $("sec-report").innerHTML = `
     <div class="card p-7 space-y-7">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(16,185,129,.12); color:var(--accent)"><i class="fa-solid fa-file-lines"></i></div>
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(16,185,129,.12); color:var(--accent); box-shadow:0 8px 20px -10px rgba(16,185,129,.8);"><i class="fa-solid fa-file-lines"></i></div>
         <h3 class="text-xl font-black">Отчёт по тесту</h3>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="rounded-2xl p-5" style="background:var(--surface-2)">
+        <div class="rounded-2xl p-5" style="${shadowTile}">
           <div class="text-[11px] font-bold uppercase muted">Уровень</div>
           <div class="text-lg font-black mt-1" style="color:${LVL_COLOR[r.level]}">${LVL[r.level]}</div>
           <div class="text-[11px] muted">Оценка ${r.readiness} из 100</div>
         </div>
-        <div class="rounded-2xl p-5" style="background:var(--surface-2)">
+        <div class="rounded-2xl p-5" style="${shadowTile}">
           <div class="text-[11px] font-bold uppercase muted">Телосложение</div>
           <div class="text-lg font-black mt-1">${r.bodyType}</div>
           <div class="text-[11px] muted">Э ${r.pct.ecto}% · М ${r.pct.meso}% · Эн ${r.pct.endo}%</div>
         </div>
-        <div class="rounded-2xl p-5" style="background:var(--surface-2)">
+        <div class="rounded-2xl p-5" style="${shadowTile}">
           <div class="text-[11px] font-bold uppercase muted">ИМТ</div>
           <div class="text-lg font-black mt-1 stat">${r.bmi.toFixed(1)}</div>
           <div class="text-[11px] muted">${bmiTxt}</div>
         </div>
-        <div class="rounded-2xl p-5" style="background:var(--surface-2)">
+        <div class="rounded-2xl p-5" style="${shadowTile}">
           <div class="text-[11px] font-bold uppercase muted">Тренировки</div>
           <div class="text-lg font-black mt-1">${r.days} раза/нед</div>
           <div class="text-[11px] muted">${["Зал", "Дом", "Улица"][r.loc]}</div>
@@ -1018,9 +1146,9 @@ function renderReport() {
       </div>
 
       <div class="grid md:grid-cols-3 gap-6 items-center">
-        ${ring(r.readiness, "var(--accent)", "Готовность", "к программе")}
-        ${ring(Math.min(100, Math.round(r.kcal / 40)), "var(--accent-2)", "Калории", r.kcal + " ккал в день")}
-        ${ring(Math.min(100, Math.round(r.protein / 2)), "var(--warn)", "Белок", r.protein + " г в день")}
+        ${ring(r.readiness, "#10B981", "Готовность", "к программе")}
+        ${ring(Math.min(100, Math.round(r.kcal / 40)), "#3B82F6", "Калории", r.kcal + " ккал в день")}
+        ${ring(Math.min(100, Math.round(r.protein / 2)), "#F59E0B", "Белок", r.protein + " г в день")}
       </div>
 
       <div>
@@ -1044,13 +1172,13 @@ function renderReport() {
       </div>
 
       <div class="grid md:grid-cols-2 gap-5">
-        <div class="rounded-2xl p-6 space-y-2" style="background:var(--surface-2)">
+        <div class="rounded-2xl p-6 space-y-2" style="${shadowTile}">
           <div class="font-bold" style="color:var(--accent)">Суточная норма</div>
           <div class="text-sm">Калории: <b class="stat">${r.kcal} ккал</b></div>
           <div class="text-sm">Белки: <b class="stat">${r.protein} г</b> · Жиры: <b class="stat">${r.fats} г</b> · Углеводы: <b class="stat">${r.carbs} г</b></div>
-          <p class="text-[11px] muted">Базовый обмен ${r.bmr} ккал, с учётом активности ${r.tdee} ккал, для роста массы добавлен небольшой профицит. Если вес не растёт две недели, добавьте 150–200 ккал.</p>
+          <p class="text-[11px] muted">Базовый обмен ${r.bmr} ккал, с учётом активности ${r.tdee} ккал, добавлен профицит 15–20% для набора массы. Если вес не растёт две недели, добавьте 150–200 ккал.</p>
         </div>
-        <div class="rounded-2xl p-6 space-y-2" style="background:var(--surface-2)">
+        <div class="rounded-2xl p-6 space-y-2" style="${shadowTile}">
           <div class="font-bold" style="color:var(--accent-2)">Реалистичный прогноз</div>
           <p class="text-sm">${gainTxt}</p>
           <p class="text-[11px] muted">Это типичные оценки для таких программ, а не гарантия. Конкретный результат зависит от вас.</p>
@@ -1058,28 +1186,28 @@ function renderReport() {
       </div>
 
       <div class="grid md:grid-cols-2 gap-5">
-        <div class="rounded-2xl p-5" style="background:var(--surface-2)">
+        <div class="rounded-2xl p-5" style="${shadowTile}">
           <div class="text-sm font-bold mb-3">${T[LANG].chartWeight}</div>
           <div class="h-64"><canvas id="weightChart"></canvas></div>
         </div>
-        <div class="rounded-2xl p-5" style="background:var(--surface-2)">
+        <div class="rounded-2xl p-5" style="${shadowTile}">
           <div class="text-sm font-bold mb-3">${T[LANG].chartMacro}</div>
           <div class="h-64"><canvas id="macroChart"></canvas></div>
         </div>
       </div>
 
-      <div class="rounded-2xl p-6 space-y-3" style="background:var(--surface-2)">
+      <div class="rounded-2xl p-6 space-y-3" style="${shadowTile}">
         <div class="font-bold" style="color:var(--warn)">Главные задачи на 6 месяцев</div>
         <ol class="list-decimal list-inside text-sm space-y-1">${r.priorities.map(p => `<li>${p}</li>`).join("")}</ol>
       </div>
 
       ${r.flags.length ? `
-      <div class="rounded-2xl p-6 space-y-2" style="background:rgba(239,68,68,.07); border:1px solid rgba(239,68,68,.25)">
+      <div class="rounded-2xl p-6 space-y-2" style="background:rgba(239,68,68,.07); border:1px solid rgba(239,68,68,.25); box-shadow:0 20px 40px -22px rgba(239,68,68,.5);">
         <div class="font-bold" style="color:var(--danger)">На что обратить внимание</div>
         <ul class="list-disc list-inside text-sm space-y-1">${r.flags.map(f => `<li>${f}</li>`).join("")}</ul>
       </div>` : ""}
 
-      <div class="rounded-2xl p-6 space-y-2 text-sm" style="background:var(--surface-2)">
+      <div class="rounded-2xl p-6 space-y-2 text-sm" style="${shadowTile}">
         <div class="font-bold">Как контролировать прогресс</div>
         <ul class="list-disc list-inside muted space-y-1">
           <li>Взвешивайтесь 2–3 раза в неделю утром, натощак, и смотрите на среднее за неделю.</li>
@@ -1305,15 +1433,15 @@ function renderTraining() {
     const rows = d.rows.map(([key, tier]) => {
       const p = prescribe(key, tier, b, w);
       return `
-        <details class="rounded-2xl p-4" style="background:var(--surface-2)">
+        <details class="rounded-2xl p-4" style="background:var(--surface-2); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 12px 26px -16px rgba(0,0,0,.95);">
           <summary class="flex justify-between items-center gap-3">
             <span class="font-bold text-sm">${p.ex.n}</span>
             <span class="arrow muted"><i class="fa-solid fa-chevron-right text-xs"></i></span>
           </summary>
           <div class="grid grid-cols-3 gap-3 text-xs mt-4">
-            <div class="rounded-xl p-3" style="background:var(--surface)"><div class="muted">Подходы</div><div class="font-black text-base mt-1">${p.sets}</div></div>
-            <div class="rounded-xl p-3" style="background:var(--surface)"><div class="muted">Повторы</div><div class="font-black text-base mt-1">${p.repsTxt}</div></div>
-            <div class="rounded-xl p-3" style="background:var(--surface)"><div class="muted">Вес</div><div class="font-black text-base mt-1">${p.loadTxt}</div></div>
+            <div class="rounded-xl p-3" style="background:var(--surface); box-shadow: inset 0 1px 0 rgba(255,255,255,.04);"><div class="muted">Подходы</div><div class="font-black text-base mt-1">${p.sets}</div></div>
+            <div class="rounded-xl p-3" style="background:var(--surface); box-shadow: inset 0 1px 0 rgba(255,255,255,.04);"><div class="muted">Повторы</div><div class="font-black text-base mt-1">${p.repsTxt}</div></div>
+            <div class="rounded-xl p-3" style="background:var(--surface); box-shadow: inset 0 1px 0 rgba(255,255,255,.04);"><div class="muted">Вес</div><div class="font-black text-base mt-1">${p.loadTxt}</div></div>
           </div>
           <div class="text-[11px] muted mt-3">Отдых: ${p.rest} · Группа: ${p.ex.m}</div>
           <div class="text-xs mt-3"><b style="color:var(--accent)">Как выполнять:</b> ${p.ex.how}</div>
@@ -1334,9 +1462,9 @@ function renderTraining() {
       <div class="card p-6 space-y-4">
         <div class="flex justify-between items-center">
           <h4 class="font-extrabold">${d.name}</h4>
-          <span class="text-[11px] font-bold px-2 py-1 rounded-lg" style="background:var(--surface-2)">День ${di + 1} / ${days.length}</span>
+          <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg" style="background:var(--surface-2); box-shadow: inset 0 1px 0 rgba(255,255,255,.04);">День ${di + 1} / ${days.length}</span>
         </div>
-        <div class="rounded-xl p-4 text-xs" style="background:rgba(16,185,129,.07); border:1px solid rgba(16,185,129,.2)">
+        <div class="rounded-xl p-4 text-xs" style="background:rgba(16,185,129,.07); border:1px solid rgba(16,185,129,.22); box-shadow:0 12px 24px -16px rgba(16,185,129,.6);">
           <b style="color:var(--accent)">Разминка (8–10 мин):</b> 5 минут лёгкого кардио, затем ${warm}. 2 минуты мобилити для суставов, которые будете нагружать.
         </div>
         <div class="space-y-2">${rows}</div>
@@ -1346,7 +1474,7 @@ function renderTraining() {
   $("sec-train").innerHTML = `
     <div class="card p-7 space-y-6">
       <div class="flex items-start gap-3">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(16,185,129,.12); color:var(--accent)"><i class="fa-solid fa-dumbbell"></i></div>
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(16,185,129,.12); color:var(--accent); box-shadow:0 8px 20px -10px rgba(16,185,129,.8);"><i class="fa-solid fa-dumbbell"></i></div>
         <div>
           <h3 class="text-xl font-black">Программа тренировок</h3>
           <p class="text-xs muted mt-1">${R.days} дня в неделю, ${["зал", "дом", "улица"][R.loc]}. Все основные группы мышц прорабатываются за неделю.</p>
@@ -1360,14 +1488,14 @@ function renderTraining() {
         ${[0,1,2,3].map(i => `<button onclick="setWeek(${i})" class="tab ${i === w ? "on" : ""}">Неделя ${i + 1}${i === 3 ? " · разгрузка" : ""}</button>`).join("")}
       </div>
 
-      <div class="rounded-2xl p-5 text-sm" style="background:var(--surface-2)">
+      <div class="rounded-2xl p-5 text-sm" style="background:var(--surface-2); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 16px 32px -18px rgba(0,0,0,.95);">
         <div class="font-bold" style="color:var(--accent)">Повторы в этой неделе: ${BLOCK_REPS[b][w]} · Подходы: ${BLOCK_SETS[b]}</div>
         <div class="muted mt-1 text-xs">${w === 3 ? "Разгрузочная неделя: меньше подходов и веса, чтобы восстановиться. Не пропускайте её." : "Веса рассчитываются по вашему максимуму и числу повторений. Если все подходы выполнены с хорошей техникой и запасом сил, в следующей неделе берите чуть больше."}</div>
       </div>
 
       <div class="grid lg:grid-cols-2 gap-5">${cards}</div>
 
-      <div class="rounded-2xl p-6 space-y-2 text-sm" style="background:var(--surface-2)">
+      <div class="rounded-2xl p-6 space-y-2 text-sm" style="background:var(--surface-2); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 16px 32px -18px rgba(0,0,0,.95);">
         <div class="font-bold">Правила прогрессии</div>
         <ul class="list-disc list-inside muted text-xs space-y-1">
           <li>Выполнили все подходы на верхней границе повторений с хорошей техникой — в следующем блоке вес растёт сам.</li>
@@ -1386,7 +1514,7 @@ function renderJournalSection() {
   $("sec-journal").innerHTML = `
     <div class="card p-7 space-y-6">
       <div class="flex items-start gap-3">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(59,130,246,.12); color:var(--accent-2)"><i class="fa-solid fa-book"></i></div>
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(59,130,246,.12); color:var(--accent-2); box-shadow:0 8px 20px -10px rgba(59,130,246,.8);"><i class="fa-solid fa-book"></i></div>
         <div>
           <h3 class="text-xl font-black">Журнал тренировок</h3>
           <p class="text-xs muted mt-1">Записывайте лучший рабочий подход после тренировки. По основным упражнениям (присед, жим, тяга, армейский жим, бицепс) по записям пересчитывается максимум и растут рабочие веса.</p>
@@ -1403,7 +1531,7 @@ function renderJournalSection() {
       </div>
       <button onclick="addJournal()" class="btn-primary px-6 py-3 text-sm">Добавить запись</button>
 
-      <div class="rounded-2xl p-5" style="background:var(--surface-2)">
+      <div class="rounded-2xl p-5" style="background:var(--surface-2); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 16px 32px -18px rgba(0,0,0,.95);">
         <div class="text-sm font-bold mb-3">${T[LANG].chartProgress}</div>
         <div class="h-64"><canvas id="progressChart"></canvas></div>
         <p class="text-[11px] muted mt-2">График появится, когда добавите первые записи. Точки — максимум 1ПМ на дату записи.</p>
@@ -1521,91 +1649,133 @@ function renderProgress() {
     ${rowsBlk}`;
 }
 
-/* ==================== ПИТАНИЕ ==================== */
+/* ==================== ПИТАНИЕ (5 приёмов) ==================== */
 const ING = {
-  oats:    { n:"Овсяные хлопья (сухие)", k:375, p:13,  f:6.5, c:64 },
-  eggs:    { n:"Яйца (без скорлупы)",   k:155, p:13,  f:11,  c:1.1 },
-  banana:  { n:"Банан",                 k:89,  p:1.1, f:0.3, c:23 },
-  milk:    { n:"Молоко 2,5%",           k:52,  p:3.4, f:2.5, c:4.8 },
-  cottage: { n:"Творог 5%",             k:121, p:17,  f:5,   c:3 },
-  feta:    { n:"Сыр фета",              k:264, p:14,  f:21,  c:4 },
-  honey:   { n:"Мёд",                   k:304, p:0.3, f:0,   c:82 },
-  bread:   { n:"Цельнозерновой хлеб",   k:250, p:9,   f:3,   c:49 },
-  nuts:    { n:"Грецкие орехи / миндаль", k:600, p:20, f:52,  c:20 },
-  pbutter: { n:"Арахисовая паста",      k:590, p:25,  f:50,  c:20 },
-  whey:    { n:"Сывороточный протеин",  k:390, p:78,  f:6,   c:8 },
-  chicken: { n:"Куриное филе (сырое)",  k:110, p:23,  f:1.5, c:0 },
-  turkey:  { n:"Индейка, филе (сырое)", k:110, p:24,  f:1,   c:0 },
-  beef:    { n:"Говядина постная (сырая)", k:150, p:21, f:7, c:0 },
-  salmon:  { n:"Лосось (сырой)",        k:200, p:20,  f:13,  c:0 },
-  tuna:    { n:"Тунец консервированный в воде", k:116, p:26, f:1, c:0 },
-  rice:    { n:"Рис (сухой)",           k:360, p:7,   f:0.6, c:79 },
-  buckwheat:{ n:"Гречка (сухая)",       k:335, p:12.6, f:3.3, c:62 },
-  pasta:   { n:"Макароны (сухие)",      k:350, p:12,  f:1.5, c:71 },
-  potato:  { n:"Картофель (сырой)",     k:77,  p:2,   f:0.1, c:17 },
-  veg:     { n:"Овощи (огурец, помидор, перец)", k:25, p:1, f:0.2, c:5 },
-  olive:   { n:"Оливковое масло",       k:884, p:0,   f:100, c:0 }
+  oats:      { n:"Овсяные хлопья (сухие)", k:375, p:13,  f:6.5, c:64 },
+  eggs:      { n:"Яйца (без скорлупы)",   k:155, p:13,  f:11,  c:1.1 },
+  banana:    { n:"Банан",                 k:89,  p:1.1, f:0.3, c:23 },
+  apple:     { n:"Яблоко",                k:52,  p:0.3, f:0.2, c:14 },
+  berries:   { n:"Ягоды (замороженные)",  k:50,  p:0.7, f:0.3, c:12 },
+  milk:      { n:"Молоко 2,5%",           k:52,  p:3.4, f:2.5, c:4.8 },
+  yogurt:    { n:"Греческий йогурт 5%",   k:75,  p:9,   f:5,   c:4 },
+  cottage:   { n:"Творог 5%",             k:121, p:17,  f:5,   c:3 },
+  cheese:    { n:"Сыр (твёрдый)",         k:380, p:25,  f:30,  c:1 },
+  feta:      { n:"Сыр фета",              k:264, p:14,  f:21,  c:4 },
+  honey:     { n:"Мёд",                   k:304, p:0.3, f:0,   c:82 },
+  bread:     { n:"Цельнозерновой хлеб",   k:250, p:9,   f:3,   c:49 },
+  nuts:      { n:"Грецкие орехи / миндаль", k:600, p:20, f:52,  c:20 },
+  pbutter:   { n:"Арахисовая паста",      k:590, p:25,  f:50,  c:20 },
+  avocado:   { n:"Авокадо",               k:160, p:2,   f:15,  c:9 },
+  whey:      { n:"Сывороточный протеин",  k:390, p:78,  f:6,   c:8 },
+  chicken:   { n:"Куриное филе (сырое)",  k:110, p:23,  f:1.5, c:0 },
+  turkey:    { n:"Индейка, филе (сырое)", k:110, p:24,  f:1,   c:0 },
+  beef:      { n:"Говядина постная (сырая)", k:150, p:21, f:7, c:0 },
+  pork:      { n:"Свинина, вырезка (сырая)", k:143, p:21, f:6, c:0 },
+  salmon:    { n:"Лосось (сырой)",        k:200, p:20,  f:13,  c:0 },
+  tuna:      { n:"Тунец консервированный в воде", k:116, p:26, f:1, c:0 },
+  rice:      { n:"Рис (сухой)",           k:360, p:7,   f:0.6, c:79 },
+  buckwheat: { n:"Гречка (сухая)",        k:335, p:12.6, f:3.3, c:62 },
+  pasta:     { n:"Макароны (сухие)",      k:350, p:12,  f:1.5, c:71 },
+  potato:    { n:"Картофель (сырой)",     k:77,  p:2,   f:0.1, c:17 },
+  veg:       { n:"Овощи (огурец, помидор, перец)", k:25, p:1, f:0.2, c:5 },
+  olive:     { n:"Оливковое масло",       k:884, p:0,   f:100, c:0 }
 };
 
+// t: B — завтрак, M — второй завтрак / перекус, L — обед, P — после тренировки, D — ужин
 const DISHES = [
-  { id:"B1", t:"B", n:"Овсянка с яйцами и бананом", dairy:true, adv:false,
-    items:[["oats",80],["eggs",150],["banana",100],["milk",200]],
-    prep:"Сварите овсянку на молоке 5 минут, добавьте нарезанный банан. Яйца отварите или сделайте омлет." },
-  { id:"B2", t:"B", n:"Творожная тарелка с мёдом", dairy:true, adv:false,
-    items:[["cottage",250],["oats",40],["banana",100],["honey",10]],
-    prep:"Творог заправьте мёдом, сверху положите банан и хлопья." },
-  { id:"B3", t:"B", n:"Яичница с хлебом и овощами", dairy:true, adv:false,
-    items:[["eggs",150],["bread",100],["veg",150],["feta",30]],
-    prep:"Яичница на минимальном масле, хлеб и овощи, фета сверху." },
-  { id:"B4", t:"B", n:"Овсянка на воде с арахисовой пастой", dairy:false, adv:false,
+  // ЗАВТРАК
+  { id:"B1", t:"B", n:"Овсянка с яйцами, бананом и орехами", dairy:true, adv:false,
+    items:[["oats",80],["eggs",150],["banana",100],["milk",200],["nuts",15]],
+    prep:"Сварите овсянку на молоке 5 минут, добавьте нарезанный банан и орехи. Яйца отварите или сделайте омлет." },
+  { id:"B2", t:"B", n:"Творожная тарелка с ягодами и мёдом", dairy:true, adv:false,
+    items:[["cottage",250],["oats",40],["berries",100],["honey",10],["nuts",15]],
+    prep:"Творог выложите в миску, сверху ягоды, хлопья, орехи и мёд." },
+  { id:"B3", t:"B", n:"Омлет из трёх яиц с сыром и овощами", dairy:true, adv:false,
+    items:[["eggs",150],["cheese",30],["bread",100],["veg",150],["olive",5]],
+    prep:"Взбейте яйца, добавьте натёртый сыр и нарезанные овощи, готовьте на сковороде с каплей масла. Подавайте с хлебом." },
+  { id:"B4", t:"B", n:"Овсянка на воде с арахисовой пастой и бананом", dairy:false, adv:false,
     items:[["oats",80],["eggs",100],["banana",100],["pbutter",15]],
-    prep:"Варите овсянку на воде, яйца отварите, пасту добавьте сверху." },
+    prep:"Варите овсянку на воде, яйца отварите, пасту и банан добавьте сверху." },
+  { id:"B5", t:"B", n:"Тост с авокадо, яйцом и овощами", dairy:false, adv:true,
+    items:[["bread",100],["avocado",80],["eggs",150],["veg",100],["olive",5]],
+    prep:"Подсушите хлеб, разомните авокадо, сверху положите яйцо-пашот или яичницу и овощи." },
+  { id:"B6", t:"B", n:"Овсяные оладьи с яйцом, бананом и мёдом", dairy:true, adv:false,
+    items:[["oats",80],["eggs",150],["milk",150],["banana",100],["honey",10]],
+    prep:"Смешайте овсянку, яйца и молоко, жарьте небольшими оладьями на сухой сковороде. Подавайте с бананом и мёдом." },
+
+  // ВТОРОЙ ЗАВТРАК / ПЕРЕКУС
+  { id:"M1", t:"M", n:"Творог с бананом и орехами", dairy:true, adv:true,
+    items:[["cottage",200],["banana",120],["nuts",20]],
+    prep:"Творог смешайте с нарезанным бананом и измельчёнными орехами." },
+  { id:"M2", t:"M", n:"Бутерброд с тунцом и овощами", dairy:false, adv:false,
+    items:[["bread",100],["tuna",100],["veg",100],["olive",5]],
+    prep:"Тунец на хлеб, овощи сверху, капля масла." },
+  { id:"M3", t:"M", n:"Греческий йогурт с ягодами и овсянкой", dairy:true, adv:true,
+    items:[["yogurt",250],["berries",100],["oats",40],["honey",10]],
+    prep:"Йогурт выложите в миску, добавьте ягоды, овсянку и мёд. Можно сделать за вечер, чтобы утром было готово." },
+  { id:"M4", t:"M", n:"Яблоко с орехами и сыром", dairy:true, adv:true,
+    items:[["apple",150],["nuts",30],["cheese",30]],
+    prep:"Яблоко нарежьте дольками, подавайте с орехами и кусочками сыра. Удобно в дороге." },
+
+  // ОБЕД
   { id:"L1", t:"L", n:"Курица с рисом и овощами", dairy:false, adv:false,
     items:[["chicken",180],["rice",90],["veg",200],["olive",10]],
     prep:"Курицу запеките или обжарьте без масла, рис сварите, овощи свежие, заправка оливковым маслом." },
-  { id:"L2", t:"L", n:"Говядина с гречкой", dairy:false, adv:false,
+  { id:"L2", t:"L", n:"Говядина с гречкой и овощами", dairy:false, adv:false,
     items:[["beef",180],["buckwheat",90],["veg",200],["olive",10]],
     prep:"Говядину обжарьте до готовности, гречку сварите, овощи порежьте, сверху масло." },
-  { id:"L3", t:"L", n:"Лосось с картофелем", dairy:false, adv:true,
+  { id:"L3", t:"L", n:"Лосось с картофелем и салатом", dairy:false, adv:true,
     items:[["salmon",180],["potato",300],["veg",200],["olive",10]],
     prep:"Лосось запеките 15–20 минут при 200 °C, картофель отварите или запеките, овощи свежие." },
-  { id:"L4", t:"L", n:"Паста с тунцом", dairy:false, adv:false,
-    items:[["pasta",90],["tuna",150],["veg",150],["olive",10]],
-    prep:"Макароны al dente, тунец без жидкости, овощи и масло." },
-  { id:"L5", t:"L", n:"Индейка с макаронами", dairy:false, adv:false,
+  { id:"L4", t:"L", n:"Паста с тунцом и сыром", dairy:true, adv:false,
+    items:[["pasta",90],["tuna",150],["cheese",20],["veg",150],["olive",10]],
+    prep:"Макароны al dente, тунец без жидкости, овощи и масло. Сыр натрите сверху." },
+  { id:"L5", t:"L", n:"Индейка с макаронами и овощами", dairy:false, adv:false,
     items:[["turkey",180],["pasta",90],["veg",200],["olive",10]],
     prep:"Индейку обжарьте без масла или на гриле, макароны сварите, овощи свежие." },
-  { id:"S1", t:"S", n:"Творог с бананом и орехами", dairy:true, adv:true,
-    items:[["cottage",250],["banana",120],["nuts",20]],
-    prep:"Творог смешайте с нарезанным бананом и измельчёнными орехами." },
-  { id:"S2", t:"S", n:"Протеиновый шейк с молоком (после тренировки)", dairy:true, adv:false,
+  { id:"L6", t:"L", n:"Свинина с рисом и овощами", dairy:false, adv:false,
+    items:[["pork",180],["rice",100],["veg",200],["olive",10]],
+    prep:"Вырезку нарежьте полосками и обжарьте на сильном огне 5–6 минут, рис сварите, овощи тушите или свежие." },
+
+  // ПОСЛЕ ТРЕНИРОВКИ
+  { id:"P1", t:"P", n:"Протеиновый шейк с молоком и бананом", dairy:true, adv:false,
     items:[["whey",30],["milk",300],["banana",120],["oats",40]],
     prep:"Смешайте всё в блендере. Пейте в течение 1–2 часов после тренировки." },
-  { id:"S3", t:"S", n:"Протеиновый шейк на воде (после тренировки)", dairy:false, adv:false,
+  { id:"P2", t:"P", n:"Протеиновый шейк на воде с арахисовой пастой", dairy:false, adv:false,
     items:[["whey",30],["banana",120],["oats",40],["pbutter",15]],
     prep:"Смешайте с водой, для вкуса добавьте банан и пасту. Пейте после тренировки." },
-  { id:"S4", t:"S", n:"Бутерброд с тунцом и овощами", dairy:false, adv:false,
-    items:[["bread",100],["tuna",100],["veg",100],["olive",5]],
-    prep:"Тунец на хлеб, овощи сверху, капля масла." },
+  { id:"P3", t:"P", n:"Курица с картофелем и овощами", dairy:false, adv:false,
+    items:[["chicken",150],["potato",200],["veg",100],["olive",5]],
+    prep:"Курицу запеките, картофель отварите, овощи свежие. Подходит как поздний перекус после тренировки." },
+  { id:"P4", t:"P", n:"Творог с мёдом и хлебом", dairy:true, adv:true,
+    items:[["cottage",250],["honey",15],["bread",80]],
+    prep:"Творог заправьте мёдом, подавайте с хлебом. Хорошо восстанавливает мышцы ночью." },
+
+  // УЖИН
   { id:"D1", t:"D", n:"Рыба с картофелем и салатом", dairy:false, adv:true,
     items:[["salmon",150],["potato",250],["veg",250],["olive",10]],
     prep:"Лосось запеките, картофель отварите, салат из свежих овощей с маслом." },
   { id:"D2", t:"D", n:"Курица с макаронами и овощами", dairy:false, adv:false,
     items:[["chicken",170],["pasta",80],["veg",250],["olive",10]],
     prep:"Курицу запеките, макароны сварите, овощи тушите или свежие." },
-  { id:"D3", t:"D", n:"Творожно-яичный ужин", dairy:true, adv:false,
+  { id:"D3", t:"D", n:"Творожно-яичный ужин с хлебом", dairy:true, adv:false,
     items:[["cottage",200],["eggs",100],["veg",200],["bread",50]],
     prep:"Творог с яйцом (отварное или омлет), овощи и кусочек хлеба." },
-  { id:"D4", t:"D", n:"Говядина с картофелем", dairy:false, adv:false,
+  { id:"D4", t:"D", n:"Говядина с картофелем и овощами", dairy:false, adv:false,
     items:[["beef",170],["potato",250],["veg",200],["olive",10]],
     prep:"Говядину обжарьте или запеките, картофель отварите или запеките, овощи свежие." },
-  { id:"D5", t:"D", n:"Индейка с гречкой", dairy:false, adv:false,
+  { id:"D5", t:"D", n:"Индейка с гречкой и овощами", dairy:false, adv:false,
     items:[["turkey",170],["buckwheat",80],["veg",200],["olive",10]],
-    prep:"Индейку обжарьте без масла, гречку сварите, овощи свежие." }
+    prep:"Индейку обжарьте без масла, гречку сварите, овощи свежие." },
+  { id:"D6", t:"D", n:"Омлет с курицей, сыром и хлебом", dairy:true, adv:false,
+    items:[["eggs",150],["chicken",100],["cheese",30],["veg",150],["bread",80]],
+    prep:"Курицу обжарьте кусочками, залейте взбитыми яйцами, посыпьте сыром и запеките под крышкой. Подавайте с хлебом и овощами." }
 ];
 
-const SHARE = { B:0.25, L:0.30, S:0.20, D:0.25 };
-const MEAL_NAME = { B:"Завтрак", L:"Обед", S:"Перекус или после тренировки", D:"Ужин" };
+// Доли калорий по приёмам: сумма = 1
+const SHARE = { B:0.20, M:0.15, L:0.27, P:0.18, D:0.20 };
+const MEAL_NAME = { B:"Завтрак", M:"Второй завтрак / перекус", L:"Обед", P:"После тренировки", D:"Ужин" };
+const MEAL_ORDER = ["B","M","L","P","D"];
 
 function availableDishes(t) {
   return DISHES.filter(d =>
@@ -1629,7 +1799,7 @@ function calcDish(dish, targetKcal) {
 
 function renderFood() {
   const sums = { k:0, p:0, f:0, c:0 };
-  const blocks = ["B","L","S","D"].map(t => {
+  const blocks = MEAL_ORDER.map(t => {
     const opts = availableDishes(t);
     const idx2 = mealIdx[t] % opts.length;
     const dish = opts[idx2];
@@ -1657,24 +1827,24 @@ function renderFood() {
   $("sec-food").innerHTML = `
     <div class="card p-7 space-y-6">
       <div class="flex items-start gap-3">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(245,158,11,.12); color:var(--warn)"><i class="fa-solid fa-utensils"></i></div>
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(245,158,11,.12); color:var(--warn); box-shadow:0 8px 20px -10px rgba(245,158,11,.8);"><i class="fa-solid fa-utensils"></i></div>
         <div>
-          <h3 class="text-xl font-black">План питания</h3>
+          <h3 class="text-xl font-black">План питания: 5 приёмов</h3>
           <p class="text-xs muted mt-1">Норма: ${R.kcal} ккал, белок ${R.protein} г, жиры ${R.fats} г, углеводы ${R.carbs} г. Граммы уже пересчитаны под вашу норму. Нажимайте «Другой вариант», чтобы менять блюда.</p>
         </div>
       </div>
       ${R.lactose === 0 ? `<p class="text-xs" style="color:var(--accent-2)">Молочные блюда скрыты, вы указали, что молоко переносите плохо.</p>` : ""}
-      ${R.budget === 0 ? `<p class="text-xs" style="color:var(--accent-2)">Блюда с лососем и орехами скрыты, вы выбрали базовый бюджет.</p>` : ""}
+      ${R.budget === 0 ? `<p class="text-xs" style="color:var(--accent-2)">Блюда с лососем, орехами и авокадо скрыты, вы выбрали базовый бюджет.</p>` : ""}
       ${blocks}
-      <div class="rounded-2xl p-6 space-y-1 text-sm" style="background:var(--surface-2)">
+      <div class="rounded-2xl p-6 space-y-1 text-sm" style="background:var(--surface-2); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 16px 32px -18px rgba(0,0,0,.95);">
         <div class="font-bold">Итого за день (выбранные блюда)</div>
         <div class="stat">${Math.round(sums.k)} ккал · Белок ${sums.p.toFixed(0)} г · Жиры ${sums.f.toFixed(0)} г · Углеводы ${sums.c.toFixed(0)} г</div>
         <div class="text-[11px] muted">Небольшое отклонение (±5%) от нормы допустимо. Если вес растёт слишком быстро или медленно, корректируйте порции, а не меню целиком.</div>
       </div>
-      <div class="rounded-2xl p-6 space-y-2 text-xs" style="background:var(--surface-2)">
+      <div class="rounded-2xl p-6 space-y-2 text-xs" style="background:var(--surface-2); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 16px 32px -18px rgba(0,0,0,.95);">
         <div class="font-bold text-sm">Правила питания</div>
         <ul class="list-disc list-inside muted space-y-1">
-          <li>Белок распределяйте по 3–5 приёмам пищи, по 25–40 г на приём.</li>
+          <li>Белок распределяйте по 5 приёмам пищи, по 25–40 г на приём.</li>
           <li>Углеводы больше в дни тренировок и вокруг них, меньше в дни отдыха.</li>
           <li>Пейте воду: ориентир 30–35 мл на кг веса в день, плюс больше в жару и при тренировках.</li>
           <li>Не пропускайте еду: при дефиците калорий набор массы не пойдёт.</li>
@@ -1685,7 +1855,8 @@ function renderFood() {
 }
 
 function cycleMeal(t) {
-  mealIdx[t] = (mealIdx[t] + 1) % 10;
+  const n = availableDishes(t).length;
+  mealIdx[t] = (mealIdx[t] + 1) % n;
   renderFood();
 }
 
@@ -1771,7 +1942,7 @@ function renderSupp() {
   $("sec-supp").innerHTML = `
     <div class="card p-7 space-y-7">
       <div class="flex items-start gap-3">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(139,92,246,.14); color:#A78BFA"><i class="fa-solid fa-pills"></i></div>
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(167,139,250,.14); color:#A78BFA; box-shadow:0 8px 20px -10px rgba(167,139,250,.8);"><i class="fa-solid fa-pills"></i></div>
         <div>
           <h3 class="text-xl font-black">Добавки: что принимать и что нельзя</h3>
           <p class="text-xs muted mt-1">Добавки не заменяют еду, сон и тренировки. Перед приёмом проконсультируйтесь с врачом, особенно при хронических болезнях, беременности или приёме лекарств.</p>
@@ -1781,7 +1952,7 @@ function renderSupp() {
         <h4 class="font-bold mb-3" style="color:var(--accent)">Что принимать</h4>
         <div class="grid md:grid-cols-2 gap-4">
           ${takeList.map(s => `
-            <div class="rounded-2xl p-5 space-y-2" style="background:var(--surface-2)">
+            <div class="rounded-2xl p-5 space-y-2 lift" style="background:var(--surface-2); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 16px 32px -18px rgba(0,0,0,.95);">
               <div class="flex justify-between items-center gap-2">
                 <span class="font-extrabold">${s.name}</span>
                 <span class="text-[11px] font-bold" style="color:${s.color}">${s.level}</span>
@@ -1796,13 +1967,13 @@ function renderSupp() {
         <h4 class="font-bold mb-3" style="color:var(--danger)">Чего нельзя принимать</h4>
         <div class="grid md:grid-cols-2 gap-3">
           ${avoidList.map(a => `
-            <div class="rounded-xl p-4 text-xs" style="background:rgba(239,68,68,.06); border:1px solid rgba(239,68,68,.2)">
+            <div class="rounded-xl p-4 text-xs" style="background:rgba(239,68,68,.06); border:1px solid rgba(239,68,68,.2); box-shadow:0 14px 28px -18px rgba(239,68,68,.5);">
               <div class="font-bold" style="color:var(--danger)">${a.name}</div>
               <div class="muted mt-1">${a.why}</div>
             </div>`).join("")}
         </div>
       </div>
-      <div class="rounded-2xl p-5 text-xs muted" style="background:var(--surface-2)">
+      <div class="rounded-2xl p-5 text-xs muted" style="background:var(--surface-2); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 16px 32px -18px rgba(0,0,0,.95);">
         Не принимайте добавки при беременности, кормлении грудью, до 18 лет, при заболеваниях почек, печени, сердца, при диабете и при приёме лекарств без консультации врача. Если появились боли в груди, сердцебиение, сыпь, резкое ухудшение самочувствия, прекратите приём и обратитесь к врачу.
       </div>
     </div>`;
@@ -1813,17 +1984,17 @@ function renderShop() {
   const d = T[LANG];
   const cards = PARTNERS.length
     ? PARTNERS.map(p => `
-        <div class="rounded-2xl p-6 flex flex-col gap-2" style="background:var(--surface-2)">
+        <div class="rounded-2xl p-6 flex flex-col gap-2 lift" style="background:var(--surface-2); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 16px 32px -18px rgba(0,0,0,.95);">
           <div class="font-extrabold">${esc(p.name)}</div>
           <p class="text-xs muted flex-1">${esc(p.desc || "")}</p>
           <a href="${esc(p.url)}" target="_blank" rel="sponsored noopener noreferrer" class="btn-primary self-start px-4 py-2 text-xs mt-2">${d.shopBtn}</a>
         </div>`).join("")
-    : `<div class="md:col-span-2 rounded-2xl p-8 text-center text-xs muted" style="background:var(--surface-2)">${d.shopEmpty}</div>`;
+    : `<div class="md:col-span-2 rounded-2xl p-8 text-center text-xs muted" style="background:var(--surface-2); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 16px 32px -18px rgba(0,0,0,.95);">${d.shopEmpty}</div>`;
 
   $("sec-shop").innerHTML = `
     <div class="card p-7 space-y-6">
       <div class="flex items-start gap-3">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(245,158,11,.12); color:var(--warn)"><i class="fa-solid fa-bag-shopping"></i></div>
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(245,158,11,.12); color:var(--warn); box-shadow:0 8px 20px -10px rgba(245,158,11,.8);"><i class="fa-solid fa-bag-shopping"></i></div>
         <div>
           <h3 class="text-xl font-black">${d.shopTitle}</h3>
           <p class="text-[11px] muted mt-2">${d.shopDisc}</p>
@@ -1835,13 +2006,14 @@ function renderShop() {
 
 /* ==================== ОТЗЫВЫ ==================== */
 function renderReviews() {
+  const shadowTile = "background:var(--surface-2); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 16px 32px -18px rgba(0,0,0,.95);";
   const list = REVIEWS.length
     ? REVIEWS.map(r => `
-        <div class="rounded-2xl p-5 space-y-2" style="background:var(--surface-2)">
+        <div class="rounded-2xl p-5 space-y-2 lift" style="${shadowTile}">
           <div class="flex justify-between items-center"><strong class="text-xs">${esc(r.name)}</strong><span class="text-xs" style="color:var(--warn)">★★★★★</span></div>
           <p class="text-xs muted italic">«${esc(r.text)}»</p>
         </div>`).join("")
-    : `<div class="md:col-span-3 rounded-2xl p-8 text-center text-xs muted" style="background:var(--surface-2)">
+    : `<div class="md:col-span-3 rounded-2xl p-8 text-center text-xs muted" style="${shadowTile}">
          Отзывов пока нет. Если вы проходите программу, поделитесь опытом: кнопка ниже.
        </div>`;
 
@@ -1849,7 +2021,7 @@ function renderReviews() {
     <div class="card p-7 space-y-6">
       <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
         <div class="flex items-start gap-3">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(16,185,129,.12); color:var(--accent)"><i class="fa-solid fa-comments"></i></div>
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(16,185,129,.12); color:var(--accent); box-shadow:0 8px 20px -10px rgba(16,185,129,.8);"><i class="fa-solid fa-comments"></i></div>
           <div>
             <h3 class="text-xl font-black">Отзывы участников</h3>
             <p class="text-xs muted mt-1">Публикуем только реальные отзывы с разрешения автора.</p>
@@ -1893,7 +2065,7 @@ function renderStars() {
   const box = $("stars");
   if (!box) return;
   box.innerHTML = [1,2,3,4,5].map(i =>
-    `<button onclick="setStars(${i})" style="color:${i <= rating ? "var(--warn)" : "var(--border)"}">★</button>`
+    `<button onclick="setStars(${i})" style="color:${i <= rating ? "var(--warn)" : "var(--border)"}; text-shadow:${i <= rating ? "0 0 16px rgba(245,158,11,.6)" : "none"}">★</button>`
   ).join("");
 }
 
@@ -1903,23 +2075,26 @@ function setStars(i) {
   renderStars();
 }
 
+function showDoneMsg(text, ok) {
+  const msg = $("doneMsg");
+  msg.textContent = text;
+  msg.style.color = ok ? "var(--accent)" : "var(--danger)";
+  msg.classList.remove("hidden");
+}
+
 function sendDone() {
   const name = $("certName").value.trim();
   const email = $("certEmail").value.trim();
-  const msg = $("doneMsg");
-  if (name.length < 2) { msg.textContent = T[LANG].needName; msg.className = "text-xs"; msg.style.color = "var(--danger)"; msg.classList.remove("hidden"); return; }
-  if (!rating) { msg.textContent = T[LANG].needRate; msg.className = "text-xs"; msg.style.color = "var(--danger)"; msg.classList.remove("hidden"); return; }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = T[LANG].badEmail; msg.className = "text-xs"; msg.style.color = "var(--danger)"; msg.classList.remove("hidden"); return; }
+  if (name.length < 2) { showDoneMsg(T[LANG].needName, false); return; }
+  if (!rating) { showDoneMsg(T[LANG].needRate, false); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showDoneMsg(T[LANG].badEmail, false); return; }
   userName = name;
   courseDone = true;
   saveAll();
   const subject = encodeURIComponent("Курс пройден: запрос сертификата");
   const body = encodeURIComponent(`Имя для сертификата: ${name}\nПочта: ${email}\nОценка курса: ${rating} из 5\nЯзык: ${LANG}`);
   window.location.href = `mailto:${CONFIG.SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
-  msg.textContent = T[LANG].thanks.replace("{e}", email);
-  msg.className = "text-xs";
-  msg.style.color = "var(--accent)";
-  msg.classList.remove("hidden");
+  showDoneMsg(T[LANG].thanks.replace("{e}", email), true);
 }
 
 /* ==================== ПОМОЩНИК КУРСА (ИИ через /api/chat) ==================== */
@@ -1947,7 +2122,7 @@ function toggleBot() {
 function botSay(who, html) {
   const d = document.createElement("div");
   d.className = who === "me" ? "text-right" : "text-left";
-  d.innerHTML = `<span class="inline-block px-3.5 py-2.5 rounded-2xl max-w-[85%] text-left" style="${who === "me" ? "background:var(--accent); color:#04110C;" : "background:var(--surface-2); color:var(--text);"}">${html}</span>`;
+  d.innerHTML = `<span class="inline-block px-3.5 py-2.5 rounded-2xl max-w-[85%] text-left" style="${who === "me" ? "background:linear-gradient(135deg,#10B981,#14B8A6); color:#03130D; box-shadow:0 10px 22px -10px rgba(16,185,129,.8);" : "background:var(--surface-2); color:var(--text); box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 10px 22px -14px rgba(0,0,0,.9);"}">${html}</span>`;
   $("botMsgs").appendChild(d);
   $("botMsgs").scrollTop = $("botMsgs").scrollHeight;
   return d;
@@ -2002,7 +2177,7 @@ function downloadPDF() {
     margin: 0.3,
     filename: "SomatoMass_plan.pdf",
     image: { type:"jpeg", quality:0.95 },
-    html2canvas: { scale:2, backgroundColor: isLight ? "#F5F7FB" : "#07090E" },
+    html2canvas: { scale:2, backgroundColor: isLight ? "#F5F7FB" : "#000000" },
     jsPDF: { unit:"in", format:"letter", orientation:"portrait" }
   }).from($("pdfArea")).save();
 }
@@ -2017,7 +2192,7 @@ function restartQuiz() {
   userName = "";
   courseDone = false;
   rating = 0;
-  mealIdx = { B:0, L:0, S:0, D:0 };
+  mealIdx = { B:0, M:0, L:0, P:0, D:0 };
   blockIdx = 0;
   weekIdx = 0;
   hasSaved = false;
@@ -2032,7 +2207,6 @@ function restartQuiz() {
 /* ==================== СТАРТ ==================== */
 loadAll();
 applyI18n();
-if (!document.documentElement.getAttribute("data-theme")) applyTheme("dark");
 renderDemoChart();
 </script>
 </body>
